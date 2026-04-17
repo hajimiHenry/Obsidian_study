@@ -1,0 +1,16 @@
+# Obsidian local UI state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Plugin local state and secrets
+.obsidian/plugins/*/data.json
+!.obsidian/plugins/obsidian-git/data.json
+
+# Local assistant/plugin state
+.claude/
+.claudian/
+
+# Common local trash / OS files
+.trash/
+Thumbs.db
+.DS_Store
