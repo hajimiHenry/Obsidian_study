@@ -3562,7 +3562,7 @@ var require_compile = __commonJS({
       const schOrFunc = root.refs[ref];
       if (schOrFunc)
         return schOrFunc;
-      let _sch = resolve8.call(this, root, ref);
+      let _sch = resolve11.call(this, root, ref);
       if (_sch === void 0) {
         const schema = (_a3 = root.localRefs) === null || _a3 === void 0 ? void 0 : _a3[ref];
         const { schemaId } = this.opts;
@@ -3589,7 +3589,7 @@ var require_compile = __commonJS({
     function sameSchemaEnv(s12, s22) {
       return s12.schema === s22.schema && s12.root === s22.root && s12.baseId === s22.baseId;
     }
-    function resolve8(root, ref) {
+    function resolve11(root, ref) {
       let sch;
       while (typeof (sch = this.refs[ref]) == "string")
         ref = sch;
@@ -3804,8 +3804,8 @@ var require_utils = __commonJS({
       }
       return ind;
     }
-    function removeDotSegments(path24) {
-      let input = path24;
+    function removeDotSegments(path27) {
+      let input = path27;
       const output = [];
       let nextSlash = -1;
       let len = 0;
@@ -4004,8 +4004,8 @@ var require_schemes = __commonJS({
         wsComponent.secure = void 0;
       }
       if (wsComponent.resourceName) {
-        const [path24, query] = wsComponent.resourceName.split("?");
-        wsComponent.path = path24 && path24 !== "/" ? path24 : void 0;
+        const [path27, query] = wsComponent.resourceName.split("?");
+        wsComponent.path = path27 && path27 !== "/" ? path27 : void 0;
         wsComponent.query = query;
         wsComponent.resourceName = void 0;
       }
@@ -4164,7 +4164,7 @@ var require_fast_uri = __commonJS({
       }
       return uri;
     }
-    function resolve8(baseURI, relativeURI, options) {
+    function resolve11(baseURI, relativeURI, options) {
       const schemelessOptions = options ? Object.assign({ scheme: "null" }, options) : { scheme: "null" };
       const resolved = resolveComponent(parse4(baseURI, schemelessOptions), parse4(relativeURI, schemelessOptions), schemelessOptions, true);
       schemelessOptions.skipEscape = true;
@@ -4391,7 +4391,7 @@ var require_fast_uri = __commonJS({
     var fastUri = {
       SCHEMES,
       normalize: normalize3,
-      resolve: resolve8,
+      resolve: resolve11,
       resolveComponent,
       equal,
       serialize,
@@ -7367,12 +7367,12 @@ var require_dist = __commonJS({
         throw new Error(`Unknown format "${name}"`);
       return f2;
     };
-    function addFormats(ajv, list, fs26, exportName) {
+    function addFormats(ajv, list, fs35, exportName) {
       var _a3;
       var _b2;
       (_a3 = (_b2 = ajv.opts.code).formats) !== null && _a3 !== void 0 ? _a3 : _b2.formats = (0, codegen_1._)`require("ajv-formats/dist/formats").${exportName}`;
       for (const f2 of list)
-        ajv.addFormat(f2, fs26[f2]);
+        ajv.addFormat(f2, fs35[f2]);
     }
     module2.exports = exports = formatsPlugin;
     Object.defineProperty(exports, "__esModule", { value: true });
@@ -7385,8 +7385,8 @@ var require_windows = __commonJS({
   "node_modules/isexe/windows.js"(exports, module2) {
     module2.exports = isexe;
     isexe.sync = sync;
-    var fs26 = require("fs");
-    function checkPathExt(path24, options) {
+    var fs35 = require("fs");
+    function checkPathExt(path27, options) {
       var pathext = options.pathExt !== void 0 ? options.pathExt : process.env.PATHEXT;
       if (!pathext) {
         return true;
@@ -7397,25 +7397,25 @@ var require_windows = __commonJS({
       }
       for (var i2 = 0; i2 < pathext.length; i2++) {
         var p = pathext[i2].toLowerCase();
-        if (p && path24.substr(-p.length).toLowerCase() === p) {
+        if (p && path27.substr(-p.length).toLowerCase() === p) {
           return true;
         }
       }
       return false;
     }
-    function checkStat(stat, path24, options) {
+    function checkStat(stat, path27, options) {
       if (!stat.isSymbolicLink() && !stat.isFile()) {
         return false;
       }
-      return checkPathExt(path24, options);
+      return checkPathExt(path27, options);
     }
-    function isexe(path24, options, cb) {
-      fs26.stat(path24, function(er, stat) {
-        cb(er, er ? false : checkStat(stat, path24, options));
+    function isexe(path27, options, cb) {
+      fs35.stat(path27, function(er, stat) {
+        cb(er, er ? false : checkStat(stat, path27, options));
       });
     }
-    function sync(path24, options) {
-      return checkStat(fs26.statSync(path24), path24, options);
+    function sync(path27, options) {
+      return checkStat(fs35.statSync(path27), path27, options);
     }
   }
 });
@@ -7425,14 +7425,14 @@ var require_mode = __commonJS({
   "node_modules/isexe/mode.js"(exports, module2) {
     module2.exports = isexe;
     isexe.sync = sync;
-    var fs26 = require("fs");
-    function isexe(path24, options, cb) {
-      fs26.stat(path24, function(er, stat) {
+    var fs35 = require("fs");
+    function isexe(path27, options, cb) {
+      fs35.stat(path27, function(er, stat) {
         cb(er, er ? false : checkStat(stat, options));
       });
     }
-    function sync(path24, options) {
-      return checkStat(fs26.statSync(path24), options);
+    function sync(path27, options) {
+      return checkStat(fs35.statSync(path27), options);
     }
     function checkStat(stat, options) {
       return stat.isFile() && checkMode(stat, options);
@@ -7456,7 +7456,7 @@ var require_mode = __commonJS({
 // node_modules/isexe/index.js
 var require_isexe = __commonJS({
   "node_modules/isexe/index.js"(exports, module2) {
-    var fs26 = require("fs");
+    var fs35 = require("fs");
     var core;
     if (process.platform === "win32" || global.TESTING_WINDOWS) {
       core = require_windows();
@@ -7465,7 +7465,7 @@ var require_isexe = __commonJS({
     }
     module2.exports = isexe;
     isexe.sync = sync;
-    function isexe(path24, options, cb) {
+    function isexe(path27, options, cb) {
       if (typeof options === "function") {
         cb = options;
         options = {};
@@ -7474,17 +7474,17 @@ var require_isexe = __commonJS({
         if (typeof Promise !== "function") {
           throw new TypeError("callback not provided");
         }
-        return new Promise(function(resolve8, reject) {
-          isexe(path24, options || {}, function(er, is) {
+        return new Promise(function(resolve11, reject) {
+          isexe(path27, options || {}, function(er, is) {
             if (er) {
               reject(er);
             } else {
-              resolve8(is);
+              resolve11(is);
             }
           });
         });
       }
-      core(path24, options || {}, function(er, is) {
+      core(path27, options || {}, function(er, is) {
         if (er) {
           if (er.code === "EACCES" || options && options.ignoreErrors) {
             er = null;
@@ -7494,9 +7494,9 @@ var require_isexe = __commonJS({
         cb(er, is);
       });
     }
-    function sync(path24, options) {
+    function sync(path27, options) {
       try {
-        return core.sync(path24, options || {});
+        return core.sync(path27, options || {});
       } catch (er) {
         if (options && options.ignoreErrors || er.code === "EACCES") {
           return false;
@@ -7512,7 +7512,7 @@ var require_isexe = __commonJS({
 var require_which = __commonJS({
   "node_modules/which/which.js"(exports, module2) {
     var isWindows2 = process.platform === "win32" || process.env.OSTYPE === "cygwin" || process.env.OSTYPE === "msys";
-    var path24 = require("path");
+    var path27 = require("path");
     var COLON = isWindows2 ? ";" : ":";
     var isexe = require_isexe();
     var getNotFoundError = (cmd) => Object.assign(new Error(`not found: ${cmd}`), { code: "ENOENT" });
@@ -7545,27 +7545,27 @@ var require_which = __commonJS({
         opt = {};
       const { pathEnv, pathExt, pathExtExe } = getPathInfo(cmd, opt);
       const found = [];
-      const step = (i2) => new Promise((resolve8, reject) => {
+      const step = (i2) => new Promise((resolve11, reject) => {
         if (i2 === pathEnv.length)
-          return opt.all && found.length ? resolve8(found) : reject(getNotFoundError(cmd));
+          return opt.all && found.length ? resolve11(found) : reject(getNotFoundError(cmd));
         const ppRaw = pathEnv[i2];
         const pathPart = /^".*"$/.test(ppRaw) ? ppRaw.slice(1, -1) : ppRaw;
-        const pCmd = path24.join(pathPart, cmd);
+        const pCmd = path27.join(pathPart, cmd);
         const p = !pathPart && /^\.[\\\/]/.test(cmd) ? cmd.slice(0, 2) + pCmd : pCmd;
-        resolve8(subStep(p, i2, 0));
+        resolve11(subStep(p, i2, 0));
       });
-      const subStep = (p, i2, ii) => new Promise((resolve8, reject) => {
+      const subStep = (p, i2, ii) => new Promise((resolve11, reject) => {
         if (ii === pathExt.length)
-          return resolve8(step(i2 + 1));
+          return resolve11(step(i2 + 1));
         const ext = pathExt[ii];
         isexe(p + ext, { pathExt: pathExtExe }, (er, is) => {
           if (!er && is) {
             if (opt.all)
               found.push(p + ext);
             else
-              return resolve8(p + ext);
+              return resolve11(p + ext);
           }
-          return resolve8(subStep(p, i2, ii + 1));
+          return resolve11(subStep(p, i2, ii + 1));
         });
       });
       return cb ? step(0).then((res) => cb(null, res), cb) : step(0);
@@ -7577,7 +7577,7 @@ var require_which = __commonJS({
       for (let i2 = 0; i2 < pathEnv.length; i2++) {
         const ppRaw = pathEnv[i2];
         const pathPart = /^".*"$/.test(ppRaw) ? ppRaw.slice(1, -1) : ppRaw;
-        const pCmd = path24.join(pathPart, cmd);
+        const pCmd = path27.join(pathPart, cmd);
         const p = !pathPart && /^\.[\\\/]/.test(cmd) ? cmd.slice(0, 2) + pCmd : pCmd;
         for (let j = 0; j < pathExt.length; j++) {
           const cur = p + pathExt[j];
@@ -7625,7 +7625,7 @@ var require_path_key = __commonJS({
 var require_resolveCommand = __commonJS({
   "node_modules/cross-spawn/lib/util/resolveCommand.js"(exports, module2) {
     "use strict";
-    var path24 = require("path");
+    var path27 = require("path");
     var which = require_which();
     var getPathKey = require_path_key();
     function resolveCommandAttempt(parsed, withoutPathExt) {
@@ -7643,7 +7643,7 @@ var require_resolveCommand = __commonJS({
       try {
         resolved = which.sync(parsed.command, {
           path: env[getPathKey({ env })],
-          pathExt: withoutPathExt ? path24.delimiter : void 0
+          pathExt: withoutPathExt ? path27.delimiter : void 0
         });
       } catch (e2) {
       } finally {
@@ -7652,7 +7652,7 @@ var require_resolveCommand = __commonJS({
         }
       }
       if (resolved) {
-        resolved = path24.resolve(hasCustomCwd ? parsed.options.cwd : "", resolved);
+        resolved = path27.resolve(hasCustomCwd ? parsed.options.cwd : "", resolved);
       }
       return resolved;
     }
@@ -7706,8 +7706,8 @@ var require_shebang_command = __commonJS({
       if (!match) {
         return null;
       }
-      const [path24, argument] = match[0].replace(/#! ?/, "").split(" ");
-      const binary = path24.split("/").pop();
+      const [path27, argument] = match[0].replace(/#! ?/, "").split(" ");
+      const binary = path27.split("/").pop();
       if (binary === "env") {
         return argument;
       }
@@ -7720,16 +7720,16 @@ var require_shebang_command = __commonJS({
 var require_readShebang = __commonJS({
   "node_modules/cross-spawn/lib/util/readShebang.js"(exports, module2) {
     "use strict";
-    var fs26 = require("fs");
+    var fs35 = require("fs");
     var shebangCommand = require_shebang_command();
     function readShebang(command) {
       const size = 150;
       const buffer = Buffer.alloc(size);
       let fd2;
       try {
-        fd2 = fs26.openSync(command, "r");
-        fs26.readSync(fd2, buffer, 0, size, 0);
-        fs26.closeSync(fd2);
+        fd2 = fs35.openSync(command, "r");
+        fs35.readSync(fd2, buffer, 0, size, 0);
+        fs35.closeSync(fd2);
       } catch (e2) {
       }
       return shebangCommand(buffer.toString());
@@ -7742,7 +7742,7 @@ var require_readShebang = __commonJS({
 var require_parse = __commonJS({
   "node_modules/cross-spawn/lib/parse.js"(exports, module2) {
     "use strict";
-    var path24 = require("path");
+    var path27 = require("path");
     var resolveCommand = require_resolveCommand();
     var escape2 = require_escape();
     var readShebang = require_readShebang();
@@ -7767,7 +7767,7 @@ var require_parse = __commonJS({
       const needsShell = !isExecutableRegExp.test(commandFile);
       if (parsed.options.forceShell || needsShell) {
         const needsDoubleEscapeMetaChars = isCmdShimRegExp.test(commandFile);
-        parsed.command = path24.normalize(parsed.command);
+        parsed.command = path27.normalize(parsed.command);
         parsed.command = escape2.command(parsed.command);
         parsed.args = parsed.args.map((arg) => escape2.argument(arg, needsDoubleEscapeMetaChars));
         const shellCommand = [parsed.command].concat(parsed.args).join(" ");
@@ -7857,7 +7857,7 @@ var require_cross_spawn = __commonJS({
     var cp = require("child_process");
     var parse4 = require_parse();
     var enoent = require_enoent();
-    function spawn5(command, args, options) {
+    function spawn8(command, args, options) {
       const parsed = parse4(command, args, options);
       const spawned = cp.spawn(parsed.command, parsed.args, parsed.options);
       enoent.hookChildProcess(spawned, parsed);
@@ -7869,8 +7869,8 @@ var require_cross_spawn = __commonJS({
       result.error = result.error || enoent.verifyENOENTSync(result.status, parsed);
       return result;
     }
-    module2.exports = spawn5;
-    module2.exports.spawn = spawn5;
+    module2.exports = spawn8;
+    module2.exports.spawn = spawn8;
     module2.exports.sync = spawnSync2;
     module2.exports._parse = parse4;
     module2.exports._enoent = enoent;
@@ -24834,12 +24834,18 @@ init_env();
 function createCustomSpawnFunction(enhancedPath) {
   return (options) => {
     let { command } = options;
-    const { args, cwd, env, signal } = options;
+    let { args } = options;
+    const { cwd, env, signal } = options;
     const shouldPipeStderr = !!(env == null ? void 0 : env.DEBUG_CLAUDE_AGENT_SDK);
-    if (command === "node") {
+    if (command === "node" || cliPathRequiresNode(command)) {
       const nodeFullPath = findNodeExecutable(enhancedPath);
-      if (nodeFullPath) {
-        command = nodeFullPath;
+      if (command === "node") {
+        if (nodeFullPath) {
+          command = nodeFullPath;
+        }
+      } else {
+        args = [command, ...args];
+        command = nodeFullPath != null ? nodeFullPath : "node";
       }
     }
     const child = (0, import_child_process4.spawn)(command, args, {
@@ -25187,6 +25193,9 @@ function getClaudeProviderSettings(settings11) {
     environmentHash: (_v = (_u = config2.environmentHash) != null ? _u : settings11.lastEnvHash) != null ? _v : DEFAULT_CLAUDE_PROVIDER_SETTINGS.environmentHash
   };
 }
+function resolveClaudeSettingSources(loadUserSettings) {
+  return loadUserSettings ? ["user", "project", "local"] : ["project", "local"];
+}
 function updateClaudeProviderSettings(settings11, updates) {
   var _a3;
   const current = getClaudeProviderSettings(settings11);
@@ -25238,7 +25247,7 @@ async function probeRuntimeCommands(plugin) {
         env: { ...process.env, ...customEnv, PATH: enhancedPath },
         permissionMode: "bypassPermissions",
         allowDangerouslySkipPermissions: true,
-        settingSources: claudeSettings.loadUserSettings ? ["user", "project"] : ["project"],
+        settingSources: resolveClaudeSettingSources(claudeSettings.loadUserSettings),
         ...Object.keys(extraArgs).length > 0 ? { extraArgs } : {},
         spawnClaudeCodeProcess: createCustomSpawnFunction(enhancedPath),
         persistSession: false
@@ -25410,6 +25419,8 @@ var fs6 = __toESM(require("fs"));
 var os6 = __toESM(require("os"));
 var path6 = __toESM(require("path"));
 init_path();
+var CLAUDE_CODE_PACKAGE_SEGMENTS = ["node_modules", "@anthropic-ai", "claude-code"];
+var CLAUDE_CODE_NODE_ENTRYPOINTS = ["cli-wrapper.cjs", "cli.js"];
 function getEnvValue2(name) {
   return process.env[name];
 }
@@ -25444,24 +25455,38 @@ function isExistingFile(filePath) {
   }
   return false;
 }
-function resolveCliJsNearPathEntry(entry, isWindows2) {
-  const directCandidate = path6.join(entry, "node_modules", "@anthropic-ai", "claude-code", "cli.js");
-  if (isExistingFile(directCandidate)) {
-    return directCandidate;
-  }
-  const baseName = path6.basename(entry).toLowerCase();
-  if (baseName === "bin") {
-    const prefix = path6.dirname(entry);
-    const candidate = isWindows2 ? path6.join(prefix, "node_modules", "@anthropic-ai", "claude-code", "cli.js") : path6.join(prefix, "lib", "node_modules", "@anthropic-ai", "claude-code", "cli.js");
+function findClaudeCodeNodeEntrypoint(packageRoot) {
+  for (const entrypoint of CLAUDE_CODE_NODE_ENTRYPOINTS) {
+    const candidate = path6.join(packageRoot, entrypoint);
     if (isExistingFile(candidate)) {
       return candidate;
     }
   }
   return null;
 }
-function resolveCliJsFromPathEntries(entries, isWindows2) {
+function resolveClaudeCodeEntrypointNearPathEntry(entry, isWindows2) {
+  const directCandidate = findClaudeCodeNodeEntrypoint(
+    path6.join(entry, ...CLAUDE_CODE_PACKAGE_SEGMENTS)
+  );
+  if (directCandidate) {
+    return directCandidate;
+  }
+  const baseName = path6.basename(entry).toLowerCase();
+  if (baseName === "bin") {
+    const prefix = path6.dirname(entry);
+    const packageParent = isWindows2 ? prefix : path6.join(prefix, "lib");
+    const candidate = findClaudeCodeNodeEntrypoint(
+      path6.join(packageParent, ...CLAUDE_CODE_PACKAGE_SEGMENTS)
+    );
+    if (candidate) {
+      return candidate;
+    }
+  }
+  return null;
+}
+function resolveClaudeCodeEntrypointFromPathEntries(entries, isWindows2) {
   for (const entry of entries) {
-    const candidate = resolveCliJsNearPathEntry(entry, isWindows2);
+    const candidate = resolveClaudeCodeEntrypointNearPathEntry(entry, isWindows2);
     if (candidate) {
       return candidate;
     }
@@ -25480,9 +25505,9 @@ function resolveClaudeFromPathEntries(entries, isWindows2) {
   if (exeCandidate) {
     return exeCandidate;
   }
-  const cliJsCandidate = resolveCliJsFromPathEntries(entries, isWindows2);
-  if (cliJsCandidate) {
-    return cliJsCandidate;
+  const packageEntrypoint = resolveClaudeCodeEntrypointFromPathEntries(entries, isWindows2);
+  if (packageEntrypoint) {
+    return packageEntrypoint;
   }
   return null;
 }
@@ -25498,42 +25523,36 @@ function getNpmGlobalPrefix() {
   }
   return null;
 }
-function getNpmCliJsPaths() {
+function addClaudeCodeEntrypointPaths(paths, packageParent) {
+  const packageRoot = path6.join(packageParent, ...CLAUDE_CODE_PACKAGE_SEGMENTS);
+  for (const entrypoint of CLAUDE_CODE_NODE_ENTRYPOINTS) {
+    paths.push(path6.join(packageRoot, entrypoint));
+  }
+}
+function getNpmClaudeCodeEntrypointPaths() {
   const homeDir = os6.homedir();
   const isWindows2 = process.platform === "win32";
-  const cliJsPaths = [];
+  const entrypointPaths = [];
   if (isWindows2) {
-    cliJsPaths.push(
-      path6.join(homeDir, "AppData", "Roaming", "npm", "node_modules", "@anthropic-ai", "claude-code", "cli.js")
-    );
+    addClaudeCodeEntrypointPaths(entrypointPaths, path6.join(homeDir, "AppData", "Roaming", "npm"));
     const npmPrefix = getNpmGlobalPrefix();
     if (npmPrefix) {
-      cliJsPaths.push(
-        path6.join(npmPrefix, "node_modules", "@anthropic-ai", "claude-code", "cli.js")
-      );
+      addClaudeCodeEntrypointPaths(entrypointPaths, npmPrefix);
     }
     const programFiles = process.env.ProgramFiles || "C:\\Program Files";
     const programFilesX86 = process.env["ProgramFiles(x86)"] || "C:\\Program Files (x86)";
-    cliJsPaths.push(
-      path6.join(programFiles, "nodejs", "node_global", "node_modules", "@anthropic-ai", "claude-code", "cli.js"),
-      path6.join(programFilesX86, "nodejs", "node_global", "node_modules", "@anthropic-ai", "claude-code", "cli.js")
-    );
-    cliJsPaths.push(
-      path6.join("D:", "Program Files", "nodejs", "node_global", "node_modules", "@anthropic-ai", "claude-code", "cli.js")
-    );
+    addClaudeCodeEntrypointPaths(entrypointPaths, path6.join(programFiles, "nodejs", "node_global"));
+    addClaudeCodeEntrypointPaths(entrypointPaths, path6.join(programFilesX86, "nodejs", "node_global"));
+    addClaudeCodeEntrypointPaths(entrypointPaths, path6.join("D:", "Program Files", "nodejs", "node_global"));
   } else {
-    cliJsPaths.push(
-      path6.join(homeDir, ".npm-global", "lib", "node_modules", "@anthropic-ai", "claude-code", "cli.js"),
-      "/usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js",
-      "/usr/lib/node_modules/@anthropic-ai/claude-code/cli.js"
-    );
+    addClaudeCodeEntrypointPaths(entrypointPaths, path6.join(homeDir, ".npm-global", "lib"));
+    addClaudeCodeEntrypointPaths(entrypointPaths, "/usr/local/lib");
+    addClaudeCodeEntrypointPaths(entrypointPaths, "/usr/lib");
     if (process.env.npm_config_prefix) {
-      cliJsPaths.push(
-        path6.join(process.env.npm_config_prefix, "lib", "node_modules", "@anthropic-ai", "claude-code", "cli.js")
-      );
+      addClaudeCodeEntrypointPaths(entrypointPaths, path6.join(process.env.npm_config_prefix, "lib"));
     }
   }
-  return cliJsPaths;
+  return entrypointPaths;
 }
 function findClaudeCLIPath(pathValue) {
   const homeDir = os6.homedir();
@@ -25558,8 +25577,8 @@ function findClaudeCLIPath(pathValue) {
         return p;
       }
     }
-    const cliJsPaths = getNpmCliJsPaths();
-    for (const p of cliJsPaths) {
+    const packageEntrypointPaths = getNpmClaudeCodeEntrypointPaths();
+    for (const p of packageEntrypointPaths) {
       if (isExistingFile(p)) {
         return p;
       }
@@ -25590,8 +25609,8 @@ function findClaudeCLIPath(pathValue) {
     }
   }
   if (!isWindows2) {
-    const cliJsPaths = getNpmCliJsPaths();
-    for (const p of cliJsPaths) {
+    const packageEntrypointPaths = getNpmClaudeCodeEntrypointPaths();
+    for (const p of packageEntrypointPaths) {
       if (isExistingFile(p)) {
         return p;
       }
@@ -25895,6 +25914,341 @@ function updateCodexProviderSettings(settings11, updates) {
     environmentHash: next.environmentHash,
     installationMethodsByHost,
     wslDistroOverridesByHost
+  });
+  return next;
+}
+
+// src/providers/copilot/settings.ts
+init_env();
+
+// src/providers/copilot/models.ts
+var COPILOT_SYNTHETIC_MODEL_ID = "copilot";
+var COPILOT_MODEL_PREFIX = "copilot:";
+var COPILOT_FALLBACK_MODELS = [
+  { rawId: "gpt-5.4", label: "gpt-5.4", description: "OpenAI GPT-5.4 through GitHub Copilot CLI" },
+  { rawId: "gpt-5.4-mini", label: "gpt-5.4-mini", description: "Fast GPT-5.4 Mini through GitHub Copilot CLI" },
+  { rawId: "gpt-5.2", label: "gpt-5.2", description: "Documented Copilot CLI example model" },
+  { rawId: "claude-sonnet-4.5", label: "claude-sonnet-4.5", description: "Claude Sonnet via GitHub Copilot CLI when available" }
+];
+function normalizeCopilotRawModelId(rawId) {
+  const trimmed = rawId.trim();
+  return trimmed.startsWith("copilot/") ? trimmed.slice("copilot/".length) : trimmed;
+}
+function encodeCopilotModelId(rawId) {
+  const normalized = normalizeCopilotRawModelId(rawId);
+  return normalized ? `${COPILOT_MODEL_PREFIX}${normalized}` : COPILOT_SYNTHETIC_MODEL_ID;
+}
+function decodeCopilotModelId(model) {
+  if (model === COPILOT_SYNTHETIC_MODEL_ID) return null;
+  return model.startsWith(COPILOT_MODEL_PREFIX) ? normalizeCopilotRawModelId(model.slice(COPILOT_MODEL_PREFIX.length)) : null;
+}
+function isCopilotModelSelectionId(model) {
+  return model === COPILOT_SYNTHETIC_MODEL_ID || model.startsWith(COPILOT_MODEL_PREFIX);
+}
+
+// src/providers/copilot/settings.ts
+var DEFAULT_COPILOT_PROVIDER_SETTINGS = Object.freeze({
+  additionalMcpConfig: "",
+  allowTools: "",
+  allowUrls: "",
+  autopilot: false,
+  availableTools: "",
+  cliPath: "",
+  cliPathsByHost: {},
+  customAgent: "",
+  denyTools: "",
+  denyUrls: "",
+  discoveredModels: [],
+  enableReasoningSummaries: false,
+  enabled: false,
+  environmentHash: "",
+  environmentVariables: "",
+  experimental: false,
+  githubMcpTools: "",
+  githubMcpToolsets: "",
+  remote: false,
+  selectedApprovalMode: "default",
+  visibleModels: []
+});
+function normalizeHostnameCliPaths3(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return {};
+  const result = {};
+  for (const [key, entry] of Object.entries(value)) {
+    if (typeof entry === "string" && entry.trim()) result[key] = entry.trim();
+  }
+  return result;
+}
+function normalizeString(value) {
+  return typeof value === "string" ? value.trim() : "";
+}
+function normalizeBool(value, fallback = false) {
+  return typeof value === "boolean" ? value : fallback;
+}
+function normalizeCopilotApprovalMode(value) {
+  return value === "yolo" || value === "plan" ? value : "default";
+}
+function normalizeCopilotDiscoveredModels(value) {
+  if (!Array.isArray(value)) return [];
+  const seen = /* @__PURE__ */ new Set();
+  const result = [];
+  for (const entry of value) {
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) continue;
+    const raw = entry;
+    const rawId = typeof raw.rawId === "string" ? normalizeCopilotRawModelId(raw.rawId) : "";
+    const label = typeof raw.label === "string" && raw.label.trim() ? raw.label.trim() : rawId;
+    if (!rawId || seen.has(rawId)) continue;
+    seen.add(rawId);
+    result.push({
+      rawId,
+      label,
+      ...typeof raw.description === "string" && raw.description.trim() ? { description: raw.description.trim() } : {}
+    });
+  }
+  return result;
+}
+function normalizeCopilotVisibleModels(value, discoveredModels = []) {
+  var _a3;
+  if (!Array.isArray(value)) return [];
+  const aliases = new Map(discoveredModels.map((model) => [model.rawId.toLowerCase(), model.rawId]));
+  const result = [];
+  const seen = /* @__PURE__ */ new Set();
+  for (const entry of value) {
+    if (typeof entry !== "string") continue;
+    const trimmed = entry.trim();
+    if (!trimmed) continue;
+    const normalized = (_a3 = aliases.get(trimmed.toLowerCase())) != null ? _a3 : normalizeCopilotRawModelId(trimmed);
+    if (!normalized || seen.has(normalized)) continue;
+    seen.add(normalized);
+    result.push(normalized);
+  }
+  return result;
+}
+function getCopilotProviderSettings(settings11) {
+  const config2 = getProviderConfig(settings11, "copilot");
+  const discoveredModels = normalizeCopilotDiscoveredModels(config2.discoveredModels);
+  return {
+    additionalMcpConfig: normalizeString(config2.additionalMcpConfig),
+    allowTools: normalizeString(config2.allowTools),
+    allowUrls: normalizeString(config2.allowUrls),
+    autopilot: normalizeBool(config2.autopilot),
+    availableTools: normalizeString(config2.availableTools),
+    cliPath: normalizeString(config2.cliPath) || DEFAULT_COPILOT_PROVIDER_SETTINGS.cliPath,
+    cliPathsByHost: normalizeHostnameCliPaths3(config2.cliPathsByHost),
+    customAgent: normalizeString(config2.customAgent),
+    denyTools: normalizeString(config2.denyTools),
+    denyUrls: normalizeString(config2.denyUrls),
+    discoveredModels,
+    enableReasoningSummaries: normalizeBool(config2.enableReasoningSummaries),
+    enabled: normalizeBool(config2.enabled, DEFAULT_COPILOT_PROVIDER_SETTINGS.enabled),
+    environmentHash: normalizeString(config2.environmentHash),
+    environmentVariables: normalizeString(config2.environmentVariables) || getProviderEnvironmentVariables(settings11, "copilot") || DEFAULT_COPILOT_PROVIDER_SETTINGS.environmentVariables,
+    experimental: normalizeBool(config2.experimental),
+    githubMcpTools: normalizeString(config2.githubMcpTools),
+    githubMcpToolsets: normalizeString(config2.githubMcpToolsets),
+    remote: normalizeBool(config2.remote),
+    selectedApprovalMode: normalizeCopilotApprovalMode(config2.selectedApprovalMode),
+    visibleModels: normalizeCopilotVisibleModels(config2.visibleModels, discoveredModels)
+  };
+}
+function updateCopilotProviderSettings(settings11, updates) {
+  var _a3, _b2, _c;
+  const current = getCopilotProviderSettings(settings11);
+  const hostnameKey = getHostnameKey();
+  const cliPathsByHost = "cliPathsByHost" in updates ? normalizeHostnameCliPaths3(updates.cliPathsByHost) : { ...current.cliPathsByHost };
+  let nextCliPath = "cliPathsByHost" in updates ? "" : current.cliPath.trim();
+  if ("cliPath" in updates) {
+    const trimmed = typeof updates.cliPath === "string" ? updates.cliPath.trim() : "";
+    if (trimmed) cliPathsByHost[hostnameKey] = trimmed;
+    else delete cliPathsByHost[hostnameKey];
+    nextCliPath = "";
+  }
+  const nextDiscoveredModels = normalizeCopilotDiscoveredModels((_a3 = updates.discoveredModels) != null ? _a3 : current.discoveredModels);
+  const next = {
+    ...current,
+    ...updates,
+    cliPath: nextCliPath,
+    cliPathsByHost,
+    discoveredModels: nextDiscoveredModels,
+    selectedApprovalMode: normalizeCopilotApprovalMode((_b2 = updates.selectedApprovalMode) != null ? _b2 : current.selectedApprovalMode),
+    visibleModels: normalizeCopilotVisibleModels((_c = updates.visibleModels) != null ? _c : current.visibleModels, nextDiscoveredModels)
+  };
+  setProviderConfig(settings11, "copilot", {
+    additionalMcpConfig: next.additionalMcpConfig,
+    allowTools: next.allowTools,
+    allowUrls: next.allowUrls,
+    autopilot: next.autopilot,
+    availableTools: next.availableTools,
+    cliPath: next.cliPath,
+    cliPathsByHost: next.cliPathsByHost,
+    customAgent: next.customAgent,
+    denyTools: next.denyTools,
+    denyUrls: next.denyUrls,
+    discoveredModels: next.discoveredModels,
+    enableReasoningSummaries: next.enableReasoningSummaries,
+    enabled: next.enabled,
+    environmentHash: next.environmentHash,
+    environmentVariables: next.environmentVariables,
+    experimental: next.experimental,
+    githubMcpTools: next.githubMcpTools,
+    githubMcpToolsets: next.githubMcpToolsets,
+    remote: next.remote,
+    selectedApprovalMode: next.selectedApprovalMode,
+    visibleModels: next.visibleModels
+  });
+  return next;
+}
+
+// src/providers/gemini/settings.ts
+init_env();
+
+// src/providers/gemini/models.ts
+var GEMINI_SYNTHETIC_MODEL_ID = "gemini";
+var GEMINI_MODEL_PREFIX = "gemini:";
+var GEMINI_MODEL_ALIASES = /* @__PURE__ */ new Map([
+  ["gemini-3.1-pro", "gemini-3.1-pro-preview"],
+  ["auto-gemini-3", "gemini-3-pro-preview"]
+]);
+var GEMINI_FALLBACK_MODELS = [
+  {
+    rawId: "gemini-3.1-pro-preview",
+    label: "gemini-3.1-pro-preview",
+    description: "Latest Gemini 3.1 Pro preview model in Gemini CLI"
+  },
+  {
+    rawId: "gemini-3-pro-preview",
+    label: "gemini-3-pro-preview",
+    description: "Gemini 3 Pro preview model"
+  },
+  {
+    rawId: "gemini-3-flash-preview",
+    label: "gemini-3-flash-preview",
+    description: "Gemini 3 Flash preview model"
+  },
+  { rawId: "gemini-2.5-pro", label: "gemini-2.5-pro", description: "Gemini 2.5 Pro model" },
+  { rawId: "gemini-2.5-flash", label: "gemini-2.5-flash", description: "Gemini 2.5 Flash model" },
+  { rawId: "gemini-2.5-flash-lite", label: "gemini-2.5-flash-lite", description: "Gemini 2.5 Flash Lite model" }
+];
+function normalizeGeminiRawModelId(rawId) {
+  var _a3;
+  const trimmed = rawId.trim();
+  return (_a3 = GEMINI_MODEL_ALIASES.get(trimmed.toLowerCase())) != null ? _a3 : trimmed;
+}
+function encodeGeminiModelId(rawId) {
+  const normalized = normalizeGeminiRawModelId(rawId);
+  return normalized ? `${GEMINI_MODEL_PREFIX}${normalized}` : GEMINI_SYNTHETIC_MODEL_ID;
+}
+function decodeGeminiModelId(model) {
+  if (model === GEMINI_SYNTHETIC_MODEL_ID) return null;
+  return model.startsWith(GEMINI_MODEL_PREFIX) ? normalizeGeminiRawModelId(model.slice(GEMINI_MODEL_PREFIX.length)) : null;
+}
+function isGeminiModelSelectionId(model) {
+  return model === GEMINI_SYNTHETIC_MODEL_ID || model.startsWith(GEMINI_MODEL_PREFIX);
+}
+
+// src/providers/gemini/settings.ts
+var DEFAULT_GEMINI_PROVIDER_SETTINGS = Object.freeze({
+  cliPath: "",
+  cliPathsByHost: {},
+  enabled: false,
+  environmentHash: "",
+  environmentVariables: "",
+  selectedApprovalMode: "default",
+  visibleModels: [],
+  discoveredModels: []
+});
+function normalizeHostnameCliPaths4(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return {};
+  const result = {};
+  for (const [key, entry] of Object.entries(value)) {
+    if (typeof entry === "string" && entry.trim()) result[key] = entry.trim();
+  }
+  return result;
+}
+function normalizeGeminiApprovalMode(value) {
+  return value === "auto_edit" || value === "yolo" || value === "plan" ? value : "default";
+}
+function normalizeGeminiDiscoveredModels(value) {
+  if (!Array.isArray(value)) return [];
+  const seen = /* @__PURE__ */ new Set();
+  const result = [];
+  for (const entry of value) {
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) continue;
+    const raw = entry;
+    const rawId = typeof raw.rawId === "string" ? normalizeGeminiRawModelId(raw.rawId) : "";
+    const label = typeof raw.label === "string" && raw.label.trim() ? raw.label.trim() : rawId;
+    if (!rawId || seen.has(rawId)) continue;
+    seen.add(rawId);
+    result.push({
+      rawId,
+      label,
+      ...typeof raw.description === "string" && raw.description.trim() ? { description: raw.description.trim() } : {}
+    });
+  }
+  return result;
+}
+function normalizeGeminiVisibleModels(value, discoveredModels = []) {
+  var _a3;
+  if (!Array.isArray(value)) return [];
+  const aliases = new Map(discoveredModels.map((model) => [model.rawId.toLowerCase(), model.rawId]));
+  const result = [];
+  const seen = /* @__PURE__ */ new Set();
+  for (const entry of value) {
+    if (typeof entry !== "string") continue;
+    const trimmed = entry.trim();
+    if (!trimmed) continue;
+    const normalized = (_a3 = aliases.get(trimmed.toLowerCase())) != null ? _a3 : normalizeGeminiRawModelId(trimmed);
+    if (seen.has(normalized)) continue;
+    seen.add(normalized);
+    result.push(normalized);
+  }
+  return result;
+}
+function getGeminiProviderSettings(settings11) {
+  var _a3, _b2, _c, _d2, _e;
+  const config2 = getProviderConfig(settings11, "gemini");
+  const discoveredModels = normalizeGeminiDiscoveredModels(config2.discoveredModels);
+  return {
+    cliPath: (_a3 = config2.cliPath) != null ? _a3 : DEFAULT_GEMINI_PROVIDER_SETTINGS.cliPath,
+    cliPathsByHost: normalizeHostnameCliPaths4(config2.cliPathsByHost),
+    enabled: (_b2 = config2.enabled) != null ? _b2 : DEFAULT_GEMINI_PROVIDER_SETTINGS.enabled,
+    environmentHash: (_c = config2.environmentHash) != null ? _c : DEFAULT_GEMINI_PROVIDER_SETTINGS.environmentHash,
+    environmentVariables: (_e = (_d2 = config2.environmentVariables) != null ? _d2 : getProviderEnvironmentVariables(settings11, "gemini")) != null ? _e : DEFAULT_GEMINI_PROVIDER_SETTINGS.environmentVariables,
+    selectedApprovalMode: normalizeGeminiApprovalMode(config2.selectedApprovalMode),
+    visibleModels: normalizeGeminiVisibleModels(config2.visibleModels, discoveredModels),
+    discoveredModels
+  };
+}
+function updateGeminiProviderSettings(settings11, updates) {
+  var _a3, _b2, _c;
+  const current = getGeminiProviderSettings(settings11);
+  const hostnameKey = getHostnameKey();
+  const cliPathsByHost = "cliPathsByHost" in updates ? normalizeHostnameCliPaths4(updates.cliPathsByHost) : { ...current.cliPathsByHost };
+  let nextCliPath = "cliPathsByHost" in updates ? "" : current.cliPath.trim();
+  if ("cliPath" in updates) {
+    const trimmed = typeof updates.cliPath === "string" ? updates.cliPath.trim() : "";
+    if (trimmed) cliPathsByHost[hostnameKey] = trimmed;
+    else delete cliPathsByHost[hostnameKey];
+    nextCliPath = "";
+  }
+  const nextDiscoveredModels = normalizeGeminiDiscoveredModels((_a3 = updates.discoveredModels) != null ? _a3 : current.discoveredModels);
+  const next = {
+    ...current,
+    ...updates,
+    cliPath: nextCliPath,
+    cliPathsByHost,
+    discoveredModels: nextDiscoveredModels,
+    selectedApprovalMode: normalizeGeminiApprovalMode((_b2 = updates.selectedApprovalMode) != null ? _b2 : current.selectedApprovalMode),
+    visibleModels: normalizeGeminiVisibleModels((_c = updates.visibleModels) != null ? _c : current.visibleModels, nextDiscoveredModels)
+  };
+  setProviderConfig(settings11, "gemini", {
+    cliPath: next.cliPath,
+    cliPathsByHost: next.cliPathsByHost,
+    enabled: next.enabled,
+    environmentHash: next.environmentHash,
+    environmentVariables: next.environmentVariables,
+    selectedApprovalMode: next.selectedApprovalMode,
+    visibleModels: next.visibleModels,
+    discoveredModels: next.discoveredModels
   });
   return next;
 }
@@ -26319,7 +26673,7 @@ var DEFAULT_OPENCODE_PROVIDER_SETTINGS = Object.freeze({
   selectedMode: "",
   visibleModels: []
 });
-function normalizeHostnameCliPaths3(value) {
+function normalizeHostnameCliPaths5(value) {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
     return {};
   }
@@ -26396,7 +26750,7 @@ function getOpencodeProviderSettings(settings11) {
   return {
     availableModes,
     cliPath: (_a3 = config2.cliPath) != null ? _a3 : DEFAULT_OPENCODE_PROVIDER_SETTINGS.cliPath,
-    cliPathsByHost: normalizeHostnameCliPaths3(config2.cliPathsByHost),
+    cliPathsByHost: normalizeHostnameCliPaths5(config2.cliPathsByHost),
     discoveredModels,
     enabled: (_b2 = config2.enabled) != null ? _b2 : DEFAULT_OPENCODE_PROVIDER_SETTINGS.enabled,
     environmentHash: (_c = config2.environmentHash) != null ? _c : DEFAULT_OPENCODE_PROVIDER_SETTINGS.environmentHash,
@@ -26438,7 +26792,7 @@ function updateOpencodeProviderSettings(settings11, updates) {
     ),
     nextVisibleModels
   );
-  const nextCliPathsByHost = "cliPathsByHost" in updates ? normalizeHostnameCliPaths3(updates.cliPathsByHost) : { ...current.cliPathsByHost };
+  const nextCliPathsByHost = "cliPathsByHost" in updates ? normalizeHostnameCliPaths5(updates.cliPathsByHost) : { ...current.cliPathsByHost };
   let nextCliPath = "cliPathsByHost" in updates ? DEFAULT_OPENCODE_PROVIDER_SETTINGS.cliPath : current.cliPath.trim();
   if ("cliPath" in updates) {
     const trimmedCliPath = typeof updates.cliPath === "string" ? updates.cliPath.trim() : "";
@@ -26537,12 +26891,173 @@ function retargetRemovedOpencodeSelections(settings11, next) {
   }
 }
 
+// src/providers/kimi/settings.ts
+init_env();
+
+// src/providers/kimi/models.ts
+var KIMI_SYNTHETIC_MODEL_ID = "kimi";
+var KIMI_MODEL_PREFIX = "kimi:";
+var KIMI_FALLBACK_MODELS = [
+  { rawId: "k2.6", label: "k2.6", description: "Kimi K2.6 (default coding model)" },
+  { rawId: "k2.5", label: "k2.5", description: "Kimi K2.5" },
+  { rawId: "k1.5", label: "k1.5", description: "Kimi K1.5" }
+];
+function normalizeKimiRawModelId(rawId) {
+  const trimmed = rawId.trim();
+  return trimmed.startsWith("kimi/") ? trimmed.slice("kimi/".length) : trimmed;
+}
+function encodeKimiModelId(rawId) {
+  const normalized = normalizeKimiRawModelId(rawId);
+  return normalized ? `${KIMI_MODEL_PREFIX}${normalized}` : KIMI_SYNTHETIC_MODEL_ID;
+}
+function decodeKimiModelId(model) {
+  if (model === KIMI_SYNTHETIC_MODEL_ID) return null;
+  return model.startsWith(KIMI_MODEL_PREFIX) ? normalizeKimiRawModelId(model.slice(KIMI_MODEL_PREFIX.length)) : null;
+}
+function isKimiModelSelectionId(model) {
+  return model === KIMI_SYNTHETIC_MODEL_ID || model.startsWith(KIMI_MODEL_PREFIX);
+}
+
+// src/providers/kimi/settings.ts
+var DEFAULT_KIMI_PROVIDER_SETTINGS = Object.freeze({
+  additionalMcpConfig: "",
+  allowTools: "",
+  availableTools: "",
+  cliPath: "",
+  cliPathsByHost: {},
+  customAgent: "",
+  denyTools: "",
+  discoveredModels: [],
+  enabled: false,
+  environmentHash: "",
+  environmentVariables: "",
+  selectedApprovalMode: "default",
+  thinking: false,
+  visibleModels: []
+});
+function normalizeHostnameCliPaths6(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return {};
+  const result = {};
+  for (const [key, entry] of Object.entries(value)) {
+    if (typeof entry === "string" && entry.trim()) result[key] = entry.trim();
+  }
+  return result;
+}
+function normalizeString2(value) {
+  return typeof value === "string" ? value.trim() : "";
+}
+function normalizeBool2(value, fallback = false) {
+  return typeof value === "boolean" ? value : fallback;
+}
+function normalizeKimiApprovalMode(value) {
+  return value === "yolo" || value === "plan" ? value : "default";
+}
+function normalizeKimiDiscoveredModels(value) {
+  if (!Array.isArray(value)) return [];
+  const seen = /* @__PURE__ */ new Set();
+  const result = [];
+  for (const entry of value) {
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) continue;
+    const raw = entry;
+    const rawId = typeof raw.rawId === "string" ? normalizeKimiRawModelId(raw.rawId) : "";
+    const label = typeof raw.label === "string" && raw.label.trim() ? raw.label.trim() : rawId;
+    if (!rawId || seen.has(rawId)) continue;
+    seen.add(rawId);
+    result.push({
+      rawId,
+      label,
+      ...typeof raw.description === "string" && raw.description.trim() ? { description: raw.description.trim() } : {}
+    });
+  }
+  return result;
+}
+function normalizeKimiVisibleModels(value, discoveredModels = []) {
+  var _a3;
+  if (!Array.isArray(value)) return [];
+  const aliases = new Map(discoveredModels.map((model) => [model.rawId.toLowerCase(), model.rawId]));
+  const result = [];
+  const seen = /* @__PURE__ */ new Set();
+  for (const entry of value) {
+    if (typeof entry !== "string") continue;
+    const trimmed = entry.trim();
+    if (!trimmed) continue;
+    const normalized = (_a3 = aliases.get(trimmed.toLowerCase())) != null ? _a3 : normalizeKimiRawModelId(trimmed);
+    if (!normalized || seen.has(normalized)) continue;
+    seen.add(normalized);
+    result.push(normalized);
+  }
+  return result;
+}
+function getKimiProviderSettings(settings11) {
+  const config2 = getProviderConfig(settings11, "kimi");
+  const discoveredModels = normalizeKimiDiscoveredModels(config2.discoveredModels);
+  return {
+    additionalMcpConfig: normalizeString2(config2.additionalMcpConfig),
+    allowTools: normalizeString2(config2.allowTools),
+    availableTools: normalizeString2(config2.availableTools),
+    cliPath: normalizeString2(config2.cliPath) || DEFAULT_KIMI_PROVIDER_SETTINGS.cliPath,
+    cliPathsByHost: normalizeHostnameCliPaths6(config2.cliPathsByHost),
+    customAgent: normalizeString2(config2.customAgent),
+    denyTools: normalizeString2(config2.denyTools),
+    discoveredModels,
+    enabled: normalizeBool2(config2.enabled, DEFAULT_KIMI_PROVIDER_SETTINGS.enabled),
+    environmentHash: normalizeString2(config2.environmentHash),
+    environmentVariables: normalizeString2(config2.environmentVariables) || getProviderEnvironmentVariables(settings11, "kimi") || DEFAULT_KIMI_PROVIDER_SETTINGS.environmentVariables,
+    selectedApprovalMode: normalizeKimiApprovalMode(config2.selectedApprovalMode),
+    thinking: normalizeBool2(config2.thinking, DEFAULT_KIMI_PROVIDER_SETTINGS.thinking),
+    visibleModels: normalizeKimiVisibleModels(config2.visibleModels, discoveredModels)
+  };
+}
+function updateKimiProviderSettings(settings11, updates) {
+  var _a3, _b2, _c;
+  const current = getKimiProviderSettings(settings11);
+  const hostnameKey = getHostnameKey();
+  const cliPathsByHost = "cliPathsByHost" in updates ? normalizeHostnameCliPaths6(updates.cliPathsByHost) : { ...current.cliPathsByHost };
+  let nextCliPath = "cliPathsByHost" in updates ? "" : current.cliPath.trim();
+  if ("cliPath" in updates) {
+    const trimmed = typeof updates.cliPath === "string" ? updates.cliPath.trim() : "";
+    if (trimmed) cliPathsByHost[hostnameKey] = trimmed;
+    else delete cliPathsByHost[hostnameKey];
+    nextCliPath = "";
+  }
+  const nextDiscoveredModels = normalizeKimiDiscoveredModels((_a3 = updates.discoveredModels) != null ? _a3 : current.discoveredModels);
+  const next = {
+    ...current,
+    ...updates,
+    cliPath: nextCliPath,
+    cliPathsByHost,
+    discoveredModels: nextDiscoveredModels,
+    selectedApprovalMode: normalizeKimiApprovalMode((_b2 = updates.selectedApprovalMode) != null ? _b2 : current.selectedApprovalMode),
+    visibleModels: normalizeKimiVisibleModels((_c = updates.visibleModels) != null ? _c : current.visibleModels, nextDiscoveredModels)
+  };
+  setProviderConfig(settings11, "kimi", {
+    additionalMcpConfig: next.additionalMcpConfig,
+    allowTools: next.allowTools,
+    availableTools: next.availableTools,
+    cliPath: next.cliPath,
+    cliPathsByHost: next.cliPathsByHost,
+    customAgent: next.customAgent,
+    denyTools: next.denyTools,
+    discoveredModels: next.discoveredModels,
+    enabled: next.enabled,
+    environmentHash: next.environmentHash,
+    environmentVariables: next.environmentVariables,
+    selectedApprovalMode: next.selectedApprovalMode,
+    thinking: next.thinking,
+    visibleModels: next.visibleModels
+  });
+  return next;
+}
+
 // src/providers/defaultProviderConfigs.ts
 function getBuiltInProviderDefaultConfigs() {
   return {
     claude: { ...DEFAULT_CLAUDE_PROVIDER_SETTINGS },
     codex: { ...DEFAULT_CODEX_PROVIDER_SETTINGS },
-    opencode: { ...DEFAULT_OPENCODE_PROVIDER_SETTINGS }
+    copilot: { ...DEFAULT_COPILOT_PROVIDER_SETTINGS },
+    gemini: { ...DEFAULT_GEMINI_PROVIDER_SETTINGS },
+    opencode: { ...DEFAULT_OPENCODE_PROVIDER_SETTINGS },
+    kimi: { ...DEFAULT_KIMI_PROVIDER_SETTINGS }
   };
 }
 
@@ -26959,39 +27474,39 @@ var VaultFileAdapter = class {
     this.app = app;
     this.writeQueue = Promise.resolve();
   }
-  async exists(path24) {
-    return this.app.vault.adapter.exists(path24);
+  async exists(path27) {
+    return this.app.vault.adapter.exists(path27);
   }
-  async read(path24) {
-    return this.app.vault.adapter.read(path24);
+  async read(path27) {
+    return this.app.vault.adapter.read(path27);
   }
-  async write(path24, content) {
-    await this.ensureParentFolder(path24);
-    await this.app.vault.adapter.write(path24, content);
+  async write(path27, content) {
+    await this.ensureParentFolder(path27);
+    await this.app.vault.adapter.write(path27, content);
   }
-  async append(path24, content) {
-    await this.ensureParentFolder(path24);
+  async append(path27, content) {
+    await this.ensureParentFolder(path27);
     this.writeQueue = this.writeQueue.then(async () => {
-      if (await this.exists(path24)) {
-        const existing = await this.read(path24);
-        await this.app.vault.adapter.write(path24, existing + content);
+      if (await this.exists(path27)) {
+        const existing = await this.read(path27);
+        await this.app.vault.adapter.write(path27, existing + content);
       } else {
-        await this.app.vault.adapter.write(path24, content);
+        await this.app.vault.adapter.write(path27, content);
       }
     }).catch(() => {
     });
     await this.writeQueue;
   }
-  async delete(path24) {
-    if (await this.exists(path24)) {
-      await this.app.vault.adapter.remove(path24);
+  async delete(path27) {
+    if (await this.exists(path27)) {
+      await this.app.vault.adapter.remove(path27);
     }
   }
   /** Fails silently if non-empty or missing. */
-  async deleteFolder(path24) {
+  async deleteFolder(path27) {
     try {
-      if (await this.exists(path24)) {
-        await this.app.vault.adapter.rmdir(path24, false);
+      if (await this.exists(path27)) {
+        await this.app.vault.adapter.rmdir(path27, false);
       }
     } catch (e2) {
     }
@@ -27032,9 +27547,9 @@ var VaultFileAdapter = class {
     }
   }
   /** Ensure a folder exists, creating it and parent folders if needed. */
-  async ensureFolder(path24) {
-    if (await this.exists(path24)) return;
-    const parts = path24.split("/").filter(Boolean);
+  async ensureFolder(path27) {
+    if (await this.exists(path27)) return;
+    const parts = path27.split("/").filter(Boolean);
     let current = "";
     for (const part of parts) {
       current = current ? `${current}/${part}` : part;
@@ -27047,9 +27562,9 @@ var VaultFileAdapter = class {
   async rename(oldPath, newPath) {
     await this.app.vault.adapter.rename(oldPath, newPath);
   }
-  async stat(path24) {
+  async stat(path27) {
     try {
-      const stat = await this.app.vault.adapter.stat(path24);
+      const stat = await this.app.vault.adapter.stat(path27);
       if (!stat) return null;
       return { mtime: stat.mtime, size: stat.size };
     } catch (e2) {
@@ -27323,7 +27838,7 @@ var CCSettingsStorage = class {
 };
 
 // src/core/types/chat.ts
-var VIEW_TYPE_CLAUDIAN = "claudian-view";
+var VIEW_TYPE_CLAUDIAN = "iclaudian-view";
 
 // src/core/types/mcp.ts
 function getMcpServerType(config2) {
@@ -28041,11 +28556,14 @@ var chat = {
   }
 };
 var settings = {
-  title: "Claudian Einstellungen",
+  title: "iClaudian Settings",
   tabs: {
     general: "Allgemein",
     claude: "Claude",
-    codex: "Codex"
+    codex: "Codex",
+    opencode: "OpenCode",
+    gemini: "Gemini",
+    copilot: "Copilot"
   },
   display: "Anzeige",
   conversations: "Unterhaltungen",
@@ -28262,7 +28780,7 @@ var settings = {
   cliPath: {
     name: "Claude CLI-Pfad",
     desc: "Benutzerdefinierter Pfad zum Claude Code CLI. Leer lassen f\xFCr automatische Erkennung.",
-    descWindows: "F\xFCr den nativen Installer verwenden Sie claude.exe. F\xFCr npm/pnpm/yarn oder andere Paketmanager-Installationen verwenden Sie den cli.js-Pfad (nicht claude.cmd).",
+    descWindows: "F\xFCr den nativen Installer verwenden Sie claude.exe. F\xFCr npm/pnpm/yarn oder andere Paketmanager-Installationen verwenden Sie den cli-wrapper.cjs-Pfad (nicht claude.cmd).",
     descUnix: 'F\xFCgen Sie die Ausgabe von "which claude" ein \u2014 funktioniert sowohl f\xFCr native als auch npm/pnpm/yarn-Installationen.',
     validation: {
       notExist: "Pfad existiert nicht",
@@ -28272,6 +28790,172 @@ var settings = {
   language: {
     name: "Sprache",
     desc: "Anzeigesprache der Plugin-Oberfl\xE4che \xE4ndern"
+  },
+  codex: {
+    enable: {
+      name: "Enable Codex provider",
+      desc: "When enabled, Codex models appear in the model selector for new conversations. Existing Codex sessions are preserved."
+    },
+    installationMethod: {
+      name: "Installation method",
+      desc: "How iClaudian should launch Codex on Windows. Native Windows uses a Windows executable path. WSL launches the Linux CLI inside a selected distro."
+    },
+    cliPath: {
+      desc: "Custom path to the local Codex CLI. Leave empty for auto-detection from PATH."
+    },
+    reasoningSummary: {
+      name: "Reasoning summary",
+      desc: "Show a summary of the model's reasoning process in the thinking block."
+    },
+    skills: {
+      name: "Codex Skills",
+      desc: "Manage vault-level Codex skills stored in .codex/skills/ or .agents/skills/. Home-level skills are excluded here."
+    },
+    hiddenSkills: {
+      name: "Hidden Skills",
+      desc: "Hide specific Codex skills from the dropdown. Enter skill names without the leading $, one per line."
+    },
+    subagents: {
+      name: "Codex Subagents",
+      desc: "Manage vault-level Codex subagents stored in .codex/agents/. Each TOML file defines one custom agent."
+    },
+    mcp: {
+      desc: "Codex manages MCP servers via its own CLI. Configure with codex mcp and they will be available in iClaudian."
+    },
+    environment: {
+      name: "Codex environment",
+      desc: "Codex-owned runtime variables only. Use this for OPENAI_* and CODEX_* settings. If Codex auto-detection needs help, add its install directory to shared PATH instead of this provider section."
+    },
+    customModels: {
+      name: "Custom models",
+      desc: "Append additional Codex model IDs to the picker, one per line. OPENAI_MODEL still takes precedence when set."
+    },
+    skillsExtra: {
+      empty: "No Codex skills in vault. Click + to create one."
+    },
+    subagentsExtra: {
+      empty: "No Codex subagents in vault. Click + to create one."
+    }
+  },
+  opencode: {
+    enable: {
+      name: "Enable OpenCode",
+      desc: "Launch `opencode acp` as a provider."
+    },
+    cliPath: {
+      name: "CLI Path ({host})",
+      desc: "Optional absolute path to the OpenCode CLI for this computer. Leave empty to use `opencode` from PATH."
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which OpenCode models appear in the chat selector. Filter by provider or type to search. The current session model stays pinned even if it is not selected here."
+    },
+    browseModels: "Browse models",
+    filterPlaceholder: "Filter by model, provider, or id\u2026",
+    noModels: "No models discovered yet",
+    selected: "Selected ({count})",
+    clearAll: "Clear all",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "OpenCode can auto-detect vault-level Claude slash commands from .claude/commands/ and skills from .claude/skills/, .codex/skills/, and .agents/skills/. Manage those entries in the Claude or Codex settings tab. This setting only hides entries from the OpenCode dropdown."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands and Skills",
+      desc: "Hide specific OpenCode commands and skills from the dropdown. Enter names without the leading slash, one per line."
+    },
+    subagents: {
+      name: "Subagents",
+      desc: "Manage vault-level OpenCode subagents from .opencode/agent/ and legacy .opencode/agents/. New entries are saved as subagent-only files and appear in the @mention menu."
+    },
+    environment: {
+      name: "OpenCode environment",
+      desc: "OpenCode-owned runtime variables only. OPENCODE_ENABLE_EXA=1 is enabled by default. Shared PATH changes should go in the shared environment section."
+    },
+    subagentsExtra: {
+      empty: "No OpenCode subagents in vault. Click + to create one."
+    }
+  },
+  gemini: {
+    enable: {
+      name: "Enable Gemini provider",
+      desc: "Launch `gemini --acp` as a provider. Gemini models will appear in the model selector for new conversations."
+    },
+    cliPath: {
+      name: "Gemini CLI path ({host})",
+      desc: "Optional absolute path to the Gemini CLI for this computer. Leave empty to use `gemini` from PATH."
+    },
+    approvalMode: {
+      name: "Approval mode",
+      desc: "Permission mode used by Gemini CLI when starting ACP sessions. The toolbar Safe/YOLO/Plan toggle also syncs this value.",
+      default: "Default",
+      autoEdit: "Auto Edit",
+      plan: "Plan"
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which Gemini models appear in the chat selector. After Gemini starts once, iClaudian can seed this list from the ACP model catalog."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Gemini model ID per line. Leave empty to use all models discovered from Gemini CLI."
+    },
+    discovered: "Discovered {count} Gemini models from the ACP runtime.",
+    notDiscovered: "No Gemini models discovered yet. Start Gemini once to load its model catalog.",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "Gemini CLI exposes runtime slash commands such as memory, init, restore, and extension management. Gemini skills and MCP servers are managed by the Gemini CLI."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands",
+      desc: "Hide specific Gemini runtime commands from the dropdown. Enter names without the leading slash, one per line."
+    },
+    mcp: {
+      desc: "Gemini manages MCP servers via its own CLI. Configure with gemini mcp and they will be available in iClaudian ACP sessions."
+    },
+    environment: {
+      name: "Gemini environment",
+      desc: "Gemini-owned runtime variables only. Use this for GEMINI_*, GOOGLE_* and Vertex AI settings. Shared PATH changes should go in the shared environment section."
+    }
+  },
+  copilot: {
+    enable: {
+      name: "Enable Copilot provider",
+      desc: "Launch GitHub Copilot CLI ACP as an iClaudian provider."
+    },
+    cliPath: {
+      name: "Copilot CLI path ({host})",
+      desc: "Absolute path to Copilot CLI on this computer. Leave empty to use copilot from PATH."
+    },
+    approvalMode: {
+      name: "Permission mode",
+      desc: "Maps to Copilot CLI safe defaults, --mode plan, or --allow-all.",
+      default: "Safe",
+      plan: "Plan"
+    },
+    autopilot: {
+      name: "Autopilot mode",
+      desc: "Start with --autopilot when not in Plan mode."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Copilot CLI model ID per line. Passed to copilot --model."
+    },
+    experimental: {
+      name: "Experimental features"
+    },
+    remote: {
+      name: "Remote control"
+    },
+    reasoningSummaries: {
+      name: "Reasoning summaries"
+    },
+    agent: {
+      name: "Custom agent"
+    },
+    environment: {
+      name: "Copilot environment",
+      desc: "Copilot-owned runtime variables only. Put shared PATH changes in shared environment settings."
+    }
   }
 };
 var de_default = {
@@ -28354,11 +29038,14 @@ var chat2 = {
   }
 };
 var settings2 = {
-  title: "Claudian Settings",
+  title: "iClaudian Settings",
   tabs: {
     general: "General",
     claude: "Claude",
-    codex: "Codex"
+    codex: "Codex",
+    opencode: "OpenCode",
+    gemini: "Gemini",
+    copilot: "Copilot"
   },
   display: "Display",
   conversations: "Conversations",
@@ -28368,7 +29055,7 @@ var settings2 = {
   models: "Models",
   experimental: "Experimental",
   userName: {
-    name: "What should Claudian call you?",
+    name: "What should iClaudian call you?",
     desc: "Your name for personalized greetings (leave empty for generic greetings)"
   },
   excludedTags: {
@@ -28438,7 +29125,7 @@ var settings2 = {
   },
   hiddenSlashCommands: {
     name: "Hidden Commands and Skills",
-    desc: "Hide specific commands and skills from the dropdown. Useful for hiding Claude Code entries that are not relevant to Claudian. Enter names without the leading slash, one per line.",
+    desc: "Hide specific commands and skills from the dropdown. Useful for hiding Claude Code entries that are not relevant to iClaudian. Enter names without the leading slash, one per line.",
     placeholder: "commit\nbuild\ntest"
   },
   mcpServers: {
@@ -28575,7 +29262,7 @@ var settings2 = {
   cliPath: {
     name: "Claude CLI path",
     desc: "Custom path to Claude Code CLI. Leave empty for auto-detection.",
-    descWindows: "For the native installer, use claude.exe. For npm/pnpm/yarn or other package manager installs, use the cli.js path (not claude.cmd).",
+    descWindows: "For the native installer, use claude.exe. For npm/pnpm/yarn or other package manager installs, use the cli-wrapper.cjs path (not claude.cmd).",
     descUnix: 'Paste the output of "which claude" \u2014 works for both native and npm/pnpm/yarn installs.',
     validation: {
       notExist: "Path does not exist",
@@ -28585,6 +29272,172 @@ var settings2 = {
   language: {
     name: "Language",
     desc: "Change the display language of the plugin interface"
+  },
+  codex: {
+    enable: {
+      name: "Enable Codex provider",
+      desc: "When enabled, Codex models appear in the model selector for new conversations. Existing Codex sessions are preserved."
+    },
+    installationMethod: {
+      name: "Installation method",
+      desc: "How iClaudian should launch Codex on Windows. Native Windows uses a Windows executable path. WSL launches the Linux CLI inside a selected distro."
+    },
+    cliPath: {
+      desc: "Custom path to the local Codex CLI. Leave empty for auto-detection from PATH."
+    },
+    reasoningSummary: {
+      name: "Reasoning summary",
+      desc: "Show a summary of the model's reasoning process in the thinking block."
+    },
+    skills: {
+      name: "Codex Skills",
+      desc: "Manage vault-level Codex skills stored in .codex/skills/ or .agents/skills/. Home-level skills are excluded here."
+    },
+    hiddenSkills: {
+      name: "Hidden Skills",
+      desc: "Hide specific Codex skills from the dropdown. Enter skill names without the leading $, one per line."
+    },
+    subagents: {
+      name: "Codex Subagents",
+      desc: "Manage vault-level Codex subagents stored in .codex/agents/. Each TOML file defines one custom agent."
+    },
+    mcp: {
+      desc: "Codex manages MCP servers via its own CLI. Configure with codex mcp and they will be available in iClaudian."
+    },
+    environment: {
+      name: "Codex environment",
+      desc: "Codex-owned runtime variables only. Use this for OPENAI_* and CODEX_* settings. If Codex auto-detection needs help, add its install directory to shared PATH instead of this provider section."
+    },
+    customModels: {
+      name: "Custom models",
+      desc: "Append additional Codex model IDs to the picker, one per line. OPENAI_MODEL still takes precedence when set."
+    },
+    skillsExtra: {
+      empty: "No Codex skills in vault. Click + to create one."
+    },
+    subagentsExtra: {
+      empty: "No Codex subagents in vault. Click + to create one."
+    }
+  },
+  opencode: {
+    enable: {
+      name: "Enable OpenCode",
+      desc: "Launch `opencode acp` as a provider."
+    },
+    cliPath: {
+      name: "CLI Path ({host})",
+      desc: "Optional absolute path to the OpenCode CLI for this computer. Leave empty to use `opencode` from PATH."
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which OpenCode models appear in the chat selector. Filter by provider or type to search. The current session model stays pinned even if it is not selected here."
+    },
+    browseModels: "Browse models",
+    filterPlaceholder: "Filter by model, provider, or id\u2026",
+    noModels: "No models discovered yet",
+    selected: "Selected ({count})",
+    clearAll: "Clear all",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "OpenCode can auto-detect vault-level Claude slash commands from .claude/commands/ and skills from .claude/skills/, .codex/skills/, and .agents/skills/. Manage those entries in the Claude or Codex settings tab. This setting only hides entries from the OpenCode dropdown."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands and Skills",
+      desc: "Hide specific OpenCode commands and skills from the dropdown. Enter names without the leading slash, one per line."
+    },
+    subagents: {
+      name: "Subagents",
+      desc: "Manage vault-level OpenCode subagents from .opencode/agent/ and legacy .opencode/agents/. New entries are saved as subagent-only files and appear in the @mention menu."
+    },
+    environment: {
+      name: "OpenCode environment",
+      desc: "OpenCode-owned runtime variables only. OPENCODE_ENABLE_EXA=1 is enabled by default. Shared PATH changes should go in the shared environment section."
+    },
+    subagentsExtra: {
+      empty: "No OpenCode subagents in vault. Click + to create one."
+    }
+  },
+  gemini: {
+    enable: {
+      name: "Enable Gemini provider",
+      desc: "Launch `gemini --acp` as a provider. Gemini models will appear in the model selector for new conversations."
+    },
+    cliPath: {
+      name: "Gemini CLI path ({host})",
+      desc: "Optional absolute path to the Gemini CLI for this computer. Leave empty to use `gemini` from PATH."
+    },
+    approvalMode: {
+      name: "Approval mode",
+      desc: "Permission mode used by Gemini CLI when starting ACP sessions. The toolbar Safe/YOLO/Plan toggle also syncs this value.",
+      default: "Default",
+      autoEdit: "Auto Edit",
+      plan: "Plan"
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which Gemini models appear in the chat selector. After Gemini starts once, iClaudian can seed this list from the ACP model catalog."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Gemini model ID per line. Leave empty to use all models discovered from Gemini CLI."
+    },
+    discovered: "Discovered {count} Gemini models from the ACP runtime.",
+    notDiscovered: "No Gemini models discovered yet. Start Gemini once to load its model catalog.",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "Gemini CLI exposes runtime slash commands such as memory, init, restore, and extension management. Gemini skills and MCP servers are managed by the Gemini CLI."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands",
+      desc: "Hide specific Gemini runtime commands from the dropdown. Enter names without the leading slash, one per line."
+    },
+    mcp: {
+      desc: "Gemini manages MCP servers via its own CLI. Configure with gemini mcp and they will be available in iClaudian ACP sessions."
+    },
+    environment: {
+      name: "Gemini environment",
+      desc: "Gemini-owned runtime variables only. Use this for GEMINI_*, GOOGLE_* and Vertex AI settings. Shared PATH changes should go in the shared environment section."
+    }
+  },
+  copilot: {
+    enable: {
+      name: "Enable Copilot provider",
+      desc: "Launch GitHub Copilot CLI ACP as an iClaudian provider."
+    },
+    cliPath: {
+      name: "Copilot CLI path ({host})",
+      desc: "Absolute path to Copilot CLI on this computer. Leave empty to use copilot from PATH."
+    },
+    approvalMode: {
+      name: "Permission mode",
+      desc: "Maps to Copilot CLI safe defaults, --mode plan, or --allow-all.",
+      default: "Safe",
+      plan: "Plan"
+    },
+    autopilot: {
+      name: "Autopilot mode",
+      desc: "Start with --autopilot when not in Plan mode."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Copilot CLI model ID per line. Passed to copilot --model."
+    },
+    experimental: {
+      name: "Experimental features"
+    },
+    remote: {
+      name: "Remote control"
+    },
+    reasoningSummaries: {
+      name: "Reasoning summaries"
+    },
+    agent: {
+      name: "Custom agent"
+    },
+    environment: {
+      name: "Copilot environment",
+      desc: "Copilot-owned runtime variables only. Put shared PATH changes in shared environment settings."
+    }
   }
 };
 var en_default = {
@@ -28667,11 +29520,14 @@ var chat3 = {
   }
 };
 var settings3 = {
-  title: "Configuraci\xF3n de Claudian",
+  title: "iClaudian Settings",
   tabs: {
     general: "General",
     claude: "Claude",
-    codex: "Codex"
+    codex: "Codex",
+    opencode: "OpenCode",
+    gemini: "Gemini",
+    copilot: "Copilot"
   },
   display: "Pantalla",
   conversations: "Conversaciones",
@@ -28888,7 +29744,7 @@ var settings3 = {
   cliPath: {
     name: "Ruta CLI Claude",
     desc: "Ruta personalizada a Claude Code CLI. Dejar vac\xEDo para detecci\xF3n autom\xE1tica.",
-    descWindows: "Para el instalador nativo, use claude.exe. Para instalaciones con npm/pnpm/yarn u otros gestores de paquetes, use la ruta cli.js (no claude.cmd).",
+    descWindows: "Para el instalador nativo, use claude.exe. Para instalaciones con npm/pnpm/yarn u otros gestores de paquetes, use la ruta cli-wrapper.cjs (no claude.cmd).",
     descUnix: 'Pegue la salida de "which claude" \u2014 funciona tanto para instalaciones nativas como npm/pnpm/yarn.',
     validation: {
       notExist: "La ruta no existe",
@@ -28898,6 +29754,172 @@ var settings3 = {
   language: {
     name: "Idioma",
     desc: "Cambiar el idioma de visualizaci\xF3n de la interfaz del plugin"
+  },
+  codex: {
+    enable: {
+      name: "Enable Codex provider",
+      desc: "When enabled, Codex models appear in the model selector for new conversations. Existing Codex sessions are preserved."
+    },
+    installationMethod: {
+      name: "Installation method",
+      desc: "How iClaudian should launch Codex on Windows. Native Windows uses a Windows executable path. WSL launches the Linux CLI inside a selected distro."
+    },
+    cliPath: {
+      desc: "Custom path to the local Codex CLI. Leave empty for auto-detection from PATH."
+    },
+    reasoningSummary: {
+      name: "Reasoning summary",
+      desc: "Show a summary of the model's reasoning process in the thinking block."
+    },
+    skills: {
+      name: "Codex Skills",
+      desc: "Manage vault-level Codex skills stored in .codex/skills/ or .agents/skills/. Home-level skills are excluded here."
+    },
+    hiddenSkills: {
+      name: "Hidden Skills",
+      desc: "Hide specific Codex skills from the dropdown. Enter skill names without the leading $, one per line."
+    },
+    subagents: {
+      name: "Codex Subagents",
+      desc: "Manage vault-level Codex subagents stored in .codex/agents/. Each TOML file defines one custom agent."
+    },
+    mcp: {
+      desc: "Codex manages MCP servers via its own CLI. Configure with codex mcp and they will be available in iClaudian."
+    },
+    environment: {
+      name: "Codex environment",
+      desc: "Codex-owned runtime variables only. Use this for OPENAI_* and CODEX_* settings. If Codex auto-detection needs help, add its install directory to shared PATH instead of this provider section."
+    },
+    customModels: {
+      name: "Custom models",
+      desc: "Append additional Codex model IDs to the picker, one per line. OPENAI_MODEL still takes precedence when set."
+    },
+    skillsExtra: {
+      empty: "No Codex skills in vault. Click + to create one."
+    },
+    subagentsExtra: {
+      empty: "No Codex subagents in vault. Click + to create one."
+    }
+  },
+  opencode: {
+    enable: {
+      name: "Enable OpenCode",
+      desc: "Launch `opencode acp` as a provider."
+    },
+    cliPath: {
+      name: "CLI Path ({host})",
+      desc: "Optional absolute path to the OpenCode CLI for this computer. Leave empty to use `opencode` from PATH."
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which OpenCode models appear in the chat selector. Filter by provider or type to search. The current session model stays pinned even if it is not selected here."
+    },
+    browseModels: "Browse models",
+    filterPlaceholder: "Filter by model, provider, or id\u2026",
+    noModels: "No models discovered yet",
+    selected: "Selected ({count})",
+    clearAll: "Clear all",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "OpenCode can auto-detect vault-level Claude slash commands from .claude/commands/ and skills from .claude/skills/, .codex/skills/, and .agents/skills/. Manage those entries in the Claude or Codex settings tab. This setting only hides entries from the OpenCode dropdown."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands and Skills",
+      desc: "Hide specific OpenCode commands and skills from the dropdown. Enter names without the leading slash, one per line."
+    },
+    subagents: {
+      name: "Subagents",
+      desc: "Manage vault-level OpenCode subagents from .opencode/agent/ and legacy .opencode/agents/. New entries are saved as subagent-only files and appear in the @mention menu."
+    },
+    environment: {
+      name: "OpenCode environment",
+      desc: "OpenCode-owned runtime variables only. OPENCODE_ENABLE_EXA=1 is enabled by default. Shared PATH changes should go in the shared environment section."
+    },
+    subagentsExtra: {
+      empty: "No OpenCode subagents in vault. Click + to create one."
+    }
+  },
+  gemini: {
+    enable: {
+      name: "Enable Gemini provider",
+      desc: "Launch `gemini --acp` as a provider. Gemini models will appear in the model selector for new conversations."
+    },
+    cliPath: {
+      name: "Gemini CLI path ({host})",
+      desc: "Optional absolute path to the Gemini CLI for this computer. Leave empty to use `gemini` from PATH."
+    },
+    approvalMode: {
+      name: "Approval mode",
+      desc: "Permission mode used by Gemini CLI when starting ACP sessions. The toolbar Safe/YOLO/Plan toggle also syncs this value.",
+      default: "Default",
+      autoEdit: "Auto Edit",
+      plan: "Plan"
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which Gemini models appear in the chat selector. After Gemini starts once, iClaudian can seed this list from the ACP model catalog."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Gemini model ID per line. Leave empty to use all models discovered from Gemini CLI."
+    },
+    discovered: "Discovered {count} Gemini models from the ACP runtime.",
+    notDiscovered: "No Gemini models discovered yet. Start Gemini once to load its model catalog.",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "Gemini CLI exposes runtime slash commands such as memory, init, restore, and extension management. Gemini skills and MCP servers are managed by the Gemini CLI."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands",
+      desc: "Hide specific Gemini runtime commands from the dropdown. Enter names without the leading slash, one per line."
+    },
+    mcp: {
+      desc: "Gemini manages MCP servers via its own CLI. Configure with gemini mcp and they will be available in iClaudian ACP sessions."
+    },
+    environment: {
+      name: "Gemini environment",
+      desc: "Gemini-owned runtime variables only. Use this for GEMINI_*, GOOGLE_* and Vertex AI settings. Shared PATH changes should go in the shared environment section."
+    }
+  },
+  copilot: {
+    enable: {
+      name: "Enable Copilot provider",
+      desc: "Launch GitHub Copilot CLI ACP as an iClaudian provider."
+    },
+    cliPath: {
+      name: "Copilot CLI path ({host})",
+      desc: "Absolute path to Copilot CLI on this computer. Leave empty to use copilot from PATH."
+    },
+    approvalMode: {
+      name: "Permission mode",
+      desc: "Maps to Copilot CLI safe defaults, --mode plan, or --allow-all.",
+      default: "Safe",
+      plan: "Plan"
+    },
+    autopilot: {
+      name: "Autopilot mode",
+      desc: "Start with --autopilot when not in Plan mode."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Copilot CLI model ID per line. Passed to copilot --model."
+    },
+    experimental: {
+      name: "Experimental features"
+    },
+    remote: {
+      name: "Remote control"
+    },
+    reasoningSummaries: {
+      name: "Reasoning summaries"
+    },
+    agent: {
+      name: "Custom agent"
+    },
+    environment: {
+      name: "Copilot environment",
+      desc: "Copilot-owned runtime variables only. Put shared PATH changes in shared environment settings."
+    }
   }
 };
 var es_default = {
@@ -28980,11 +30002,14 @@ var chat4 = {
   }
 };
 var settings4 = {
-  title: "Param\xE8tres Claudian",
+  title: "iClaudian Settings",
   tabs: {
     general: "G\xE9n\xE9ral",
     claude: "Claude",
-    codex: "Codex"
+    codex: "Codex",
+    opencode: "OpenCode",
+    gemini: "Gemini",
+    copilot: "Copilot"
   },
   display: "Affichage",
   conversations: "Conversations",
@@ -29201,7 +30226,7 @@ var settings4 = {
   cliPath: {
     name: "Chemin CLI Claude",
     desc: "Chemin personnalis\xE9 vers Claude Code CLI. Laisser vide pour la d\xE9tection automatique.",
-    descWindows: "Pour l'installateur natif, utilisez claude.exe. Pour les installations npm/pnpm/yarn ou autres gestionnaires de paquets, utilisez le chemin cli.js (pas claude.cmd).",
+    descWindows: "Pour l'installateur natif, utilisez claude.exe. Pour les installations npm/pnpm/yarn ou autres gestionnaires de paquets, utilisez le chemin cli-wrapper.cjs (pas claude.cmd).",
     descUnix: 'Collez la sortie de "which claude" \u2014 fonctionne pour les installations natives et npm/pnpm/yarn.',
     validation: {
       notExist: "Le chemin n'existe pas",
@@ -29211,6 +30236,172 @@ var settings4 = {
   language: {
     name: "Langue",
     desc: "Changer la langue d'affichage de l'interface du plugin"
+  },
+  codex: {
+    enable: {
+      name: "Enable Codex provider",
+      desc: "When enabled, Codex models appear in the model selector for new conversations. Existing Codex sessions are preserved."
+    },
+    installationMethod: {
+      name: "Installation method",
+      desc: "How iClaudian should launch Codex on Windows. Native Windows uses a Windows executable path. WSL launches the Linux CLI inside a selected distro."
+    },
+    cliPath: {
+      desc: "Custom path to the local Codex CLI. Leave empty for auto-detection from PATH."
+    },
+    reasoningSummary: {
+      name: "Reasoning summary",
+      desc: "Show a summary of the model's reasoning process in the thinking block."
+    },
+    skills: {
+      name: "Codex Skills",
+      desc: "Manage vault-level Codex skills stored in .codex/skills/ or .agents/skills/. Home-level skills are excluded here."
+    },
+    hiddenSkills: {
+      name: "Hidden Skills",
+      desc: "Hide specific Codex skills from the dropdown. Enter skill names without the leading $, one per line."
+    },
+    subagents: {
+      name: "Codex Subagents",
+      desc: "Manage vault-level Codex subagents stored in .codex/agents/. Each TOML file defines one custom agent."
+    },
+    mcp: {
+      desc: "Codex manages MCP servers via its own CLI. Configure with codex mcp and they will be available in iClaudian."
+    },
+    environment: {
+      name: "Codex environment",
+      desc: "Codex-owned runtime variables only. Use this for OPENAI_* and CODEX_* settings. If Codex auto-detection needs help, add its install directory to shared PATH instead of this provider section."
+    },
+    customModels: {
+      name: "Custom models",
+      desc: "Append additional Codex model IDs to the picker, one per line. OPENAI_MODEL still takes precedence when set."
+    },
+    skillsExtra: {
+      empty: "No Codex skills in vault. Click + to create one."
+    },
+    subagentsExtra: {
+      empty: "No Codex subagents in vault. Click + to create one."
+    }
+  },
+  opencode: {
+    enable: {
+      name: "Enable OpenCode",
+      desc: "Launch `opencode acp` as a provider."
+    },
+    cliPath: {
+      name: "CLI Path ({host})",
+      desc: "Optional absolute path to the OpenCode CLI for this computer. Leave empty to use `opencode` from PATH."
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which OpenCode models appear in the chat selector. Filter by provider or type to search. The current session model stays pinned even if it is not selected here."
+    },
+    browseModels: "Browse models",
+    filterPlaceholder: "Filter by model, provider, or id\u2026",
+    noModels: "No models discovered yet",
+    selected: "Selected ({count})",
+    clearAll: "Clear all",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "OpenCode can auto-detect vault-level Claude slash commands from .claude/commands/ and skills from .claude/skills/, .codex/skills/, and .agents/skills/. Manage those entries in the Claude or Codex settings tab. This setting only hides entries from the OpenCode dropdown."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands and Skills",
+      desc: "Hide specific OpenCode commands and skills from the dropdown. Enter names without the leading slash, one per line."
+    },
+    subagents: {
+      name: "Subagents",
+      desc: "Manage vault-level OpenCode subagents from .opencode/agent/ and legacy .opencode/agents/. New entries are saved as subagent-only files and appear in the @mention menu."
+    },
+    environment: {
+      name: "OpenCode environment",
+      desc: "OpenCode-owned runtime variables only. OPENCODE_ENABLE_EXA=1 is enabled by default. Shared PATH changes should go in the shared environment section."
+    },
+    subagentsExtra: {
+      empty: "No OpenCode subagents in vault. Click + to create one."
+    }
+  },
+  gemini: {
+    enable: {
+      name: "Enable Gemini provider",
+      desc: "Launch `gemini --acp` as a provider. Gemini models will appear in the model selector for new conversations."
+    },
+    cliPath: {
+      name: "Gemini CLI path ({host})",
+      desc: "Optional absolute path to the Gemini CLI for this computer. Leave empty to use `gemini` from PATH."
+    },
+    approvalMode: {
+      name: "Approval mode",
+      desc: "Permission mode used by Gemini CLI when starting ACP sessions. The toolbar Safe/YOLO/Plan toggle also syncs this value.",
+      default: "Default",
+      autoEdit: "Auto Edit",
+      plan: "Plan"
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which Gemini models appear in the chat selector. After Gemini starts once, iClaudian can seed this list from the ACP model catalog."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Gemini model ID per line. Leave empty to use all models discovered from Gemini CLI."
+    },
+    discovered: "Discovered {count} Gemini models from the ACP runtime.",
+    notDiscovered: "No Gemini models discovered yet. Start Gemini once to load its model catalog.",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "Gemini CLI exposes runtime slash commands such as memory, init, restore, and extension management. Gemini skills and MCP servers are managed by the Gemini CLI."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands",
+      desc: "Hide specific Gemini runtime commands from the dropdown. Enter names without the leading slash, one per line."
+    },
+    mcp: {
+      desc: "Gemini manages MCP servers via its own CLI. Configure with gemini mcp and they will be available in iClaudian ACP sessions."
+    },
+    environment: {
+      name: "Gemini environment",
+      desc: "Gemini-owned runtime variables only. Use this for GEMINI_*, GOOGLE_* and Vertex AI settings. Shared PATH changes should go in the shared environment section."
+    }
+  },
+  copilot: {
+    enable: {
+      name: "Enable Copilot provider",
+      desc: "Launch GitHub Copilot CLI ACP as an iClaudian provider."
+    },
+    cliPath: {
+      name: "Copilot CLI path ({host})",
+      desc: "Absolute path to Copilot CLI on this computer. Leave empty to use copilot from PATH."
+    },
+    approvalMode: {
+      name: "Permission mode",
+      desc: "Maps to Copilot CLI safe defaults, --mode plan, or --allow-all.",
+      default: "Safe",
+      plan: "Plan"
+    },
+    autopilot: {
+      name: "Autopilot mode",
+      desc: "Start with --autopilot when not in Plan mode."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Copilot CLI model ID per line. Passed to copilot --model."
+    },
+    experimental: {
+      name: "Experimental features"
+    },
+    remote: {
+      name: "Remote control"
+    },
+    reasoningSummaries: {
+      name: "Reasoning summaries"
+    },
+    agent: {
+      name: "Custom agent"
+    },
+    environment: {
+      name: "Copilot environment",
+      desc: "Copilot-owned runtime variables only. Put shared PATH changes in shared environment settings."
+    }
   }
 };
 var fr_default = {
@@ -29293,11 +30484,14 @@ var chat5 = {
   }
 };
 var settings5 = {
-  title: "Claudian \u8A2D\u5B9A",
+  title: "iClaudian Settings",
   tabs: {
     general: "\u4E00\u822C",
     claude: "Claude",
-    codex: "Codex"
+    codex: "Codex",
+    opencode: "OpenCode",
+    gemini: "Gemini",
+    copilot: "Copilot"
   },
   display: "\u8868\u793A",
   conversations: "\u4F1A\u8A71",
@@ -29514,7 +30708,7 @@ var settings5 = {
   cliPath: {
     name: "Claude CLI \u30D1\u30B9",
     desc: "Claude Code CLI \u306E\u30AB\u30B9\u30BF\u30E0\u30D1\u30B9\u3002\u7A7A\u6B04\u3067\u81EA\u52D5\u691C\u51FA\u3092\u4F7F\u7528\u3002",
-    descWindows: "\u30CD\u30A4\u30C6\u30A3\u30D6\u30A4\u30F3\u30B9\u30C8\u30FC\u30E9\u30FC\u306E\u5834\u5408\u306F claude.exe \u3092\u4F7F\u7528\u3002npm/pnpm/yarn \u3084\u305D\u306E\u4ED6\u306E\u30D1\u30C3\u30B1\u30FC\u30B8\u30DE\u30CD\u30FC\u30B8\u30E3\u30FC\u3067\u306E\u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u306E\u5834\u5408\u306F cli.js \u30D1\u30B9\u3092\u4F7F\u7528\uFF08claude.cmd \u3067\u306F\u306A\u3044\uFF09\u3002",
+    descWindows: "\u30CD\u30A4\u30C6\u30A3\u30D6\u30A4\u30F3\u30B9\u30C8\u30FC\u30E9\u30FC\u306E\u5834\u5408\u306F claude.exe \u3092\u4F7F\u7528\u3002npm/pnpm/yarn \u3084\u305D\u306E\u4ED6\u306E\u30D1\u30C3\u30B1\u30FC\u30B8\u30DE\u30CD\u30FC\u30B8\u30E3\u30FC\u3067\u306E\u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u306E\u5834\u5408\u306F cli-wrapper.cjs \u30D1\u30B9\u3092\u4F7F\u7528\uFF08claude.cmd \u3067\u306F\u306A\u3044\uFF09\u3002",
     descUnix: '"which claude" \u306E\u51FA\u529B\u3092\u8CBC\u308A\u4ED8\u3051\u3066\u304F\u3060\u3055\u3044 - \u30CD\u30A4\u30C6\u30A3\u30D6\u3068 npm/pnpm/yarn \u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u306E\u4E21\u65B9\u3067\u52D5\u4F5C\u3057\u307E\u3059\u3002',
     validation: {
       notExist: "\u30D1\u30B9\u304C\u5B58\u5728\u3057\u307E\u305B\u3093",
@@ -29524,6 +30718,172 @@ var settings5 = {
   language: {
     name: "\u8A00\u8A9E",
     desc: "\u30D7\u30E9\u30B0\u30A4\u30F3\u30A4\u30F3\u30BF\u30FC\u30D5\u30A7\u30FC\u30B9\u306E\u8868\u793A\u8A00\u8A9E\u3092\u5909\u66F4"
+  },
+  codex: {
+    enable: {
+      name: "Enable Codex provider",
+      desc: "When enabled, Codex models appear in the model selector for new conversations. Existing Codex sessions are preserved."
+    },
+    installationMethod: {
+      name: "Installation method",
+      desc: "How iClaudian should launch Codex on Windows. Native Windows uses a Windows executable path. WSL launches the Linux CLI inside a selected distro."
+    },
+    cliPath: {
+      desc: "Custom path to the local Codex CLI. Leave empty for auto-detection from PATH."
+    },
+    reasoningSummary: {
+      name: "Reasoning summary",
+      desc: "Show a summary of the model's reasoning process in the thinking block."
+    },
+    skills: {
+      name: "Codex Skills",
+      desc: "Manage vault-level Codex skills stored in .codex/skills/ or .agents/skills/. Home-level skills are excluded here."
+    },
+    hiddenSkills: {
+      name: "Hidden Skills",
+      desc: "Hide specific Codex skills from the dropdown. Enter skill names without the leading $, one per line."
+    },
+    subagents: {
+      name: "Codex Subagents",
+      desc: "Manage vault-level Codex subagents stored in .codex/agents/. Each TOML file defines one custom agent."
+    },
+    mcp: {
+      desc: "Codex manages MCP servers via its own CLI. Configure with codex mcp and they will be available in iClaudian."
+    },
+    environment: {
+      name: "Codex environment",
+      desc: "Codex-owned runtime variables only. Use this for OPENAI_* and CODEX_* settings. If Codex auto-detection needs help, add its install directory to shared PATH instead of this provider section."
+    },
+    customModels: {
+      name: "Custom models",
+      desc: "Append additional Codex model IDs to the picker, one per line. OPENAI_MODEL still takes precedence when set."
+    },
+    skillsExtra: {
+      empty: "No Codex skills in vault. Click + to create one."
+    },
+    subagentsExtra: {
+      empty: "No Codex subagents in vault. Click + to create one."
+    }
+  },
+  opencode: {
+    enable: {
+      name: "Enable OpenCode",
+      desc: "Launch `opencode acp` as a provider."
+    },
+    cliPath: {
+      name: "CLI Path ({host})",
+      desc: "Optional absolute path to the OpenCode CLI for this computer. Leave empty to use `opencode` from PATH."
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which OpenCode models appear in the chat selector. Filter by provider or type to search. The current session model stays pinned even if it is not selected here."
+    },
+    browseModels: "Browse models",
+    filterPlaceholder: "Filter by model, provider, or id\u2026",
+    noModels: "No models discovered yet",
+    selected: "Selected ({count})",
+    clearAll: "Clear all",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "OpenCode can auto-detect vault-level Claude slash commands from .claude/commands/ and skills from .claude/skills/, .codex/skills/, and .agents/skills/. Manage those entries in the Claude or Codex settings tab. This setting only hides entries from the OpenCode dropdown."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands and Skills",
+      desc: "Hide specific OpenCode commands and skills from the dropdown. Enter names without the leading slash, one per line."
+    },
+    subagents: {
+      name: "Subagents",
+      desc: "Manage vault-level OpenCode subagents from .opencode/agent/ and legacy .opencode/agents/. New entries are saved as subagent-only files and appear in the @mention menu."
+    },
+    environment: {
+      name: "OpenCode environment",
+      desc: "OpenCode-owned runtime variables only. OPENCODE_ENABLE_EXA=1 is enabled by default. Shared PATH changes should go in the shared environment section."
+    },
+    subagentsExtra: {
+      empty: "No OpenCode subagents in vault. Click + to create one."
+    }
+  },
+  gemini: {
+    enable: {
+      name: "Enable Gemini provider",
+      desc: "Launch `gemini --acp` as a provider. Gemini models will appear in the model selector for new conversations."
+    },
+    cliPath: {
+      name: "Gemini CLI path ({host})",
+      desc: "Optional absolute path to the Gemini CLI for this computer. Leave empty to use `gemini` from PATH."
+    },
+    approvalMode: {
+      name: "Approval mode",
+      desc: "Permission mode used by Gemini CLI when starting ACP sessions. The toolbar Safe/YOLO/Plan toggle also syncs this value.",
+      default: "Default",
+      autoEdit: "Auto Edit",
+      plan: "Plan"
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which Gemini models appear in the chat selector. After Gemini starts once, iClaudian can seed this list from the ACP model catalog."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Gemini model ID per line. Leave empty to use all models discovered from Gemini CLI."
+    },
+    discovered: "Discovered {count} Gemini models from the ACP runtime.",
+    notDiscovered: "No Gemini models discovered yet. Start Gemini once to load its model catalog.",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "Gemini CLI exposes runtime slash commands such as memory, init, restore, and extension management. Gemini skills and MCP servers are managed by the Gemini CLI."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands",
+      desc: "Hide specific Gemini runtime commands from the dropdown. Enter names without the leading slash, one per line."
+    },
+    mcp: {
+      desc: "Gemini manages MCP servers via its own CLI. Configure with gemini mcp and they will be available in iClaudian ACP sessions."
+    },
+    environment: {
+      name: "Gemini environment",
+      desc: "Gemini-owned runtime variables only. Use this for GEMINI_*, GOOGLE_* and Vertex AI settings. Shared PATH changes should go in the shared environment section."
+    }
+  },
+  copilot: {
+    enable: {
+      name: "Enable Copilot provider",
+      desc: "Launch GitHub Copilot CLI ACP as an iClaudian provider."
+    },
+    cliPath: {
+      name: "Copilot CLI path ({host})",
+      desc: "Absolute path to Copilot CLI on this computer. Leave empty to use copilot from PATH."
+    },
+    approvalMode: {
+      name: "Permission mode",
+      desc: "Maps to Copilot CLI safe defaults, --mode plan, or --allow-all.",
+      default: "Safe",
+      plan: "Plan"
+    },
+    autopilot: {
+      name: "Autopilot mode",
+      desc: "Start with --autopilot when not in Plan mode."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Copilot CLI model ID per line. Passed to copilot --model."
+    },
+    experimental: {
+      name: "Experimental features"
+    },
+    remote: {
+      name: "Remote control"
+    },
+    reasoningSummaries: {
+      name: "Reasoning summaries"
+    },
+    agent: {
+      name: "Custom agent"
+    },
+    environment: {
+      name: "Copilot environment",
+      desc: "Copilot-owned runtime variables only. Put shared PATH changes in shared environment settings."
+    }
   }
 };
 var ja_default = {
@@ -29606,11 +30966,14 @@ var chat6 = {
   }
 };
 var settings6 = {
-  title: "Claudian \uC124\uC815",
+  title: "iClaudian Settings",
   tabs: {
     general: "\uC77C\uBC18",
     claude: "Claude",
-    codex: "Codex"
+    codex: "Codex",
+    opencode: "OpenCode",
+    gemini: "Gemini",
+    copilot: "Copilot"
   },
   display: "\uD45C\uC2DC",
   conversations: "\uB300\uD654",
@@ -29827,7 +31190,7 @@ var settings6 = {
   cliPath: {
     name: "Claude CLI \uACBD\uB85C",
     desc: "Claude Code CLI\uC758 \uC0AC\uC6A9\uC790 \uC815\uC758 \uACBD\uB85C. \uBE44\uC6CC\uB450\uBA74 \uC790\uB3D9 \uAC10\uC9C0 \uC0AC\uC6A9.",
-    descWindows: "\uB124\uC774\uD2F0\uBE0C \uC124\uCE58 \uD504\uB85C\uADF8\uB7A8\uC758 \uACBD\uC6B0 claude.exe\uB97C \uC0AC\uC6A9\uD558\uC138\uC694. npm/pnpm/yarn \uB610\uB294 \uAE30\uD0C0 \uD328\uD0A4\uC9C0 \uAD00\uB9AC\uC790 \uC124\uCE58\uC758 \uACBD\uC6B0 cli.js \uACBD\uB85C\uB97C \uC0AC\uC6A9\uD558\uC138\uC694 (claude.cmd\uAC00 \uC544\uB2D8).",
+    descWindows: "\uB124\uC774\uD2F0\uBE0C \uC124\uCE58 \uD504\uB85C\uADF8\uB7A8\uC758 \uACBD\uC6B0 claude.exe\uB97C \uC0AC\uC6A9\uD558\uC138\uC694. npm/pnpm/yarn \uB610\uB294 \uAE30\uD0C0 \uD328\uD0A4\uC9C0 \uAD00\uB9AC\uC790 \uC124\uCE58\uC758 \uACBD\uC6B0 cli-wrapper.cjs \uACBD\uB85C\uB97C \uC0AC\uC6A9\uD558\uC138\uC694 (claude.cmd\uAC00 \uC544\uB2D8).",
     descUnix: '"which claude"\uC758 \uCD9C\uB825\uC744 \uBD99\uC5EC\uB123\uC73C\uC138\uC694 - \uB124\uC774\uD2F0\uBE0C \uBC0F npm/pnpm/yarn \uC124\uCE58 \uBAA8\uB450\uC5D0\uC11C \uC791\uB3D9\uD569\uB2C8\uB2E4.',
     validation: {
       notExist: "\uACBD\uB85C\uAC00 \uC874\uC7AC\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4",
@@ -29837,6 +31200,172 @@ var settings6 = {
   language: {
     name: "\uC5B8\uC5B4",
     desc: "\uD50C\uB7EC\uADF8\uC778 \uC778\uD130\uD398\uC774\uC2A4\uC758 \uD45C\uC2DC \uC5B8\uC5B4 \uBCC0\uACBD"
+  },
+  codex: {
+    enable: {
+      name: "Enable Codex provider",
+      desc: "When enabled, Codex models appear in the model selector for new conversations. Existing Codex sessions are preserved."
+    },
+    installationMethod: {
+      name: "Installation method",
+      desc: "How iClaudian should launch Codex on Windows. Native Windows uses a Windows executable path. WSL launches the Linux CLI inside a selected distro."
+    },
+    cliPath: {
+      desc: "Custom path to the local Codex CLI. Leave empty for auto-detection from PATH."
+    },
+    reasoningSummary: {
+      name: "Reasoning summary",
+      desc: "Show a summary of the model's reasoning process in the thinking block."
+    },
+    skills: {
+      name: "Codex Skills",
+      desc: "Manage vault-level Codex skills stored in .codex/skills/ or .agents/skills/. Home-level skills are excluded here."
+    },
+    hiddenSkills: {
+      name: "Hidden Skills",
+      desc: "Hide specific Codex skills from the dropdown. Enter skill names without the leading $, one per line."
+    },
+    subagents: {
+      name: "Codex Subagents",
+      desc: "Manage vault-level Codex subagents stored in .codex/agents/. Each TOML file defines one custom agent."
+    },
+    mcp: {
+      desc: "Codex manages MCP servers via its own CLI. Configure with codex mcp and they will be available in iClaudian."
+    },
+    environment: {
+      name: "Codex environment",
+      desc: "Codex-owned runtime variables only. Use this for OPENAI_* and CODEX_* settings. If Codex auto-detection needs help, add its install directory to shared PATH instead of this provider section."
+    },
+    customModels: {
+      name: "Custom models",
+      desc: "Append additional Codex model IDs to the picker, one per line. OPENAI_MODEL still takes precedence when set."
+    },
+    skillsExtra: {
+      empty: "No Codex skills in vault. Click + to create one."
+    },
+    subagentsExtra: {
+      empty: "No Codex subagents in vault. Click + to create one."
+    }
+  },
+  opencode: {
+    enable: {
+      name: "Enable OpenCode",
+      desc: "Launch `opencode acp` as a provider."
+    },
+    cliPath: {
+      name: "CLI Path ({host})",
+      desc: "Optional absolute path to the OpenCode CLI for this computer. Leave empty to use `opencode` from PATH."
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which OpenCode models appear in the chat selector. Filter by provider or type to search. The current session model stays pinned even if it is not selected here."
+    },
+    browseModels: "Browse models",
+    filterPlaceholder: "Filter by model, provider, or id\u2026",
+    noModels: "No models discovered yet",
+    selected: "Selected ({count})",
+    clearAll: "Clear all",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "OpenCode can auto-detect vault-level Claude slash commands from .claude/commands/ and skills from .claude/skills/, .codex/skills/, and .agents/skills/. Manage those entries in the Claude or Codex settings tab. This setting only hides entries from the OpenCode dropdown."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands and Skills",
+      desc: "Hide specific OpenCode commands and skills from the dropdown. Enter names without the leading slash, one per line."
+    },
+    subagents: {
+      name: "Subagents",
+      desc: "Manage vault-level OpenCode subagents from .opencode/agent/ and legacy .opencode/agents/. New entries are saved as subagent-only files and appear in the @mention menu."
+    },
+    environment: {
+      name: "OpenCode environment",
+      desc: "OpenCode-owned runtime variables only. OPENCODE_ENABLE_EXA=1 is enabled by default. Shared PATH changes should go in the shared environment section."
+    },
+    subagentsExtra: {
+      empty: "No OpenCode subagents in vault. Click + to create one."
+    }
+  },
+  gemini: {
+    enable: {
+      name: "Enable Gemini provider",
+      desc: "Launch `gemini --acp` as a provider. Gemini models will appear in the model selector for new conversations."
+    },
+    cliPath: {
+      name: "Gemini CLI path ({host})",
+      desc: "Optional absolute path to the Gemini CLI for this computer. Leave empty to use `gemini` from PATH."
+    },
+    approvalMode: {
+      name: "Approval mode",
+      desc: "Permission mode used by Gemini CLI when starting ACP sessions. The toolbar Safe/YOLO/Plan toggle also syncs this value.",
+      default: "Default",
+      autoEdit: "Auto Edit",
+      plan: "Plan"
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which Gemini models appear in the chat selector. After Gemini starts once, iClaudian can seed this list from the ACP model catalog."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Gemini model ID per line. Leave empty to use all models discovered from Gemini CLI."
+    },
+    discovered: "Discovered {count} Gemini models from the ACP runtime.",
+    notDiscovered: "No Gemini models discovered yet. Start Gemini once to load its model catalog.",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "Gemini CLI exposes runtime slash commands such as memory, init, restore, and extension management. Gemini skills and MCP servers are managed by the Gemini CLI."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands",
+      desc: "Hide specific Gemini runtime commands from the dropdown. Enter names without the leading slash, one per line."
+    },
+    mcp: {
+      desc: "Gemini manages MCP servers via its own CLI. Configure with gemini mcp and they will be available in iClaudian ACP sessions."
+    },
+    environment: {
+      name: "Gemini environment",
+      desc: "Gemini-owned runtime variables only. Use this for GEMINI_*, GOOGLE_* and Vertex AI settings. Shared PATH changes should go in the shared environment section."
+    }
+  },
+  copilot: {
+    enable: {
+      name: "Enable Copilot provider",
+      desc: "Launch GitHub Copilot CLI ACP as an iClaudian provider."
+    },
+    cliPath: {
+      name: "Copilot CLI path ({host})",
+      desc: "Absolute path to Copilot CLI on this computer. Leave empty to use copilot from PATH."
+    },
+    approvalMode: {
+      name: "Permission mode",
+      desc: "Maps to Copilot CLI safe defaults, --mode plan, or --allow-all.",
+      default: "Safe",
+      plan: "Plan"
+    },
+    autopilot: {
+      name: "Autopilot mode",
+      desc: "Start with --autopilot when not in Plan mode."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Copilot CLI model ID per line. Passed to copilot --model."
+    },
+    experimental: {
+      name: "Experimental features"
+    },
+    remote: {
+      name: "Remote control"
+    },
+    reasoningSummaries: {
+      name: "Reasoning summaries"
+    },
+    agent: {
+      name: "Custom agent"
+    },
+    environment: {
+      name: "Copilot environment",
+      desc: "Copilot-owned runtime variables only. Put shared PATH changes in shared environment settings."
+    }
   }
 };
 var ko_default = {
@@ -29919,11 +31448,14 @@ var chat7 = {
   }
 };
 var settings7 = {
-  title: "Configura\xE7\xF5es do Claudian",
+  title: "iClaudian Settings",
   tabs: {
     general: "Geral",
     claude: "Claude",
-    codex: "Codex"
+    codex: "Codex",
+    opencode: "OpenCode",
+    gemini: "Gemini",
+    copilot: "Copilot"
   },
   display: "Exibi\xE7\xE3o",
   conversations: "Conversas",
@@ -30140,7 +31672,7 @@ var settings7 = {
   cliPath: {
     name: "Caminho CLI Claude",
     desc: "Caminho personalizado para Claude Code CLI. Deixe vazio para detec\xE7\xE3o autom\xE1tica.",
-    descWindows: "Para o instalador nativo, use claude.exe. Para instala\xE7\xF5es com npm/pnpm/yarn ou outros gerenciadores de pacotes, use o caminho cli.js (n\xE3o claude.cmd).",
+    descWindows: "Para o instalador nativo, use claude.exe. Para instala\xE7\xF5es com npm/pnpm/yarn ou outros gerenciadores de pacotes, use o caminho cli-wrapper.cjs (n\xE3o claude.cmd).",
     descUnix: 'Cole a sa\xEDda de "which claude" \u2014 funciona tanto para instala\xE7\xF5es nativas quanto npm/pnpm/yarn.',
     validation: {
       notExist: "Caminho n\xE3o existe",
@@ -30150,6 +31682,172 @@ var settings7 = {
   language: {
     name: "Idioma",
     desc: "Alterar o idioma de exibi\xE7\xE3o da interface do plugin"
+  },
+  codex: {
+    enable: {
+      name: "Enable Codex provider",
+      desc: "When enabled, Codex models appear in the model selector for new conversations. Existing Codex sessions are preserved."
+    },
+    installationMethod: {
+      name: "Installation method",
+      desc: "How iClaudian should launch Codex on Windows. Native Windows uses a Windows executable path. WSL launches the Linux CLI inside a selected distro."
+    },
+    cliPath: {
+      desc: "Custom path to the local Codex CLI. Leave empty for auto-detection from PATH."
+    },
+    reasoningSummary: {
+      name: "Reasoning summary",
+      desc: "Show a summary of the model's reasoning process in the thinking block."
+    },
+    skills: {
+      name: "Codex Skills",
+      desc: "Manage vault-level Codex skills stored in .codex/skills/ or .agents/skills/. Home-level skills are excluded here."
+    },
+    hiddenSkills: {
+      name: "Hidden Skills",
+      desc: "Hide specific Codex skills from the dropdown. Enter skill names without the leading $, one per line."
+    },
+    subagents: {
+      name: "Codex Subagents",
+      desc: "Manage vault-level Codex subagents stored in .codex/agents/. Each TOML file defines one custom agent."
+    },
+    mcp: {
+      desc: "Codex manages MCP servers via its own CLI. Configure with codex mcp and they will be available in iClaudian."
+    },
+    environment: {
+      name: "Codex environment",
+      desc: "Codex-owned runtime variables only. Use this for OPENAI_* and CODEX_* settings. If Codex auto-detection needs help, add its install directory to shared PATH instead of this provider section."
+    },
+    customModels: {
+      name: "Custom models",
+      desc: "Append additional Codex model IDs to the picker, one per line. OPENAI_MODEL still takes precedence when set."
+    },
+    skillsExtra: {
+      empty: "No Codex skills in vault. Click + to create one."
+    },
+    subagentsExtra: {
+      empty: "No Codex subagents in vault. Click + to create one."
+    }
+  },
+  opencode: {
+    enable: {
+      name: "Enable OpenCode",
+      desc: "Launch `opencode acp` as a provider."
+    },
+    cliPath: {
+      name: "CLI Path ({host})",
+      desc: "Optional absolute path to the OpenCode CLI for this computer. Leave empty to use `opencode` from PATH."
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which OpenCode models appear in the chat selector. Filter by provider or type to search. The current session model stays pinned even if it is not selected here."
+    },
+    browseModels: "Browse models",
+    filterPlaceholder: "Filter by model, provider, or id\u2026",
+    noModels: "No models discovered yet",
+    selected: "Selected ({count})",
+    clearAll: "Clear all",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "OpenCode can auto-detect vault-level Claude slash commands from .claude/commands/ and skills from .claude/skills/, .codex/skills/, and .agents/skills/. Manage those entries in the Claude or Codex settings tab. This setting only hides entries from the OpenCode dropdown."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands and Skills",
+      desc: "Hide specific OpenCode commands and skills from the dropdown. Enter names without the leading slash, one per line."
+    },
+    subagents: {
+      name: "Subagents",
+      desc: "Manage vault-level OpenCode subagents from .opencode/agent/ and legacy .opencode/agents/. New entries are saved as subagent-only files and appear in the @mention menu."
+    },
+    environment: {
+      name: "OpenCode environment",
+      desc: "OpenCode-owned runtime variables only. OPENCODE_ENABLE_EXA=1 is enabled by default. Shared PATH changes should go in the shared environment section."
+    },
+    subagentsExtra: {
+      empty: "No OpenCode subagents in vault. Click + to create one."
+    }
+  },
+  gemini: {
+    enable: {
+      name: "Enable Gemini provider",
+      desc: "Launch `gemini --acp` as a provider. Gemini models will appear in the model selector for new conversations."
+    },
+    cliPath: {
+      name: "Gemini CLI path ({host})",
+      desc: "Optional absolute path to the Gemini CLI for this computer. Leave empty to use `gemini` from PATH."
+    },
+    approvalMode: {
+      name: "Approval mode",
+      desc: "Permission mode used by Gemini CLI when starting ACP sessions. The toolbar Safe/YOLO/Plan toggle also syncs this value.",
+      default: "Default",
+      autoEdit: "Auto Edit",
+      plan: "Plan"
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which Gemini models appear in the chat selector. After Gemini starts once, iClaudian can seed this list from the ACP model catalog."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Gemini model ID per line. Leave empty to use all models discovered from Gemini CLI."
+    },
+    discovered: "Discovered {count} Gemini models from the ACP runtime.",
+    notDiscovered: "No Gemini models discovered yet. Start Gemini once to load its model catalog.",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "Gemini CLI exposes runtime slash commands such as memory, init, restore, and extension management. Gemini skills and MCP servers are managed by the Gemini CLI."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands",
+      desc: "Hide specific Gemini runtime commands from the dropdown. Enter names without the leading slash, one per line."
+    },
+    mcp: {
+      desc: "Gemini manages MCP servers via its own CLI. Configure with gemini mcp and they will be available in iClaudian ACP sessions."
+    },
+    environment: {
+      name: "Gemini environment",
+      desc: "Gemini-owned runtime variables only. Use this for GEMINI_*, GOOGLE_* and Vertex AI settings. Shared PATH changes should go in the shared environment section."
+    }
+  },
+  copilot: {
+    enable: {
+      name: "Enable Copilot provider",
+      desc: "Launch GitHub Copilot CLI ACP as an iClaudian provider."
+    },
+    cliPath: {
+      name: "Copilot CLI path ({host})",
+      desc: "Absolute path to Copilot CLI on this computer. Leave empty to use copilot from PATH."
+    },
+    approvalMode: {
+      name: "Permission mode",
+      desc: "Maps to Copilot CLI safe defaults, --mode plan, or --allow-all.",
+      default: "Safe",
+      plan: "Plan"
+    },
+    autopilot: {
+      name: "Autopilot mode",
+      desc: "Start with --autopilot when not in Plan mode."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Copilot CLI model ID per line. Passed to copilot --model."
+    },
+    experimental: {
+      name: "Experimental features"
+    },
+    remote: {
+      name: "Remote control"
+    },
+    reasoningSummaries: {
+      name: "Reasoning summaries"
+    },
+    agent: {
+      name: "Custom agent"
+    },
+    environment: {
+      name: "Copilot environment",
+      desc: "Copilot-owned runtime variables only. Put shared PATH changes in shared environment settings."
+    }
   }
 };
 var pt_default = {
@@ -30232,11 +31930,14 @@ var chat8 = {
   }
 };
 var settings8 = {
-  title: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438 Claudian",
+  title: "iClaudian Settings",
   tabs: {
     general: "\u041E\u0431\u0449\u0438\u0435",
     claude: "Claude",
-    codex: "Codex"
+    codex: "Codex",
+    opencode: "OpenCode",
+    gemini: "Gemini",
+    copilot: "Copilot"
   },
   display: "\u041E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u0435",
   conversations: "\u0420\u0430\u0437\u0433\u043E\u0432\u043E\u0440\u044B",
@@ -30453,7 +32154,7 @@ var settings8 = {
   cliPath: {
     name: "\u041F\u0443\u0442\u044C \u043A CLI Claude",
     desc: "\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0441\u043A\u0438\u0439 \u043F\u0443\u0442\u044C \u043A Claude Code CLI. \u041E\u0441\u0442\u0430\u0432\u044C\u0442\u0435 \u043F\u0443\u0441\u0442\u044B\u043C \u0434\u043B\u044F \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u043E\u0433\u043E \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u044F.",
-    descWindows: "\u0414\u043B\u044F \u043D\u0430\u0442\u0438\u0432\u043D\u043E\u0433\u043E \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0449\u0438\u043A\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435 claude.exe. \u0414\u043B\u044F \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043E\u043A \u0447\u0435\u0440\u0435\u0437 npm/pnpm/yarn \u0438\u043B\u0438 \u0434\u0440\u0443\u0433\u0438\u0435 \u043C\u0435\u043D\u0435\u0434\u0436\u0435\u0440\u044B \u043F\u0430\u043A\u0435\u0442\u043E\u0432 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435 \u043F\u0443\u0442\u044C \u043A cli.js (\u043D\u0435 claude.cmd).",
+    descWindows: "\u0414\u043B\u044F \u043D\u0430\u0442\u0438\u0432\u043D\u043E\u0433\u043E \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0449\u0438\u043A\u0430 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435 claude.exe. \u0414\u043B\u044F \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043E\u043A \u0447\u0435\u0440\u0435\u0437 npm/pnpm/yarn \u0438\u043B\u0438 \u0434\u0440\u0443\u0433\u0438\u0435 \u043C\u0435\u043D\u0435\u0434\u0436\u0435\u0440\u044B \u043F\u0430\u043A\u0435\u0442\u043E\u0432 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435 \u043F\u0443\u0442\u044C \u043A cli-wrapper.cjs (\u043D\u0435 claude.cmd).",
     descUnix: '\u0412\u0441\u0442\u0430\u0432\u044C\u0442\u0435 \u0432\u044B\u0432\u043E\u0434 \u043A\u043E\u043C\u0430\u043D\u0434\u044B "which claude" \u2014 \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u0442 \u043A\u0430\u043A \u0434\u043B\u044F \u043D\u0430\u0442\u0438\u0432\u043D\u044B\u0445 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u043E\u043A, \u0442\u0430\u043A \u0438 \u0434\u043B\u044F npm/pnpm/yarn.',
     validation: {
       notExist: "\u041F\u0443\u0442\u044C \u043D\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442",
@@ -30463,6 +32164,172 @@ var settings8 = {
   language: {
     name: "\u042F\u0437\u044B\u043A",
     desc: "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u044F\u0437\u044B\u043A \u0438\u043D\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430 \u043F\u043B\u0430\u0433\u0438\u043D\u0430"
+  },
+  codex: {
+    enable: {
+      name: "Enable Codex provider",
+      desc: "When enabled, Codex models appear in the model selector for new conversations. Existing Codex sessions are preserved."
+    },
+    installationMethod: {
+      name: "Installation method",
+      desc: "How iClaudian should launch Codex on Windows. Native Windows uses a Windows executable path. WSL launches the Linux CLI inside a selected distro."
+    },
+    cliPath: {
+      desc: "Custom path to the local Codex CLI. Leave empty for auto-detection from PATH."
+    },
+    reasoningSummary: {
+      name: "Reasoning summary",
+      desc: "Show a summary of the model's reasoning process in the thinking block."
+    },
+    skills: {
+      name: "Codex Skills",
+      desc: "Manage vault-level Codex skills stored in .codex/skills/ or .agents/skills/. Home-level skills are excluded here."
+    },
+    hiddenSkills: {
+      name: "Hidden Skills",
+      desc: "Hide specific Codex skills from the dropdown. Enter skill names without the leading $, one per line."
+    },
+    subagents: {
+      name: "Codex Subagents",
+      desc: "Manage vault-level Codex subagents stored in .codex/agents/. Each TOML file defines one custom agent."
+    },
+    mcp: {
+      desc: "Codex manages MCP servers via its own CLI. Configure with codex mcp and they will be available in iClaudian."
+    },
+    environment: {
+      name: "Codex environment",
+      desc: "Codex-owned runtime variables only. Use this for OPENAI_* and CODEX_* settings. If Codex auto-detection needs help, add its install directory to shared PATH instead of this provider section."
+    },
+    customModels: {
+      name: "Custom models",
+      desc: "Append additional Codex model IDs to the picker, one per line. OPENAI_MODEL still takes precedence when set."
+    },
+    skillsExtra: {
+      empty: "No Codex skills in vault. Click + to create one."
+    },
+    subagentsExtra: {
+      empty: "No Codex subagents in vault. Click + to create one."
+    }
+  },
+  opencode: {
+    enable: {
+      name: "Enable OpenCode",
+      desc: "Launch `opencode acp` as a provider."
+    },
+    cliPath: {
+      name: "CLI Path ({host})",
+      desc: "Optional absolute path to the OpenCode CLI for this computer. Leave empty to use `opencode` from PATH."
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which OpenCode models appear in the chat selector. Filter by provider or type to search. The current session model stays pinned even if it is not selected here."
+    },
+    browseModels: "Browse models",
+    filterPlaceholder: "Filter by model, provider, or id\u2026",
+    noModels: "No models discovered yet",
+    selected: "Selected ({count})",
+    clearAll: "Clear all",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "OpenCode can auto-detect vault-level Claude slash commands from .claude/commands/ and skills from .claude/skills/, .codex/skills/, and .agents/skills/. Manage those entries in the Claude or Codex settings tab. This setting only hides entries from the OpenCode dropdown."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands and Skills",
+      desc: "Hide specific OpenCode commands and skills from the dropdown. Enter names without the leading slash, one per line."
+    },
+    subagents: {
+      name: "Subagents",
+      desc: "Manage vault-level OpenCode subagents from .opencode/agent/ and legacy .opencode/agents/. New entries are saved as subagent-only files and appear in the @mention menu."
+    },
+    environment: {
+      name: "OpenCode environment",
+      desc: "OpenCode-owned runtime variables only. OPENCODE_ENABLE_EXA=1 is enabled by default. Shared PATH changes should go in the shared environment section."
+    },
+    subagentsExtra: {
+      empty: "No OpenCode subagents in vault. Click + to create one."
+    }
+  },
+  gemini: {
+    enable: {
+      name: "Enable Gemini provider",
+      desc: "Launch `gemini --acp` as a provider. Gemini models will appear in the model selector for new conversations."
+    },
+    cliPath: {
+      name: "Gemini CLI path ({host})",
+      desc: "Optional absolute path to the Gemini CLI for this computer. Leave empty to use `gemini` from PATH."
+    },
+    approvalMode: {
+      name: "Approval mode",
+      desc: "Permission mode used by Gemini CLI when starting ACP sessions. The toolbar Safe/YOLO/Plan toggle also syncs this value.",
+      default: "Default",
+      autoEdit: "Auto Edit",
+      plan: "Plan"
+    },
+    visibleModels: {
+      name: "Visible Models",
+      desc: "Choose which Gemini models appear in the chat selector. After Gemini starts once, iClaudian can seed this list from the ACP model catalog."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Gemini model ID per line. Leave empty to use all models discovered from Gemini CLI."
+    },
+    discovered: "Discovered {count} Gemini models from the ACP runtime.",
+    notDiscovered: "No Gemini models discovered yet. Start Gemini once to load its model catalog.",
+    commandsSkills: {
+      name: "Commands and Skills",
+      desc: "Gemini CLI exposes runtime slash commands such as memory, init, restore, and extension management. Gemini skills and MCP servers are managed by the Gemini CLI."
+    },
+    hiddenCommands: {
+      name: "Hidden Commands",
+      desc: "Hide specific Gemini runtime commands from the dropdown. Enter names without the leading slash, one per line."
+    },
+    mcp: {
+      desc: "Gemini manages MCP servers via its own CLI. Configure with gemini mcp and they will be available in iClaudian ACP sessions."
+    },
+    environment: {
+      name: "Gemini environment",
+      desc: "Gemini-owned runtime variables only. Use this for GEMINI_*, GOOGLE_* and Vertex AI settings. Shared PATH changes should go in the shared environment section."
+    }
+  },
+  copilot: {
+    enable: {
+      name: "Enable Copilot provider",
+      desc: "Launch GitHub Copilot CLI ACP as an iClaudian provider."
+    },
+    cliPath: {
+      name: "Copilot CLI path ({host})",
+      desc: "Absolute path to Copilot CLI on this computer. Leave empty to use copilot from PATH."
+    },
+    approvalMode: {
+      name: "Permission mode",
+      desc: "Maps to Copilot CLI safe defaults, --mode plan, or --allow-all.",
+      default: "Safe",
+      plan: "Plan"
+    },
+    autopilot: {
+      name: "Autopilot mode",
+      desc: "Start with --autopilot when not in Plan mode."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Copilot CLI model ID per line. Passed to copilot --model."
+    },
+    experimental: {
+      name: "Experimental features"
+    },
+    remote: {
+      name: "Remote control"
+    },
+    reasoningSummaries: {
+      name: "Reasoning summaries"
+    },
+    agent: {
+      name: "Custom agent"
+    },
+    environment: {
+      name: "Copilot environment",
+      desc: "Copilot-owned runtime variables only. Put shared PATH changes in shared environment settings."
+    }
   }
 };
 var ru_default = {
@@ -30545,11 +32412,14 @@ var chat9 = {
   }
 };
 var settings9 = {
-  title: "Claudian \u8BBE\u7F6E",
+  title: "iClaudian \u8BBE\u7F6E",
   tabs: {
     general: "\u901A\u7528",
     claude: "Claude",
-    codex: "Codex"
+    codex: "Codex",
+    opencode: "OpenCode",
+    gemini: "Gemini",
+    copilot: "Copilot"
   },
   display: "\u663E\u793A",
   conversations: "\u5BF9\u8BDD",
@@ -30559,7 +32429,7 @@ var settings9 = {
   models: "\u6A21\u578B",
   experimental: "\u5B9E\u9A8C\u6027\u529F\u80FD",
   userName: {
-    name: "Claudian \u5E94\u8BE5\u5982\u4F55\u79F0\u547C\u4F60\uFF1F",
+    name: "iClaudian \u5E94\u8BE5\u5982\u4F55\u79F0\u547C\u4F60\uFF1F",
     desc: "\u7528\u4E8E\u4E2A\u6027\u5316\u95EE\u5019\u7684\u7528\u6237\u540D\uFF08\u7559\u7A7A\u4F7F\u7528\u901A\u7528\u95EE\u5019\uFF09"
   },
   excludedTags: {
@@ -30629,7 +32499,7 @@ var settings9 = {
   },
   hiddenSlashCommands: {
     name: "\u9690\u85CF\u547D\u4EE4\u4E0E\u6280\u80FD",
-    desc: "\u4ECE\u4E0B\u62C9\u83DC\u5355\u4E2D\u9690\u85CF\u7279\u5B9A\u7684\u547D\u4EE4\u4E0E\u6280\u80FD\u3002\u9002\u7528\u4E8E\u9690\u85CF\u4E0E Claudian \u65E0\u5173\u7684 Claude Code \u6761\u76EE\u3002\u6BCF\u884C\u8F93\u5165\u4E00\u4E2A\u540D\u79F0\uFF0C\u65E0\u9700\u524D\u5BFC\u659C\u6760\u3002",
+    desc: "\u4ECE\u4E0B\u62C9\u83DC\u5355\u4E2D\u9690\u85CF\u7279\u5B9A\u7684\u547D\u4EE4\u4E0E\u6280\u80FD\u3002\u9002\u7528\u4E8E\u9690\u85CF\u4E0E iClaudian \u65E0\u5173\u7684 Claude Code \u6761\u76EE\u3002\u6BCF\u884C\u8F93\u5165\u4E00\u4E2A\u540D\u79F0\uFF0C\u65E0\u9700\u524D\u5BFC\u659C\u6760\u3002",
     placeholder: "commit\nbuild\ntest"
   },
   mcpServers: {
@@ -30684,12 +32554,12 @@ var settings9 = {
     desc: "\u52A0\u8F7D ~/.claude/settings.json\u3002\u542F\u7528\u540E\uFF0C\u7528\u6237\u7684 Claude Code \u6743\u9650\u89C4\u5219\u53EF\u80FD\u7ED5\u8FC7\u5B89\u5168\u6A21\u5F0F\u3002"
   },
   claudeSafeMode: {
-    name: "Safe mode",
-    desc: "Permission mode used when the Safe toggle is active."
+    name: "\u5B89\u5168\u6A21\u5F0F",
+    desc: "\u542F\u7528 Safe \u5F00\u5173\u65F6\u4F7F\u7528\u7684\u6743\u9650\u6A21\u5F0F\u3002"
   },
   codexSafeMode: {
-    name: "Safe mode",
-    desc: "Sandbox mode used when the Safe toggle is active."
+    name: "\u5B89\u5168\u6A21\u5F0F",
+    desc: "\u542F\u7528 Safe \u5F00\u5173\u65F6\u4F7F\u7528\u7684\u6C99\u76D2\u6A21\u5F0F\u3002"
   },
   environment: "\u73AF\u5883",
   customVariables: {
@@ -30729,8 +32599,8 @@ var settings9 = {
     desc: "\u5728\u6A21\u578B\u9009\u62E9\u5668\u4E2D\u663E\u793A Sonnet 1M\u3002Max\u3001Team \u548C Enterprise \u8BA1\u5212\u9700\u8981\u989D\u5916\u7528\u91CF\u3002API \u548C Pro \u7528\u6237\u9700\u8981\u989D\u5916\u7528\u91CF\u3002"
   },
   customModels: {
-    name: "Custom models",
-    desc: "Append additional Claude model IDs to the picker, one per line. Environment model overrides still replace the picker.",
+    name: "\u81EA\u5B9A\u4E49\u6A21\u578B",
+    desc: "\u5411\u6A21\u578B\u9009\u62E9\u5668\u8FFD\u52A0 Claude \u6A21\u578B ID\uFF0C\u6BCF\u884C\u4E00\u4E2A\u3002\u73AF\u5883\u53D8\u91CF\u6A21\u578B\u8986\u76D6\u4ECD\u4F1A\u4F18\u5148\u751F\u6548\u3002",
     placeholder: "claude-opus-4-6\nclaude-opus-4-6[1m]\nclaude-opus-4-5-20251101"
   },
   enableChrome: {
@@ -30766,7 +32636,7 @@ var settings9 = {
   cliPath: {
     name: "Claude CLI \u8DEF\u5F84",
     desc: "Claude Code CLI \u7684\u81EA\u5B9A\u4E49\u8DEF\u5F84\u3002\u7559\u7A7A\u4F7F\u7528\u81EA\u52A8\u68C0\u6D4B\u3002",
-    descWindows: "\u5BF9\u4E8E\u539F\u751F\u5B89\u88C5\u7A0B\u5E8F\uFF0C\u4F7F\u7528 claude.exe\u3002\u5BF9\u4E8E npm/pnpm/yarn \u6216\u5176\u4ED6\u5305\u7BA1\u7406\u5668\u5B89\u88C5\uFF0C\u4F7F\u7528 cli.js \u8DEF\u5F84\uFF08\u4E0D\u662F claude.cmd\uFF09\u3002",
+    descWindows: "\u5BF9\u4E8E\u539F\u751F\u5B89\u88C5\u7A0B\u5E8F\uFF0C\u4F7F\u7528 claude.exe\u3002\u5BF9\u4E8E npm/pnpm/yarn \u6216\u5176\u4ED6\u5305\u7BA1\u7406\u5668\u5B89\u88C5\uFF0C\u4F7F\u7528 cli-wrapper.cjs \u8DEF\u5F84\uFF08\u4E0D\u662F claude.cmd\uFF09\u3002",
     descUnix: '\u7C98\u8D34 "which claude" \u7684\u8F93\u51FA - \u9002\u7528\u4E8E\u539F\u751F\u5B89\u88C5\u548C npm/pnpm/yarn \u5B89\u88C5\u3002',
     validation: {
       notExist: "\u8DEF\u5F84\u4E0D\u5B58\u5728",
@@ -30776,6 +32646,172 @@ var settings9 = {
   language: {
     name: "\u8BED\u8A00",
     desc: "\u66F4\u6539\u63D2\u4EF6\u754C\u9762\u7684\u663E\u793A\u8BED\u8A00"
+  },
+  codex: {
+    enable: {
+      name: "\u542F\u7528 Codex \u63D0\u4F9B\u65B9",
+      desc: "\u542F\u7528\u540E\uFF0C\u65B0\u5BF9\u8BDD\u7684\u6A21\u578B\u9009\u62E9\u5668\u4F1A\u663E\u793A Codex \u6A21\u578B\u3002\u5DF2\u6709 Codex \u4F1A\u8BDD\u4F1A\u4FDD\u7559\u3002"
+    },
+    installationMethod: {
+      name: "\u5B89\u88C5\u65B9\u5F0F",
+      desc: "iClaudian \u5728 Windows \u4E0A\u542F\u52A8 Codex \u7684\u65B9\u5F0F\u3002\u539F\u751F Windows \u4F7F\u7528 Windows \u53EF\u6267\u884C\u6587\u4EF6\u8DEF\u5F84\uFF1BWSL \u4F1A\u5728\u9009\u5B9A\u53D1\u884C\u7248\u5185\u542F\u52A8 Linux CLI\u3002"
+    },
+    cliPath: {
+      desc: "\u672C\u673A Codex CLI \u7684\u81EA\u5B9A\u4E49\u8DEF\u5F84\u3002\u7559\u7A7A\u5219\u4ECE PATH \u81EA\u52A8\u68C0\u6D4B\u3002"
+    },
+    reasoningSummary: {
+      name: "\u63A8\u7406\u6458\u8981",
+      desc: "\u5728 thinking \u5757\u4E2D\u663E\u793A\u6A21\u578B\u63A8\u7406\u8FC7\u7A0B\u6458\u8981\u3002"
+    },
+    skills: {
+      name: "Codex \u6280\u80FD",
+      desc: "\u7BA1\u7406\u5B58\u50A8\u5728 .codex/skills/ \u6216 .agents/skills/ \u7684 Vault \u7EA7 Codex \u6280\u80FD\u3002\u8FD9\u91CC\u4E0D\u5305\u542B\u7528\u6237\u4E3B\u76EE\u5F55\u7EA7\u6280\u80FD\u3002"
+    },
+    hiddenSkills: {
+      name: "\u9690\u85CF\u6280\u80FD",
+      desc: "\u4ECE\u4E0B\u62C9\u83DC\u5355\u9690\u85CF\u6307\u5B9A Codex \u6280\u80FD\u3002\u6BCF\u884C\u8F93\u5165\u4E00\u4E2A\u6280\u80FD\u540D\uFF0C\u4E0D\u5E26\u524D\u5BFC $\u3002"
+    },
+    subagents: {
+      name: "Codex \u5B50\u4EE3\u7406",
+      desc: "\u7BA1\u7406\u5B58\u50A8\u5728 .codex/agents/ \u4E2D\u7684 Vault \u7EA7 Codex \u5B50\u4EE3\u7406\u3002\u6BCF\u4E2A TOML \u6587\u4EF6\u5B9A\u4E49\u4E00\u4E2A\u81EA\u5B9A\u4E49\u4EE3\u7406\u3002"
+    },
+    mcp: {
+      desc: "Codex \u901A\u8FC7\u81EA\u5DF1\u7684 CLI \u7BA1\u7406 MCP \u670D\u52A1\u5668\u3002\u4F7F\u7528 codex mcp \u914D\u7F6E\u540E\u5373\u53EF\u5728 iClaudian \u4E2D\u4F7F\u7528\u3002"
+    },
+    environment: {
+      name: "Codex \u73AF\u5883",
+      desc: "\u4EC5\u9650 Codex \u8FD0\u884C\u65F6\u53D8\u91CF\u3002\u7528\u4E8E OPENAI_* \u548C CODEX_* \u8BBE\u7F6E\u3002\u5982\u9700\u5E2E\u52A9\u81EA\u52A8\u68C0\u6D4B Codex\uFF0C\u8BF7\u628A\u5B89\u88C5\u76EE\u5F55\u52A0\u5165\u5171\u4EAB PATH\uFF0C\u800C\u4E0D\u662F\u5199\u5728\u6B64\u63D0\u4F9B\u65B9\u73AF\u5883\u4E2D\u3002"
+    },
+    customModels: {
+      name: "\u81EA\u5B9A\u4E49\u6A21\u578B",
+      desc: "\u5411\u6A21\u578B\u9009\u62E9\u5668\u8FFD\u52A0 Codex \u6A21\u578B ID\uFF0C\u6BCF\u884C\u4E00\u4E2A\u3002\u8BBE\u7F6E OPENAI_MODEL \u65F6\u4ECD\u4F1A\u4F18\u5148\u751F\u6548\u3002"
+    },
+    skillsExtra: {
+      empty: "Vault \u4E2D\u6682\u65E0 Codex \u6280\u80FD\u3002\u70B9\u51FB + \u521B\u5EFA\u4E00\u4E2A\u3002"
+    },
+    subagentsExtra: {
+      empty: "Vault \u4E2D\u6682\u65E0 Codex \u5B50\u4EE3\u7406\u3002\u70B9\u51FB + \u521B\u5EFA\u4E00\u4E2A\u3002"
+    }
+  },
+  opencode: {
+    enable: {
+      name: "\u542F\u7528 OpenCode",
+      desc: "\u4EE5\u63D0\u4F9B\u65B9\u5F62\u5F0F\u542F\u52A8 `opencode acp`\u3002"
+    },
+    cliPath: {
+      name: "CLI \u8DEF\u5F84\uFF08{host}\uFF09",
+      desc: "\u6B64\u7535\u8111\u4E0A\u7684 OpenCode CLI \u7EDD\u5BF9\u8DEF\u5F84\u3002\u7559\u7A7A\u5219\u4F7F\u7528 PATH \u4E2D\u7684 `opencode`\u3002"
+    },
+    visibleModels: {
+      name: "\u53EF\u89C1\u6A21\u578B",
+      desc: "\u9009\u62E9\u804A\u5929\u6A21\u578B\u5217\u8868\u4E2D\u663E\u793A\u54EA\u4E9B OpenCode \u6A21\u578B\u3002\u53EF\u6309\u63D0\u4F9B\u65B9\u6216\u7C7B\u578B\u7B5B\u9009\u641C\u7D22\u3002\u5F53\u524D\u4F1A\u8BDD\u6A21\u578B\u5373\u4F7F\u672A\u9009\u4E2D\u4E5F\u4F1A\u56FA\u5B9A\u663E\u793A\u3002"
+    },
+    browseModels: "\u6D4F\u89C8\u6A21\u578B",
+    filterPlaceholder: "\u6309\u6A21\u578B\u3001\u63D0\u4F9B\u65B9\u6216 ID \u7B5B\u9009\u2026",
+    noModels: "\u5C1A\u672A\u53D1\u73B0\u6A21\u578B",
+    selected: "\u5DF2\u9009\u62E9\uFF08{count}\uFF09",
+    clearAll: "\u6E05\u9664\u5168\u90E8",
+    commandsSkills: {
+      name: "\u547D\u4EE4\u4E0E\u6280\u80FD",
+      desc: "OpenCode \u53EF\u81EA\u52A8\u68C0\u6D4B Vault \u7EA7 Claude \u659C\u6760\u547D\u4EE4\uFF08.claude/commands/\uFF09\u4EE5\u53CA .claude/skills/\u3001.codex/skills/\u3001.agents/skills/ \u4E2D\u7684\u6280\u80FD\u3002\u8BF7\u5728 Claude \u6216 Codex \u8BBE\u7F6E\u9875\u7BA1\u7406\u8FD9\u4E9B\u6761\u76EE\uFF1B\u6B64\u5904\u53EA\u63A7\u5236\u5B83\u4EEC\u662F\u5426\u5728 OpenCode \u4E0B\u62C9\u83DC\u5355\u4E2D\u9690\u85CF\u3002"
+    },
+    hiddenCommands: {
+      name: "\u9690\u85CF\u547D\u4EE4\u4E0E\u6280\u80FD",
+      desc: "\u4ECE\u4E0B\u62C9\u83DC\u5355\u9690\u85CF\u6307\u5B9A OpenCode \u547D\u4EE4\u548C\u6280\u80FD\u3002\u6BCF\u884C\u8F93\u5165\u4E00\u4E2A\u540D\u79F0\uFF0C\u4E0D\u5E26\u524D\u5BFC\u659C\u6760\u3002"
+    },
+    subagents: {
+      name: "\u5B50\u4EE3\u7406",
+      desc: "\u7BA1\u7406 .opencode/agent/ \u548C\u65E7\u7248 .opencode/agents/ \u4E2D\u7684 Vault \u7EA7 OpenCode \u5B50\u4EE3\u7406\u3002\u65B0\u6761\u76EE\u4F1A\u4FDD\u5B58\u4E3A\u4EC5\u5B50\u4EE3\u7406\u6587\u4EF6\uFF0C\u5E76\u663E\u793A\u5728 @ \u63D0\u53CA\u83DC\u5355\u4E2D\u3002"
+    },
+    environment: {
+      name: "OpenCode \u73AF\u5883",
+      desc: "\u4EC5\u9650 OpenCode \u8FD0\u884C\u65F6\u53D8\u91CF\u3002\u9ED8\u8BA4\u542F\u7528 OPENCODE_ENABLE_EXA=1\u3002\u5171\u4EAB PATH \u53D8\u66F4\u5E94\u5199\u5165\u5171\u4EAB\u73AF\u5883\u8BBE\u7F6E\u3002"
+    },
+    subagentsExtra: {
+      empty: "Vault \u4E2D\u6682\u65E0 OpenCode \u5B50\u4EE3\u7406\u3002\u70B9\u51FB + \u521B\u5EFA\u4E00\u4E2A\u3002"
+    }
+  },
+  gemini: {
+    enable: {
+      name: "\u542F\u7528 Gemini \u63D0\u4F9B\u65B9",
+      desc: "\u4EE5\u63D0\u4F9B\u65B9\u5F62\u5F0F\u542F\u52A8 `gemini --acp`\u3002\u65B0\u5BF9\u8BDD\u7684\u6A21\u578B\u9009\u62E9\u5668\u4F1A\u663E\u793A Gemini \u6A21\u578B\u3002"
+    },
+    cliPath: {
+      name: "Gemini CLI \u8DEF\u5F84\uFF08{host}\uFF09",
+      desc: "\u6B64\u7535\u8111\u4E0A\u7684 Gemini CLI \u7EDD\u5BF9\u8DEF\u5F84\u3002\u7559\u7A7A\u5219\u4F7F\u7528 PATH \u4E2D\u7684 `gemini`\u3002"
+    },
+    approvalMode: {
+      name: "\u5BA1\u6279\u6A21\u5F0F",
+      desc: "Gemini CLI \u542F\u52A8 ACP \u4F1A\u8BDD\u65F6\u4F7F\u7528\u7684\u6743\u9650\u6A21\u5F0F\u3002\u5DE5\u5177\u680F Safe/YOLO/Plan \u5F00\u5173\u4E5F\u4F1A\u540C\u6B65\u6B64\u503C\u3002",
+      default: "\u9ED8\u8BA4",
+      autoEdit: "\u81EA\u52A8\u6279\u51C6\u7F16\u8F91",
+      plan: "\u8BA1\u5212\u6A21\u5F0F"
+    },
+    visibleModels: {
+      name: "\u53EF\u89C1\u6A21\u578B",
+      desc: "\u9009\u62E9\u804A\u5929\u6A21\u578B\u5217\u8868\u4E2D\u663E\u793A\u54EA\u4E9B Gemini \u6A21\u578B\u3002Gemini \u542F\u52A8\u4E00\u6B21\u540E\uFF0CiClaudian \u4F1A\u4ECE ACP \u6A21\u578B\u76EE\u5F55\u586B\u5145\u6B64\u5217\u8868\u3002"
+    },
+    customVisibleModels: {
+      name: "\u6A21\u578B ID",
+      desc: "\u6BCF\u884C\u4E00\u4E2A Gemini \u6A21\u578B ID\u3002\u7559\u7A7A\u5219\u4F7F\u7528 Gemini CLI \u53D1\u73B0\u7684\u5168\u90E8\u6A21\u578B\u3002"
+    },
+    discovered: "\u5DF2\u4ECE ACP \u8FD0\u884C\u65F6\u53D1\u73B0 {count} \u4E2A Gemini \u6A21\u578B\u3002",
+    notDiscovered: "\u5C1A\u672A\u53D1\u73B0 Gemini \u6A21\u578B\u3002\u542F\u52A8 Gemini \u4E00\u6B21\u5373\u53EF\u52A0\u8F7D\u6A21\u578B\u76EE\u5F55\u3002",
+    commandsSkills: {
+      name: "\u547D\u4EE4\u4E0E\u6280\u80FD",
+      desc: "Gemini CLI \u4F1A\u66B4\u9732 memory\u3001init\u3001restore\u3001\u6269\u5C55\u7BA1\u7406\u7B49\u8FD0\u884C\u65F6\u659C\u6760\u547D\u4EE4\u3002Gemini \u6280\u80FD\u548C MCP \u670D\u52A1\u5668\u7531 Gemini CLI \u81EA\u8EAB\u7BA1\u7406\u3002"
+    },
+    hiddenCommands: {
+      name: "\u9690\u85CF\u547D\u4EE4",
+      desc: "\u4ECE\u4E0B\u62C9\u83DC\u5355\u9690\u85CF\u6307\u5B9A Gemini \u8FD0\u884C\u65F6\u547D\u4EE4\u3002\u6BCF\u884C\u8F93\u5165\u4E00\u4E2A\u540D\u79F0\uFF0C\u4E0D\u5E26\u524D\u5BFC\u659C\u6760\u3002"
+    },
+    mcp: {
+      desc: "Gemini \u901A\u8FC7\u81EA\u5DF1\u7684 CLI \u7BA1\u7406 MCP \u670D\u52A1\u5668\u3002\u4F7F\u7528 gemini mcp \u914D\u7F6E\u540E\u5373\u53EF\u5728 iClaudian ACP \u4F1A\u8BDD\u4E2D\u4F7F\u7528\u3002"
+    },
+    environment: {
+      name: "Gemini \u73AF\u5883",
+      desc: "\u4EC5\u9650 Gemini \u8FD0\u884C\u65F6\u53D8\u91CF\u3002\u7528\u4E8E GEMINI_*\u3001GOOGLE_* \u548C Vertex AI \u8BBE\u7F6E\u3002\u5171\u4EAB PATH \u53D8\u66F4\u5E94\u5199\u5165\u5171\u4EAB\u73AF\u5883\u8BBE\u7F6E\u3002"
+    }
+  },
+  copilot: {
+    enable: {
+      name: "\u542F\u7528 Copilot \u63D0\u4F9B\u65B9",
+      desc: "\u4EE5 GitHub Copilot CLI ACP \u6A21\u5F0F\u4F5C\u4E3A iClaudian \u63D0\u4F9B\u65B9\u3002"
+    },
+    cliPath: {
+      name: "Copilot CLI \u8DEF\u5F84\uFF08{host}\uFF09",
+      desc: "\u6B64\u7535\u8111\u4E0A\u7684 Copilot CLI \u7EDD\u5BF9\u8DEF\u5F84\u3002\u7559\u7A7A\u5219\u4F7F\u7528 PATH \u4E2D\u7684 copilot\u3002"
+    },
+    approvalMode: {
+      name: "\u6743\u9650\u6A21\u5F0F",
+      desc: "\u6620\u5C04\u5230 Copilot CLI \u9ED8\u8BA4\u5B89\u5168\u6A21\u5F0F\u3001--mode plan \u6216 --allow-all\u3002",
+      default: "\u5B89\u5168",
+      plan: "\u8BA1\u5212\u6A21\u5F0F"
+    },
+    autopilot: {
+      name: "Autopilot \u6A21\u5F0F",
+      desc: "\u975E Plan \u6A21\u5F0F\u4E0B\u542F\u52A8\u65F6\u9644\u52A0 --autopilot\u3002"
+    },
+    customVisibleModels: {
+      name: "\u6A21\u578B ID",
+      desc: "\u6BCF\u884C\u4E00\u4E2A Copilot CLI \u6A21\u578B ID\uFF0C\u4F1A\u4F20\u7ED9 copilot --model\u3002"
+    },
+    experimental: {
+      name: "\u5B9E\u9A8C\u6027\u529F\u80FD"
+    },
+    remote: {
+      name: "\u8FDC\u7A0B\u63A7\u5236"
+    },
+    reasoningSummaries: {
+      name: "\u63A8\u7406\u6458\u8981"
+    },
+    agent: {
+      name: "\u81EA\u5B9A\u4E49 Agent"
+    },
+    environment: {
+      name: "Copilot \u73AF\u5883",
+      desc: "\u4EC5\u9650 Copilot \u8FD0\u884C\u65F6\u53D8\u91CF\u3002\u5171\u4EAB PATH \u53D8\u66F4\u5E94\u5199\u5165\u5171\u4EAB\u73AF\u5883\u8BBE\u7F6E\u3002"
+    }
   }
 };
 var zh_CN_default = {
@@ -30858,11 +32894,14 @@ var chat10 = {
   }
 };
 var settings10 = {
-  title: "Claudian \u8A2D\u5B9A",
+  title: "iClaudian \u8BBE\u7F6E",
   tabs: {
     general: "\u4E00\u822C",
     claude: "Claude",
-    codex: "Codex"
+    codex: "Codex",
+    opencode: "OpenCode",
+    gemini: "Gemini",
+    copilot: "Copilot"
   },
   display: "\u986F\u793A",
   conversations: "\u5C0D\u8A71",
@@ -30872,7 +32911,7 @@ var settings10 = {
   models: "\u6A21\u578B",
   experimental: "\u5BE6\u9A57\u6027\u529F\u80FD",
   userName: {
-    name: "Claudian \u61C9\u8A72\u5982\u4F55\u7A31\u547C\u60A8\uFF1F",
+    name: "iClaudian \u61C9\u8A72\u5982\u4F55\u7A31\u547C\u60A8\uFF1F",
     desc: "\u7528\u65BC\u500B\u4EBA\u5316\u554F\u5019\u7684\u4F7F\u7528\u8005\u540D\u7A31\uFF08\u7559\u7A7A\u4F7F\u7528\u901A\u7528\u554F\u5019\uFF09"
   },
   excludedTags: {
@@ -30997,12 +33036,12 @@ var settings10 = {
     desc: "\u8F09\u5165 ~/.claude/settings.json\u3002\u555F\u7528\u5F8C\uFF0C\u4F7F\u7528\u8005\u7684 Claude Code \u6B0A\u9650\u898F\u5247\u53EF\u80FD\u7E5E\u904E\u5B89\u5168\u6A21\u5F0F\u3002"
   },
   claudeSafeMode: {
-    name: "Safe mode",
-    desc: "Permission mode used when the Safe toggle is active."
+    name: "\u5B89\u5168\u6A21\u5F0F",
+    desc: "\u542F\u7528 Safe \u5F00\u5173\u65F6\u4F7F\u7528\u7684\u6743\u9650\u6A21\u5F0F\u3002"
   },
   codexSafeMode: {
-    name: "Safe mode",
-    desc: "Sandbox mode used when the Safe toggle is active."
+    name: "\u5B89\u5168\u6A21\u5F0F",
+    desc: "\u542F\u7528 Safe \u5F00\u5173\u65F6\u4F7F\u7528\u7684\u6C99\u76D2\u6A21\u5F0F\u3002"
   },
   environment: "\u74B0\u5883",
   customVariables: {
@@ -31042,8 +33081,8 @@ var settings10 = {
     desc: "\u5728\u6A21\u578B\u9078\u64C7\u5668\u4E2D\u986F\u793A Sonnet 1M\u3002Max\u3001Team \u548C Enterprise \u65B9\u6848\u9700\u8981\u984D\u5916\u7528\u91CF\u3002API \u548C Pro \u4F7F\u7528\u8005\u9700\u8981\u984D\u5916\u7528\u91CF\u3002"
   },
   customModels: {
-    name: "Custom models",
-    desc: "Append additional Claude model IDs to the picker, one per line. Environment model overrides still replace the picker.",
+    name: "\u81EA\u5B9A\u4E49\u6A21\u578B",
+    desc: "\u5411\u6A21\u578B\u9009\u62E9\u5668\u8FFD\u52A0 Claude \u6A21\u578B ID\uFF0C\u6BCF\u884C\u4E00\u4E2A\u3002\u73AF\u5883\u53D8\u91CF\u6A21\u578B\u8986\u76D6\u4ECD\u4F1A\u4F18\u5148\u751F\u6548\u3002",
     placeholder: "claude-opus-4-6\nclaude-opus-4-6[1m]\nclaude-opus-4-5-20251101"
   },
   enableChrome: {
@@ -31079,7 +33118,7 @@ var settings10 = {
   cliPath: {
     name: "Claude CLI \u8DEF\u5F91",
     desc: "Claude Code CLI \u7684\u81EA\u8A02\u8DEF\u5F91\u3002\u7559\u7A7A\u4F7F\u7528\u81EA\u52D5\u6AA2\u6E2C\u3002",
-    descWindows: "\u5C0D\u65BC\u539F\u751F\u5B89\u88DD\u7A0B\u5F0F\uFF0C\u4F7F\u7528 claude.exe\u3002\u5C0D\u65BC npm/pnpm/yarn \u6216\u5176\u4ED6\u5957\u4EF6\u7BA1\u7406\u5668\u5B89\u88DD\uFF0C\u4F7F\u7528 cli.js \u8DEF\u5F91\uFF08\u4E0D\u662F claude.cmd\uFF09\u3002",
+    descWindows: "\u5C0D\u65BC\u539F\u751F\u5B89\u88DD\u7A0B\u5F0F\uFF0C\u4F7F\u7528 claude.exe\u3002\u5C0D\u65BC npm/pnpm/yarn \u6216\u5176\u4ED6\u5957\u4EF6\u7BA1\u7406\u5668\u5B89\u88DD\uFF0C\u4F7F\u7528 cli-wrapper.cjs \u8DEF\u5F91\uFF08\u4E0D\u662F claude.cmd\uFF09\u3002",
     descUnix: '\u8CBC\u4E0A "which claude" \u7684\u8F38\u51FA - \u9069\u7528\u65BC\u539F\u751F\u5B89\u88DD\u548C npm/pnpm/yarn \u5B89\u88DD\u3002',
     validation: {
       notExist: "\u8DEF\u5F91\u4E0D\u5B58\u5728",
@@ -31089,6 +33128,172 @@ var settings10 = {
   language: {
     name: "\u8A9E\u8A00",
     desc: "\u66F4\u6539\u63D2\u4EF6\u4ECB\u9762\u7684\u986F\u793A\u8A9E\u8A00"
+  },
+  codex: {
+    enable: {
+      name: "\u542F\u7528 Codex \u63D0\u4F9B\u65B9",
+      desc: "\u542F\u7528\u540E\uFF0C\u65B0\u5BF9\u8BDD\u7684\u6A21\u578B\u9009\u62E9\u5668\u4F1A\u663E\u793A Codex \u6A21\u578B\u3002\u5DF2\u6709 Codex \u4F1A\u8BDD\u4F1A\u4FDD\u7559\u3002"
+    },
+    installationMethod: {
+      name: "\u5B89\u88C5\u65B9\u5F0F",
+      desc: "iClaudian \u5728 Windows \u4E0A\u542F\u52A8 Codex \u7684\u65B9\u5F0F\u3002\u539F\u751F Windows \u4F7F\u7528 Windows \u53EF\u6267\u884C\u6587\u4EF6\u8DEF\u5F84\uFF1BWSL \u4F1A\u5728\u9009\u5B9A\u53D1\u884C\u7248\u5185\u542F\u52A8 Linux CLI\u3002"
+    },
+    cliPath: {
+      desc: "\u672C\u673A Codex CLI \u7684\u81EA\u5B9A\u4E49\u8DEF\u5F84\u3002\u7559\u7A7A\u5219\u4ECE PATH \u81EA\u52A8\u68C0\u6D4B\u3002"
+    },
+    reasoningSummary: {
+      name: "\u63A8\u7406\u6458\u8981",
+      desc: "\u5728 thinking \u5757\u4E2D\u663E\u793A\u6A21\u578B\u63A8\u7406\u8FC7\u7A0B\u6458\u8981\u3002"
+    },
+    skills: {
+      name: "Codex \u6280\u80FD",
+      desc: "\u7BA1\u7406\u5B58\u50A8\u5728 .codex/skills/ \u6216 .agents/skills/ \u7684 Vault \u7EA7 Codex \u6280\u80FD\u3002\u8FD9\u91CC\u4E0D\u5305\u542B\u7528\u6237\u4E3B\u76EE\u5F55\u7EA7\u6280\u80FD\u3002"
+    },
+    hiddenSkills: {
+      name: "\u9690\u85CF\u6280\u80FD",
+      desc: "\u4ECE\u4E0B\u62C9\u83DC\u5355\u9690\u85CF\u6307\u5B9A Codex \u6280\u80FD\u3002\u6BCF\u884C\u8F93\u5165\u4E00\u4E2A\u6280\u80FD\u540D\uFF0C\u4E0D\u5E26\u524D\u5BFC $\u3002"
+    },
+    subagents: {
+      name: "Codex \u5B50\u4EE3\u7406",
+      desc: "\u7BA1\u7406\u5B58\u50A8\u5728 .codex/agents/ \u4E2D\u7684 Vault \u7EA7 Codex \u5B50\u4EE3\u7406\u3002\u6BCF\u4E2A TOML \u6587\u4EF6\u5B9A\u4E49\u4E00\u4E2A\u81EA\u5B9A\u4E49\u4EE3\u7406\u3002"
+    },
+    mcp: {
+      desc: "Codex \u901A\u8FC7\u81EA\u5DF1\u7684 CLI \u7BA1\u7406 MCP \u670D\u52A1\u5668\u3002\u4F7F\u7528 codex mcp \u914D\u7F6E\u540E\u5373\u53EF\u5728 iClaudian \u4E2D\u4F7F\u7528\u3002"
+    },
+    environment: {
+      name: "Codex \u73AF\u5883",
+      desc: "\u4EC5\u9650 Codex \u8FD0\u884C\u65F6\u53D8\u91CF\u3002\u7528\u4E8E OPENAI_* \u548C CODEX_* \u8BBE\u7F6E\u3002\u5982\u9700\u5E2E\u52A9\u81EA\u52A8\u68C0\u6D4B Codex\uFF0C\u8BF7\u628A\u5B89\u88C5\u76EE\u5F55\u52A0\u5165\u5171\u4EAB PATH\uFF0C\u800C\u4E0D\u662F\u5199\u5728\u6B64\u63D0\u4F9B\u65B9\u73AF\u5883\u4E2D\u3002"
+    },
+    customModels: {
+      name: "\u81EA\u5B9A\u4E49\u6A21\u578B",
+      desc: "\u5411\u6A21\u578B\u9009\u62E9\u5668\u8FFD\u52A0 Codex \u6A21\u578B ID\uFF0C\u6BCF\u884C\u4E00\u4E2A\u3002\u8BBE\u7F6E OPENAI_MODEL \u65F6\u4ECD\u4F1A\u4F18\u5148\u751F\u6548\u3002"
+    },
+    skillsExtra: {
+      empty: "Vault \u4E2D\u6682\u65E0 Codex \u6280\u80FD\u3002\u70B9\u51FB + \u521B\u5EFA\u4E00\u4E2A\u3002"
+    },
+    subagentsExtra: {
+      empty: "Vault \u4E2D\u6682\u65E0 Codex \u5B50\u4EE3\u7406\u3002\u70B9\u51FB + \u521B\u5EFA\u4E00\u4E2A\u3002"
+    }
+  },
+  opencode: {
+    enable: {
+      name: "\u542F\u7528 OpenCode",
+      desc: "\u4EE5\u63D0\u4F9B\u65B9\u5F62\u5F0F\u542F\u52A8 `opencode acp`\u3002"
+    },
+    cliPath: {
+      name: "CLI \u8DEF\u5F84\uFF08{host}\uFF09",
+      desc: "\u6B64\u7535\u8111\u4E0A\u7684 OpenCode CLI \u7EDD\u5BF9\u8DEF\u5F84\u3002\u7559\u7A7A\u5219\u4F7F\u7528 PATH \u4E2D\u7684 `opencode`\u3002"
+    },
+    visibleModels: {
+      name: "\u53EF\u89C1\u6A21\u578B",
+      desc: "\u9009\u62E9\u804A\u5929\u6A21\u578B\u5217\u8868\u4E2D\u663E\u793A\u54EA\u4E9B OpenCode \u6A21\u578B\u3002\u53EF\u6309\u63D0\u4F9B\u65B9\u6216\u7C7B\u578B\u7B5B\u9009\u641C\u7D22\u3002\u5F53\u524D\u4F1A\u8BDD\u6A21\u578B\u5373\u4F7F\u672A\u9009\u4E2D\u4E5F\u4F1A\u56FA\u5B9A\u663E\u793A\u3002"
+    },
+    browseModels: "\u6D4F\u89C8\u6A21\u578B",
+    filterPlaceholder: "\u6309\u6A21\u578B\u3001\u63D0\u4F9B\u65B9\u6216 ID \u7B5B\u9009\u2026",
+    noModels: "\u5C1A\u672A\u53D1\u73B0\u6A21\u578B",
+    selected: "\u5DF2\u9009\u62E9\uFF08{count}\uFF09",
+    clearAll: "\u6E05\u9664\u5168\u90E8",
+    commandsSkills: {
+      name: "\u547D\u4EE4\u4E0E\u6280\u80FD",
+      desc: "OpenCode \u53EF\u81EA\u52A8\u68C0\u6D4B Vault \u7EA7 Claude \u659C\u6760\u547D\u4EE4\uFF08.claude/commands/\uFF09\u4EE5\u53CA .claude/skills/\u3001.codex/skills/\u3001.agents/skills/ \u4E2D\u7684\u6280\u80FD\u3002\u8BF7\u5728 Claude \u6216 Codex \u8BBE\u7F6E\u9875\u7BA1\u7406\u8FD9\u4E9B\u6761\u76EE\uFF1B\u6B64\u5904\u53EA\u63A7\u5236\u5B83\u4EEC\u662F\u5426\u5728 OpenCode \u4E0B\u62C9\u83DC\u5355\u4E2D\u9690\u85CF\u3002"
+    },
+    hiddenCommands: {
+      name: "\u9690\u85CF\u547D\u4EE4\u4E0E\u6280\u80FD",
+      desc: "\u4ECE\u4E0B\u62C9\u83DC\u5355\u9690\u85CF\u6307\u5B9A OpenCode \u547D\u4EE4\u548C\u6280\u80FD\u3002\u6BCF\u884C\u8F93\u5165\u4E00\u4E2A\u540D\u79F0\uFF0C\u4E0D\u5E26\u524D\u5BFC\u659C\u6760\u3002"
+    },
+    subagents: {
+      name: "\u5B50\u4EE3\u7406",
+      desc: "\u7BA1\u7406 .opencode/agent/ \u548C\u65E7\u7248 .opencode/agents/ \u4E2D\u7684 Vault \u7EA7 OpenCode \u5B50\u4EE3\u7406\u3002\u65B0\u6761\u76EE\u4F1A\u4FDD\u5B58\u4E3A\u4EC5\u5B50\u4EE3\u7406\u6587\u4EF6\uFF0C\u5E76\u663E\u793A\u5728 @ \u63D0\u53CA\u83DC\u5355\u4E2D\u3002"
+    },
+    environment: {
+      name: "OpenCode \u73AF\u5883",
+      desc: "\u4EC5\u9650 OpenCode \u8FD0\u884C\u65F6\u53D8\u91CF\u3002\u9ED8\u8BA4\u542F\u7528 OPENCODE_ENABLE_EXA=1\u3002\u5171\u4EAB PATH \u53D8\u66F4\u5E94\u5199\u5165\u5171\u4EAB\u73AF\u5883\u8BBE\u7F6E\u3002"
+    },
+    subagentsExtra: {
+      empty: "Vault \u4E2D\u6682\u65E0 OpenCode \u5B50\u4EE3\u7406\u3002\u70B9\u51FB + \u521B\u5EFA\u4E00\u4E2A\u3002"
+    }
+  },
+  gemini: {
+    enable: {
+      name: "\u542F\u7528 Gemini \u63D0\u4F9B\u65B9",
+      desc: "\u4EE5\u63D0\u4F9B\u65B9\u5F62\u5F0F\u542F\u52A8 `gemini --acp`\u3002\u65B0\u5BF9\u8BDD\u7684\u6A21\u578B\u9009\u62E9\u5668\u4F1A\u663E\u793A Gemini \u6A21\u578B\u3002"
+    },
+    cliPath: {
+      name: "Gemini CLI \u8DEF\u5F84\uFF08{host}\uFF09",
+      desc: "\u6B64\u7535\u8111\u4E0A\u7684 Gemini CLI \u7EDD\u5BF9\u8DEF\u5F84\u3002\u7559\u7A7A\u5219\u4F7F\u7528 PATH \u4E2D\u7684 `gemini`\u3002"
+    },
+    approvalMode: {
+      name: "\u5BA1\u6279\u6A21\u5F0F",
+      desc: "Gemini CLI \u542F\u52A8 ACP \u4F1A\u8BDD\u65F6\u4F7F\u7528\u7684\u6743\u9650\u6A21\u5F0F\u3002\u5DE5\u5177\u680F Safe/YOLO/Plan \u5F00\u5173\u4E5F\u4F1A\u540C\u6B65\u6B64\u503C\u3002",
+      default: "\u9ED8\u8BA4",
+      autoEdit: "\u81EA\u52A8\u6279\u51C6\u7F16\u8F91",
+      plan: "\u8BA1\u5212\u6A21\u5F0F"
+    },
+    visibleModels: {
+      name: "\u53EF\u89C1\u6A21\u578B",
+      desc: "\u9009\u62E9\u804A\u5929\u6A21\u578B\u5217\u8868\u4E2D\u663E\u793A\u54EA\u4E9B Gemini \u6A21\u578B\u3002Gemini \u542F\u52A8\u4E00\u6B21\u540E\uFF0CiClaudian \u4F1A\u4ECE ACP \u6A21\u578B\u76EE\u5F55\u586B\u5145\u6B64\u5217\u8868\u3002"
+    },
+    customVisibleModels: {
+      name: "\u6A21\u578B ID",
+      desc: "\u6BCF\u884C\u4E00\u4E2A Gemini \u6A21\u578B ID\u3002\u7559\u7A7A\u5219\u4F7F\u7528 Gemini CLI \u53D1\u73B0\u7684\u5168\u90E8\u6A21\u578B\u3002"
+    },
+    discovered: "\u5DF2\u4ECE ACP \u8FD0\u884C\u65F6\u53D1\u73B0 {count} \u4E2A Gemini \u6A21\u578B\u3002",
+    notDiscovered: "\u5C1A\u672A\u53D1\u73B0 Gemini \u6A21\u578B\u3002\u542F\u52A8 Gemini \u4E00\u6B21\u5373\u53EF\u52A0\u8F7D\u6A21\u578B\u76EE\u5F55\u3002",
+    commandsSkills: {
+      name: "\u547D\u4EE4\u4E0E\u6280\u80FD",
+      desc: "Gemini CLI \u4F1A\u66B4\u9732 memory\u3001init\u3001restore\u3001\u6269\u5C55\u7BA1\u7406\u7B49\u8FD0\u884C\u65F6\u659C\u6760\u547D\u4EE4\u3002Gemini \u6280\u80FD\u548C MCP \u670D\u52A1\u5668\u7531 Gemini CLI \u81EA\u8EAB\u7BA1\u7406\u3002"
+    },
+    hiddenCommands: {
+      name: "\u9690\u85CF\u547D\u4EE4",
+      desc: "\u4ECE\u4E0B\u62C9\u83DC\u5355\u9690\u85CF\u6307\u5B9A Gemini \u8FD0\u884C\u65F6\u547D\u4EE4\u3002\u6BCF\u884C\u8F93\u5165\u4E00\u4E2A\u540D\u79F0\uFF0C\u4E0D\u5E26\u524D\u5BFC\u659C\u6760\u3002"
+    },
+    mcp: {
+      desc: "Gemini \u901A\u8FC7\u81EA\u5DF1\u7684 CLI \u7BA1\u7406 MCP \u670D\u52A1\u5668\u3002\u4F7F\u7528 gemini mcp \u914D\u7F6E\u540E\u5373\u53EF\u5728 iClaudian ACP \u4F1A\u8BDD\u4E2D\u4F7F\u7528\u3002"
+    },
+    environment: {
+      name: "Gemini \u73AF\u5883",
+      desc: "\u4EC5\u9650 Gemini \u8FD0\u884C\u65F6\u53D8\u91CF\u3002\u7528\u4E8E GEMINI_*\u3001GOOGLE_* \u548C Vertex AI \u8BBE\u7F6E\u3002\u5171\u4EAB PATH \u53D8\u66F4\u5E94\u5199\u5165\u5171\u4EAB\u73AF\u5883\u8BBE\u7F6E\u3002"
+    }
+  },
+  copilot: {
+    enable: {
+      name: "Enable Copilot provider",
+      desc: "Launch GitHub Copilot CLI ACP as an iClaudian provider."
+    },
+    cliPath: {
+      name: "Copilot CLI path ({host})",
+      desc: "Absolute path to Copilot CLI on this computer. Leave empty to use copilot from PATH."
+    },
+    approvalMode: {
+      name: "Permission mode",
+      desc: "Maps to Copilot CLI safe defaults, --mode plan, or --allow-all.",
+      default: "Safe",
+      plan: "Plan"
+    },
+    autopilot: {
+      name: "Autopilot mode",
+      desc: "Start with --autopilot when not in Plan mode."
+    },
+    customVisibleModels: {
+      name: "Model IDs",
+      desc: "One Copilot CLI model ID per line. Passed to copilot --model."
+    },
+    experimental: {
+      name: "Experimental features"
+    },
+    remote: {
+      name: "Remote control"
+    },
+    reasoningSummaries: {
+      name: "Reasoning summaries"
+    },
+    agent: {
+      name: "Custom agent"
+    },
+    environment: {
+      name: "Copilot environment",
+      desc: "Copilot-owned runtime variables only. Put shared PATH changes in shared environment settings."
+    }
   }
 };
 var zh_TW_default = {
@@ -31431,7 +33636,7 @@ var EnvSnippetManager = class {
     }
     await this.plugin.saveSettings();
     (_b2 = this.onContextLimitsChange) == null ? void 0 : _b2.call(this);
-    const view = (_c = this.plugin.app.workspace.getLeavesOfType("claudian-view")[0]) == null ? void 0 : _c.view;
+    const view = (_c = this.plugin.app.workspace.getLeavesOfType(VIEW_TYPE_CLAUDIAN)[0]) == null ? void 0 : _c.view;
     view == null ? void 0 : view.refreshModelSelector();
   }
   editSnippet(snippet) {
@@ -31958,8 +34163,8 @@ function getErrorMap() {
 
 // node_modules/zod/v3/helpers/parseUtil.js
 var makeIssue = (params) => {
-  const { data, path: path24, errorMaps, issueData } = params;
-  const fullPath = [...path24, ...issueData.path || []];
+  const { data, path: path27, errorMaps, issueData } = params;
+  const fullPath = [...path27, ...issueData.path || []];
   const fullIssue = {
     ...issueData,
     path: fullPath
@@ -32074,11 +34279,11 @@ var errorUtil;
 
 // node_modules/zod/v3/types.js
 var ParseInputLazyPath = class {
-  constructor(parent, value, path24, key) {
+  constructor(parent, value, path27, key) {
     this._cachedPath = [];
     this.parent = parent;
     this.data = value;
-    this._path = path24;
+    this._path = path27;
     this._key = key;
   }
   get path() {
@@ -36011,10 +38216,10 @@ function mergeDefs(...defs) {
 function cloneDef(schema) {
   return mergeDefs(schema._zod.def);
 }
-function getElementAtPath(obj, path24) {
-  if (!path24)
+function getElementAtPath(obj, path27) {
+  if (!path27)
     return obj;
-  return path24.reduce((acc, key) => acc == null ? void 0 : acc[key], obj);
+  return path27.reduce((acc, key) => acc == null ? void 0 : acc[key], obj);
 }
 function promiseAllObject(promisesObj) {
   const keys = Object.keys(promisesObj);
@@ -36399,12 +38604,12 @@ function aborted(x, startIndex = 0) {
   }
   return false;
 }
-function prefixIssues(path24, issues) {
+function prefixIssues(path27, issues) {
   return issues.map((iss) => {
     var _a4;
     var _a3;
     (_a4 = (_a3 = iss).path) != null ? _a4 : _a3.path = [];
-    iss.path.unshift(path24);
+    iss.path.unshift(path27);
     return iss;
   });
 }
@@ -36588,7 +38793,7 @@ function formatError(error48, mapper = (issue2) => issue2.message) {
 }
 function treeifyError(error48, mapper = (issue2) => issue2.message) {
   const result = { errors: [] };
-  const processError = (error49, path24 = []) => {
+  const processError = (error49, path27 = []) => {
     var _a4, _b3, _c, _d2;
     var _a3, _b2;
     for (const issue2 of error49.issues) {
@@ -36599,7 +38804,7 @@ function treeifyError(error48, mapper = (issue2) => issue2.message) {
       } else if (issue2.code === "invalid_element") {
         processError({ issues: issue2.issues }, issue2.path);
       } else {
-        const fullpath = [...path24, ...issue2.path];
+        const fullpath = [...path27, ...issue2.path];
         if (fullpath.length === 0) {
           result.errors.push(mapper(issue2));
           continue;
@@ -36631,8 +38836,8 @@ function treeifyError(error48, mapper = (issue2) => issue2.message) {
 }
 function toDotPath(_path) {
   const segs = [];
-  const path24 = _path.map((seg) => typeof seg === "object" ? seg.key : seg);
-  for (const seg of path24) {
+  const path27 = _path.map((seg) => typeof seg === "object" ? seg.key : seg);
+  for (const seg of path27) {
     if (typeof seg === "number")
       segs.push(`[${seg}]`);
     else if (typeof seg === "symbol")
@@ -45935,10 +48140,10 @@ function _mime(types, params) {
   });
 }
 // @__NO_SIDE_EFFECTS__
-function _overwrite(tx) {
+function _overwrite(tx2) {
   return new $ZodCheckOverwrite({
     check: "overwrite",
-    tx
+    tx: tx2
   });
 }
 // @__NO_SIDE_EFFECTS__
@@ -47856,7 +50061,7 @@ var ZodType2 = /* @__PURE__ */ $constructor("ZodType", (inst, def) => {
   inst.array = () => array(inst);
   inst.or = (arg) => union([inst, arg]);
   inst.and = (arg) => intersection(inst, arg);
-  inst.transform = (tx) => pipe(inst, transform(tx));
+  inst.transform = (tx2) => pipe(inst, transform(tx2));
   inst.default = (def2) => _default2(inst, def2);
   inst.prefault = (def2) => prefault(inst, def2);
   inst.catch = (params) => _catch2(inst, params);
@@ -51003,7 +53208,7 @@ var Protocol = class {
           return;
         }
         const pollInterval = (_c = (_b2 = task2.pollInterval) != null ? _b2 : (_a3 = this._options) == null ? void 0 : _a3.defaultTaskPollInterval) != null ? _c : 1e3;
-        await new Promise((resolve8) => setTimeout(resolve8, pollInterval));
+        await new Promise((resolve11) => setTimeout(resolve11, pollInterval));
         (_d2 = options == null ? void 0 : options.signal) == null ? void 0 : _d2.throwIfAborted();
       }
     } catch (error48) {
@@ -51020,7 +53225,7 @@ var Protocol = class {
    */
   request(request, resultSchema, options) {
     const { relatedRequestId, resumptionToken, onresumptiontoken, task, relatedTask } = options != null ? options : {};
-    return new Promise((resolve8, reject) => {
+    return new Promise((resolve11, reject) => {
       var _a3, _b2, _c, _d2, _e, _f, _g;
       const earlyReject = (error48) => {
         reject(error48);
@@ -51101,7 +53306,7 @@ var Protocol = class {
           if (!parseResult.success) {
             reject(parseResult.error);
           } else {
-            resolve8(parseResult.data);
+            resolve11(parseResult.data);
           }
         } catch (error48) {
           reject(error48);
@@ -51367,12 +53572,12 @@ var Protocol = class {
       }
     } catch (e2) {
     }
-    return new Promise((resolve8, reject) => {
+    return new Promise((resolve11, reject) => {
       if (signal.aborted) {
         reject(new McpError(ErrorCode.InvalidRequest, "Request cancelled"));
         return;
       }
-      const timeoutId = setTimeout(resolve8, interval);
+      const timeoutId = setTimeout(resolve11, interval);
       signal.addEventListener("abort", () => {
         clearTimeout(timeoutId);
         reject(new McpError(ErrorCode.InvalidRequest, "Request cancelled"));
@@ -53593,7 +55798,7 @@ var SSEClientTransport = class {
   _startOrAuth() {
     var _a3, _b2, _c;
     const fetchImpl = (_c = (_b2 = (_a3 = this == null ? void 0 : this._eventSourceInit) == null ? void 0 : _a3.fetch) != null ? _b2 : this._fetch) != null ? _c : fetch;
-    return new Promise((resolve8, reject) => {
+    return new Promise((resolve11, reject) => {
       this._eventSource = new EventSource(this._url.href, {
         ...this._eventSourceInit,
         fetch: async (url2, init) => {
@@ -53615,7 +55820,7 @@ var SSEClientTransport = class {
       this._eventSource.onerror = (event) => {
         var _a4;
         if (event.code === 401 && this._authProvider) {
-          this._authThenStart().then(resolve8, reject);
+          this._authThenStart().then(resolve11, reject);
           return;
         }
         const error48 = new SseError(event.code, event.message, event);
@@ -53638,7 +55843,7 @@ var SSEClientTransport = class {
           void this.close();
           return;
         }
-        resolve8();
+        resolve11();
       });
       this._eventSource.onmessage = (event) => {
         var _a4, _b3;
@@ -53811,7 +56016,7 @@ var StdioClientTransport = class {
     if (this._process) {
       throw new Error("StdioClientTransport already started! If using Client class, note that connect() calls start() automatically.");
     }
-    return new Promise((resolve8, reject) => {
+    return new Promise((resolve11, reject) => {
       var _a3, _b2, _c, _d2, _e;
       this._process = (0, import_cross_spawn.default)(this._serverParams.command, (_a3 = this._serverParams.args) != null ? _a3 : [], {
         // merge default env with server env because mcp server needs some env vars
@@ -53830,7 +56035,7 @@ var StdioClientTransport = class {
         (_a4 = this.onerror) == null ? void 0 : _a4.call(this, error48);
       });
       this._process.on("spawn", () => {
-        resolve8();
+        resolve11();
       });
       this._process.on("close", (_code) => {
         var _a4;
@@ -53896,17 +56101,17 @@ var StdioClientTransport = class {
     if (this._process) {
       const processToClose = this._process;
       this._process = void 0;
-      const closePromise = new Promise((resolve8) => {
+      const closePromise = new Promise((resolve11) => {
         processToClose.once("close", () => {
-          resolve8();
+          resolve11();
         });
       });
       try {
         (_a3 = processToClose.stdin) == null ? void 0 : _a3.end();
       } catch (e2) {
       }
-      await Promise.race([closePromise, new Promise((resolve8) => {
-        const closeTimeout = setTimeout(resolve8, 2e3);
+      await Promise.race([closePromise, new Promise((resolve11) => {
+        const closeTimeout = setTimeout(resolve11, 2e3);
         closeTimeout.unref?.();
       })]);
       if (processToClose.exitCode === null) {
@@ -53914,8 +56119,8 @@ var StdioClientTransport = class {
           processToClose.kill("SIGTERM");
         } catch (e2) {
         }
-        await Promise.race([closePromise, new Promise((resolve8) => {
-        const closeTimeout = setTimeout(resolve8, 2e3);
+        await Promise.race([closePromise, new Promise((resolve11) => {
+        const closeTimeout = setTimeout(resolve11, 2e3);
         closeTimeout.unref?.();
       })]);
       }
@@ -53929,16 +56134,16 @@ var StdioClientTransport = class {
     this._readBuffer.clear();
   }
   send(message) {
-    return new Promise((resolve8) => {
+    return new Promise((resolve11) => {
       var _a3;
       if (!((_a3 = this._process) == null ? void 0 : _a3.stdin)) {
         throw new Error("Not connected");
       }
       const json2 = serializeMessage(message);
       if (this._process.stdin.write(json2)) {
-        resolve8();
+        resolve11();
       } else {
-        this._process.stdin.once("drain", resolve8);
+        this._process.stdin.once("drain", resolve11);
       }
     });
   }
@@ -54393,7 +56598,7 @@ function createNodeFetch() {
     const signal = (_b2 = init == null ? void 0 : init.signal) != null ? _b2 : input instanceof Request ? input.signal : void 0;
     const body = await getRequestBody((_c = init == null ? void 0 : init.body) != null ? _c : input instanceof Request ? input.body : void 0);
     const transport = requestUrl.protocol === "https:" ? https : http;
-    return new Promise((resolve8, reject) => {
+    return new Promise((resolve11, reject) => {
       let settled = false;
       const fail = (error48) => {
         if (settled) return;
@@ -54420,7 +56625,7 @@ function createNodeFetch() {
           if (settled) return;
           settled = true;
           signal == null ? void 0 : signal.removeEventListener("abort", onAbort);
-          resolve8(createFetchResponse(res));
+          resolve11(createFetchResponse(res));
         }
       );
       req.on("error", (error48) => fail(error48));
@@ -55733,21 +57938,21 @@ var import_obsidian10 = require("obsidian");
 // src/shared/modals/ConfirmModal.ts
 var import_obsidian9 = require("obsidian");
 function confirmDelete(app, message) {
-  return new Promise((resolve8) => {
-    new ConfirmModal(app, message, resolve8).open();
+  return new Promise((resolve11) => {
+    new ConfirmModal(app, message, resolve11).open();
   });
 }
 function confirm2(app, message, confirmText) {
-  return new Promise((resolve8) => {
-    new ConfirmModal(app, message, resolve8, confirmText).open();
+  return new Promise((resolve11) => {
+    new ConfirmModal(app, message, resolve11, confirmText).open();
   });
 }
 var ConfirmModal = class extends import_obsidian9.Modal {
-  constructor(app, message, resolve8, confirmText) {
+  constructor(app, message, resolve11, confirmText) {
     super(app);
     this.resolved = false;
     this.message = message;
-    this.resolve = resolve8;
+    this.resolve = resolve11;
     this.confirmText = confirmText != null ? confirmText : t("common.delete");
   }
   onOpen() {
@@ -56110,10 +58315,10 @@ function createProviderIconSvg(icon, options = {}) {
     svg.innerHTML = icon.markup.trim();
     return svg;
   }
-  const path24 = document.createElementNS(NS, "path");
-  path24.setAttribute("d", icon.path);
-  path24.setAttribute("fill", "currentColor");
-  svg.appendChild(path24);
+  const path27 = document.createElementNS(NS, "path");
+  path27.setAttribute("d", icon.path);
+  path27.setAttribute("fill", "currentColor");
+  svg.appendChild(path27);
   return svg;
 }
 
@@ -56764,7 +58969,7 @@ var claudeSettingsTabRenderer = {
       return true;
     };
     cliPathSetting.addText((text) => {
-      const placeholder = process.platform === "win32" ? "D:\\nodejs\\node_global\\node_modules\\@anthropic-ai\\claude-code\\cli.js" : "/usr/local/lib/node_modules/@anthropic-ai/claude-code/cli.js";
+      const placeholder = process.platform === "win32" ? "D:\\nodejs\\node_global\\node_modules\\@anthropic-ai\\claude-code\\cli-wrapper.cjs" : "/usr/local/lib/node_modules/@anthropic-ai/claude-code/cli-wrapper.cjs";
       text.setPlaceholder(placeholder).setValue(currentValue).onChange(async (value) => {
         await persistCliPath(value);
       });
@@ -57443,7 +59648,7 @@ async function runColdStartQuery(config2, prompt) {
     },
     permissionMode: "bypassPermissions",
     allowDangerouslySkipPermissions: true,
-    settingSources: claudeSettings.loadUserSettings ? ["user", "project"] : ["project"],
+    settingSources: resolveClaudeSettingSources(claudeSettings.loadUserSettings),
     spawnClaudeCodeProcess: createCustomSpawnFunction(enhancedPath)
   };
   if (config2.tools !== void 0) {
@@ -60880,9 +63085,9 @@ var MessageChannel = class {
     if (!this.turnActive) {
       if (this.resolveNext) {
         this.turnActive = true;
-        const resolve8 = this.resolveNext;
+        const resolve11 = this.resolveNext;
         this.resolveNext = null;
-        resolve8({ value: message, done: false });
+        resolve11({ value: message, done: false });
       } else {
         if (this.queue.length >= MESSAGE_CHANNEL_CONFIG.MAX_QUEUED_MESSAGES) {
           this.onWarning(`[MessageChannel] Queue full (${MESSAGE_CHANNEL_CONFIG.MAX_QUEUED_MESSAGES}), dropping newest`);
@@ -60929,18 +63134,18 @@ var MessageChannel = class {
     if (this.queue.length > 0 && this.resolveNext) {
       const pending = this.queue.shift();
       this.turnActive = true;
-      const resolve8 = this.resolveNext;
+      const resolve11 = this.resolveNext;
       this.resolveNext = null;
-      resolve8({ value: this.pendingToMessage(pending), done: false });
+      resolve11({ value: this.pendingToMessage(pending), done: false });
     }
   }
   close() {
     this.closed = true;
     this.queue = [];
     if (this.resolveNext) {
-      const resolve8 = this.resolveNext;
+      const resolve11 = this.resolveNext;
       this.resolveNext = null;
-      resolve8({ value: void 0, done: true });
+      resolve11({ value: void 0, done: true });
     }
   }
   reset() {
@@ -60963,8 +63168,8 @@ var MessageChannel = class {
           this.turnActive = true;
           return Promise.resolve({ value: this.pendingToMessage(pending), done: false });
         }
-        return new Promise((resolve8) => {
-          this.resolveNext = resolve8;
+        return new Promise((resolve11) => {
+          this.resolveNext = resolve11;
         });
       }
     };
@@ -61212,6 +63417,7 @@ var QueryOptionsBuilder = class _QueryOptionsBuilder {
     );
     const disallowedToolsKey = ctx.mcpManager.getAllDisallowedMcpTools().join("|");
     const pluginsKey = ctx.pluginManager.getPluginsKey();
+    const settingSources = resolveClaudeSettingSources(claudeSettings.loadUserSettings);
     return {
       model: ctx.settings.model,
       thinkingTokens: resolveThinkingTokens(ctx.settings.model, ctx.settings.thinkingBudget),
@@ -61224,7 +63430,7 @@ var QueryOptionsBuilder = class _QueryOptionsBuilder {
       // Dynamic via setMcpServers, not tracked for restart
       pluginsKey,
       externalContextPaths: externalContextPaths || [],
-      settingSources: claudeSettings.loadUserSettings ? "user,project" : "project",
+      settingSources: settingSources.join(","),
       claudeCliPath: ctx.cliPath,
       enableChrome: claudeSettings.enableChrome,
       enableAutoMode: claudeSettings.safeMode === "auto"
@@ -61341,7 +63547,7 @@ var QueryOptionsBuilder = class _QueryOptionsBuilder {
       model,
       abortController,
       pathToClaudeCodeExecutable: ctx.cliPath,
-      settingSources: claudeSettings.loadUserSettings ? ["user", "project"] : ["project"],
+      settingSources: resolveClaudeSettingSources(claudeSettings.loadUserSettings),
       env: {
         ...process.env,
         ...ctx.customEnv,
@@ -62574,8 +64780,8 @@ var ClaudianService = class {
         if (state.chunks.length > 0) {
           yield state.chunks.shift();
         } else {
-          const chunk = await new Promise((resolve8) => {
-            state.resolveChunk = resolve8;
+          const chunk = await new Promise((resolve11) => {
+            state.resolveChunk = resolve11;
           });
           if (chunk) {
             yield chunk;
@@ -63188,10 +65394,10 @@ var CodexAppServerProcess = class {
   }
   async shutdown() {
     if (!this.proc || !this.alive) return;
-    return new Promise((resolve8) => {
+    return new Promise((resolve11) => {
       const onExit = () => {
         clearTimeout(killTimer);
-        resolve8();
+        resolve11();
       };
       this.proc.once("exit", onExit);
       this.proc.kill("SIGTERM");
@@ -63518,13 +65724,13 @@ var CodexRpcTransport = class {
   request(method, params, timeoutMs = DEFAULT_TIMEOUT_MS) {
     const id = this.nextId++;
     const msg = { jsonrpc: "2.0", id, method, params };
-    return new Promise((resolve8, reject) => {
+    return new Promise((resolve11, reject) => {
       const timer = timeoutMs > 0 ? setTimeout(() => {
         this.pending.delete(id);
         reject(new Error(`Request timeout: ${method} (${timeoutMs}ms)`));
       }, timeoutMs) : null;
       this.pending.set(id, {
-        resolve: resolve8,
+        resolve: resolve11,
         reject,
         timer
       });
@@ -65397,11 +67603,11 @@ var CodexSkillSettings = class {
       this.entries = [];
     }
     const headerEl = this.containerEl.createDiv({ cls: "claudian-sp-header" });
-    headerEl.createSpan({ text: "Codex Skills", cls: "claudian-sp-label" });
+    headerEl.createSpan({ text: t("settings.codex.skills.name"), cls: "claudian-sp-label" });
     const actionsEl = headerEl.createDiv({ cls: "claudian-sp-header-actions" });
     const refreshBtn = actionsEl.createEl("button", {
       cls: "claudian-settings-action-btn",
-      attr: { "aria-label": "Refresh" }
+      attr: { "aria-label": t("common.refresh") }
     });
     (0, import_obsidian15.setIcon)(refreshBtn, "refresh-cw");
     refreshBtn.addEventListener("click", () => {
@@ -65409,13 +67615,13 @@ var CodexSkillSettings = class {
     });
     const addBtn = actionsEl.createEl("button", {
       cls: "claudian-settings-action-btn",
-      attr: { "aria-label": "Add" }
+      attr: { "aria-label": t("common.add") }
     });
     (0, import_obsidian15.setIcon)(addBtn, "plus");
     addBtn.addEventListener("click", () => this.openModal(null));
     if (this.entries.length === 0) {
       const emptyEl = this.containerEl.createDiv({ cls: "claudian-sp-empty-state" });
-      emptyEl.setText("No Codex skills in vault. Click + to create one.");
+      emptyEl.setText(t("settings.codex.skillsExtra.empty"));
       return;
     }
     const listEl = this.containerEl.createDiv({ cls: "claudian-sp-list" });
@@ -65691,11 +67897,11 @@ var CodexSubagentSettings = class {
       this.agents = [];
     }
     const headerEl = this.containerEl.createDiv({ cls: "claudian-sp-header" });
-    headerEl.createSpan({ text: "Codex Subagents", cls: "claudian-sp-label" });
+    headerEl.createSpan({ text: t("settings.codex.subagents.name"), cls: "claudian-sp-label" });
     const actionsEl = headerEl.createDiv({ cls: "claudian-sp-header-actions" });
     const refreshBtn = actionsEl.createEl("button", {
       cls: "claudian-settings-action-btn",
-      attr: { "aria-label": "Refresh" }
+      attr: { "aria-label": t("common.refresh") }
     });
     (0, import_obsidian16.setIcon)(refreshBtn, "refresh-cw");
     refreshBtn.addEventListener("click", () => {
@@ -65703,13 +67909,13 @@ var CodexSubagentSettings = class {
     });
     const addBtn = actionsEl.createEl("button", {
       cls: "claudian-settings-action-btn",
-      attr: { "aria-label": "Add" }
+      attr: { "aria-label": t("common.add") }
     });
     (0, import_obsidian16.setIcon)(addBtn, "plus");
     addBtn.addEventListener("click", () => this.openModal(null));
     if (this.agents.length === 0) {
       const emptyEl = this.containerEl.createDiv({ cls: "claudian-sp-empty-state" });
-      emptyEl.setText("No Codex subagents in vault. Click + to create one.");
+      emptyEl.setText(t("settings.codex.subagentsExtra.empty"));
       return;
     }
     const listEl = this.containerEl.createDiv({ cls: "claudian-sp-list" });
@@ -65781,6 +67987,10 @@ var CodexSubagentSettings = class {
 };
 
 // src/providers/codex/ui/CodexSettingsTab.ts
+function tx(key, fallback) {
+  const value = t(key);
+  return value === key ? fallback : value;
+}
 var codexSettingsTabRenderer = {
   render(container, context) {
     const codexWorkspace = getCodexWorkspaceServices();
@@ -65802,7 +68012,7 @@ var codexSettingsTabRenderer = {
       settingsBag.model = nextModel;
     };
     new import_obsidian17.Setting(container).setName(t("settings.setup")).setHeading();
-    new import_obsidian17.Setting(container).setName("Enable Codex provider").setDesc("When enabled, Codex models appear in the model selector for new conversations. Existing Codex sessions are preserved.").addToggle(
+    new import_obsidian17.Setting(container).setName(tx("settings.codex.enable.name", "Enable Codex provider")).setDesc(tx("settings.codex.enable.desc", "When enabled, Codex models appear in the model selector for new conversations. Existing Codex sessions are preserved.")).addToggle(
       (toggle) => toggle.setValue(codexSettings.enabled).onChange(async (value) => {
         updateCodexProviderSettings(settingsBag, { enabled: value });
         await context.plugin.saveSettings();
@@ -65810,7 +68020,7 @@ var codexSettingsTabRenderer = {
       })
     );
     if (isWindowsHost) {
-      new import_obsidian17.Setting(container).setName("Installation method").setDesc("How Claudian should launch Codex on Windows. Native Windows uses a Windows executable path. WSL launches the Linux CLI inside a selected distro.").addDropdown((dropdown) => {
+      new import_obsidian17.Setting(container).setName(tx("settings.codex.installationMethod.name", "Installation method")).setDesc(tx("settings.codex.installationMethod.desc", "How iClaudian should launch Codex on Windows. Native Windows uses a Windows executable path. WSL launches the Linux CLI inside a selected distro.")).addDropdown((dropdown) => {
         dropdown.addOption("native-windows", "Native Windows").addOption("wsl", "WSL").setValue(installationMethod).onChange(async (value) => {
           installationMethod = value === "wsl" ? "wsl" : "native-windows";
           updateCodexProviderSettings(settingsBag, { installationMethod });
@@ -65822,7 +68032,7 @@ var codexSettingsTabRenderer = {
     const getCliPathCopy = () => {
       if (!isWindowsHost) {
         return {
-          desc: "Custom path to the local Codex CLI. Leave empty for auto-detection from PATH.",
+          desc: tx("settings.codex.cliPath.desc", "Custom path to the local Codex CLI. Leave empty for auto-detection from PATH."),
           placeholder: "/usr/local/bin/codex"
         };
       }
@@ -65960,7 +68170,7 @@ var codexSettingsTabRenderer = {
       { value: "detailed", label: "Detailed" },
       { value: "none", label: "Off" }
     ];
-    new import_obsidian17.Setting(container).setName("Custom models").setDesc("Append additional Codex model IDs to the picker, one per line. OPENAI_MODEL still takes precedence when set.").addTextArea((text) => {
+    new import_obsidian17.Setting(container).setName(tx("settings.codex.customModels.name", "Custom models")).setDesc(tx("settings.codex.customModels.desc", "Append additional Codex model IDs to the picker, one per line. OPENAI_MODEL still takes precedence when set.")).addTextArea((text) => {
       let pendingCustomModels = codexSettings.customModels;
       let savedCustomModels = codexSettings.customModels;
       const reconcileInactiveCodexProjection = (previousCustomModels) => {
@@ -66016,7 +68226,7 @@ var codexSettingsTabRenderer = {
         void commitCustomModels();
       });
     });
-    new import_obsidian17.Setting(container).setName("Reasoning summary").setDesc("Show a summary of the model's reasoning process in the thinking block.").addDropdown((dropdown) => {
+    new import_obsidian17.Setting(container).setName(tx("settings.codex.reasoningSummary.name", "Reasoning summary")).setDesc(tx("settings.codex.reasoningSummary.desc", "Show a summary of the model's reasoning process in the thinking block.")).addDropdown((dropdown) => {
       for (const opt of SUMMARY_OPTIONS) {
         dropdown.addOption(opt.value, opt.label);
       }
@@ -66031,25 +68241,25 @@ var codexSettingsTabRenderer = {
     });
     const codexCatalog = codexWorkspace.commandCatalog;
     if (codexCatalog) {
-      new import_obsidian17.Setting(container).setName("Codex Skills").setHeading();
+      new import_obsidian17.Setting(container).setName(tx("settings.codex.skills.name", "Codex Skills")).setHeading();
       const skillsDesc = container.createDiv({ cls: "claudian-sp-settings-desc" });
       skillsDesc.createEl("p", {
         cls: "setting-item-description",
-        text: "Manage vault-level Codex skills stored in .codex/skills/ or .agents/skills/. Home-level skills are excluded here."
+        text: tx("settings.codex.skills.desc", "Manage vault-level Codex skills stored in .codex/skills/ or .agents/skills/. Home-level skills are excluded here.")
       });
       const skillsContainer = container.createDiv({ cls: "claudian-slash-commands-container" });
       new CodexSkillSettings(skillsContainer, codexCatalog, context.plugin.app);
     }
     context.renderHiddenProviderCommandSetting(container, "codex", {
-      name: "Hidden Skills",
-      desc: "Hide specific Codex skills from the dropdown. Enter skill names without the leading $, one per line.",
+      name: tx("settings.codex.hiddenSkills.name", "Hidden Skills"),
+      desc: tx("settings.codex.hiddenSkills.desc", "Hide specific Codex skills from the dropdown. Enter skill names without the leading $, one per line."),
       placeholder: "analyze\nexplain\nfix"
     });
-    new import_obsidian17.Setting(container).setName("Codex Subagents").setHeading();
+    new import_obsidian17.Setting(container).setName(tx("settings.codex.subagents.name", "Codex Subagents")).setHeading();
     const subagentDesc = container.createDiv({ cls: "claudian-sp-settings-desc" });
     subagentDesc.createEl("p", {
       cls: "setting-item-description",
-      text: "Manage vault-level Codex subagents stored in .codex/agents/. Each TOML file defines one custom agent."
+      text: tx("settings.codex.subagents.desc", "Manage vault-level Codex subagents stored in .codex/agents/. Each TOML file defines one custom agent.")
     });
     const subagentContainer = container.createDiv({ cls: "claudian-slash-commands-container" });
     new CodexSubagentSettings(subagentContainer, codexWorkspace.subagentStorage, context.plugin.app, () => {
@@ -66059,9 +68269,7 @@ var codexSettingsTabRenderer = {
     new import_obsidian17.Setting(container).setName(t("settings.mcpServers.name")).setHeading();
     const mcpNotice = container.createDiv({ cls: "claudian-mcp-settings-desc" });
     const mcpDesc = mcpNotice.createEl("p", { cls: "setting-item-description" });
-    mcpDesc.appendText("Codex manages MCP servers via its own CLI. Configure with ");
-    mcpDesc.createEl("code", { text: "codex mcp" });
-    mcpDesc.appendText(" and they will be available in Claudian. ");
+    mcpDesc.appendText(tx("settings.codex.mcp.desc", "Codex manages MCP servers via its own CLI. Configure with codex mcp and they will be available in iClaudian.") + " ");
     mcpDesc.createEl("a", {
       text: "Learn more",
       href: "https://developers.openai.com/codex/mcp"
@@ -66071,8 +68279,8 @@ var codexSettingsTabRenderer = {
       plugin: context.plugin,
       scope: "provider:codex",
       heading: t("settings.environment"),
-      name: "Codex environment",
-      desc: "Codex-owned runtime variables only. Use this for OPENAI_* and CODEX_* settings. If Codex auto-detection needs help, add its install directory to shared PATH instead of this provider section.",
+      name: tx("settings.codex.environment.name", "Codex environment"),
+      desc: tx("settings.codex.environment.desc", "Codex-owned runtime variables only. Use this for OPENAI_* and CODEX_* settings. If Codex auto-detection needs help, add its install directory to shared PATH instead of this provider section."),
       placeholder: `OPENAI_API_KEY=your-key
 OPENAI_BASE_URL=https://api.openai.com/v1
 OPENAI_MODEL=${DEFAULT_CODEX_PRIMARY_MODEL}
@@ -66206,8 +68414,8 @@ var CodexAuxQueryRunner = class {
     let accumulatedText = "";
     let turnError = null;
     let resolveWait = null;
-    const donePromise = new Promise((resolve8) => {
-      resolveWait = resolve8;
+    const donePromise = new Promise((resolve11) => {
+      resolveWait = resolve11;
     });
     this.transport.onNotification("item/agentMessage/delta", (params) => {
       var _a4;
@@ -69210,7 +71418,7 @@ function buildUsageInfo2(contextTokens, contextWindow, contextWindowIsAuthoritat
   };
 }
 function sleep(ms) {
-  return new Promise((resolve8) => setTimeout(resolve8, ms));
+  return new Promise((resolve11) => setTimeout(resolve11, ms));
 }
 var CodexFileTailEngine = class {
   constructor(sessionsDir, defaultContextWindow) {
@@ -69857,10 +72065,10 @@ User: ${turn.prompt}`
           return;
         }
         if (this.chunkBuffer.length === 0) {
-          await new Promise((resolve8) => {
-            this.chunkResolve = resolve8;
+          await new Promise((resolve11) => {
+            this.chunkResolve = resolve11;
             if (this.chunkBuffer.length > 0 || this.canceled) {
-              resolve8();
+              resolve11();
               this.chunkResolve = null;
             }
           });
@@ -70478,40 +72686,15 @@ var codexProviderRegistration = {
   subagentLifecycleAdapter: codexSubagentLifecycleAdapter
 };
 
-// src/providers/opencode/agents/OpencodeAgentMentionProvider.ts
-var OpencodeAgentMentionProvider = class {
-  constructor(storage) {
-    this.storage = storage;
-    this.agents = [];
-  }
-  async loadAgents() {
-    this.agents = await this.storage.loadAll();
-  }
-  searchAgents(query) {
-    const q10 = query.toLowerCase();
-    return this.agents.filter((agent) => isMentionableSubagent(agent)).filter((agent) => agent.name.toLowerCase().includes(q10) || agent.description.toLowerCase().includes(q10)).map((agent) => ({
-      id: agent.name,
-      name: agent.name,
-      description: agent.description,
-      source: "vault"
-    }));
-  }
-};
-function isMentionableSubagent(agent) {
-  if (agent.hidden || agent.disable) {
-    return false;
-  }
-  return agent.mode === "subagent";
-}
-
-// src/providers/opencode/commands/OpencodeCommandCatalog.ts
+// src/providers/copilot/commands/CopilotCommandCatalog.ts
 function slashCommandToEntry2(command) {
   var _a3;
+  const normalizedName = command.name.trim().replace(/^\/+/, "");
   return {
     id: command.id,
-    providerId: "opencode",
+    providerId: "copilot",
     kind: "command",
-    name: command.name,
+    name: normalizedName,
     description: command.description,
     content: command.content,
     argumentHint: command.argumentHint,
@@ -70530,48 +72713,41 @@ function slashCommandToEntry2(command) {
     insertPrefix: "/"
   };
 }
-function dedupeRuntimeCommands(commands) {
-  const deduped = [];
+function dedupe(commands) {
+  const result = [];
   const seen = /* @__PURE__ */ new Set();
   for (const command of commands) {
-    const normalizedName = command.name.trim().replace(/^\/+/, "");
-    if (!normalizedName) {
-      continue;
-    }
-    const key = normalizedName.toLowerCase();
-    if (seen.has(key)) {
-      continue;
-    }
+    const name = command.name.trim().replace(/^\/+/, "");
+    if (!name) continue;
+    const key = name.toLowerCase();
+    if (seen.has(key)) continue;
     seen.add(key);
-    deduped.push({
-      ...command,
-      name: normalizedName
-    });
+    result.push({ ...command, name });
   }
-  return deduped;
+  return result;
 }
-var OpencodeCommandCatalog = class {
+var CopilotCommandCatalog = class {
   constructor() {
     this.runtimeCommands = [];
   }
   setRuntimeCommands(commands) {
-    this.runtimeCommands = dedupeRuntimeCommands(commands);
+    this.runtimeCommands = dedupe(commands);
   }
-  async listDropdownEntries(_context) {
+  async listDropdownEntries() {
     return this.runtimeCommands.map(slashCommandToEntry2);
   }
   async listVaultEntries() {
     return [];
   }
-  async saveVaultEntry(_entry) {
-    throw new Error("OpenCode runtime commands are not editable from Claudian.");
+  async saveVaultEntry() {
+    throw new Error("Copilot runtime commands are not editable from iClaudian.");
   }
-  async deleteVaultEntry(_entry) {
-    throw new Error("OpenCode runtime commands are not deletable from Claudian.");
+  async deleteVaultEntry() {
+    throw new Error("Copilot runtime commands are not deletable from iClaudian.");
   }
   getDropdownConfig() {
     return {
-      providerId: "opencode",
+      providerId: "copilot",
       triggerChars: ["/"],
       builtInPrefix: "/",
       skillPrefix: "/",
@@ -70582,1240 +72758,9 @@ var OpencodeCommandCatalog = class {
   }
 };
 
-// src/providers/opencode/runtime/OpencodeCliResolver.ts
-var fs17 = __toESM(require("node:fs"));
-init_env();
-init_path();
-var OpencodeCliResolver = class {
-  constructor() {
-    this.cachedHostname = getHostnameKey();
-    this.lastCliPath = "";
-    this.lastHostnamePath = "";
-    this.lastEnvText = "";
-    this.resolvedPath = null;
-  }
-  resolveFromSettings(settings11) {
-    var _a3;
-    const opencodeSettings = getOpencodeProviderSettings(settings11);
-    const cliPath = opencodeSettings.cliPath.trim();
-    const hostnamePath = ((_a3 = opencodeSettings.cliPathsByHost[this.cachedHostname]) != null ? _a3 : "").trim();
-    const envText = getRuntimeEnvironmentText(settings11, "opencode");
-    if (this.resolvedPath !== null && cliPath === this.lastCliPath && hostnamePath === this.lastHostnamePath && envText === this.lastEnvText) {
-      return this.resolvedPath;
-    }
-    this.lastCliPath = cliPath;
-    this.lastHostnamePath = hostnamePath;
-    this.lastEnvText = envText;
-    this.resolvedPath = this.resolve(
-      opencodeSettings.cliPathsByHost,
-      cliPath,
-      envText
-    );
-    return this.resolvedPath;
-  }
-  resolve(hostnamePaths, legacyPath, _envText) {
-    var _a3, _b2;
-    const hostnamePath = ((_a3 = hostnamePaths == null ? void 0 : hostnamePaths[this.cachedHostname]) != null ? _a3 : "").trim();
-    return (_b2 = resolveConfiguredCliPath(hostnamePath)) != null ? _b2 : resolveConfiguredCliPath(legacyPath.trim());
-  }
-  reset() {
-    this.lastCliPath = "";
-    this.lastHostnamePath = "";
-    this.lastEnvText = "";
-    this.resolvedPath = null;
-  }
-};
-function resolveConfiguredCliPath(cliPath) {
-  if (!cliPath) {
-    return null;
-  }
-  try {
-    const expanded = expandHomePath(cliPath);
-    if (fs17.existsSync(expanded) && fs17.statSync(expanded).isFile()) {
-      return expanded;
-    }
-  } catch (e2) {
-    return null;
-  }
-  return null;
-}
-
-// src/providers/opencode/storage/OpencodeAgentStorage.ts
+// src/providers/copilot/runtime/CopilotChatRuntime.ts
+var fs17 = __toESM(require("node:fs/promises"));
 var path16 = __toESM(require("node:path"));
-
-// src/providers/opencode/types/agent.ts
-var OPENCODE_AGENT_KNOWN_KEYS = /* @__PURE__ */ new Set([
-  "name",
-  "description",
-  "mode",
-  "model",
-  "variant",
-  "temperature",
-  "top_p",
-  "steps",
-  "maxSteps",
-  "hidden",
-  "color",
-  "disable",
-  "tools",
-  "options",
-  "permission"
-]);
-
-// src/providers/opencode/storage/OpencodeAgentStorage.ts
-var OPENCODE_AGENT_PATH = ".opencode/agent";
-var OPENCODE_AGENTS_PATH = ".opencode/agents";
-var OPENCODE_AGENT_SCAN_PATHS = [
-  OPENCODE_AGENTS_PATH,
-  OPENCODE_AGENT_PATH
-];
-var OPENCODE_DEFAULT_AGENT_SAVE_PATH = OPENCODE_AGENT_PATH;
-var OPENCODE_AGENT_PERSISTENCE_PREFIX = "opencode-agent";
-function createOpencodeAgentPersistenceKey(location) {
-  return `${OPENCODE_AGENT_PERSISTENCE_PREFIX}:${encodeURIComponent(normalizeVaultPath(location.filePath))}`;
-}
-function parseOpencodeAgentPersistenceKey(persistenceKey) {
-  if (!persistenceKey) {
-    return null;
-  }
-  const normalizedKey = normalizeVaultPath(persistenceKey);
-  if (isSupportedAgentFilePath(normalizedKey)) {
-    return { filePath: normalizedKey };
-  }
-  const [prefix, encodedRelativePath] = persistenceKey.split(":");
-  if (prefix !== OPENCODE_AGENT_PERSISTENCE_PREFIX || !encodedRelativePath) {
-    return null;
-  }
-  const decoded = normalizeVaultPath(decodeURIComponent(encodedRelativePath));
-  if (isSupportedAgentFilePath(decoded)) {
-    return { filePath: decoded };
-  }
-  return decoded.endsWith(".md") ? { filePath: `${OPENCODE_AGENTS_PATH}/${decoded}` } : null;
-}
-var OpencodeAgentStorage = class {
-  constructor(vaultAdapter) {
-    this.vaultAdapter = vaultAdapter;
-  }
-  async loadAll() {
-    return this.scanAdapter(this.vaultAdapter);
-  }
-  async load(agent) {
-    const filePath = this.resolveCurrentPath(agent);
-    try {
-      if (!await this.vaultAdapter.exists(filePath)) return null;
-      const content = await this.vaultAdapter.read(filePath);
-      return parseOpencodeAgentMarkdown(content, filePath);
-    } catch (e2) {
-      return null;
-    }
-  }
-  async save(agent, previous) {
-    const filePath = this.resolveTargetPath(agent, previous);
-    const previousPath = previous ? this.resolveCurrentPath(previous) : null;
-    await this.vaultAdapter.ensureFolder(path16.posix.dirname(filePath));
-    const content = serializeOpencodeAgentMarkdown(agent);
-    await this.vaultAdapter.write(filePath, content);
-    if (previousPath && previousPath !== filePath) {
-      await this.vaultAdapter.delete(previousPath);
-    }
-  }
-  async delete(agent) {
-    const filePath = this.resolveCurrentPath(agent);
-    await this.vaultAdapter.delete(filePath);
-  }
-  resolveCurrentPath(agent) {
-    const persistedLocation = parseOpencodeAgentPersistenceKey(agent.persistenceKey);
-    if (persistedLocation) {
-      return persistedLocation.filePath;
-    }
-    return `${OPENCODE_DEFAULT_AGENT_SAVE_PATH}/${agent.name}.md`;
-  }
-  resolveTargetPath(agent, previous) {
-    if (previous && previous.name === agent.name) {
-      return this.resolveCurrentPath(previous);
-    }
-    return `${OPENCODE_DEFAULT_AGENT_SAVE_PATH}/${agent.name}.md`;
-  }
-  async scanAdapter(adapter) {
-    const agentsByName = /* @__PURE__ */ new Map();
-    for (const rootPath of OPENCODE_AGENT_SCAN_PATHS) {
-      try {
-        const files = await adapter.listFilesRecursive(rootPath);
-        for (const filePath of files) {
-          if (!filePath.endsWith(".md")) continue;
-          try {
-            const content = await adapter.read(filePath);
-            const agent = parseOpencodeAgentMarkdown(content, filePath);
-            if (!agent) continue;
-            const dedupeKey = agent.name.toLowerCase();
-            agentsByName.delete(dedupeKey);
-            agentsByName.set(dedupeKey, agent);
-          } catch (e2) {
-          }
-        }
-      } catch (e2) {
-      }
-    }
-    return Array.from(agentsByName.values());
-  }
-};
-function parseOpencodeAgentMarkdown(content, filePath) {
-  var _a3;
-  const parsed = parseFrontmatter(content);
-  if (!parsed) {
-    return null;
-  }
-  const fileName = normalizeAgentNameFromPath(filePath);
-  const frontmatter = parsed.frontmatter;
-  const rawName = typeof frontmatter.name === "string" ? frontmatter.name.trim() : "";
-  const name = rawName || fileName;
-  const description = typeof frontmatter.description === "string" ? frontmatter.description.trim() : "";
-  if (!name || !description) {
-    return null;
-  }
-  const result = {
-    name,
-    description,
-    prompt: parsed.body.trim(),
-    persistenceKey: createOpencodeAgentPersistenceKey({
-      filePath: normalizeVaultPath(filePath)
-    })
-  };
-  const mode = normalizeMode(frontmatter.mode);
-  if (mode) result.mode = mode;
-  if (typeof frontmatter.model === "string" && frontmatter.model.trim()) {
-    result.model = frontmatter.model.trim();
-  }
-  if (typeof frontmatter.variant === "string" && frontmatter.variant.trim()) {
-    result.variant = frontmatter.variant.trim();
-  }
-  if (typeof frontmatter.temperature === "number" && Number.isFinite(frontmatter.temperature)) {
-    result.temperature = frontmatter.temperature;
-  }
-  const topP = normalizeFiniteNumber(frontmatter.top_p);
-  if (topP !== void 0) {
-    result.topP = topP;
-  }
-  if (typeof frontmatter.color === "string" && frontmatter.color.trim()) {
-    result.color = frontmatter.color.trim();
-  }
-  const steps = (_a3 = normalizePositiveInteger(frontmatter.steps)) != null ? _a3 : normalizePositiveInteger(frontmatter.maxSteps);
-  if (steps !== void 0) {
-    result.steps = steps;
-  }
-  if (extractBoolean(frontmatter, "hidden") !== void 0) {
-    result.hidden = extractBoolean(frontmatter, "hidden");
-  }
-  if (extractBoolean(frontmatter, "disable") !== void 0) {
-    result.disable = extractBoolean(frontmatter, "disable");
-  }
-  if (isBooleanRecord(frontmatter.tools)) {
-    result.tools = { ...frontmatter.tools };
-  }
-  if (isRecord(frontmatter.options)) {
-    result.options = { ...frontmatter.options };
-  }
-  if (frontmatter.permission !== void 0) {
-    result.permission = frontmatter.permission;
-  }
-  const extraFrontmatter = {};
-  for (const [key, value] of Object.entries(frontmatter)) {
-    if (!OPENCODE_AGENT_KNOWN_KEYS.has(key)) {
-      extraFrontmatter[key] = value;
-    }
-  }
-  if (Object.keys(extraFrontmatter).length > 0) {
-    result.extraFrontmatter = extraFrontmatter;
-  }
-  return result;
-}
-function serializeOpencodeAgentMarkdown(agent) {
-  const lines = ["---"];
-  lines.push(`name: ${yamlString(agent.name)}`);
-  lines.push(`description: ${yamlString(agent.description)}`);
-  if (agent.mode) {
-    lines.push(`mode: ${agent.mode}`);
-  }
-  if (agent.model) {
-    lines.push(`model: ${serializeYamlValue(agent.model)}`);
-  }
-  if (agent.variant) {
-    lines.push(`variant: ${serializeYamlValue(agent.variant)}`);
-  }
-  if (agent.temperature !== void 0) {
-    lines.push(`temperature: ${serializeYamlValue(agent.temperature)}`);
-  }
-  if (agent.topP !== void 0) {
-    lines.push(`top_p: ${serializeYamlValue(agent.topP)}`);
-  }
-  if (agent.color) {
-    lines.push(`color: ${serializeYamlValue(agent.color)}`);
-  }
-  if (agent.steps !== void 0) {
-    lines.push(`steps: ${serializeYamlValue(agent.steps)}`);
-  }
-  if (agent.hidden) {
-    lines.push("hidden: true");
-  }
-  if (agent.disable) {
-    lines.push("disable: true");
-  }
-  if (agent.tools && Object.keys(agent.tools).length > 0) {
-    lines.push(`tools: ${serializeYamlValue(agent.tools)}`);
-  }
-  if (agent.options && Object.keys(agent.options).length > 0) {
-    lines.push(`options: ${serializeYamlValue(agent.options)}`);
-  }
-  if (agent.permission !== void 0) {
-    lines.push(`permission: ${serializeYamlValue(agent.permission)}`);
-  }
-  if (agent.extraFrontmatter) {
-    for (const [key, value] of Object.entries(agent.extraFrontmatter)) {
-      lines.push(`${key}: ${serializeYamlValue(value)}`);
-    }
-  }
-  lines.push("---");
-  lines.push(agent.prompt);
-  return lines.join("\n");
-}
-function normalizeAgentNameFromPath(filePath) {
-  const relativePath = toRelativeAgentPath(filePath);
-  return relativePath.replace(/\.md$/i, "");
-}
-function toRelativeAgentPath(filePath) {
-  var _a3;
-  const normalized = normalizeVaultPath(filePath);
-  for (const rootPath of OPENCODE_AGENT_SCAN_PATHS) {
-    const prefix = `${rootPath}/`;
-    const index = normalized.lastIndexOf(prefix);
-    if (index >= 0) {
-      return normalized.slice(index + prefix.length);
-    }
-  }
-  return (_a3 = normalized.split("/").pop()) != null ? _a3 : normalized;
-}
-function normalizeMode(value) {
-  return value === "subagent" || value === "primary" || value === "all" ? value : void 0;
-}
-function normalizeFiniteNumber(value) {
-  return typeof value === "number" && Number.isFinite(value) ? value : void 0;
-}
-function normalizePositiveInteger(value) {
-  return typeof value === "number" && Number.isInteger(value) && value > 0 ? value : void 0;
-}
-function isBooleanRecord(value) {
-  if (!isRecord(value)) {
-    return false;
-  }
-  return Object.values(value).every((entry) => typeof entry === "boolean");
-}
-function serializeYamlValue(value) {
-  if (typeof value === "string") {
-    return yamlString(value);
-  }
-  if (typeof value === "number" || typeof value === "boolean") {
-    return String(value);
-  }
-  if (value === null) {
-    return "null";
-  }
-  return JSON.stringify(value);
-}
-function normalizeVaultPath(filePath) {
-  return filePath.replace(/\\/g, "/");
-}
-function isSupportedAgentFilePath(filePath) {
-  return OPENCODE_AGENT_SCAN_PATHS.some((rootPath) => filePath.startsWith(`${rootPath}/`)) && filePath.endsWith(".md");
-}
-
-// src/providers/opencode/ui/OpencodeSettingsTab.ts
-var fs18 = __toESM(require("fs"));
-var import_obsidian19 = require("obsidian");
-init_env();
-init_path();
-
-// src/providers/opencode/ui/OpencodeAgentSettings.ts
-var import_obsidian18 = require("obsidian");
-var OPENCODE_AGENT_INVALID_SEGMENT_PATTERN = /[<>:"\\|?*]/;
-function validateOpencodeAgentName(name) {
-  if (!name) return "Agent name is required";
-  const segments = name.split("/");
-  if (segments.length === 0 || segments.some((segment) => segment.length === 0)) {
-    return "Agent name must use slash-separated path segments without leading or trailing slashes";
-  }
-  for (const segment of segments) {
-    if (!segment.trim()) {
-      return "Agent name path segments cannot be empty or whitespace-only";
-    }
-    if (segment !== segment.trim()) {
-      return "Agent name path segments cannot start or end with whitespace";
-    }
-    if (segment === "." || segment === "..") {
-      return 'Agent name cannot include "." or ".." path segments';
-    }
-    if (segment.includes("\0") || OPENCODE_AGENT_INVALID_SEGMENT_PATTERN.test(segment)) {
-      return "Agent name path segments cannot contain Windows-reserved filename characters";
-    }
-  }
-  return null;
-}
-function findOpencodeAgentNameConflict(agents, name, currentPersistenceKey) {
-  var _a3;
-  const normalizedName = name.toLowerCase();
-  return (_a3 = agents.find(
-    (agent) => agent.name.toLowerCase() === normalizedName && agent.persistenceKey !== currentPersistenceKey
-  )) != null ? _a3 : null;
-}
-var OpencodeAgentModal = class extends import_obsidian18.Modal {
-  constructor(app, existing, allAgents, onSave) {
-    super(app);
-    this.existing = existing;
-    this.allAgents = allAgents;
-    this.onSave = onSave;
-  }
-  onOpen() {
-    var _a3, _b2, _c, _d2, _e, _f, _g, _h, _i, _j2, _k, _l, _m, _n, _o, _p2, _q;
-    this.setTitle(this.existing ? "Edit OpenCode Subagent" : "Add OpenCode Subagent");
-    this.modalEl.addClass("claudian-sp-modal");
-    const { contentEl } = this;
-    let nameInput;
-    let descriptionInput;
-    let modelInput;
-    let variantInput;
-    let temperatureInput;
-    let topPInput;
-    let colorInput;
-    let stepsInput;
-    let hiddenValue = (_b2 = (_a3 = this.existing) == null ? void 0 : _a3.hidden) != null ? _b2 : false;
-    let disableValue = (_d2 = (_c = this.existing) == null ? void 0 : _c.disable) != null ? _d2 : false;
-    let toolsInput;
-    let permissionInput;
-    let optionsInput;
-    new import_obsidian18.Setting(contentEl).setName("Name").setDesc("OpenCode agent name. Use slash-separated segments for nested agents.").addText((text) => {
-      var _a4, _b3;
-      nameInput = text.inputEl;
-      text.setValue((_b3 = (_a4 = this.existing) == null ? void 0 : _a4.name) != null ? _b3 : "").setPlaceholder("review");
-    });
-    new import_obsidian18.Setting(contentEl).setName("Description").setDesc("When OpenCode should use this subagent").addText((text) => {
-      var _a4, _b3;
-      descriptionInput = text.inputEl;
-      text.setValue((_b3 = (_a4 = this.existing) == null ? void 0 : _a4.description) != null ? _b3 : "").setPlaceholder("Reviews code for correctness and maintainability");
-    });
-    const details = contentEl.createEl("details", { cls: "claudian-sp-advanced-section" });
-    details.createEl("summary", {
-      text: "Advanced options",
-      cls: "claudian-sp-advanced-summary"
-    });
-    if (((_e = this.existing) == null ? void 0 : _e.model) || ((_f = this.existing) == null ? void 0 : _f.variant) || ((_g = this.existing) == null ? void 0 : _g.temperature) !== void 0 || ((_h = this.existing) == null ? void 0 : _h.topP) !== void 0 || ((_i = this.existing) == null ? void 0 : _i.color) || ((_j2 = this.existing) == null ? void 0 : _j2.steps) !== void 0 || ((_k = this.existing) == null ? void 0 : _k.hidden) || ((_l = this.existing) == null ? void 0 : _l.disable) || ((_m = this.existing) == null ? void 0 : _m.tools) || ((_n = this.existing) == null ? void 0 : _n.permission) !== void 0 || ((_o = this.existing) == null ? void 0 : _o.options)) {
-      details.open = true;
-    }
-    new import_obsidian18.Setting(details).setName("Model").setDesc("Model override in provider/model format").addText((text) => {
-      var _a4, _b3;
-      modelInput = text.inputEl;
-      text.setValue((_b3 = (_a4 = this.existing) == null ? void 0 : _a4.model) != null ? _b3 : "").setPlaceholder("anthropic/claude-sonnet-4-20250514");
-    });
-    new import_obsidian18.Setting(details).setName("Variant").setDesc("Model variant override").addText((text) => {
-      var _a4, _b3;
-      variantInput = text.inputEl;
-      text.setValue((_b3 = (_a4 = this.existing) == null ? void 0 : _a4.variant) != null ? _b3 : "").setPlaceholder("high");
-    });
-    new import_obsidian18.Setting(details).setName("Temperature").setDesc("Optional sampling temperature").addText((text) => {
-      var _a4;
-      temperatureInput = text.inputEl;
-      text.setValue(((_a4 = this.existing) == null ? void 0 : _a4.temperature) !== void 0 ? String(this.existing.temperature) : "").setPlaceholder("0.1");
-    });
-    new import_obsidian18.Setting(details).setName("Top P").setDesc("Optional nucleus sampling value").addText((text) => {
-      var _a4;
-      topPInput = text.inputEl;
-      text.setValue(((_a4 = this.existing) == null ? void 0 : _a4.topP) !== void 0 ? String(this.existing.topP) : "").setPlaceholder("0.9");
-    });
-    new import_obsidian18.Setting(details).setName("Color").setDesc("Hex color or theme token").addText((text) => {
-      var _a4, _b3;
-      colorInput = text.inputEl;
-      text.setValue((_b3 = (_a4 = this.existing) == null ? void 0 : _a4.color) != null ? _b3 : "").setPlaceholder("#FF5733");
-    });
-    new import_obsidian18.Setting(details).setName("Steps").setDesc("Maximum agentic iterations before forcing text-only output").addText((text) => {
-      var _a4;
-      stepsInput = text.inputEl;
-      text.setValue(((_a4 = this.existing) == null ? void 0 : _a4.steps) !== void 0 ? String(this.existing.steps) : "").setPlaceholder("10");
-    });
-    new import_obsidian18.Setting(details).setName("Hide From @mention").setDesc("Hide this subagent from the @ autocomplete menu").addToggle((toggle) => {
-      toggle.setValue(hiddenValue).onChange((value) => {
-        hiddenValue = value;
-      });
-    });
-    new import_obsidian18.Setting(details).setName("Disable Agent").setDesc("Disable the agent without deleting the file").addToggle((toggle) => {
-      toggle.setValue(disableValue).onChange((value) => {
-        disableValue = value;
-      });
-    });
-    new import_obsidian18.Setting(details).setName("Enabled Tools (JSON)").setDesc('Optional deprecated tools map, e.g. {"write":false,"edit":false}').addTextArea((text) => {
-      var _a4;
-      toolsInput = text.inputEl;
-      text.setValue(((_a4 = this.existing) == null ? void 0 : _a4.tools) ? JSON.stringify(this.existing.tools, null, 2) : "").setPlaceholder('{\n  "write": false,\n  "edit": false\n}');
-    });
-    new import_obsidian18.Setting(details).setName("Permission (JSON)").setDesc('Optional permission config, e.g. {"edit":"deny","bash":"allow"}').addTextArea((text) => {
-      var _a4;
-      permissionInput = text.inputEl;
-      text.setValue(((_a4 = this.existing) == null ? void 0 : _a4.permission) !== void 0 ? JSON.stringify(this.existing.permission, null, 2) : "").setPlaceholder('{\n  "edit": "deny"\n}');
-    });
-    new import_obsidian18.Setting(details).setName("Options (JSON)").setDesc("Optional custom agent options").addTextArea((text) => {
-      var _a4;
-      optionsInput = text.inputEl;
-      text.setValue(((_a4 = this.existing) == null ? void 0 : _a4.options) ? JSON.stringify(this.existing.options, null, 2) : "").setPlaceholder('{\n  "focus": "security"\n}');
-    });
-    new import_obsidian18.Setting(contentEl).setName("Prompt").setDesc("Markdown body used as the agent prompt");
-    const promptArea = contentEl.createEl("textarea", {
-      cls: "claudian-sp-content-area",
-      attr: {
-        rows: "10",
-        placeholder: "Review code changes carefully and call out correctness, regressions, and missing coverage."
-      }
-    });
-    promptArea.value = (_q = (_p2 = this.existing) == null ? void 0 : _p2.prompt) != null ? _q : "";
-    const buttonContainer = contentEl.createDiv({ cls: "claudian-sp-modal-buttons" });
-    const cancelBtn = buttonContainer.createEl("button", {
-      text: "Cancel",
-      cls: "claudian-cancel-btn"
-    });
-    cancelBtn.addEventListener("click", () => this.close());
-    const saveBtn = buttonContainer.createEl("button", {
-      text: "Save",
-      cls: "claudian-save-btn"
-    });
-    saveBtn.addEventListener("click", async () => {
-      var _a4, _b3, _c2;
-      const name = nameInput.value.trim();
-      const nameError = validateOpencodeAgentName(name);
-      if (nameError) {
-        new import_obsidian18.Notice(nameError);
-        return;
-      }
-      const description = descriptionInput.value.trim();
-      if (!description) {
-        new import_obsidian18.Notice("Description is required");
-        return;
-      }
-      const prompt = promptArea.value;
-      if (!prompt.trim()) {
-        new import_obsidian18.Notice("Prompt is required");
-        return;
-      }
-      const duplicate = findOpencodeAgentNameConflict(
-        this.allAgents,
-        name,
-        (_a4 = this.existing) == null ? void 0 : _a4.persistenceKey
-      );
-      if (duplicate) {
-        new import_obsidian18.Notice(`A subagent named "${name}" already exists`);
-        return;
-      }
-      const temperature = parseOptionalNumber(temperatureInput.value, "Temperature");
-      if (temperature.error) {
-        new import_obsidian18.Notice(temperature.error);
-        return;
-      }
-      const topP = parseOptionalNumber(topPInput.value, "Top P");
-      if (topP.error) {
-        new import_obsidian18.Notice(topP.error);
-        return;
-      }
-      const steps = parseOptionalPositiveInteger(stepsInput.value, "Steps");
-      if (steps.error) {
-        new import_obsidian18.Notice(steps.error);
-        return;
-      }
-      const tools = parseOptionalJsonObjectOfBooleans(toolsInput.value, "Enabled Tools");
-      if (tools.error) {
-        new import_obsidian18.Notice(tools.error);
-        return;
-      }
-      const permission = parseOptionalJson(permissionInput.value, "Permission");
-      if (permission.error) {
-        new import_obsidian18.Notice(permission.error);
-        return;
-      }
-      const options = parseOptionalJsonObject(optionsInput.value, "Options");
-      if (options.error) {
-        new import_obsidian18.Notice(options.error);
-        return;
-      }
-      const agent = {
-        name,
-        description,
-        prompt,
-        mode: "subagent",
-        hidden: hiddenValue || void 0,
-        disable: disableValue || void 0,
-        model: modelInput.value.trim() || void 0,
-        variant: variantInput.value.trim() || void 0,
-        temperature: temperature.value,
-        topP: topP.value,
-        color: colorInput.value.trim() || void 0,
-        steps: steps.value,
-        tools: tools.value,
-        permission: permission.value,
-        options: options.value,
-        persistenceKey: (_b3 = this.existing) == null ? void 0 : _b3.persistenceKey,
-        extraFrontmatter: (_c2 = this.existing) == null ? void 0 : _c2.extraFrontmatter
-      };
-      try {
-        await this.onSave(agent);
-      } catch (error48) {
-        const message = error48 instanceof Error ? error48.message : "Unknown error";
-        new import_obsidian18.Notice(`Failed to save subagent: ${message}`);
-        return;
-      }
-      this.close();
-    });
-  }
-  onClose() {
-    this.contentEl.empty();
-  }
-};
-var OpencodeAgentSettings = class {
-  constructor(containerEl, storage, app, onChanged) {
-    this.agents = [];
-    this.containerEl = containerEl;
-    this.storage = storage;
-    this.app = app;
-    this.onChanged = onChanged;
-    void this.render();
-  }
-  async render() {
-    this.containerEl.empty();
-    try {
-      this.agents = await this.storage.loadAll();
-    } catch (e2) {
-      this.agents = [];
-    }
-    const visibleAgents = this.agents.filter((agent) => agent.mode === "subagent");
-    const headerEl = this.containerEl.createDiv({ cls: "claudian-sp-header" });
-    headerEl.createSpan({ text: "OpenCode Subagents", cls: "claudian-sp-label" });
-    const actionsEl = headerEl.createDiv({ cls: "claudian-sp-header-actions" });
-    const refreshBtn = actionsEl.createEl("button", {
-      cls: "claudian-settings-action-btn",
-      attr: { "aria-label": "Refresh" }
-    });
-    (0, import_obsidian18.setIcon)(refreshBtn, "refresh-cw");
-    refreshBtn.addEventListener("click", () => {
-      void this.render();
-    });
-    const addBtn = actionsEl.createEl("button", {
-      cls: "claudian-settings-action-btn",
-      attr: { "aria-label": "Add" }
-    });
-    (0, import_obsidian18.setIcon)(addBtn, "plus");
-    addBtn.addEventListener("click", () => this.openModal(null));
-    if (visibleAgents.length === 0) {
-      const emptyEl = this.containerEl.createDiv({ cls: "claudian-sp-empty-state" });
-      emptyEl.setText("No OpenCode subagents in vault. Click + to create one.");
-      return;
-    }
-    const listEl = this.containerEl.createDiv({ cls: "claudian-sp-list" });
-    for (const agent of visibleAgents) {
-      this.renderItem(listEl, agent);
-    }
-  }
-  renderItem(listEl, agent) {
-    const itemEl = listEl.createDiv({ cls: "claudian-sp-item" });
-    const infoEl = itemEl.createDiv({ cls: "claudian-sp-info" });
-    const headerRow = infoEl.createDiv({ cls: "claudian-sp-item-header" });
-    const nameEl = headerRow.createSpan({ cls: "claudian-sp-item-name" });
-    nameEl.setText(agent.name);
-    headerRow.createSpan({
-      text: "subagent",
-      cls: "claudian-slash-item-badge"
-    });
-    if (agent.model) {
-      headerRow.createSpan({ text: agent.model, cls: "claudian-slash-item-badge" });
-    }
-    if (agent.description) {
-      const descEl = infoEl.createDiv({ cls: "claudian-sp-item-desc" });
-      descEl.setText(agent.description);
-    }
-    const actionsEl = itemEl.createDiv({ cls: "claudian-sp-item-actions" });
-    const editBtn = actionsEl.createEl("button", {
-      cls: "claudian-settings-action-btn",
-      attr: { "aria-label": "Edit" }
-    });
-    (0, import_obsidian18.setIcon)(editBtn, "pencil");
-    editBtn.addEventListener("click", () => this.openModal(agent));
-    const deleteBtn = actionsEl.createEl("button", {
-      cls: "claudian-settings-action-btn claudian-settings-delete-btn",
-      attr: { "aria-label": "Delete" }
-    });
-    (0, import_obsidian18.setIcon)(deleteBtn, "trash-2");
-    deleteBtn.addEventListener("click", async () => {
-      var _a3;
-      if (!this.app) return;
-      const confirmed = await confirmDelete(
-        this.app,
-        `Delete subagent "${agent.name}"?`
-      );
-      if (!confirmed) return;
-      try {
-        await this.storage.delete(agent);
-        await this.render();
-        await ((_a3 = this.onChanged) == null ? void 0 : _a3.call(this));
-        new import_obsidian18.Notice(`Subagent "${agent.name}" deleted`);
-      } catch (e2) {
-        new import_obsidian18.Notice("Failed to delete subagent");
-      }
-    });
-  }
-  openModal(existing) {
-    if (!this.app) return;
-    const modal = new OpencodeAgentModal(
-      this.app,
-      existing,
-      this.agents,
-      async (agent) => {
-        var _a3;
-        await this.storage.save(agent, existing);
-        await this.render();
-        await ((_a3 = this.onChanged) == null ? void 0 : _a3.call(this));
-        new import_obsidian18.Notice(
-          existing ? `Subagent "${agent.name}" updated` : `Subagent "${agent.name}" created`
-        );
-      }
-    );
-    modal.open();
-  }
-};
-function parseOptionalNumber(value, label) {
-  const trimmed = value.trim();
-  if (!trimmed) {
-    return {};
-  }
-  const parsed = Number(trimmed);
-  if (!Number.isFinite(parsed)) {
-    return { error: `${label} must be a valid number` };
-  }
-  return { value: parsed };
-}
-function parseOptionalPositiveInteger(value, label) {
-  const trimmed = value.trim();
-  if (!trimmed) {
-    return {};
-  }
-  const parsed = Number(trimmed);
-  if (!Number.isInteger(parsed) || parsed <= 0) {
-    return { error: `${label} must be a positive integer` };
-  }
-  return { value: parsed };
-}
-function parseOptionalJson(value, label) {
-  const trimmed = value.trim();
-  if (!trimmed) {
-    return {};
-  }
-  try {
-    return { value: JSON.parse(trimmed) };
-  } catch (e2) {
-    return { error: `${label} must be valid JSON` };
-  }
-}
-function parseOptionalJsonObject(value, label) {
-  const parsed = parseOptionalJson(value, label);
-  if (parsed.error || parsed.value === void 0) {
-    return parsed.error ? { error: parsed.error } : {};
-  }
-  if (!isJsonObject(parsed.value)) {
-    return { error: `${label} must be a JSON object` };
-  }
-  return { value: parsed.value };
-}
-function parseOptionalJsonObjectOfBooleans(value, label) {
-  const parsed = parseOptionalJsonObject(value, label);
-  if (parsed.error || parsed.value === void 0) {
-    return parsed.error ? { error: parsed.error } : {};
-  }
-  if (!Object.values(parsed.value).every((entry) => typeof entry === "boolean")) {
-    return { error: `${label} must map tool names to boolean values` };
-  }
-  return { value: parsed.value };
-}
-function isJsonObject(value) {
-  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
-}
-
-// src/providers/opencode/ui/OpencodeSettingsTab.ts
-var ALL_PROVIDERS_KEY = "all";
-var opencodeSettingsTabRenderer = {
-  render(container, context) {
-    const opencodeWorkspace = maybeGetOpencodeWorkspaceServices();
-    const settingsBag = context.plugin.settings;
-    const opencodeSettings = getOpencodeProviderSettings(settingsBag);
-    const hostnameKey = getHostnameKey();
-    new import_obsidian19.Setting(container).setName("Setup").setHeading();
-    new import_obsidian19.Setting(container).setName("Enable OpenCode").setDesc("Launch `opencode acp` as a provider.").addToggle(
-      (toggle) => toggle.setValue(opencodeSettings.enabled).onChange(async (value) => {
-        updateOpencodeProviderSettings(settingsBag, { enabled: value });
-        await context.plugin.saveSettings();
-        context.refreshModelSelectors();
-      })
-    );
-    const cliPathSetting = new import_obsidian19.Setting(container).setName(`CLI Path (${hostnameKey})`).setDesc("Optional absolute path to the OpenCode CLI for this computer. Leave empty to use `opencode` from PATH.");
-    const validationEl = container.createDiv({ cls: "claudian-cli-path-validation" });
-    validationEl.style.color = "var(--text-error)";
-    validationEl.style.fontSize = "0.85em";
-    validationEl.style.marginTop = "-0.5em";
-    validationEl.style.marginBottom = "0.5em";
-    validationEl.style.display = "none";
-    const validatePath = (value) => {
-      const trimmed = value.trim();
-      if (!trimmed) {
-        return null;
-      }
-      const expandedPath = expandHomePath(trimmed);
-      if (!fs18.existsSync(expandedPath)) {
-        return "Path does not exist";
-      }
-      const stat = fs18.statSync(expandedPath);
-      if (!stat.isFile()) {
-        return "Path must point to a file";
-      }
-      return null;
-    };
-    const updateCliPathValidation = (value, inputEl) => {
-      const error48 = validatePath(value);
-      if (error48) {
-        validationEl.setText(error48);
-        validationEl.style.display = "block";
-        if (inputEl) {
-          inputEl.style.borderColor = "var(--text-error)";
-        }
-        return false;
-      }
-      validationEl.style.display = "none";
-      if (inputEl) {
-        inputEl.style.borderColor = "";
-      }
-      return true;
-    };
-    const cliPathsByHost = { ...opencodeSettings.cliPathsByHost };
-    const currentValue = opencodeSettings.cliPathsByHost[hostnameKey] || "";
-    let cliPathInputEl = null;
-    const persistCliPath = async (value) => {
-      var _a3;
-      const isValid2 = updateCliPathValidation(value, cliPathInputEl != null ? cliPathInputEl : void 0);
-      if (!isValid2) {
-        return false;
-      }
-      const trimmed = value.trim();
-      if (trimmed) {
-        cliPathsByHost[hostnameKey] = trimmed;
-      } else {
-        delete cliPathsByHost[hostnameKey];
-      }
-      updateOpencodeProviderSettings(settingsBag, { cliPathsByHost: { ...cliPathsByHost } });
-      clearOpencodeDiscoveryState(settingsBag);
-      await context.plugin.saveSettings();
-      (_a3 = opencodeWorkspace == null ? void 0 : opencodeWorkspace.cliResolver) == null ? void 0 : _a3.reset();
-      await recycleOpencodeRuntime();
-      return true;
-    };
-    const recycleOpencodeRuntime = async () => {
-      var _a3, _b2;
-      for (const view of context.plugin.getAllViews()) {
-        const tabManager = view.getTabManager();
-        if (tabManager == null ? void 0 : tabManager.broadcastToProviderTabs) {
-          await tabManager.broadcastToProviderTabs("opencode", (service) => Promise.resolve(service.cleanup()));
-        } else {
-          await (tabManager == null ? void 0 : tabManager.broadcastToAllTabs(
-            (service) => Promise.resolve(service.cleanup())
-          ));
-        }
-        (_a3 = view.invalidateProviderCommandCaches) == null ? void 0 : _a3.call(view, ["opencode"]);
-        (_b2 = view.refreshModelSelector) == null ? void 0 : _b2.call(view);
-      }
-    };
-    cliPathSetting.addText((text) => {
-      text.setPlaceholder(process.platform === "win32" ? "C:\\Users\\you\\AppData\\Roaming\\npm\\opencode.cmd" : "/usr/local/bin/opencode").setValue(currentValue).onChange(async (value) => {
-        await persistCliPath(value);
-      });
-      text.inputEl.addClass("claudian-settings-cli-path-input");
-      text.inputEl.style.width = "100%";
-      cliPathInputEl = text.inputEl;
-      updateCliPathValidation(currentValue, text.inputEl);
-    });
-    new import_obsidian19.Setting(container).setName("Models").setHeading();
-    new import_obsidian19.Setting(container).setName("Visible Models").setDesc("Choose which OpenCode models appear in the chat selector. Filter by provider or type to search. The current session model stays pinned even if it is not selected here.");
-    const pickerEl = container.createDiv({ cls: "claudian-opencode-model-picker" });
-    let searchQuery = "";
-    let providerFilter = ALL_PROVIDERS_KEY;
-    const summaryEl = pickerEl.createDiv({ cls: "claudian-opencode-model-picker-summary" });
-    const selectedEl = pickerEl.createDiv({ cls: "claudian-opencode-model-picker-selected" });
-    const catalogEl = pickerEl.createEl("details", { cls: "claudian-opencode-model-picker-catalog" });
-    catalogEl.open = getOpencodeProviderSettings(settingsBag).visibleModels.length === 0;
-    const catalogSummaryEl = catalogEl.createEl("summary", {
-      cls: "claudian-opencode-model-picker-catalog-summary"
-    });
-    catalogSummaryEl.createSpan({
-      cls: "claudian-opencode-model-picker-catalog-caret",
-      text: "\u25B8"
-    });
-    catalogSummaryEl.createSpan({
-      cls: "claudian-opencode-model-picker-catalog-title",
-      text: "Browse models"
-    });
-    const catalogSummaryCountEl = catalogSummaryEl.createSpan({
-      cls: "claudian-opencode-model-picker-catalog-count"
-    });
-    const controlsEl = catalogEl.createDiv({ cls: "claudian-opencode-model-picker-controls" });
-    const searchInput = controlsEl.createEl("input", {
-      cls: "claudian-opencode-model-picker-search",
-      type: "search"
-    });
-    searchInput.placeholder = "Filter by model, provider, or id\u2026";
-    searchInput.addEventListener("input", () => {
-      searchQuery = searchInput.value.trim().toLowerCase();
-      renderList();
-    });
-    const providerSelectEl = controlsEl.createEl("select", {
-      cls: "claudian-opencode-model-picker-provider"
-    });
-    providerSelectEl.addEventListener("change", () => {
-      providerFilter = providerSelectEl.value;
-      renderList();
-    });
-    const listEl = catalogEl.createDiv({ cls: "claudian-opencode-model-picker-list" });
-    const getEnrichedModels = () => {
-      const current = getOpencodeProviderSettings(settingsBag);
-      return buildEnrichedModels(current.discoveredModels, current.visibleModels);
-    };
-    const filterModels = (models) => {
-      return models.filter((model) => {
-        if (providerFilter !== ALL_PROVIDERS_KEY && model.providerKey !== providerFilter) {
-          return false;
-        }
-        if (!searchQuery) {
-          return true;
-        }
-        return model.rawId.toLowerCase().includes(searchQuery) || model.modelLabel.toLowerCase().includes(searchQuery) || model.providerLabel.toLowerCase().includes(searchQuery) || model.description.toLowerCase().includes(searchQuery);
-      });
-    };
-    const persistVisibleModels = async (visibleModels) => {
-      const currentVisibleModels = getOpencodeProviderSettings(settingsBag).visibleModels;
-      const normalized = normalizeOpencodeVisibleModels(
-        visibleModels,
-        getOpencodeProviderSettings(settingsBag).discoveredModels
-      );
-      if (sameStringList(currentVisibleModels, normalized)) {
-        return;
-      }
-      updateOpencodeProviderSettings(settingsBag, { visibleModels: normalized });
-      await context.plugin.saveSettings();
-      renderAll();
-      context.refreshModelSelectors();
-    };
-    const persistModelAliases = async (modelAliases) => {
-      updateOpencodeProviderSettings(settingsBag, { modelAliases });
-      await context.plugin.saveSettings();
-      renderSelected();
-      context.refreshModelSelectors();
-    };
-    const renderSummary = () => {
-      summaryEl.empty();
-      const current = getOpencodeProviderSettings(settingsBag);
-      const enriched = getEnrichedModels();
-      const providerCount = new Set(enriched.map((model) => model.providerKey)).size;
-      const providerWord = providerCount === 1 ? "provider" : "providers";
-      summaryEl.createSpan({ text: "Visible: " });
-      summaryEl.createSpan({
-        cls: "claudian-opencode-model-picker-summary-value",
-        text: String(current.visibleModels.length)
-      });
-      summaryEl.createSpan({
-        text: ` of ${current.discoveredModels.length} discovered \u2022 ${providerCount} ${providerWord}`
-      });
-      catalogSummaryCountEl.setText(
-        current.discoveredModels.length > 0 ? `${current.discoveredModels.length} available` : "No models discovered yet"
-      );
-    };
-    const renderSelected = () => {
-      var _a3;
-      selectedEl.empty();
-      const current = getOpencodeProviderSettings(settingsBag);
-      if (current.visibleModels.length === 0) {
-        selectedEl.style.display = "none";
-        return;
-      }
-      selectedEl.style.display = "";
-      const enrichedByRawId = new Map(
-        getEnrichedModels().map((model) => [model.rawId, model])
-      );
-      const headerEl = selectedEl.createDiv({ cls: "claudian-opencode-model-picker-selected-header" });
-      headerEl.createEl("span", {
-        cls: "claudian-opencode-model-picker-selected-label",
-        text: `Selected (${current.visibleModels.length})`
-      });
-      const clearAllBtn = headerEl.createEl("button", {
-        cls: "claudian-opencode-model-picker-selected-clear",
-        text: "Clear all"
-      });
-      clearAllBtn.setAttribute("aria-label", "Clear all selected models");
-      clearAllBtn.addEventListener("click", () => {
-        void persistVisibleModels([]);
-      });
-      const rowsEl = selectedEl.createDiv({ cls: "claudian-opencode-model-picker-selected-rows" });
-      for (const rawId of current.visibleModels) {
-        const enriched = enrichedByRawId.get(rawId);
-        const defaultLabel = enriched ? `${enriched.providerLabel}/${enriched.modelLabel}` : rawId;
-        const rowEl = rowsEl.createDiv({ cls: "claudian-opencode-model-picker-selected-row" });
-        if (enriched && !enriched.isAvailable) {
-          rowEl.classList.add("claudian-opencode-model-picker-selected-row--unavailable");
-        }
-        const infoEl = rowEl.createDiv({ cls: "claudian-opencode-model-picker-selected-info" });
-        const titleEl = infoEl.createDiv({ cls: "claudian-opencode-model-picker-selected-title" });
-        if (enriched) {
-          titleEl.createEl("span", {
-            cls: "claudian-opencode-model-picker-selected-badge",
-            text: enriched.providerLabel
-          });
-          titleEl.createEl("span", {
-            cls: "claudian-opencode-model-picker-selected-name",
-            text: enriched.modelLabel
-          });
-        } else {
-          titleEl.createEl("span", {
-            cls: "claudian-opencode-model-picker-selected-name",
-            text: rawId
-          });
-        }
-        if (enriched && !enriched.isAvailable) {
-          infoEl.createEl("div", {
-            cls: "claudian-opencode-model-picker-selected-unavailable",
-            text: "Not currently reported by OpenCode"
-          });
-        }
-        infoEl.createEl("div", {
-          cls: "claudian-opencode-model-picker-selected-id",
-          text: rawId
-        });
-        const controlsEl2 = rowEl.createDiv({ cls: "claudian-opencode-model-picker-selected-controls" });
-        const aliasInput = controlsEl2.createEl("input", {
-          cls: "claudian-opencode-model-picker-selected-alias",
-          type: "text"
-        });
-        aliasInput.placeholder = defaultLabel;
-        aliasInput.value = (_a3 = current.modelAliases[rawId]) != null ? _a3 : "";
-        aliasInput.setAttribute("aria-label", `Alias for ${defaultLabel}`);
-        aliasInput.title = "Custom label shown in the model selector. Leave empty to use the default.";
-        const commitAlias = () => {
-          var _a4;
-          const latest = getOpencodeProviderSettings(settingsBag);
-          const existing = (_a4 = latest.modelAliases[rawId]) != null ? _a4 : "";
-          const next = aliasInput.value.trim();
-          if (next === existing) {
-            aliasInput.value = existing;
-            return;
-          }
-          const nextAliases = { ...latest.modelAliases };
-          if (next) {
-            nextAliases[rawId] = next;
-          } else {
-            delete nextAliases[rawId];
-          }
-          void persistModelAliases(nextAliases);
-        };
-        aliasInput.addEventListener("blur", commitAlias);
-        aliasInput.addEventListener("keydown", (event) => {
-          var _a4;
-          if (event.key === "Enter") {
-            event.preventDefault();
-            aliasInput.blur();
-          } else if (event.key === "Escape") {
-            event.preventDefault();
-            aliasInput.value = (_a4 = getOpencodeProviderSettings(settingsBag).modelAliases[rawId]) != null ? _a4 : "";
-            aliasInput.blur();
-          }
-        });
-        const removeBtn = controlsEl2.createEl("button", {
-          cls: "claudian-opencode-model-picker-selected-remove",
-          text: "\xD7"
-        });
-        removeBtn.setAttribute("aria-label", `Remove ${defaultLabel}`);
-        removeBtn.addEventListener("click", () => {
-          void persistVisibleModels(current.visibleModels.filter((entry) => entry !== rawId));
-        });
-      }
-    };
-    const renderProviderSelect = () => {
-      const enriched = getEnrichedModels();
-      const providers = /* @__PURE__ */ new Map();
-      for (const model of enriched) {
-        const existing = providers.get(model.providerKey);
-        if (existing) {
-          existing.count += 1;
-        } else {
-          providers.set(model.providerKey, { count: 1, label: model.providerLabel });
-        }
-      }
-      providerSelectEl.empty();
-      providerSelectEl.createEl("option", {
-        text: `All providers (${enriched.length})`,
-        value: ALL_PROVIDERS_KEY
-      });
-      const sortedProviders = Array.from(providers.entries()).sort(([, left], [, right]) => left.label.localeCompare(right.label));
-      for (const [key, { count, label }] of sortedProviders) {
-        providerSelectEl.createEl("option", {
-          text: `${label} (${count})`,
-          value: key
-        });
-      }
-      if (providerFilter !== ALL_PROVIDERS_KEY && !providers.has(providerFilter)) {
-        providerFilter = ALL_PROVIDERS_KEY;
-      }
-      providerSelectEl.value = providerFilter;
-    };
-    const renderList = () => {
-      listEl.empty();
-      const current = getOpencodeProviderSettings(settingsBag);
-      const selectedIds = new Set(current.visibleModels);
-      const enriched = getEnrichedModels();
-      const filtered = filterModels(enriched);
-      if (filtered.length === 0) {
-        const emptyEl = listEl.createDiv({ cls: "claudian-opencode-model-picker-empty" });
-        emptyEl.setText(enriched.length === 0 ? "Start OpenCode once to load its model catalog. Claudian will then let you pick visible models." : "No models match your filter.");
-        return;
-      }
-      for (const model of filtered) {
-        const rowEl = listEl.createEl("label", { cls: "claudian-opencode-model-picker-row" });
-        const isSelected = selectedIds.has(model.rawId);
-        if (isSelected) {
-          rowEl.classList.add("claudian-opencode-model-picker-row--selected");
-        }
-        rowEl.title = model.rawId;
-        const checkboxEl = rowEl.createEl("input", { type: "checkbox" });
-        checkboxEl.checked = isSelected;
-        checkboxEl.addEventListener("change", () => {
-          const currentVisibleModels = getOpencodeProviderSettings(settingsBag).visibleModels;
-          const next = checkboxEl.checked ? [...currentVisibleModels, model.rawId] : currentVisibleModels.filter((id) => id !== model.rawId);
-          void persistVisibleModels(next);
-        });
-        const textEl = rowEl.createDiv({ cls: "claudian-opencode-model-picker-row-text" });
-        const headerEl = textEl.createDiv({ cls: "claudian-opencode-model-picker-row-header" });
-        headerEl.createEl("span", {
-          cls: "claudian-opencode-model-picker-row-name",
-          text: model.modelLabel
-        });
-        const badgeEl = headerEl.createEl("span", {
-          cls: "claudian-opencode-model-picker-row-badge",
-          text: model.providerLabel
-        });
-        if (!model.isAvailable) {
-          badgeEl.classList.add("claudian-opencode-model-picker-row-badge--unavailable");
-          badgeEl.setText("Unavailable");
-          badgeEl.title = "Configured model not currently reported by OpenCode";
-        }
-        textEl.createDiv({
-          cls: "claudian-opencode-model-picker-row-meta",
-          text: model.rawId
-        });
-        if (model.description) {
-          textEl.createDiv({
-            cls: "claudian-opencode-model-picker-row-desc",
-            text: model.description
-          });
-        }
-      }
-    };
-    const renderAll = () => {
-      renderSummary();
-      renderSelected();
-      renderProviderSelect();
-      renderList();
-    };
-    renderAll();
-    new import_obsidian19.Setting(container).setName("Commands and Skills").setHeading();
-    const commandsDesc = container.createDiv({ cls: "claudian-sp-settings-desc" });
-    commandsDesc.createEl("p", {
-      cls: "setting-item-description",
-      text: "OpenCode can auto-detect vault-level Claude slash commands from .claude/commands/ and skills from .claude/skills/, .codex/skills/, and .agents/skills/. Manage those entries in the Claude or Codex settings tab. This setting only hides entries from the OpenCode dropdown."
-    });
-    context.renderHiddenProviderCommandSetting(container, "opencode", {
-      name: "Hidden Commands and Skills",
-      desc: "Hide specific OpenCode commands and skills from the dropdown. Enter names without the leading slash, one per line.",
-      placeholder: "compact\nreview\nfix"
-    });
-    if (opencodeWorkspace == null ? void 0 : opencodeWorkspace.agentStorage) {
-      new import_obsidian19.Setting(container).setName("Subagents").setHeading();
-      const subagentsDesc = container.createDiv({ cls: "claudian-sp-settings-desc" });
-      subagentsDesc.createEl("p", {
-        cls: "setting-item-description",
-        text: "Manage vault-level OpenCode subagents from .opencode/agent/ and legacy .opencode/agents/. New entries are saved as subagent-only files and appear in the @mention menu."
-      });
-      const subagentsContainer = container.createDiv({ cls: "claudian-slash-commands-container" });
-      new OpencodeAgentSettings(
-        subagentsContainer,
-        opencodeWorkspace.agentStorage,
-        context.plugin.app,
-        async () => {
-          var _a3;
-          await ((_a3 = opencodeWorkspace.refreshAgentMentions) == null ? void 0 : _a3.call(opencodeWorkspace));
-          await recycleOpencodeRuntime();
-        }
-      );
-    }
-    renderEnvironmentSettingsSection({
-      container,
-      plugin: context.plugin,
-      scope: "provider:opencode",
-      heading: "Environment",
-      name: "Environment Variables",
-      desc: "Extra environment variables passed to OpenCode. `OPENCODE_ENABLE_EXA=1` is enabled by default.",
-      placeholder: `${OPENCODE_DEFAULT_ENVIRONMENT_VARIABLES}
-OPENCODE_DB=/path/to/opencode.db`,
-      renderCustomContextLimits: (target) => context.renderCustomContextLimits(target, "opencode")
-    });
-  }
-};
-function buildEnrichedModels(discoveredModels, visibleModels) {
-  var _a3;
-  const enriched = [];
-  const discoveredIds = /* @__PURE__ */ new Set();
-  const baseModels = buildOpencodeBaseModels(discoveredModels);
-  for (const model of baseModels) {
-    const { modelLabel, providerLabel } = splitOpencodeModelLabel(model.label || model.rawId);
-    discoveredIds.add(model.rawId);
-    enriched.push({
-      description: (_a3 = model.description) != null ? _a3 : "",
-      isAvailable: true,
-      modelLabel,
-      providerKey: providerLabel.toLowerCase(),
-      providerLabel,
-      rawId: model.rawId
-    });
-  }
-  for (const rawId of visibleModels) {
-    if (discoveredIds.has(rawId)) {
-      continue;
-    }
-    const { modelLabel, providerLabel } = splitOpencodeModelLabel(rawId);
-    enriched.push({
-      description: "",
-      isAvailable: false,
-      modelLabel,
-      providerKey: providerLabel.toLowerCase(),
-      providerLabel,
-      rawId
-    });
-  }
-  return enriched.sort((left, right) => {
-    const providerCmp = left.providerLabel.localeCompare(right.providerLabel);
-    if (providerCmp !== 0) {
-      return providerCmp;
-    }
-    return left.modelLabel.localeCompare(right.modelLabel);
-  });
-}
-
-// src/providers/opencode/runtime/OpencodeChatRuntime.ts
-var fs21 = __toESM(require("node:fs/promises"));
-var path19 = __toESM(require("node:path"));
-init_env();
 init_path();
 
 // src/providers/acp/AcpJsonRpcTransport.ts
@@ -71914,7 +72859,7 @@ var AcpJsonRpcTransport = class {
     }
     const id = this.nextId++;
     const timeoutMs = (_a3 = options.timeoutMs) != null ? _a3 : this.defaultTimeoutMs;
-    return new Promise((resolve8, reject) => {
+    return new Promise((resolve11, reject) => {
       let timer;
       let onAbort;
       const cleanup = () => {
@@ -71927,7 +72872,7 @@ var AcpJsonRpcTransport = class {
         cleanup,
         method,
         reject,
-        resolve: resolve8
+        resolve: resolve11
       };
       if (timeoutMs > 0) {
         timer = setTimeout(() => {
@@ -72728,11 +73673,11 @@ var AcpSubprocess = class {
     if (!this.proc || this.proc.exitCode !== null) {
       return;
     }
-    await new Promise((resolve8) => {
+    await new Promise((resolve11) => {
       const proc = this.proc;
       const onClose = () => {
         cleanup();
-        resolve8();
+        resolve11();
       };
       const killTimer = setTimeout(() => {
         proc.kill("SIGKILL");
@@ -72847,6 +73792,50 @@ function normalizeRawToolInput(rawInput) {
   return rawInput && typeof rawInput === "object" && !Array.isArray(rawInput) ? rawInput : {};
 }
 
+// src/providers/acp/buildAcpPrompt.ts
+function buildAcpPromptText(request, conversationHistory = []) {
+  let prompt = request.text;
+  if (request.currentNotePath) {
+    prompt = appendCurrentNote(prompt, request.currentNotePath);
+  }
+  if (request.editorSelection && request.editorSelection.mode !== "none") {
+    prompt = appendEditorContext(prompt, request.editorSelection);
+  }
+  if (request.browserSelection) {
+    prompt = appendBrowserContext(prompt, request.browserSelection);
+  }
+  if (request.canvasSelection) {
+    prompt = appendCanvasContext(prompt, request.canvasSelection);
+  }
+  if (conversationHistory.length > 0) {
+    const historyContext = buildContextFromHistory(conversationHistory);
+    prompt = buildPromptWithHistoryContext(
+      historyContext,
+      prompt,
+      prompt,
+      conversationHistory
+    );
+  }
+  return prompt;
+}
+function buildAcpPromptBlocks(request, conversationHistory = []) {
+  var _a3;
+  const blocks = [
+    { type: "text", text: buildAcpPromptText(request, conversationHistory) }
+  ];
+  for (const image of (_a3 = request.images) != null ? _a3 : []) {
+    if (!image.data) {
+      continue;
+    }
+    blocks.push({
+      data: image.data,
+      mimeType: image.mediaType,
+      type: "image"
+    });
+  }
+  return blocks;
+}
+
 // src/providers/acp/buildAcpUsageInfo.ts
 function buildAcpUsageInfo(params) {
   var _a3, _b2, _c, _d2, _e, _f, _g, _h;
@@ -72877,6 +73866,3735 @@ function computePercentage(used, total) {
   const ratio = Math.round(used / total * 100);
   return Math.min(100, Math.max(0, ratio));
 }
+
+// src/providers/copilot/capabilities.ts
+var COPILOT_PROVIDER_CAPABILITIES = Object.freeze({
+  providerId: "copilot",
+  supportsPersistentRuntime: true,
+  supportsNativeHistory: true,
+  supportsPlanMode: true,
+  supportsRewind: false,
+  supportsFork: false,
+  supportsProviderCommands: true,
+  supportsImageAttachments: true,
+  supportsInstructionMode: true,
+  supportsMcpTools: true,
+  supportsTurnSteer: false,
+  reasoningControl: "effort"
+});
+
+// src/providers/copilot/modes.ts
+function permissionModeToCopilotApprovalMode(value) {
+  if (value === "yolo") return "yolo";
+  if (value === "plan") return "plan";
+  return "default";
+}
+function copilotApprovalModeToPermissionMode(value) {
+  if (value === "yolo") return "yolo";
+  if (value === "plan") return "plan";
+  return "normal";
+}
+function copilotApprovalModeToAcpModeId(value) {
+  if (value === "plan") return "plan";
+  if (value === "yolo") return "yolo";
+  return "interactive";
+}
+
+// src/providers/copilot/types/index.ts
+function getCopilotState(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return {};
+  const raw = value;
+  return {
+    ...typeof raw.sessionCwd === "string" && raw.sessionCwd.trim() ? { sessionCwd: raw.sessionCwd.trim() } : {}
+  };
+}
+
+// src/providers/copilot/runtime/CopilotRuntimeEnvironment.ts
+init_env();
+function buildCopilotRuntimeEnv(settings11, cliPath) {
+  const envText = getRuntimeEnvironmentText(settings11, "copilot");
+  const envVars = parseEnvironmentVariables(envText);
+  return {
+    ...process.env,
+    ...envVars,
+    PATH: getEnhancedPath(envVars.PATH, cliPath || void 0),
+    TERM: process.env.TERM && process.env.TERM !== "dumb" ? process.env.TERM : "xterm-256color"
+  };
+}
+
+// src/providers/copilot/runtime/CopilotChatRuntime.ts
+var StreamChunkQueue = class {
+  constructor() {
+    this.closed = false;
+    this.items = [];
+    this.waiters = [];
+  }
+  push(chunk) {
+    const waiter = this.waiters.shift();
+    if (waiter) waiter(chunk);
+    else this.items.push(chunk);
+  }
+  close() {
+    var _a3;
+    if (this.closed) return;
+    this.closed = true;
+    while (this.waiters.length) (_a3 = this.waiters.shift()) == null ? void 0 : _a3(null);
+  }
+  async next() {
+    var _a3;
+    if (this.items.length) return (_a3 = this.items.shift()) != null ? _a3 : null;
+    if (this.closed) return null;
+    return new Promise((resolve11) => this.waiters.push(resolve11));
+  }
+};
+var _CopilotChatRuntime = class _CopilotChatRuntime {
+  constructor(plugin) {
+    this.plugin = plugin;
+    this.providerId = "copilot";
+    this.activeTurn = null;
+    this.approvalCallback = null;
+    this.connection = null;
+    this.contextUsage = null;
+    this.currentLaunchKey = null;
+    this.currentSessionModelId = null;
+    this.currentSessionModeId = null;
+    this.currentTurnMetadata = {};
+    this.loadedSessionId = null;
+    this.permissionModeSyncCallback = null;
+    this.process = null;
+    this.promptUsage = null;
+    this.readyListeners = [];
+    this.ready = false;
+    this.sessionInvalidated = false;
+    this.supportedCommandWaiters = [];
+    this.supportedCommands = [];
+    this.sessionCwds = /* @__PURE__ */ new Map();
+    this.sessionId = null;
+    this.sessionUpdateNormalizer = new AcpSessionUpdateNormalizer();
+    this.transport = null;
+  }
+  getCapabilities() {
+    return COPILOT_PROVIDER_CAPABILITIES;
+  }
+  prepareTurn(request) {
+    var _a3;
+    return {
+      isCompact: false,
+      mcpMentions: (_a3 = request.enabledMcpServers) != null ? _a3 : /* @__PURE__ */ new Set(),
+      persistedContent: "",
+      prompt: buildAcpPromptText(request),
+      request
+    };
+  }
+  onReadyStateChange(listener) {
+    this.readyListeners.push(listener);
+    return () => {
+      const index = this.readyListeners.indexOf(listener);
+      if (index >= 0) this.readyListeners.splice(index, 1);
+    };
+  }
+  setResumeCheckpoint(_checkpointId) {
+  }
+  syncConversationState(conversation) {
+    var _a3, _b2;
+    if (this.sessionId !== ((_a3 = conversation == null ? void 0 : conversation.sessionId) != null ? _a3 : null)) {
+      this.currentSessionModelId = null;
+      this.currentSessionModeId = null;
+      this.sessionInvalidated = false;
+      this.setSupportedCommands([]);
+    }
+    this.sessionId = (_b2 = conversation == null ? void 0 : conversation.sessionId) != null ? _b2 : null;
+  }
+  async reloadMcpServers() {
+  }
+  async ensureReady(options) {
+    var _a3, _b2;
+    const settings11 = getCopilotProviderSettings(this.plugin.settings);
+    if (!settings11.enabled) {
+      this.setReady(false);
+      return false;
+    }
+    const cwd = (_a3 = getVaultPath(this.plugin.app)) != null ? _a3 : process.cwd();
+    const targetSessionId = this.sessionId;
+    const resolvedCliPath = (_b2 = this.plugin.getResolvedProviderCliPath("copilot")) != null ? _b2 : "copilot";
+    const runtimeEnv = buildCopilotRuntimeEnv(this.plugin.settings, resolvedCliPath);
+    const launchArgs = this.buildLaunchArgs();
+    const nextLaunchKey = JSON.stringify({ command: resolvedCliPath, cwd, env: this.getEnvFingerprint(runtimeEnv), args: launchArgs });
+    const shouldRestart = !this.process || !this.transport || !this.connection || !this.process.isAlive() || (options == null ? void 0 : options.force) === true || this.currentLaunchKey !== nextLaunchKey;
+    if (shouldRestart) {
+      await this.shutdownProcess();
+      await this.startProcess({ command: resolvedCliPath, args: launchArgs, cwd, runtimeEnv });
+      this.currentLaunchKey = nextLaunchKey;
+      this.loadedSessionId = null;
+    }
+    if (targetSessionId) {
+      if (this.loadedSessionId !== targetSessionId) {
+        const loaded = await this.loadSession(targetSessionId, cwd);
+        if (!loaded) {
+          this.sessionInvalidated = true;
+          this.clearActiveSession();
+        }
+      }
+      return true;
+    }
+    if (!this.sessionId && !this.sessionInvalidated) {
+      if ((options == null ? void 0 : options.allowSessionCreation) === false) return true;
+      return Boolean(await this.createSession(cwd));
+    }
+    return true;
+  }
+  async *query(turn, conversationHistory, queryOptions) {
+    var _a3, _b2;
+    const previousMessages = conversationHistory != null ? conversationHistory : [];
+    const expectedSessionId = this.sessionId;
+    let shouldBootstrapHistory = previousMessages.length > 0 && (!expectedSessionId || this.sessionInvalidated);
+    if (!await this.ensureReady()) {
+      yield { type: "error", content: "Failed to start Copilot. Check the CLI path and login state." };
+      yield { type: "done" };
+      return;
+    }
+    if (!this.connection) {
+      yield { type: "error", content: "Copilot runtime is not ready." };
+      yield { type: "done" };
+      return;
+    }
+    const cwd = (_a3 = getVaultPath(this.plugin.app)) != null ? _a3 : process.cwd();
+    if (expectedSessionId && !this.sessionId) shouldBootstrapHistory = previousMessages.length > 0;
+    if (!this.sessionId) {
+      const sessionId2 = await this.createSession(cwd);
+      if (!sessionId2) {
+        yield { type: "error", content: "Failed to create a Copilot session." };
+        yield { type: "done" };
+        return;
+      }
+    }
+    const sessionId = this.sessionId;
+    (_b2 = this.activeTurn) == null ? void 0 : _b2.queue.close();
+    this.activeTurn = { queue: new StreamChunkQueue(), sessionId };
+    this.currentTurnMetadata = {};
+    this.contextUsage = null;
+    this.promptUsage = null;
+    this.sessionUpdateNormalizer.reset();
+    const activeTurn = this.activeTurn;
+    try {
+      await this.applySelectedMode(sessionId);
+      await this.applySelectedModel(sessionId, queryOptions);
+    } catch (error48) {
+      yield { type: "error", content: this.formatRuntimeError(error48) };
+      yield { type: "done" };
+      activeTurn.queue.close();
+      this.activeTurn = null;
+      return;
+    }
+    const promptPromise = this.connection.prompt({
+      prompt: buildAcpPromptBlocks(
+        turn.request,
+        shouldBootstrapHistory ? previousMessages : []
+      ),
+      sessionId
+    }).then((response) => {
+      var _a4;
+      if (response.userMessageId) this.currentTurnMetadata.userMessageId = response.userMessageId;
+      this.promptUsage = (_a4 = response.usage) != null ? _a4 : null;
+      const usage = buildAcpUsageInfo({ contextWindow: this.contextUsage, model: this.getActiveDisplayModel(queryOptions), promptUsage: this.promptUsage });
+      if (usage) activeTurn.queue.push({ sessionId, type: "usage", usage });
+      activeTurn.queue.push({ type: "done" });
+      activeTurn.queue.close();
+    }).catch((error48) => {
+      activeTurn.queue.push({ type: "error", content: this.formatRuntimeError(error48) });
+      activeTurn.queue.push({ type: "done" });
+      activeTurn.queue.close();
+    }).finally(() => {
+      if (this.activeTurn === activeTurn) this.activeTurn = null;
+    });
+    try {
+      while (true) {
+        const chunk = await activeTurn.queue.next();
+        if (!chunk) break;
+        yield chunk;
+      }
+      await promptPromise;
+    } finally {
+      if (this.activeTurn === activeTurn) this.activeTurn = null;
+    }
+  }
+  cancel() {
+    var _a3;
+    if (this.connection && this.sessionId) this.connection.cancel({ sessionId: this.sessionId });
+    (_a3 = this.activeTurn) == null ? void 0 : _a3.queue.close();
+  }
+  resetSession() {
+    this.clearActiveSession();
+    this.sessionInvalidated = false;
+  }
+  getSessionId() {
+    return this.sessionId;
+  }
+  consumeSessionInvalidation() {
+    const v2 = this.sessionInvalidated;
+    this.sessionInvalidated = false;
+    return v2;
+  }
+  isReady() {
+    return this.ready;
+  }
+  async getSupportedCommands() {
+    if (this.supportedCommands.length > 0 && this.loadedSessionId === this.sessionId) return [...this.supportedCommands];
+    if (this.sessionId && this.loadedSessionId !== this.sessionId) {
+      const ready = await this.ensureReady({ allowSessionCreation: false });
+      if (!ready) return [];
+    }
+    if (!this.sessionId) return [];
+    if (this.supportedCommands.length > 0) return [...this.supportedCommands];
+    return this.waitForSupportedCommands();
+  }
+  cleanup() {
+    var _a3;
+    (_a3 = this.activeTurn) == null ? void 0 : _a3.queue.close();
+    void this.shutdownProcess();
+  }
+  async rewind() {
+    return { canRewind: false };
+  }
+  setApprovalCallback(callback) {
+    this.approvalCallback = callback;
+  }
+  setApprovalDismisser(_dismisser) {
+  }
+  setAskUserQuestionCallback(_callback) {
+  }
+  setExitPlanModeCallback(_callback) {
+  }
+  setPermissionModeSyncCallback(callback) {
+    this.permissionModeSyncCallback = callback;
+  }
+  setSubagentHookProvider(_getState) {
+  }
+  setAutoTurnCallback(_callback) {
+  }
+  consumeTurnMetadata() {
+    const metadata = this.currentTurnMetadata;
+    this.currentTurnMetadata = {};
+    return metadata;
+  }
+  buildSessionUpdates(params) {
+    const state = params.conversation ? getCopilotState(params.conversation.providerState) : {};
+    const providerState = { ...state.sessionCwd ? { sessionCwd: state.sessionCwd } : {} };
+    return {
+      updates: {
+        providerState: Object.keys(providerState).length > 0 ? providerState : void 0,
+        sessionId: params.sessionInvalidated && !this.sessionId ? null : this.sessionId
+      }
+    };
+  }
+  resolveSessionIdForFork(conversation) {
+    var _a3, _b2;
+    return (_b2 = (_a3 = this.sessionId) != null ? _a3 : conversation == null ? void 0 : conversation.sessionId) != null ? _b2 : null;
+  }
+  async loadSubagentToolCalls() {
+    return [];
+  }
+  async loadSubagentFinalResult() {
+    return null;
+  }
+  async startProcess(params) {
+    var _a3, _b2;
+    this.process = new AcpSubprocess({ args: params.args, command: params.command, cwd: params.cwd, env: { ...process.env, ...params.runtimeEnv } });
+    this.process.start();
+    this.transport = new AcpJsonRpcTransport({ input: this.process.stdout, onClose: (listener) => this.process.onClose(listener), output: this.process.stdin });
+    this.connection = new AcpClientConnection({
+      clientInfo: { name: "iclaudian", version: (_b2 = (_a3 = this.plugin.manifest) == null ? void 0 : _a3.version) != null ? _b2 : "0.0.0" },
+      delegate: {
+        fileSystem: { readTextFile: (request) => this.readTextFile(request), writeTextFile: (request) => this.writeTextFile(request) },
+        onSessionNotification: (notification) => this.handleSessionNotification(notification),
+        requestPermission: (request) => this.handlePermissionRequest(request)
+      },
+      transport: this.transport
+    });
+    this.transport.start();
+    await this.connection.initialize();
+    this.setReady(true);
+  }
+  async shutdownProcess() {
+    var _a3, _b2, _c;
+    this.setReady(false);
+    (_a3 = this.activeTurn) == null ? void 0 : _a3.queue.close();
+    this.activeTurn = null;
+    this.currentSessionModelId = null;
+    this.currentSessionModeId = null;
+    this.setSupportedCommands([]);
+    (_b2 = this.connection) == null ? void 0 : _b2.dispose();
+    this.connection = null;
+    (_c = this.transport) == null ? void 0 : _c.dispose();
+    this.transport = null;
+    if (this.process) {
+      await this.process.shutdown().catch(() => {
+      });
+      this.process = null;
+    }
+  }
+  setReady(ready) {
+    if (this.ready === ready) return;
+    this.ready = ready;
+    for (const listener of this.readyListeners) listener(ready);
+  }
+  getEnvFingerprint(env) {
+    return Object.entries(env).filter(([key, value]) => /^(COPILOT_|GITHUB_|GH_)/i.test(key) && typeof value === "string" && value).map(([key, value]) => `${key}=${value}`).sort().join("|");
+  }
+  buildLaunchArgs() {
+    const settings11 = getCopilotProviderSettings(this.plugin.settings);
+    const args = ["--acp", "--stdio"];
+    const rawModelId = this.resolveSelectedRawModelId();
+    if (rawModelId) args.push("--model", rawModelId);
+    const effortLevel = typeof this.plugin.settings.effortLevel === "string" ? this.plugin.settings.effortLevel : "";
+    if (["low", "medium", "high", "xhigh"].includes(effortLevel)) {
+      args.push("--effort", effortLevel);
+    }
+    if (settings11.selectedApprovalMode === "plan") {
+      args.push("--mode", "plan");
+    } else if (settings11.selectedApprovalMode === "yolo") {
+      args.push("--allow-all");
+    }
+    if (settings11.autopilot && settings11.selectedApprovalMode !== "plan") args.push("--autopilot");
+    if (settings11.experimental) args.push("--experimental");
+    if (settings11.remote) args.push("--remote");
+    else args.push("--no-remote");
+    if (settings11.enableReasoningSummaries) args.push("--enable-reasoning-summaries");
+    if (settings11.customAgent) args.push("--agent", settings11.customAgent);
+    appendRepeatedArgs(args, "--additional-mcp-config", settings11.additionalMcpConfig);
+    appendRepeatedArgs(args, "--add-github-mcp-tool", settings11.githubMcpTools);
+    appendRepeatedArgs(args, "--add-github-mcp-toolset", settings11.githubMcpToolsets);
+    appendRepeatedArgs(args, "--allow-tool", settings11.allowTools);
+    appendRepeatedArgs(args, "--deny-tool", settings11.denyTools);
+    appendRepeatedArgs(args, "--available-tools", settings11.availableTools);
+    appendRepeatedArgs(args, "--allow-url", settings11.allowUrls);
+    appendRepeatedArgs(args, "--deny-url", settings11.denyUrls);
+    return args;
+  }
+  resolveSelectedApprovalMode() {
+    const providerSettings = getCopilotProviderSettings(this.plugin.settings);
+    return providerSettings.selectedApprovalMode;
+  }
+  resolveSelectedRawModelId(queryOptions) {
+    const selectedModel = typeof (queryOptions == null ? void 0 : queryOptions.model) === "string" ? queryOptions.model : typeof this.plugin.settings.model === "string" ? this.plugin.settings.model : "";
+    if (!selectedModel || !isCopilotModelSelectionId(selectedModel)) return null;
+    return decodeCopilotModelId(selectedModel);
+  }
+  getActiveDisplayModel(queryOptions) {
+    var _a3;
+    const raw = (_a3 = this.resolveSelectedRawModelId(queryOptions)) != null ? _a3 : this.currentSessionModelId;
+    return raw ? encodeCopilotModelId(raw) : void 0;
+  }
+  async applySelectedMode(sessionId) {
+    if (!this.connection) return;
+    const selected = getCopilotProviderSettings(this.plugin.settings).selectedApprovalMode;
+    const modeId = copilotApprovalModeToAcpModeId(selected);
+    if (!modeId || modeId === this.currentSessionModeId) return;
+    try {
+      await this.connection.setMode({ modeId, sessionId });
+      this.currentSessionModeId = modeId;
+      this.emitPermissionModeSync(modeId);
+    } catch (e2) {
+    }
+  }
+  async applySelectedModel(sessionId, queryOptions) {
+    if (!this.connection) return;
+    const rawModelId = this.resolveSelectedRawModelId(queryOptions);
+    if (!rawModelId || rawModelId === this.currentSessionModelId) return;
+    try {
+      const response = await this.connection.setConfigOption({ configId: "model", sessionId, type: "select", value: rawModelId });
+      this.currentSessionModelId = rawModelId;
+      await this.syncSessionModelState({ configOptions: response.configOptions });
+    } catch (e2) {
+    }
+  }
+  async syncSessionModelState(params) {
+    const acpState = extractAcpSessionModelState(params);
+    const models = normalizeCopilotDiscoveredModels(acpState.availableModels.map((model) => {
+      var _a3;
+      return { rawId: model.id, label: model.name, description: (_a3 = model.description) != null ? _a3 : void 0 };
+    }));
+    if (acpState.currentModelId) this.currentSessionModelId = acpState.currentModelId;
+    const settingsBag = this.plugin.settings;
+    const current = getCopilotProviderSettings(settingsBag);
+    const modelChanged = JSON.stringify(current.discoveredModels) !== JSON.stringify(models) && models.length > 0;
+    const shouldSeedVisible = current.visibleModels.length === 0 && acpState.currentModelId;
+    if (!modelChanged && !shouldSeedVisible) return;
+    updateCopilotProviderSettings(settingsBag, {
+      ...modelChanged ? { discoveredModels: models } : {},
+      ...shouldSeedVisible && acpState.currentModelId ? { visibleModels: [acpState.currentModelId] } : {}
+    });
+    await this.plugin.saveSettings();
+    this.refreshModelSelectors();
+  }
+  async syncSessionModeState(params) {
+    var _a3;
+    const acpState = extractAcpSessionModeState(params);
+    const currentModeId = (_a3 = params.currentModeId) != null ? _a3 : acpState.currentModeId;
+    if (currentModeId) {
+      this.currentSessionModeId = currentModeId;
+      this.emitPermissionModeSync(currentModeId);
+    }
+  }
+  refreshModelSelectors() {
+    for (const view of this.plugin.getAllViews()) view.refreshModelSelector();
+  }
+  emitPermissionModeSync(modeId) {
+    var _a3;
+    const mode = modeId === "autoEdit" ? "auto_edit" : modeId;
+    const permissionMode = copilotApprovalModeToPermissionMode(mode);
+    try {
+      (_a3 = this.permissionModeSyncCallback) == null ? void 0 : _a3.call(this, permissionMode);
+    } catch (e2) {
+    }
+  }
+  async createSession(cwd) {
+    var _a3, _b2, _c, _d2;
+    if (!this.connection) return null;
+    try {
+      this.setSupportedCommands([]);
+      const response = await this.connection.newSession({ cwd, mcpServers: [] });
+      this.loadedSessionId = response.sessionId;
+      this.sessionId = response.sessionId;
+      this.sessionCwds.set(response.sessionId, cwd);
+      await this.syncSessionModelState({ configOptions: (_a3 = response.configOptions) != null ? _a3 : null, models: (_b2 = response.models) != null ? _b2 : null });
+      await this.syncSessionModeState({ configOptions: (_c = response.configOptions) != null ? _c : null, modes: (_d2 = response.modes) != null ? _d2 : null });
+      return response.sessionId;
+    } catch (e2) {
+      return null;
+    }
+  }
+  async loadSession(sessionId, cwd) {
+    var _a3, _b2, _c, _d2;
+    if (!this.connection) return false;
+    try {
+      this.setSupportedCommands([]);
+      const response = await this.connection.loadSession({ cwd, mcpServers: [], sessionId });
+      this.sessionInvalidated = false;
+      this.loadedSessionId = response.sessionId;
+      this.sessionId = response.sessionId;
+      this.sessionCwds.set(response.sessionId, cwd);
+      await this.syncSessionModelState({ configOptions: (_a3 = response.configOptions) != null ? _a3 : null, models: (_b2 = response.models) != null ? _b2 : null });
+      await this.syncSessionModeState({ configOptions: (_c = response.configOptions) != null ? _c : null, modes: (_d2 = response.modes) != null ? _d2 : null });
+      return true;
+    } catch (e2) {
+      return false;
+    }
+  }
+  async handleSessionNotification(notification) {
+    var _a3;
+    if (notification.sessionId !== this.sessionId) return;
+    const normalized = this.sessionUpdateNormalizer.normalize(notification.update);
+    if (normalized.type === "config_options") {
+      await this.syncSessionModelState({ configOptions: normalized.configOptions });
+      await this.syncSessionModeState({ configOptions: normalized.configOptions });
+      return;
+    }
+    if (normalized.type === "current_mode") {
+      await this.syncSessionModeState({ currentModeId: normalized.currentModeId });
+      return;
+    }
+    if (normalized.type === "commands") {
+      this.setSupportedCommands(normalized.commands);
+      (_a3 = _CopilotChatRuntime.commandCatalog) == null ? void 0 : _a3.setRuntimeCommands(normalized.commands);
+      return;
+    }
+    if (!this.activeTurn || this.activeTurn.sessionId !== notification.sessionId) return;
+    switch (normalized.type) {
+      case "message_chunk":
+        if (normalized.role === "assistant" && normalized.messageId) this.currentTurnMetadata.assistantMessageId = normalized.messageId;
+        if (normalized.role === "user" && normalized.messageId) this.currentTurnMetadata.userMessageId = normalized.messageId;
+        for (const chunk of normalized.streamChunks) this.activeTurn.queue.push(chunk);
+        return;
+      case "tool_call":
+      case "tool_call_update":
+        for (const chunk of normalized.streamChunks) this.activeTurn.queue.push(chunk);
+        return;
+      case "usage": {
+        this.contextUsage = normalized.usage;
+        const usage = buildAcpUsageInfo({ contextWindow: normalized.usage, model: this.getActiveDisplayModel(), promptUsage: this.promptUsage });
+        if (usage) this.activeTurn.queue.push({ sessionId: notification.sessionId, type: "usage", usage });
+        return;
+      }
+      default:
+        return;
+    }
+  }
+  async handlePermissionRequest(request) {
+    var _a3;
+    if (!this.approvalCallback) return { outcome: { outcome: "cancelled" } };
+    const input = normalizeApprovalInput(request.toolCall.rawInput);
+    const toolName = ((_a3 = request.toolCall.title) == null ? void 0 : _a3.trim()) || request.toolCall.kind || "tool";
+    const decision = await this.approvalCallback(toolName, input, `Copilot wants permission to use ${toolName}.`, { decisionOptions: buildApprovalOptions(request.options) });
+    return mapApprovalDecision(decision, request.options);
+  }
+  setSupportedCommands(commands) {
+    var _a3;
+    this.supportedCommands = commands.map((command) => ({ ...command }));
+    (_a3 = _CopilotChatRuntime.commandCatalog) == null ? void 0 : _a3.setRuntimeCommands(this.supportedCommands);
+    const waiters = this.supportedCommandWaiters.splice(0);
+    for (const waiter of waiters) waiter(this.supportedCommands);
+  }
+  waitForSupportedCommands(timeoutMs = 250) {
+    if (this.supportedCommands.length > 0) return Promise.resolve([...this.supportedCommands]);
+    return new Promise((resolve11) => {
+      const waiter = (commands) => {
+        clearTimeout(timeoutId);
+        resolve11([...commands]);
+      };
+      const timeoutId = setTimeout(() => {
+        const index = this.supportedCommandWaiters.indexOf(waiter);
+        if (index >= 0) this.supportedCommandWaiters.splice(index, 1);
+        resolve11([...this.supportedCommands]);
+      }, timeoutMs);
+      this.supportedCommandWaiters.push(waiter);
+    });
+  }
+  async readTextFile(request) {
+    var _a3;
+    const resolvedPath = this.resolveSessionPath(request.sessionId, request.path);
+    const content = await fs17.readFile(resolvedPath, "utf-8");
+    if (request.line === void 0 && request.limit === void 0) return { content };
+    const lines = content.split(/\r?\n/);
+    const startIndex = Math.max(0, ((_a3 = request.line) != null ? _a3 : 1) - 1);
+    const endIndex = request.limit ? startIndex + Math.max(0, request.limit) : lines.length;
+    return { content: lines.slice(startIndex, endIndex).join("\n") };
+  }
+  async writeTextFile(request) {
+    const resolvedPath = this.resolveSessionPath(request.sessionId, request.path);
+    await fs17.mkdir(path16.dirname(resolvedPath), { recursive: true });
+    await fs17.writeFile(resolvedPath, request.content, "utf-8");
+    return {};
+  }
+  resolveSessionPath(sessionId, rawPath) {
+    var _a3, _b2;
+    if (path16.isAbsolute(rawPath)) return rawPath;
+    const cwd = (_b2 = (_a3 = this.sessionCwds.get(sessionId)) != null ? _a3 : getVaultPath(this.plugin.app)) != null ? _b2 : process.cwd();
+    return path16.resolve(cwd, rawPath);
+  }
+  formatRuntimeError(error48) {
+    var _a3;
+    const baseMessage = error48 instanceof Error ? error48.message : "Copilot request failed";
+    const stderr = (_a3 = this.process) == null ? void 0 : _a3.getStderrSnapshot();
+    return stderr ? `${baseMessage}
+
+${stderr}` : baseMessage;
+  }
+  clearActiveSession() {
+    this.sessionId = null;
+    this.loadedSessionId = null;
+    this.currentSessionModelId = null;
+    this.currentSessionModeId = null;
+    this.setSupportedCommands([]);
+  }
+};
+_CopilotChatRuntime.commandCatalog = null;
+var CopilotChatRuntime = _CopilotChatRuntime;
+function normalizeApprovalInput(rawInput) {
+  if (rawInput && typeof rawInput === "object" && !Array.isArray(rawInput)) return rawInput;
+  if (rawInput === void 0) return {};
+  return { value: rawInput };
+}
+function buildApprovalOptions(options) {
+  return options.map((option) => ({
+    ...option.kind === "allow_once" ? { decision: "allow" } : option.kind === "allow_always" ? { decision: "allow-always" } : {},
+    label: option.name,
+    value: option.optionId
+  }));
+}
+function mapApprovalDecision(decision, options) {
+  if (decision === "allow") return selectPermissionOption(options, ["allow_once", "allow_always"]);
+  if (decision === "allow-always") return selectPermissionOption(options, ["allow_always", "allow_once"]);
+  if (decision === "deny") return selectPermissionOption(options, ["reject_once", "reject_always"]);
+  if (typeof decision === "object" && decision.type === "select-option") return { outcome: { optionId: decision.value, outcome: "selected" } };
+  return { outcome: { outcome: "cancelled" } };
+}
+function selectPermissionOption(options, preferredKinds) {
+  for (const kind of preferredKinds) {
+    const option = options.find((entry) => entry.kind === kind);
+    if (option) return { outcome: { optionId: option.optionId, outcome: "selected" } };
+  }
+  return { outcome: { outcome: "cancelled" } };
+}
+function splitCliList(value) {
+  return value.split(/[\r\n,]+/).map((entry) => entry.trim()).filter(Boolean);
+}
+function appendRepeatedArgs(args, flag, value) {
+  for (const entry of splitCliList(value)) {
+    args.push(flag, entry);
+  }
+}
+
+// src/providers/copilot/runtime/CopilotCliResolver.ts
+var fs18 = __toESM(require("node:fs"));
+init_env();
+init_path();
+var CopilotCliResolver = class {
+  constructor() {
+    this.cachedHostname = getHostnameKey();
+    this.lastCliPath = "";
+    this.lastHostnamePath = "";
+    this.lastEnvText = "";
+    this.resolvedPath = null;
+  }
+  resolveFromSettings(settings11) {
+    var _a3, _b2;
+    const copilotSettings = getCopilotProviderSettings(settings11);
+    const cliPath = copilotSettings.cliPath.trim();
+    const hostnamePath = ((_a3 = copilotSettings.cliPathsByHost[this.cachedHostname]) != null ? _a3 : "").trim();
+    const envText = getRuntimeEnvironmentText(settings11, "copilot");
+    if (this.resolvedPath !== null && cliPath === this.lastCliPath && hostnamePath === this.lastHostnamePath && envText === this.lastEnvText) {
+      return this.resolvedPath;
+    }
+    this.lastCliPath = cliPath;
+    this.lastHostnamePath = hostnamePath;
+    this.lastEnvText = envText;
+    this.resolvedPath = (_b2 = resolveConfiguredCliPath(hostnamePath)) != null ? _b2 : resolveConfiguredCliPath(cliPath);
+    return this.resolvedPath;
+  }
+  reset() {
+    this.lastCliPath = "";
+    this.lastHostnamePath = "";
+    this.lastEnvText = "";
+    this.resolvedPath = null;
+  }
+};
+function resolveConfiguredCliPath(cliPath) {
+  if (!cliPath) return null;
+  try {
+    const expanded = expandHomePath(cliPath);
+    if (fs18.existsSync(expanded) && fs18.statSync(expanded).isFile()) return expanded;
+  } catch (e2) {
+    return null;
+  }
+  return null;
+}
+
+// src/providers/copilot/ui/CopilotSettingsTab.ts
+var fs19 = __toESM(require("fs"));
+var import_obsidian18 = require("obsidian");
+init_env();
+init_path();
+var tt = (key, fallback) => {
+  const value = t(key);
+  return value === key ? fallback : value;
+};
+function parseLines(value) {
+  return value.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+}
+var copilotSettingsTabRenderer = {
+  render(container, context) {
+    const copilotWorkspace = maybeGetCopilotWorkspaceServices();
+    const settingsBag = context.plugin.settings;
+    const copilotSettings = getCopilotProviderSettings(settingsBag);
+    const hostnameKey = getHostnameKey();
+    const recycleCopilotRuntime = async () => {
+      var _a3, _b2;
+      for (const view of context.plugin.getAllViews()) {
+        const tabManager = view.getTabManager();
+        if (tabManager == null ? void 0 : tabManager.broadcastToProviderTabs) {
+          await tabManager.broadcastToProviderTabs("copilot", (service) => Promise.resolve(service.cleanup()));
+        } else {
+          await (tabManager == null ? void 0 : tabManager.broadcastToAllTabs((service) => Promise.resolve(service.cleanup())));
+        }
+        (_a3 = view.invalidateProviderCommandCaches) == null ? void 0 : _a3.call(view, ["copilot"]);
+        (_b2 = view.refreshModelSelector) == null ? void 0 : _b2.call(view);
+      }
+    };
+    const saveAndRecycle = async () => {
+      await context.plugin.saveSettings();
+      await recycleCopilotRuntime();
+      context.refreshModelSelectors();
+    };
+    new import_obsidian18.Setting(container).setName(tt("settings.setup", "Setup")).setHeading();
+    new import_obsidian18.Setting(container).setName(tt("settings.copilot.enable.name", "Enable Copilot provider")).setDesc(tt("settings.copilot.enable.desc", "Launch GitHub Copilot CLI as an ACP provider.")).addToggle((toggle) => toggle.setValue(copilotSettings.enabled).onChange(async (value) => {
+      updateCopilotProviderSettings(settingsBag, { enabled: value });
+      await context.plugin.saveSettings();
+      context.refreshModelSelectors();
+    }));
+    const cliPathSetting = new import_obsidian18.Setting(container).setName(tt("settings.copilot.cliPath.name", "Copilot CLI path ({host})").replace("{host}", hostnameKey)).setDesc(tt("settings.copilot.cliPath.desc", "Absolute path to GitHub Copilot CLI on this computer. Leave empty to use `copilot` from PATH."));
+    const validationEl = container.createDiv({ cls: "claudian-cli-path-validation" });
+    validationEl.style.color = "var(--text-error)";
+    validationEl.style.fontSize = "0.85em";
+    validationEl.style.marginTop = "-0.5em";
+    validationEl.style.marginBottom = "0.5em";
+    validationEl.style.display = "none";
+    const validatePath = (value) => {
+      const trimmed = value.trim();
+      if (!trimmed) return null;
+      const expandedPath = expandHomePath(trimmed);
+      if (!fs19.existsSync(expandedPath)) return tt("settings.cliPath.validation.notExist", "Path does not exist.");
+      if (!fs19.statSync(expandedPath).isFile()) return tt("settings.cliPath.validation.isDirectory", "Path is a directory.");
+      return null;
+    };
+    const updateCliPathValidation = (value, inputEl) => {
+      const error48 = validatePath(value);
+      if (error48) {
+        validationEl.setText(error48);
+        validationEl.style.display = "block";
+        if (inputEl) inputEl.style.borderColor = "var(--text-error)";
+        return false;
+      }
+      validationEl.style.display = "none";
+      if (inputEl) inputEl.style.borderColor = "";
+      return true;
+    };
+    const cliPathsByHost = { ...copilotSettings.cliPathsByHost };
+    const currentValue = copilotSettings.cliPathsByHost[hostnameKey] || "";
+    let cliPathInputEl = null;
+    const persistCliPath = async (value) => {
+      var _a3;
+      if (!updateCliPathValidation(value, cliPathInputEl != null ? cliPathInputEl : void 0)) return false;
+      const trimmed = value.trim();
+      if (trimmed) cliPathsByHost[hostnameKey] = trimmed;
+      else delete cliPathsByHost[hostnameKey];
+      updateCopilotProviderSettings(settingsBag, { cliPathsByHost: { ...cliPathsByHost } });
+      await context.plugin.saveSettings();
+      (_a3 = copilotWorkspace == null ? void 0 : copilotWorkspace.cliResolver) == null ? void 0 : _a3.reset();
+      await recycleCopilotRuntime();
+      return true;
+    };
+    cliPathSetting.addText((text) => {
+      text.setPlaceholder(process.platform === "win32" ? "C:\\Users\\you\\.local\\bin\\copilot.exe" : "/Users/you/.local/bin/copilot").setValue(currentValue).onChange(async (value) => {
+        await persistCliPath(value);
+      });
+      text.inputEl.addClass("claudian-settings-cli-path-input");
+      text.inputEl.style.width = "100%";
+      cliPathInputEl = text.inputEl;
+      updateCliPathValidation(currentValue, text.inputEl);
+    });
+    new import_obsidian18.Setting(container).setName(tt("settings.safety", "Safety")).setHeading();
+    new import_obsidian18.Setting(container).setName(tt("settings.copilot.approvalMode.name", "Permission mode")).setDesc(tt("settings.copilot.approvalMode.desc", "Maps to Copilot CLI safe defaults, --mode plan, or --allow-all.")).addDropdown((dropdown) => dropdown.addOption("default", tt("settings.copilot.approvalMode.default", "Safe")).addOption("yolo", "YOLO").addOption("plan", tt("settings.copilot.approvalMode.plan", "Plan")).setValue(copilotSettings.selectedApprovalMode).onChange(async (value) => {
+      updateCopilotProviderSettings(settingsBag, { selectedApprovalMode: value });
+      await saveAndRecycle();
+    }));
+    new import_obsidian18.Setting(container).setName(tt("settings.copilot.autopilot.name", "Autopilot mode")).setDesc(tt("settings.copilot.autopilot.desc", "Start Copilot with --autopilot when not in Plan mode.")).addToggle((toggle) => toggle.setValue(copilotSettings.autopilot).onChange(async (value) => {
+      updateCopilotProviderSettings(settingsBag, { autopilot: value });
+      await saveAndRecycle();
+    }));
+    new import_obsidian18.Setting(container).setName(tt("settings.models", "Models")).setHeading();
+    const visibleModels = copilotSettings.visibleModels.length > 0 ? copilotSettings.visibleModels : COPILOT_FALLBACK_MODELS.map((model) => model.rawId);
+    new import_obsidian18.Setting(container).setName(tt("settings.copilot.customVisibleModels.name", "Model IDs")).setDesc(tt("settings.copilot.customVisibleModels.desc", "One Copilot CLI model ID per line. These are passed to `copilot --model`.")).addTextArea((text) => {
+      text.setPlaceholder("gpt-5.4\ngpt-5.4-mini\ngpt-5.2").setValue(visibleModels.join("\n")).onChange(async (value) => {
+        const models = parseLines(value);
+        updateCopilotProviderSettings(settingsBag, { visibleModels: models });
+        await context.plugin.saveSettings();
+        const savedProviderModel = settingsBag.savedProviderModel;
+        if (!settingsBag.model && models[0]) settingsBag.model = encodeCopilotModelId(models[0]);
+        if (savedProviderModel && !savedProviderModel.copilot && models[0]) savedProviderModel.copilot = encodeCopilotModelId(models[0]);
+        context.refreshModelSelectors();
+      });
+      text.inputEl.rows = 5;
+      text.inputEl.cols = 40;
+    });
+    new import_obsidian18.Setting(container).setName(tt("settings.experimental", "Advanced")).setHeading();
+    new import_obsidian18.Setting(container).setName(tt("settings.copilot.experimental.name", "Experimental features")).setDesc("Pass --experimental to Copilot CLI.").addToggle((toggle) => toggle.setValue(copilotSettings.experimental).onChange(async (value) => {
+      updateCopilotProviderSettings(settingsBag, { experimental: value });
+      await saveAndRecycle();
+    }));
+    new import_obsidian18.Setting(container).setName(tt("settings.copilot.remote.name", "Remote control")).setDesc("Pass --remote; disabled by default with --no-remote for local Obsidian sessions.").addToggle((toggle) => toggle.setValue(copilotSettings.remote).onChange(async (value) => {
+      updateCopilotProviderSettings(settingsBag, { remote: value });
+      await saveAndRecycle();
+    }));
+    new import_obsidian18.Setting(container).setName(tt("settings.copilot.reasoningSummaries.name", "Reasoning summaries")).setDesc("Pass --enable-reasoning-summaries for OpenAI models.").addToggle((toggle) => toggle.setValue(copilotSettings.enableReasoningSummaries).onChange(async (value) => {
+      updateCopilotProviderSettings(settingsBag, { enableReasoningSummaries: value });
+      await saveAndRecycle();
+    }));
+    new import_obsidian18.Setting(container).setName(tt("settings.copilot.agent.name", "Custom agent")).setDesc("Optional --agent value.").addText((text) => text.setValue(copilotSettings.customAgent).setPlaceholder("agent-name").onChange(async (value) => {
+      updateCopilotProviderSettings(settingsBag, { customAgent: value.trim() });
+      await saveAndRecycle();
+    }));
+    const addTextAreaSetting = (name, desc, value, key, placeholder) => {
+      new import_obsidian18.Setting(container).setName(name).setDesc(desc).addTextArea((text) => {
+        text.setValue(value).setPlaceholder(placeholder).onChange(async (next) => {
+          updateCopilotProviderSettings(settingsBag, { [key]: next });
+          await saveAndRecycle();
+        });
+        text.inputEl.rows = 3;
+        text.inputEl.cols = 40;
+      });
+    };
+    addTextAreaSetting("Additional MCP config", "One JSON string or @file path per line. Passed as repeated --additional-mcp-config.", copilotSettings.additionalMcpConfig, "additionalMcpConfig", "@/path/to/mcp.json");
+    addTextAreaSetting("GitHub MCP tools", "One tool per line. Passed as repeated --add-github-mcp-tool.", copilotSettings.githubMcpTools, "githubMcpTools", "*");
+    addTextAreaSetting("GitHub MCP toolsets", "One toolset per line. Passed as repeated --add-github-mcp-toolset.", copilotSettings.githubMcpToolsets, "githubMcpToolsets", "all");
+    addTextAreaSetting("Allowed tools", "One tool permission pattern per line. Passed as repeated --allow-tool.", copilotSettings.allowTools, "allowTools", "shell(git:*)\nwrite");
+    addTextAreaSetting("Denied tools", "One tool permission pattern per line. Passed as repeated --deny-tool.", copilotSettings.denyTools, "denyTools", "shell(git push)");
+    addTextAreaSetting("Available tools", "Restrict the model to these tools, one per line. Passed as repeated --available-tools.", copilotSettings.availableTools, "availableTools", "read\nedit");
+    addTextAreaSetting("Allowed URLs", "One URL/domain per line. Passed as repeated --allow-url.", copilotSettings.allowUrls, "allowUrls", "github.com");
+    addTextAreaSetting("Denied URLs", "One URL/domain per line. Passed as repeated --deny-url.", copilotSettings.denyUrls, "denyUrls", "example.com");
+    new import_obsidian18.Setting(container).setName(tt("settings.mcpServers.name", "MCP Servers")).setHeading();
+    container.createEl("p", {
+      cls: "setting-item-description",
+      text: "Copilot CLI manages MCP through its own config and launch flags. Configure persistent MCP with `copilot mcp`; use fields above for per-session MCP extras."
+    });
+    renderEnvironmentSettingsSection({
+      container,
+      plugin: context.plugin,
+      scope: "provider:copilot",
+      heading: tt("settings.environment", "Environment"),
+      name: tt("settings.copilot.environment.name", "Copilot environment"),
+      desc: tt("settings.copilot.environment.desc", "Copilot-owned runtime variables only. Shared PATH changes should go in shared environment settings."),
+      placeholder: "GITHUB_TOKEN=...\nCOPILOT_LOG_LEVEL=info",
+      renderCustomContextLimits: (target) => context.renderCustomContextLimits(target, "copilot")
+    });
+  }
+};
+
+// src/providers/copilot/app/CopilotRuntimeCommandLoader.ts
+var CopilotRuntimeCommandLoader = class {
+  isAvailable(settings11) {
+    return getCopilotProviderSettings(settings11).enabled;
+  }
+  async loadCommands(context) {
+    var _a3, _b2, _c;
+    const shouldWarmBlankSession = context.allowSessionCreation === true && !((_a3 = context.conversation) == null ? void 0 : _a3.sessionId);
+    const shouldWarmPreSessionConversation = !!context.conversation && !context.conversation.sessionId && context.conversation.messages.length > 0;
+    if (!context.runtime && !((_b2 = context.conversation) == null ? void 0 : _b2.sessionId) && !shouldWarmBlankSession && !shouldWarmPreSessionConversation) return [];
+    const canReuseRuntime = ((_c = context.runtime) == null ? void 0 : _c.providerId) === "copilot" && !shouldWarmPreSessionConversation;
+    const runtime = canReuseRuntime ? context.runtime : new CopilotChatRuntime(context.plugin);
+    try {
+      if (context.conversation) runtime.syncConversationState(context.conversation, context.externalContextPaths);
+      const ready = await runtime.ensureReady({ allowSessionCreation: shouldWarmBlankSession || shouldWarmPreSessionConversation });
+      if (!ready) return [];
+      return await runtime.getSupportedCommands();
+    } finally {
+      if (runtime !== context.runtime) runtime.cleanup();
+    }
+  }
+};
+
+// src/providers/copilot/app/CopilotWorkspaceServices.ts
+var copilotTabWarmupPolicy = { resolveMode: () => "commands" };
+async function createCopilotWorkspaceServices() {
+  const commandCatalog = new CopilotCommandCatalog();
+  CopilotChatRuntime.commandCatalog = commandCatalog;
+  return {
+    commandCatalog,
+    cliResolver: new CopilotCliResolver(),
+    runtimeCommandLoader: new CopilotRuntimeCommandLoader(),
+    settingsTabRenderer: copilotSettingsTabRenderer,
+    tabWarmupPolicy: copilotTabWarmupPolicy
+  };
+}
+var copilotWorkspaceRegistration = {
+  initialize: async () => createCopilotWorkspaceServices()
+};
+function maybeGetCopilotWorkspaceServices() {
+  return ProviderWorkspaceRegistry.getServices("copilot");
+}
+
+// src/providers/copilot/runtime/CopilotAuxQueryRunner.ts
+var import_node_child_process2 = require("node:child_process");
+init_path();
+var CopilotAuxQueryRunner = class {
+  constructor(plugin) {
+    this.plugin = plugin;
+    this.currentAbortController = null;
+  }
+  async query(config2, prompt) {
+    var _a3, _b2, _c, _d2;
+    const resolvedCliPath = (_a3 = this.plugin.getResolvedProviderCliPath("copilot")) != null ? _a3 : "copilot";
+    const cwd = (_b2 = getVaultPath(this.plugin.app)) != null ? _b2 : process.cwd();
+    const env = buildCopilotRuntimeEnv(this.plugin.settings, resolvedCliPath);
+    const model = config2.model ? (_c = decodeCopilotModelId(config2.model)) != null ? _c : config2.model : "";
+    const effort = typeof this.plugin.settings.effortLevel === "string" ? this.plugin.settings.effortLevel : "";
+    const args = ["--prompt", prompt, "--silent", "--no-remote", "--allow-all-tools"];
+    if (model) args.unshift("--model", model);
+    if (["low", "medium", "high", "xhigh"].includes(effort)) args.unshift("--effort", effort);
+    this.currentAbortController = (_d2 = config2.abortController) != null ? _d2 : new AbortController();
+    return await new Promise((resolve11, reject) => {
+      var _a4;
+      const child = (0, import_node_child_process2.spawn)(resolvedCliPath, args, { cwd, env, stdio: ["ignore", "pipe", "pipe"], signal: (_a4 = this.currentAbortController) == null ? void 0 : _a4.signal });
+      let stdout = "";
+      let stderr = "";
+      child.stdout.on("data", (chunk) => {
+        var _a5;
+        stdout += chunk.toString("utf8");
+        (_a5 = config2.onTextChunk) == null ? void 0 : _a5.call(config2, stdout);
+      });
+      child.stderr.on("data", (chunk) => {
+        stderr += chunk.toString("utf8");
+      });
+      child.on("error", reject);
+      child.on("exit", (code, signal) => {
+        if (code === 0) resolve11(stdout.trim());
+        else reject(new Error(stderr.trim() || `Copilot exited with ${signal != null ? signal : code}`));
+      });
+    });
+  }
+  reset() {
+    var _a3;
+    (_a3 = this.currentAbortController) == null ? void 0 : _a3.abort();
+    this.currentAbortController = null;
+  }
+};
+
+// src/providers/copilot/auxiliary/CopilotInlineEditService.ts
+var CopilotInlineEditService = class extends QueryBackedInlineEditService {
+  constructor(plugin) {
+    super(new CopilotAuxQueryRunner(plugin));
+  }
+};
+
+// src/providers/copilot/auxiliary/CopilotInstructionRefineService.ts
+var CopilotInstructionRefineService = class extends QueryBackedInstructionRefineService {
+  constructor(plugin) {
+    super(new CopilotAuxQueryRunner(plugin));
+  }
+};
+
+// src/providers/copilot/auxiliary/CopilotTaskResultInterpreter.ts
+var CopilotTaskResultInterpreter = class {
+  hasAsyncLaunchMarker() {
+    return false;
+  }
+  extractAgentId() {
+    return null;
+  }
+  extractStructuredResult() {
+    return null;
+  }
+  resolveTerminalStatus(_toolUseResult, fallbackStatus) {
+    return fallbackStatus;
+  }
+  extractTagValue() {
+    return null;
+  }
+};
+
+// src/providers/copilot/ui/CopilotChatUIConfig.ts
+var COPILOT_ICON = {
+  viewBox: "0 0 24 24",
+  path: "M12 2.2a9.8 9.8 0 0 0-9.8 9.8v4.2A3.8 3.8 0 0 0 6 20h2.2v-7.2H4.5V12a7.5 7.5 0 0 1 15 0v.8h-3.7V20H18a3.8 3.8 0 0 0 3.8-3.8V12A9.8 9.8 0 0 0 12 2.2zm-5 12.4v3.6H6a2 2 0 0 1-2-2v-1.6h3zm13 0v1.6a2 2 0 0 1-2 2h-1v-3.6h3z"
+};
+var DEFAULT_CONTEXT_WINDOW3 = 2e5;
+var COPILOT_DEFAULT_EFFORT = "high";
+var COPILOT_PERMISSION_MODE_TOGGLE = {
+  inactiveValue: "normal",
+  inactiveLabel: "Safe",
+  activeValue: "yolo",
+  activeLabel: "YOLO",
+  planValue: "plan",
+  planLabel: "Plan"
+};
+var FALLBACK_MODELS = [
+  { value: COPILOT_SYNTHETIC_MODEL_ID, label: "Copilot", description: "GitHub Copilot CLI ACP runtime default model" },
+  ...COPILOT_FALLBACK_MODELS.map((model) => ({
+    value: encodeCopilotModelId(model.rawId),
+    label: model.label,
+    ...model.description ? { description: model.description } : {}
+  }))
+];
+var EFFORT_OPTIONS = [
+  { value: "low", label: "Low" },
+  { value: "medium", label: "Medium" },
+  { value: "high", label: "High" },
+  { value: "xhigh", label: "XHigh" }
+];
+var copilotChatUIConfig = {
+  getModelOptions(settings11) {
+    const copilotSettings = getCopilotProviderSettings(settings11);
+    const discovered = new Map(copilotSettings.discoveredModels.map((model) => [model.rawId, model]));
+    const visible = copilotSettings.visibleModels.length > 0 ? copilotSettings.visibleModels : copilotSettings.discoveredModels.map((model) => model.rawId);
+    const options = visible.flatMap((rawId) => {
+      var _a3;
+      const model = discovered.get(rawId);
+      return [{
+        value: encodeCopilotModelId(rawId),
+        label: (_a3 = model == null ? void 0 : model.label) != null ? _a3 : rawId,
+        ...(model == null ? void 0 : model.description) ? { description: model.description } : {}
+      }];
+    });
+    return options.length > 0 ? options : FALLBACK_MODELS;
+  },
+  ownsModel(model) {
+    return isCopilotModelSelectionId(model);
+  },
+  isAdaptiveReasoningModel() {
+    return true;
+  },
+  getReasoningOptions() {
+    return EFFORT_OPTIONS;
+  },
+  getDefaultReasoningValue() {
+    return COPILOT_DEFAULT_EFFORT;
+  },
+  getContextWindowSize(model, customLimits) {
+    var _a3;
+    return (_a3 = customLimits == null ? void 0 : customLimits[model]) != null ? _a3 : DEFAULT_CONTEXT_WINDOW3;
+  },
+  isDefaultModel(model) {
+    return model === COPILOT_SYNTHETIC_MODEL_ID || model.startsWith(COPILOT_MODEL_PREFIX);
+  },
+  applyModelDefaults(model, settings11) {
+    if (!settings11 || typeof settings11 !== "object" || Array.isArray(settings11)) return;
+    const settingsBag = settings11;
+    if (isCopilotModelSelectionId(model)) settingsBag.model = model;
+    if (typeof settingsBag.effortLevel !== "string" || !EFFORT_OPTIONS.some((option) => option.value === settingsBag.effortLevel)) {
+      settingsBag.effortLevel = COPILOT_DEFAULT_EFFORT;
+    }
+  },
+  applyReasoningSelection(_model, value, settings11) {
+    if (!settings11 || typeof settings11 !== "object" || Array.isArray(settings11)) return;
+    if (EFFORT_OPTIONS.some((option) => option.value === value)) {
+      settings11.effortLevel = value;
+    }
+  },
+  normalizeModelVariant(model) {
+    var _a3;
+    return isCopilotModelSelectionId(model) ? encodeCopilotModelId((_a3 = decodeCopilotModelId(model)) != null ? _a3 : "") : model;
+  },
+  getCustomModelIds() {
+    return /* @__PURE__ */ new Set();
+  },
+  getPermissionModeToggle() {
+    return COPILOT_PERMISSION_MODE_TOGGLE;
+  },
+  resolvePermissionMode(settings11) {
+    return copilotApprovalModeToPermissionMode(getCopilotProviderSettings(settings11).selectedApprovalMode);
+  },
+  applyPermissionMode(value, settings11) {
+    if (!settings11 || typeof settings11 !== "object" || Array.isArray(settings11)) return;
+    const settingsBag = settings11;
+    settingsBag.permissionMode = value;
+    updateCopilotProviderSettings(settingsBag, { selectedApprovalMode: permissionModeToCopilotApprovalMode(value) });
+  },
+  getProviderIcon() {
+    return COPILOT_ICON;
+  }
+};
+
+// src/providers/copilot/auxiliary/CopilotTitleGenerationService.ts
+var CopilotTitleGenerationService = class extends QueryBackedTitleGenerationService {
+  constructor(plugin) {
+    super({
+      createRunner: () => new CopilotAuxQueryRunner(plugin),
+      resolveModel: () => {
+        const settings11 = plugin.settings;
+        const titleModel = typeof settings11.titleGenerationModel === "string" ? settings11.titleGenerationModel : "";
+        return copilotChatUIConfig.ownsModel(titleModel, settings11) ? titleModel : void 0;
+      }
+    });
+  }
+};
+
+// src/providers/copilot/env/CopilotSettingsReconciler.ts
+init_env();
+var COPILOT_ENV_HASH_KEYS = ["COPILOT_ALLOW_ALL", "COPILOT_LOG_LEVEL", "GITHUB_TOKEN", "GH_TOKEN"];
+function computeCopilotEnvHash(envText) {
+  const envVars = parseEnvironmentVariables(envText || "");
+  return COPILOT_ENV_HASH_KEYS.filter((key) => envVars[key]).map((key) => `${key}=${envVars[key]}`).sort().join("|");
+}
+var copilotSettingsReconciler = {
+  reconcileModelWithEnvironment(settings11, conversations) {
+    const envText = getRuntimeEnvironmentText(settings11, "copilot");
+    const currentHash = computeCopilotEnvHash(envText);
+    const savedHash = getCopilotProviderSettings(settings11).environmentHash;
+    if (currentHash === savedHash) return { changed: false, invalidatedConversations: [] };
+    const invalidatedConversations = [];
+    for (const conversation of conversations) {
+      if (conversation.providerId === "copilot" && conversation.sessionId) {
+        conversation.sessionId = null;
+        conversation.providerState = void 0;
+        invalidatedConversations.push(conversation);
+      }
+    }
+    updateCopilotProviderSettings(settings11, { environmentHash: currentHash });
+    return { changed: true, invalidatedConversations };
+  },
+  normalizeModelVariantSettings(settings11) {
+    return normalizeProjectedModel(settings11, "copilot");
+  }
+};
+function normalizeProjectedModel(settings11, providerId) {
+  let changed = false;
+  if (typeof settings11.model === "string" && isCopilotModelSelectionId(settings11.model)) {
+    const raw = decodeCopilotModelId(settings11.model);
+    const normalized = raw ? encodeCopilotModelId(raw) : settings11.model;
+    if (normalized !== settings11.model) {
+      settings11.model = normalized;
+      changed = true;
+    }
+  }
+  const saved = settings11.savedProviderModel;
+  if (saved && typeof saved === "object" && !Array.isArray(saved)) {
+    const map2 = saved;
+    const value = map2[providerId];
+    if (typeof value === "string" && isCopilotModelSelectionId(value)) {
+      const raw = decodeCopilotModelId(value);
+      const normalized = raw ? encodeCopilotModelId(raw) : value;
+      if (normalized !== value) {
+        map2[providerId] = normalized;
+        changed = true;
+      }
+    }
+  }
+  return changed;
+}
+
+// src/providers/copilot/registration.ts
+var noHistoryService = {
+  async hydrateConversationHistory() {
+  },
+  async deleteConversationSession() {
+  },
+  resolveSessionIdForConversation: (conversation) => {
+    var _a3;
+    return (_a3 = conversation == null ? void 0 : conversation.sessionId) != null ? _a3 : null;
+  },
+  isPendingForkConversation: () => false,
+  buildForkProviderState: () => ({})
+};
+var copilotProviderRegistration = {
+  blankTabOrder: 13,
+  capabilities: COPILOT_PROVIDER_CAPABILITIES,
+  chatUIConfig: copilotChatUIConfig,
+  createInlineEditService: (plugin) => new CopilotInlineEditService(plugin),
+  createInstructionRefineService: (plugin) => new CopilotInstructionRefineService(plugin),
+  createRuntime: ({ plugin }) => new CopilotChatRuntime(plugin),
+  createTitleGenerationService: (plugin) => new CopilotTitleGenerationService(plugin),
+  displayName: "Copilot",
+  environmentKeyPatterns: [/^COPILOT_/i, /^GITHUB_/i, /^GH_/i],
+  historyService: noHistoryService,
+  isEnabled: (settings11) => getCopilotProviderSettings(settings11).enabled,
+  settingsReconciler: copilotSettingsReconciler,
+  taskResultInterpreter: new CopilotTaskResultInterpreter()
+};
+
+// src/providers/gemini/commands/GeminiCommandCatalog.ts
+function slashCommandToEntry3(command) {
+  var _a3;
+  const normalizedName = command.name.trim().replace(/^\/+/, "");
+  return {
+    id: command.id,
+    providerId: "gemini",
+    kind: "command",
+    name: normalizedName,
+    description: command.description,
+    content: command.content,
+    argumentHint: command.argumentHint,
+    allowedTools: command.allowedTools,
+    model: command.model,
+    disableModelInvocation: command.disableModelInvocation,
+    userInvocable: command.userInvocable,
+    context: command.context,
+    agent: command.agent,
+    hooks: command.hooks,
+    scope: "runtime",
+    source: (_a3 = command.source) != null ? _a3 : "sdk",
+    isEditable: false,
+    isDeletable: false,
+    displayPrefix: "/",
+    insertPrefix: "/"
+  };
+}
+function dedupe2(commands) {
+  const result = [];
+  const seen = /* @__PURE__ */ new Set();
+  for (const command of commands) {
+    const name = command.name.trim().replace(/^\/+/, "");
+    if (!name) continue;
+    const key = name.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push({ ...command, name });
+  }
+  return result;
+}
+var GeminiCommandCatalog = class {
+  constructor() {
+    this.runtimeCommands = [];
+  }
+  setRuntimeCommands(commands) {
+    this.runtimeCommands = dedupe2(commands);
+  }
+  async listDropdownEntries() {
+    return this.runtimeCommands.map(slashCommandToEntry3);
+  }
+  async listVaultEntries() {
+    return [];
+  }
+  async saveVaultEntry() {
+    throw new Error("Gemini runtime commands are not editable from iClaudian.");
+  }
+  async deleteVaultEntry() {
+    throw new Error("Gemini runtime commands are not deletable from iClaudian.");
+  }
+  getDropdownConfig() {
+    return {
+      providerId: "gemini",
+      triggerChars: ["/"],
+      builtInPrefix: "/",
+      skillPrefix: "/",
+      commandPrefix: "/"
+    };
+  }
+  async refresh() {
+  }
+};
+
+// src/providers/gemini/runtime/GeminiChatRuntime.ts
+var fs20 = __toESM(require("node:fs/promises"));
+var path17 = __toESM(require("node:path"));
+init_path();
+
+// src/providers/gemini/capabilities.ts
+var GEMINI_PROVIDER_CAPABILITIES = Object.freeze({
+  providerId: "gemini",
+  supportsPersistentRuntime: true,
+  supportsNativeHistory: true,
+  supportsPlanMode: true,
+  supportsRewind: false,
+  supportsFork: false,
+  supportsProviderCommands: true,
+  supportsImageAttachments: true,
+  supportsInstructionMode: true,
+  supportsMcpTools: true,
+  supportsTurnSteer: false,
+  reasoningControl: "none"
+});
+
+// src/providers/gemini/modes.ts
+function permissionModeToGeminiApprovalMode(value) {
+  if (value === "yolo") return "yolo";
+  if (value === "plan") return "plan";
+  if (value === "auto_edit") return "auto_edit";
+  return "default";
+}
+function geminiApprovalModeToPermissionMode(value) {
+  if (value === "yolo") return "yolo";
+  if (value === "plan") return "plan";
+  if (value === "auto_edit") return "normal";
+  return "normal";
+}
+function geminiApprovalModeToAcpModeId(value) {
+  if (value === "auto_edit") return "autoEdit";
+  if (value === "yolo") return "yolo";
+  if (value === "plan") return "plan";
+  return "default";
+}
+
+// src/providers/gemini/types/index.ts
+function getGeminiState(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return {};
+  const raw = value;
+  return {
+    ...typeof raw.sessionCwd === "string" && raw.sessionCwd.trim() ? { sessionCwd: raw.sessionCwd.trim() } : {}
+  };
+}
+
+// src/providers/gemini/runtime/GeminiRuntimeEnvironment.ts
+init_env();
+function buildGeminiRuntimeEnv(settings11, cliPath) {
+  const envText = getRuntimeEnvironmentText(settings11, "gemini");
+  const envVars = parseEnvironmentVariables(envText);
+  return {
+    ...process.env,
+    ...envVars,
+    PATH: getEnhancedPath(envVars.PATH, cliPath || void 0),
+    TERM: process.env.TERM && process.env.TERM !== "dumb" ? process.env.TERM : "xterm-256color"
+  };
+}
+
+// src/providers/gemini/runtime/GeminiChatRuntime.ts
+var StreamChunkQueue2 = class {
+  constructor() {
+    this.closed = false;
+    this.items = [];
+    this.waiters = [];
+  }
+  push(chunk) {
+    const waiter = this.waiters.shift();
+    if (waiter) waiter(chunk);
+    else this.items.push(chunk);
+  }
+  close() {
+    var _a3;
+    if (this.closed) return;
+    this.closed = true;
+    while (this.waiters.length) (_a3 = this.waiters.shift()) == null ? void 0 : _a3(null);
+  }
+  async next() {
+    var _a3;
+    if (this.items.length) return (_a3 = this.items.shift()) != null ? _a3 : null;
+    if (this.closed) return null;
+    return new Promise((resolve11) => this.waiters.push(resolve11));
+  }
+};
+var _GeminiChatRuntime = class _GeminiChatRuntime {
+  constructor(plugin) {
+    this.plugin = plugin;
+    this.providerId = "gemini";
+    this.activeTurn = null;
+    this.approvalCallback = null;
+    this.connection = null;
+    this.contextUsage = null;
+    this.currentLaunchKey = null;
+    this.currentSessionModelId = null;
+    this.currentSessionModeId = null;
+    this.currentTurnMetadata = {};
+    this.loadedSessionId = null;
+    this.permissionModeSyncCallback = null;
+    this.process = null;
+    this.promptUsage = null;
+    this.readyListeners = [];
+    this.ready = false;
+    this.sessionInvalidated = false;
+    this.supportedCommandWaiters = [];
+    this.supportedCommands = [];
+    this.sessionCwds = /* @__PURE__ */ new Map();
+    this.sessionId = null;
+    this.sessionUpdateNormalizer = new AcpSessionUpdateNormalizer();
+    this.transport = null;
+  }
+  getCapabilities() {
+    return GEMINI_PROVIDER_CAPABILITIES;
+  }
+  prepareTurn(request) {
+    var _a3;
+    return {
+      isCompact: false,
+      mcpMentions: (_a3 = request.enabledMcpServers) != null ? _a3 : /* @__PURE__ */ new Set(),
+      persistedContent: "",
+      prompt: buildAcpPromptText(request),
+      request
+    };
+  }
+  onReadyStateChange(listener) {
+    this.readyListeners.push(listener);
+    return () => {
+      const index = this.readyListeners.indexOf(listener);
+      if (index >= 0) this.readyListeners.splice(index, 1);
+    };
+  }
+  setResumeCheckpoint(_checkpointId) {
+  }
+  syncConversationState(conversation) {
+    var _a3, _b2;
+    if (this.sessionId !== ((_a3 = conversation == null ? void 0 : conversation.sessionId) != null ? _a3 : null)) {
+      this.currentSessionModelId = null;
+      this.currentSessionModeId = null;
+      this.sessionInvalidated = false;
+      this.setSupportedCommands([]);
+    }
+    this.sessionId = (_b2 = conversation == null ? void 0 : conversation.sessionId) != null ? _b2 : null;
+  }
+  async reloadMcpServers() {
+  }
+  async ensureReady(options) {
+    var _a3, _b2;
+    const settings11 = getGeminiProviderSettings(this.plugin.settings);
+    if (!settings11.enabled) {
+      this.setReady(false);
+      return false;
+    }
+    const cwd = (_a3 = getVaultPath(this.plugin.app)) != null ? _a3 : process.cwd();
+    const targetSessionId = this.sessionId;
+    const resolvedCliPath = (_b2 = this.plugin.getResolvedProviderCliPath("gemini")) != null ? _b2 : "gemini";
+    const runtimeEnv = buildGeminiRuntimeEnv(this.plugin.settings, resolvedCliPath);
+    const approvalMode = this.resolveSelectedApprovalMode();
+    const initialModel = this.resolveSelectedRawModelId();
+    const launchArgs = ["--acp", "--approval-mode", approvalMode, ...initialModel ? ["--model", initialModel] : []];
+    const nextLaunchKey = JSON.stringify({ command: resolvedCliPath, cwd, env: this.getEnvFingerprint(runtimeEnv), args: launchArgs });
+    const shouldRestart = !this.process || !this.transport || !this.connection || !this.process.isAlive() || (options == null ? void 0 : options.force) === true || this.currentLaunchKey !== nextLaunchKey;
+    if (shouldRestart) {
+      await this.shutdownProcess();
+      await this.startProcess({ command: resolvedCliPath, args: launchArgs, cwd, runtimeEnv });
+      this.currentLaunchKey = nextLaunchKey;
+      this.loadedSessionId = null;
+    }
+    if (targetSessionId) {
+      if (this.loadedSessionId !== targetSessionId) {
+        const loaded = await this.loadSession(targetSessionId, cwd);
+        if (!loaded) {
+          this.sessionInvalidated = true;
+          this.clearActiveSession();
+        }
+      }
+      return true;
+    }
+    if (!this.sessionId && !this.sessionInvalidated) {
+      if ((options == null ? void 0 : options.allowSessionCreation) === false) return true;
+      return Boolean(await this.createSession(cwd));
+    }
+    return true;
+  }
+  async *query(turn, conversationHistory, queryOptions) {
+    var _a3, _b2;
+    const previousMessages = conversationHistory != null ? conversationHistory : [];
+    const expectedSessionId = this.sessionId;
+    let shouldBootstrapHistory = previousMessages.length > 0 && (!expectedSessionId || this.sessionInvalidated);
+    if (!await this.ensureReady()) {
+      yield { type: "error", content: "Failed to start Gemini. Check the CLI path and login state." };
+      yield { type: "done" };
+      return;
+    }
+    if (!this.connection) {
+      yield { type: "error", content: "Gemini runtime is not ready." };
+      yield { type: "done" };
+      return;
+    }
+    const cwd = (_a3 = getVaultPath(this.plugin.app)) != null ? _a3 : process.cwd();
+    if (expectedSessionId && !this.sessionId) shouldBootstrapHistory = previousMessages.length > 0;
+    if (!this.sessionId) {
+      const sessionId2 = await this.createSession(cwd);
+      if (!sessionId2) {
+        yield { type: "error", content: "Failed to create a Gemini session." };
+        yield { type: "done" };
+        return;
+      }
+    }
+    const sessionId = this.sessionId;
+    (_b2 = this.activeTurn) == null ? void 0 : _b2.queue.close();
+    this.activeTurn = { queue: new StreamChunkQueue2(), sessionId };
+    this.currentTurnMetadata = {};
+    this.contextUsage = null;
+    this.promptUsage = null;
+    this.sessionUpdateNormalizer.reset();
+    const activeTurn = this.activeTurn;
+    try {
+      await this.applySelectedMode(sessionId);
+      await this.applySelectedModel(sessionId, queryOptions);
+    } catch (error48) {
+      yield { type: "error", content: this.formatRuntimeError(error48) };
+      yield { type: "done" };
+      activeTurn.queue.close();
+      this.activeTurn = null;
+      return;
+    }
+    const promptPromise = this.connection.prompt({
+      prompt: buildAcpPromptBlocks(
+        turn.request,
+        shouldBootstrapHistory ? previousMessages : []
+      ),
+      sessionId
+    }).then((response) => {
+      var _a4;
+      if (response.userMessageId) this.currentTurnMetadata.userMessageId = response.userMessageId;
+      this.promptUsage = (_a4 = response.usage) != null ? _a4 : null;
+      const usage = buildAcpUsageInfo({ contextWindow: this.contextUsage, model: this.getActiveDisplayModel(queryOptions), promptUsage: this.promptUsage });
+      if (usage) activeTurn.queue.push({ sessionId, type: "usage", usage });
+      activeTurn.queue.push({ type: "done" });
+      activeTurn.queue.close();
+    }).catch((error48) => {
+      activeTurn.queue.push({ type: "error", content: this.formatRuntimeError(error48) });
+      activeTurn.queue.push({ type: "done" });
+      activeTurn.queue.close();
+    }).finally(() => {
+      if (this.activeTurn === activeTurn) this.activeTurn = null;
+    });
+    try {
+      while (true) {
+        const chunk = await activeTurn.queue.next();
+        if (!chunk) break;
+        yield chunk;
+      }
+      await promptPromise;
+    } finally {
+      if (this.activeTurn === activeTurn) this.activeTurn = null;
+    }
+  }
+  cancel() {
+    var _a3;
+    if (this.connection && this.sessionId) this.connection.cancel({ sessionId: this.sessionId });
+    (_a3 = this.activeTurn) == null ? void 0 : _a3.queue.close();
+  }
+  resetSession() {
+    this.clearActiveSession();
+    this.sessionInvalidated = false;
+  }
+  getSessionId() {
+    return this.sessionId;
+  }
+  consumeSessionInvalidation() {
+    const v2 = this.sessionInvalidated;
+    this.sessionInvalidated = false;
+    return v2;
+  }
+  isReady() {
+    return this.ready;
+  }
+  async getSupportedCommands() {
+    if (this.supportedCommands.length > 0 && this.loadedSessionId === this.sessionId) return [...this.supportedCommands];
+    if (this.sessionId && this.loadedSessionId !== this.sessionId) {
+      const ready = await this.ensureReady({ allowSessionCreation: false });
+      if (!ready) return [];
+    }
+    if (!this.sessionId) return [];
+    if (this.supportedCommands.length > 0) return [...this.supportedCommands];
+    return this.waitForSupportedCommands();
+  }
+  cleanup() {
+    var _a3;
+    (_a3 = this.activeTurn) == null ? void 0 : _a3.queue.close();
+    void this.shutdownProcess();
+  }
+  async rewind() {
+    return { canRewind: false };
+  }
+  setApprovalCallback(callback) {
+    this.approvalCallback = callback;
+  }
+  setApprovalDismisser(_dismisser) {
+  }
+  setAskUserQuestionCallback(_callback) {
+  }
+  setExitPlanModeCallback(_callback) {
+  }
+  setPermissionModeSyncCallback(callback) {
+    this.permissionModeSyncCallback = callback;
+  }
+  setSubagentHookProvider(_getState) {
+  }
+  setAutoTurnCallback(_callback) {
+  }
+  consumeTurnMetadata() {
+    const metadata = this.currentTurnMetadata;
+    this.currentTurnMetadata = {};
+    return metadata;
+  }
+  buildSessionUpdates(params) {
+    const state = params.conversation ? getGeminiState(params.conversation.providerState) : {};
+    const providerState = { ...state.sessionCwd ? { sessionCwd: state.sessionCwd } : {} };
+    return {
+      updates: {
+        providerState: Object.keys(providerState).length > 0 ? providerState : void 0,
+        sessionId: params.sessionInvalidated && !this.sessionId ? null : this.sessionId
+      }
+    };
+  }
+  resolveSessionIdForFork(conversation) {
+    var _a3, _b2;
+    return (_b2 = (_a3 = this.sessionId) != null ? _a3 : conversation == null ? void 0 : conversation.sessionId) != null ? _b2 : null;
+  }
+  async loadSubagentToolCalls() {
+    return [];
+  }
+  async loadSubagentFinalResult() {
+    return null;
+  }
+  async startProcess(params) {
+    var _a3, _b2;
+    this.process = new AcpSubprocess({ args: params.args, command: params.command, cwd: params.cwd, env: { ...process.env, ...params.runtimeEnv } });
+    this.process.start();
+    this.transport = new AcpJsonRpcTransport({ input: this.process.stdout, onClose: (listener) => this.process.onClose(listener), output: this.process.stdin });
+    this.connection = new AcpClientConnection({
+      clientInfo: { name: "iclaudian", version: (_b2 = (_a3 = this.plugin.manifest) == null ? void 0 : _a3.version) != null ? _b2 : "0.0.0" },
+      delegate: {
+        fileSystem: { readTextFile: (request) => this.readTextFile(request), writeTextFile: (request) => this.writeTextFile(request) },
+        onSessionNotification: (notification) => this.handleSessionNotification(notification),
+        requestPermission: (request) => this.handlePermissionRequest(request)
+      },
+      transport: this.transport
+    });
+    this.transport.start();
+    await this.connection.initialize();
+    this.setReady(true);
+  }
+  async shutdownProcess() {
+    var _a3, _b2, _c;
+    this.setReady(false);
+    (_a3 = this.activeTurn) == null ? void 0 : _a3.queue.close();
+    this.activeTurn = null;
+    this.currentSessionModelId = null;
+    this.currentSessionModeId = null;
+    this.setSupportedCommands([]);
+    (_b2 = this.connection) == null ? void 0 : _b2.dispose();
+    this.connection = null;
+    (_c = this.transport) == null ? void 0 : _c.dispose();
+    this.transport = null;
+    if (this.process) {
+      await this.process.shutdown().catch(() => {
+      });
+      this.process = null;
+    }
+  }
+  setReady(ready) {
+    if (this.ready === ready) return;
+    this.ready = ready;
+    for (const listener of this.readyListeners) listener(ready);
+  }
+  getEnvFingerprint(env) {
+    return ["GEMINI_API_KEY", "GOOGLE_API_KEY", "GOOGLE_CLOUD_PROJECT", "GOOGLE_CLOUD_LOCATION", "GOOGLE_GENAI_USE_VERTEXAI"].filter((key) => typeof env[key] === "string" && env[key]).map((key) => `${key}=${env[key]}`).sort().join("|");
+  }
+  resolveSelectedApprovalMode() {
+    const providerSettings = getGeminiProviderSettings(this.plugin.settings);
+    return providerSettings.selectedApprovalMode;
+  }
+  resolveSelectedRawModelId(queryOptions) {
+    const selectedModel = typeof (queryOptions == null ? void 0 : queryOptions.model) === "string" ? queryOptions.model : typeof this.plugin.settings.model === "string" ? this.plugin.settings.model : "";
+    if (!selectedModel || !isGeminiModelSelectionId(selectedModel)) return null;
+    return decodeGeminiModelId(selectedModel);
+  }
+  getActiveDisplayModel(queryOptions) {
+    var _a3;
+    const raw = (_a3 = this.resolveSelectedRawModelId(queryOptions)) != null ? _a3 : this.currentSessionModelId;
+    return raw ? encodeGeminiModelId(raw) : void 0;
+  }
+  async applySelectedMode(sessionId) {
+    if (!this.connection) return;
+    const settingsBag = this.plugin.settings;
+    const selected = getGeminiProviderSettings(settingsBag).selectedApprovalMode;
+    const modeId = geminiApprovalModeToAcpModeId(selected);
+    if (!modeId || modeId === this.currentSessionModeId) return;
+    try {
+      await this.connection.setMode({ modeId, sessionId });
+      this.currentSessionModeId = modeId;
+      this.emitPermissionModeSync(modeId);
+    } catch (e2) {
+      const response = await this.connection.setConfigOption({ configId: "mode", sessionId, type: "select", value: modeId });
+      await this.syncSessionModeState({ configOptions: response.configOptions });
+    }
+  }
+  async applySelectedModel(sessionId, queryOptions) {
+    if (!this.connection) return;
+    const rawModelId = this.resolveSelectedRawModelId(queryOptions);
+    if (!rawModelId || rawModelId === this.currentSessionModelId) return;
+    try {
+      const response = await this.connection.setConfigOption({ configId: "model", sessionId, type: "select", value: rawModelId });
+      this.currentSessionModelId = rawModelId;
+      await this.syncSessionModelState({ configOptions: response.configOptions });
+    } catch (e2) {
+    }
+  }
+  async syncSessionModelState(params) {
+    const acpState = extractAcpSessionModelState(params);
+    const models = normalizeGeminiDiscoveredModels(acpState.availableModels.map((model) => {
+      var _a3;
+      return { rawId: model.id, label: model.name, description: (_a3 = model.description) != null ? _a3 : void 0 };
+    }));
+    if (acpState.currentModelId) this.currentSessionModelId = acpState.currentModelId;
+    const settingsBag = this.plugin.settings;
+    const current = getGeminiProviderSettings(settingsBag);
+    const modelChanged = JSON.stringify(current.discoveredModels) !== JSON.stringify(models) && models.length > 0;
+    const shouldSeedVisible = current.visibleModels.length === 0 && acpState.currentModelId;
+    if (!modelChanged && !shouldSeedVisible) return;
+    updateGeminiProviderSettings(settingsBag, {
+      ...modelChanged ? { discoveredModels: models } : {},
+      ...shouldSeedVisible && acpState.currentModelId ? { visibleModels: [acpState.currentModelId] } : {}
+    });
+    await this.plugin.saveSettings();
+    this.refreshModelSelectors();
+  }
+  async syncSessionModeState(params) {
+    var _a3;
+    const acpState = extractAcpSessionModeState(params);
+    const currentModeId = (_a3 = params.currentModeId) != null ? _a3 : acpState.currentModeId;
+    if (currentModeId) {
+      this.currentSessionModeId = currentModeId;
+      this.emitPermissionModeSync(currentModeId);
+    }
+  }
+  refreshModelSelectors() {
+    for (const view of this.plugin.getAllViews()) view.refreshModelSelector();
+  }
+  emitPermissionModeSync(modeId) {
+    var _a3;
+    const mode = modeId === "autoEdit" ? "auto_edit" : modeId;
+    const permissionMode = geminiApprovalModeToPermissionMode(mode);
+    try {
+      (_a3 = this.permissionModeSyncCallback) == null ? void 0 : _a3.call(this, permissionMode);
+    } catch (e2) {
+    }
+  }
+  async createSession(cwd) {
+    var _a3, _b2, _c, _d2;
+    if (!this.connection) return null;
+    try {
+      this.setSupportedCommands([]);
+      const response = await this.connection.newSession({ cwd, mcpServers: [] });
+      this.loadedSessionId = response.sessionId;
+      this.sessionId = response.sessionId;
+      this.sessionCwds.set(response.sessionId, cwd);
+      await this.syncSessionModelState({ configOptions: (_a3 = response.configOptions) != null ? _a3 : null, models: (_b2 = response.models) != null ? _b2 : null });
+      await this.syncSessionModeState({ configOptions: (_c = response.configOptions) != null ? _c : null, modes: (_d2 = response.modes) != null ? _d2 : null });
+      return response.sessionId;
+    } catch (e2) {
+      return null;
+    }
+  }
+  async loadSession(sessionId, cwd) {
+    var _a3, _b2, _c, _d2;
+    if (!this.connection) return false;
+    try {
+      this.setSupportedCommands([]);
+      const response = await this.connection.loadSession({ cwd, mcpServers: [], sessionId });
+      this.sessionInvalidated = false;
+      this.loadedSessionId = response.sessionId;
+      this.sessionId = response.sessionId;
+      this.sessionCwds.set(response.sessionId, cwd);
+      await this.syncSessionModelState({ configOptions: (_a3 = response.configOptions) != null ? _a3 : null, models: (_b2 = response.models) != null ? _b2 : null });
+      await this.syncSessionModeState({ configOptions: (_c = response.configOptions) != null ? _c : null, modes: (_d2 = response.modes) != null ? _d2 : null });
+      return true;
+    } catch (e2) {
+      return false;
+    }
+  }
+  async handleSessionNotification(notification) {
+    var _a3;
+    if (notification.sessionId !== this.sessionId) return;
+    const normalized = this.sessionUpdateNormalizer.normalize(notification.update);
+    if (normalized.type === "config_options") {
+      await this.syncSessionModelState({ configOptions: normalized.configOptions });
+      await this.syncSessionModeState({ configOptions: normalized.configOptions });
+      return;
+    }
+    if (normalized.type === "current_mode") {
+      await this.syncSessionModeState({ currentModeId: normalized.currentModeId });
+      return;
+    }
+    if (normalized.type === "commands") {
+      this.setSupportedCommands(normalized.commands);
+      (_a3 = _GeminiChatRuntime.commandCatalog) == null ? void 0 : _a3.setRuntimeCommands(normalized.commands);
+      return;
+    }
+    if (!this.activeTurn || this.activeTurn.sessionId !== notification.sessionId) return;
+    switch (normalized.type) {
+      case "message_chunk":
+        if (normalized.role === "assistant" && normalized.messageId) this.currentTurnMetadata.assistantMessageId = normalized.messageId;
+        if (normalized.role === "user" && normalized.messageId) this.currentTurnMetadata.userMessageId = normalized.messageId;
+        for (const chunk of normalized.streamChunks) this.activeTurn.queue.push(chunk);
+        return;
+      case "tool_call":
+      case "tool_call_update":
+        for (const chunk of normalized.streamChunks) this.activeTurn.queue.push(chunk);
+        return;
+      case "usage": {
+        this.contextUsage = normalized.usage;
+        const usage = buildAcpUsageInfo({ contextWindow: normalized.usage, model: this.getActiveDisplayModel(), promptUsage: this.promptUsage });
+        if (usage) this.activeTurn.queue.push({ sessionId: notification.sessionId, type: "usage", usage });
+        return;
+      }
+      default:
+        return;
+    }
+  }
+  async handlePermissionRequest(request) {
+    var _a3;
+    if (!this.approvalCallback) return { outcome: { outcome: "cancelled" } };
+    const input = normalizeApprovalInput2(request.toolCall.rawInput);
+    const toolName = ((_a3 = request.toolCall.title) == null ? void 0 : _a3.trim()) || request.toolCall.kind || "tool";
+    const decision = await this.approvalCallback(toolName, input, `Gemini wants permission to use ${toolName}.`, { decisionOptions: buildApprovalOptions2(request.options) });
+    return mapApprovalDecision2(decision, request.options);
+  }
+  setSupportedCommands(commands) {
+    var _a3;
+    this.supportedCommands = commands.map((command) => ({ ...command }));
+    (_a3 = _GeminiChatRuntime.commandCatalog) == null ? void 0 : _a3.setRuntimeCommands(this.supportedCommands);
+    const waiters = this.supportedCommandWaiters.splice(0);
+    for (const waiter of waiters) waiter(this.supportedCommands);
+  }
+  waitForSupportedCommands(timeoutMs = 250) {
+    if (this.supportedCommands.length > 0) return Promise.resolve([...this.supportedCommands]);
+    return new Promise((resolve11) => {
+      const waiter = (commands) => {
+        clearTimeout(timeoutId);
+        resolve11([...commands]);
+      };
+      const timeoutId = setTimeout(() => {
+        const index = this.supportedCommandWaiters.indexOf(waiter);
+        if (index >= 0) this.supportedCommandWaiters.splice(index, 1);
+        resolve11([...this.supportedCommands]);
+      }, timeoutMs);
+      this.supportedCommandWaiters.push(waiter);
+    });
+  }
+  async readTextFile(request) {
+    var _a3;
+    const resolvedPath = this.resolveSessionPath(request.sessionId, request.path);
+    const content = await fs20.readFile(resolvedPath, "utf-8");
+    if (request.line === void 0 && request.limit === void 0) return { content };
+    const lines = content.split(/\r?\n/);
+    const startIndex = Math.max(0, ((_a3 = request.line) != null ? _a3 : 1) - 1);
+    const endIndex = request.limit ? startIndex + Math.max(0, request.limit) : lines.length;
+    return { content: lines.slice(startIndex, endIndex).join("\n") };
+  }
+  async writeTextFile(request) {
+    const resolvedPath = this.resolveSessionPath(request.sessionId, request.path);
+    await fs20.mkdir(path17.dirname(resolvedPath), { recursive: true });
+    await fs20.writeFile(resolvedPath, request.content, "utf-8");
+    return {};
+  }
+  resolveSessionPath(sessionId, rawPath) {
+    var _a3, _b2;
+    if (path17.isAbsolute(rawPath)) return rawPath;
+    const cwd = (_b2 = (_a3 = this.sessionCwds.get(sessionId)) != null ? _a3 : getVaultPath(this.plugin.app)) != null ? _b2 : process.cwd();
+    return path17.resolve(cwd, rawPath);
+  }
+  formatRuntimeError(error48) {
+    var _a3;
+    const baseMessage = error48 instanceof Error ? error48.message : "Gemini request failed";
+    const stderr = (_a3 = this.process) == null ? void 0 : _a3.getStderrSnapshot();
+    return stderr ? `${baseMessage}
+
+${stderr}` : baseMessage;
+  }
+  clearActiveSession() {
+    this.sessionId = null;
+    this.loadedSessionId = null;
+    this.currentSessionModelId = null;
+    this.currentSessionModeId = null;
+    this.setSupportedCommands([]);
+  }
+};
+_GeminiChatRuntime.commandCatalog = null;
+var GeminiChatRuntime = _GeminiChatRuntime;
+function normalizeApprovalInput2(rawInput) {
+  if (rawInput && typeof rawInput === "object" && !Array.isArray(rawInput)) return rawInput;
+  if (rawInput === void 0) return {};
+  return { value: rawInput };
+}
+function buildApprovalOptions2(options) {
+  return options.map((option) => ({
+    ...option.kind === "allow_once" ? { decision: "allow" } : option.kind === "allow_always" ? { decision: "allow-always" } : {},
+    label: option.name,
+    value: option.optionId
+  }));
+}
+function mapApprovalDecision2(decision, options) {
+  if (decision === "allow") return selectPermissionOption2(options, ["allow_once", "allow_always"]);
+  if (decision === "allow-always") return selectPermissionOption2(options, ["allow_always", "allow_once"]);
+  if (decision === "deny") return selectPermissionOption2(options, ["reject_once", "reject_always"]);
+  if (typeof decision === "object" && decision.type === "select-option") return { outcome: { optionId: decision.value, outcome: "selected" } };
+  return { outcome: { outcome: "cancelled" } };
+}
+function selectPermissionOption2(options, preferredKinds) {
+  for (const kind of preferredKinds) {
+    const option = options.find((entry) => entry.kind === kind);
+    if (option) return { outcome: { optionId: option.optionId, outcome: "selected" } };
+  }
+  return { outcome: { outcome: "cancelled" } };
+}
+
+// src/providers/gemini/runtime/GeminiCliResolver.ts
+var fs21 = __toESM(require("node:fs"));
+init_env();
+init_path();
+var GeminiCliResolver = class {
+  constructor() {
+    this.cachedHostname = getHostnameKey();
+    this.lastCliPath = "";
+    this.lastHostnamePath = "";
+    this.lastEnvText = "";
+    this.resolvedPath = null;
+  }
+  resolveFromSettings(settings11) {
+    var _a3, _b2;
+    const geminiSettings = getGeminiProviderSettings(settings11);
+    const cliPath = geminiSettings.cliPath.trim();
+    const hostnamePath = ((_a3 = geminiSettings.cliPathsByHost[this.cachedHostname]) != null ? _a3 : "").trim();
+    const envText = getRuntimeEnvironmentText(settings11, "gemini");
+    if (this.resolvedPath !== null && cliPath === this.lastCliPath && hostnamePath === this.lastHostnamePath && envText === this.lastEnvText) {
+      return this.resolvedPath;
+    }
+    this.lastCliPath = cliPath;
+    this.lastHostnamePath = hostnamePath;
+    this.lastEnvText = envText;
+    this.resolvedPath = (_b2 = resolveConfiguredCliPath2(hostnamePath)) != null ? _b2 : resolveConfiguredCliPath2(cliPath);
+    return this.resolvedPath;
+  }
+  reset() {
+    this.lastCliPath = "";
+    this.lastHostnamePath = "";
+    this.lastEnvText = "";
+    this.resolvedPath = null;
+  }
+};
+function resolveConfiguredCliPath2(cliPath) {
+  if (!cliPath) return null;
+  try {
+    const expanded = expandHomePath(cliPath);
+    if (fs21.existsSync(expanded) && fs21.statSync(expanded).isFile()) return expanded;
+  } catch (e2) {
+    return null;
+  }
+  return null;
+}
+
+// src/providers/gemini/ui/GeminiSettingsTab.ts
+var fs22 = __toESM(require("fs"));
+var import_obsidian19 = require("obsidian");
+init_env();
+init_path();
+var tt2 = (key) => t(key);
+var geminiSettingsTabRenderer = {
+  render(container, context) {
+    const geminiWorkspace = maybeGetGeminiWorkspaceServices();
+    const settingsBag = context.plugin.settings;
+    const geminiSettings = getGeminiProviderSettings(settingsBag);
+    const hostnameKey = getHostnameKey();
+    const recycleGeminiRuntime = async () => {
+      var _a3, _b2;
+      for (const view of context.plugin.getAllViews()) {
+        const tabManager = view.getTabManager();
+        if (tabManager == null ? void 0 : tabManager.broadcastToProviderTabs) {
+          await tabManager.broadcastToProviderTabs("gemini", (service) => Promise.resolve(service.cleanup()));
+        } else {
+          await (tabManager == null ? void 0 : tabManager.broadcastToAllTabs((service) => Promise.resolve(service.cleanup())));
+        }
+        (_a3 = view.invalidateProviderCommandCaches) == null ? void 0 : _a3.call(view, ["gemini"]);
+        (_b2 = view.refreshModelSelector) == null ? void 0 : _b2.call(view);
+      }
+    };
+    new import_obsidian19.Setting(container).setName(tt2("settings.setup")).setHeading();
+    new import_obsidian19.Setting(container).setName(tt2("settings.gemini.enable.name")).setDesc(tt2("settings.gemini.enable.desc")).addToggle((toggle) => toggle.setValue(geminiSettings.enabled).onChange(async (value) => {
+      updateGeminiProviderSettings(settingsBag, { enabled: value });
+      await context.plugin.saveSettings();
+      context.refreshModelSelectors();
+    }));
+    const cliPathSetting = new import_obsidian19.Setting(container).setName(tt2("settings.gemini.cliPath.name").replace("{host}", hostnameKey)).setDesc(tt2("settings.gemini.cliPath.desc"));
+    const validationEl = container.createDiv({ cls: "claudian-cli-path-validation" });
+    validationEl.style.color = "var(--text-error)";
+    validationEl.style.fontSize = "0.85em";
+    validationEl.style.marginTop = "-0.5em";
+    validationEl.style.marginBottom = "0.5em";
+    validationEl.style.display = "none";
+    const validatePath = (value) => {
+      const trimmed = value.trim();
+      if (!trimmed) return null;
+      const expandedPath = expandHomePath(trimmed);
+      if (!fs22.existsSync(expandedPath)) return tt2("settings.cliPath.validation.notExist");
+      if (!fs22.statSync(expandedPath).isFile()) return tt2("settings.cliPath.validation.isDirectory");
+      return null;
+    };
+    const updateCliPathValidation = (value, inputEl) => {
+      const error48 = validatePath(value);
+      if (error48) {
+        validationEl.setText(error48);
+        validationEl.style.display = "block";
+        if (inputEl) inputEl.style.borderColor = "var(--text-error)";
+        return false;
+      }
+      validationEl.style.display = "none";
+      if (inputEl) inputEl.style.borderColor = "";
+      return true;
+    };
+    const cliPathsByHost = { ...geminiSettings.cliPathsByHost };
+    const currentValue = geminiSettings.cliPathsByHost[hostnameKey] || "";
+    let cliPathInputEl = null;
+    const persistCliPath = async (value) => {
+      var _a3;
+      if (!updateCliPathValidation(value, cliPathInputEl != null ? cliPathInputEl : void 0)) return false;
+      const trimmed = value.trim();
+      if (trimmed) cliPathsByHost[hostnameKey] = trimmed;
+      else delete cliPathsByHost[hostnameKey];
+      updateGeminiProviderSettings(settingsBag, { cliPathsByHost: { ...cliPathsByHost } });
+      await context.plugin.saveSettings();
+      (_a3 = geminiWorkspace == null ? void 0 : geminiWorkspace.cliResolver) == null ? void 0 : _a3.reset();
+      await recycleGeminiRuntime();
+      return true;
+    };
+    cliPathSetting.addText((text) => {
+      text.setPlaceholder(process.platform === "win32" ? "C:\\Users\\you\\AppData\\Roaming\\npm\\gemini.cmd" : "/usr/local/bin/gemini").setValue(currentValue).onChange(async (value) => {
+        await persistCliPath(value);
+      });
+      text.inputEl.addClass("claudian-settings-cli-path-input");
+      text.inputEl.style.width = "100%";
+      cliPathInputEl = text.inputEl;
+      updateCliPathValidation(currentValue, text.inputEl);
+    });
+    new import_obsidian19.Setting(container).setName(tt2("settings.safety")).setHeading();
+    new import_obsidian19.Setting(container).setName(tt2("settings.gemini.approvalMode.name")).setDesc(tt2("settings.gemini.approvalMode.desc")).addDropdown((dropdown) => dropdown.addOption("default", tt2("settings.gemini.approvalMode.default")).addOption("auto_edit", tt2("settings.gemini.approvalMode.autoEdit")).addOption("yolo", "YOLO").addOption("plan", tt2("settings.gemini.approvalMode.plan")).setValue(geminiSettings.selectedApprovalMode).onChange(async (value) => {
+      updateGeminiProviderSettings(settingsBag, { selectedApprovalMode: value });
+      await context.plugin.saveSettings();
+      await recycleGeminiRuntime();
+    }));
+    new import_obsidian19.Setting(container).setName(tt2("settings.models")).setHeading();
+    new import_obsidian19.Setting(container).setName(tt2("settings.gemini.visibleModels.name")).setDesc(tt2("settings.gemini.visibleModels.desc"));
+    const visibleModels = geminiSettings.visibleModels.length > 0 ? geminiSettings.visibleModels : geminiSettings.discoveredModels.map((model) => model.rawId);
+    const modelText = new import_obsidian19.Setting(container).setName(tt2("settings.gemini.customVisibleModels.name")).setDesc(tt2("settings.gemini.customVisibleModels.desc"));
+    modelText.addTextArea((text) => {
+      text.setPlaceholder("auto-gemini-3\ngemini-2.5-pro\ngemini-2.5-flash").setValue(visibleModels.join("\n")).onChange(async (value) => {
+        const models = value.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+        updateGeminiProviderSettings(settingsBag, { visibleModels: models });
+        await context.plugin.saveSettings();
+        const savedProviderModel = settingsBag.savedProviderModel;
+        if (!settingsBag.model && models[0]) settingsBag.model = encodeGeminiModelId(models[0]);
+        if (savedProviderModel && !savedProviderModel.gemini && models[0]) savedProviderModel.gemini = encodeGeminiModelId(models[0]);
+        context.refreshModelSelectors();
+      });
+      text.inputEl.rows = 5;
+      text.inputEl.cols = 40;
+    });
+    const discoveredDesc = container.createDiv({ cls: "claudian-sp-settings-desc" });
+    discoveredDesc.createEl("p", {
+      cls: "setting-item-description",
+      text: geminiSettings.discoveredModels.length > 0 ? tt2("settings.gemini.discovered").replace("{count}", String(geminiSettings.discoveredModels.length)) : tt2("settings.gemini.notDiscovered")
+    });
+    new import_obsidian19.Setting(container).setName(tt2("settings.gemini.commandsSkills.name")).setHeading();
+    container.createEl("p", {
+      cls: "setting-item-description",
+      text: tt2("settings.gemini.commandsSkills.desc")
+    });
+    context.renderHiddenProviderCommandSetting(container, "gemini", {
+      name: tt2("settings.gemini.hiddenCommands.name"),
+      desc: tt2("settings.gemini.hiddenCommands.desc"),
+      placeholder: "memory\ninit\nrestore"
+    });
+    new import_obsidian19.Setting(container).setName(tt2("settings.mcpServers.name")).setHeading();
+    const mcpNotice = container.createDiv({ cls: "claudian-mcp-settings-desc" });
+    mcpNotice.createEl("p", {
+      cls: "setting-item-description",
+      text: tt2("settings.gemini.mcp.desc")
+    });
+    renderEnvironmentSettingsSection({
+      container,
+      plugin: context.plugin,
+      scope: "provider:gemini",
+      heading: tt2("settings.environment"),
+      name: tt2("settings.gemini.environment.name"),
+      desc: tt2("settings.gemini.environment.desc"),
+      placeholder: "GEMINI_API_KEY=your-key\nGOOGLE_CLOUD_PROJECT=your-project\nGOOGLE_GENAI_USE_VERTEXAI=true",
+      renderCustomContextLimits: (target) => context.renderCustomContextLimits(target, "gemini")
+    });
+  }
+};
+
+// src/providers/gemini/app/GeminiRuntimeCommandLoader.ts
+var GeminiRuntimeCommandLoader = class {
+  isAvailable(settings11) {
+    return getGeminiProviderSettings(settings11).enabled;
+  }
+  async loadCommands(context) {
+    var _a3, _b2, _c;
+    const shouldWarmBlankSession = context.allowSessionCreation === true && !((_a3 = context.conversation) == null ? void 0 : _a3.sessionId);
+    const shouldWarmPreSessionConversation = !!context.conversation && !context.conversation.sessionId && context.conversation.messages.length > 0;
+    if (!context.runtime && !((_b2 = context.conversation) == null ? void 0 : _b2.sessionId) && !shouldWarmBlankSession && !shouldWarmPreSessionConversation) return [];
+    const canReuseRuntime = ((_c = context.runtime) == null ? void 0 : _c.providerId) === "gemini" && !shouldWarmPreSessionConversation;
+    const runtime = canReuseRuntime ? context.runtime : new GeminiChatRuntime(context.plugin);
+    try {
+      if (context.conversation) runtime.syncConversationState(context.conversation, context.externalContextPaths);
+      const ready = await runtime.ensureReady({ allowSessionCreation: shouldWarmBlankSession || shouldWarmPreSessionConversation });
+      if (!ready) return [];
+      return await runtime.getSupportedCommands();
+    } finally {
+      if (runtime !== context.runtime) runtime.cleanup();
+    }
+  }
+};
+
+// src/providers/gemini/app/GeminiWorkspaceServices.ts
+var geminiTabWarmupPolicy = { resolveMode: () => "commands" };
+async function createGeminiWorkspaceServices() {
+  const commandCatalog = new GeminiCommandCatalog();
+  GeminiChatRuntime.commandCatalog = commandCatalog;
+  return {
+    commandCatalog,
+    cliResolver: new GeminiCliResolver(),
+    runtimeCommandLoader: new GeminiRuntimeCommandLoader(),
+    settingsTabRenderer: geminiSettingsTabRenderer,
+    tabWarmupPolicy: geminiTabWarmupPolicy
+  };
+}
+var geminiWorkspaceRegistration = {
+  initialize: async () => createGeminiWorkspaceServices()
+};
+function maybeGetGeminiWorkspaceServices() {
+  return ProviderWorkspaceRegistry.getServices("gemini");
+}
+
+// src/providers/gemini/runtime/GeminiAuxQueryRunner.ts
+var import_node_child_process3 = require("node:child_process");
+init_path();
+var GeminiAuxQueryRunner = class {
+  constructor(plugin) {
+    this.plugin = plugin;
+    this.currentAbortController = null;
+  }
+  async query(config2, prompt) {
+    var _a3, _b2, _c, _d2;
+    const resolvedCliPath = (_a3 = this.plugin.getResolvedProviderCliPath("gemini")) != null ? _a3 : "gemini";
+    const cwd = (_b2 = getVaultPath(this.plugin.app)) != null ? _b2 : process.cwd();
+    const env = buildGeminiRuntimeEnv(this.plugin.settings, resolvedCliPath);
+    const model = config2.model ? (_c = decodeGeminiModelId(config2.model)) != null ? _c : config2.model : "";
+    const args = ["--prompt", prompt, "--approval-mode", "plan", "--output-format", "text"];
+    if (model) args.unshift("--model", model);
+    this.currentAbortController = (_d2 = config2.abortController) != null ? _d2 : new AbortController();
+    return await new Promise((resolve11, reject) => {
+      var _a4;
+      const child = (0, import_node_child_process3.spawn)(resolvedCliPath, args, { cwd, env, stdio: ["ignore", "pipe", "pipe"], signal: (_a4 = this.currentAbortController) == null ? void 0 : _a4.signal });
+      let stdout = "";
+      let stderr = "";
+      child.stdout.on("data", (chunk) => {
+        var _a5;
+        stdout += chunk.toString("utf8");
+        (_a5 = config2.onTextChunk) == null ? void 0 : _a5.call(config2, stdout);
+      });
+      child.stderr.on("data", (chunk) => {
+        stderr += chunk.toString("utf8");
+      });
+      child.on("error", reject);
+      child.on("exit", (code, signal) => {
+        if (code === 0) resolve11(stdout.trim());
+        else reject(new Error(stderr.trim() || `Gemini exited with ${signal != null ? signal : code}`));
+      });
+    });
+  }
+  reset() {
+    var _a3;
+    (_a3 = this.currentAbortController) == null ? void 0 : _a3.abort();
+    this.currentAbortController = null;
+  }
+};
+
+// src/providers/gemini/auxiliary/GeminiInlineEditService.ts
+var GeminiInlineEditService = class extends QueryBackedInlineEditService {
+  constructor(plugin) {
+    super(new GeminiAuxQueryRunner(plugin));
+  }
+};
+
+// src/providers/gemini/auxiliary/GeminiInstructionRefineService.ts
+var GeminiInstructionRefineService = class extends QueryBackedInstructionRefineService {
+  constructor(plugin) {
+    super(new GeminiAuxQueryRunner(plugin));
+  }
+};
+
+// src/providers/gemini/auxiliary/GeminiTaskResultInterpreter.ts
+var GeminiTaskResultInterpreter = class {
+  hasAsyncLaunchMarker() {
+    return false;
+  }
+  extractAgentId() {
+    return null;
+  }
+  extractStructuredResult() {
+    return null;
+  }
+  resolveTerminalStatus(_toolUseResult, fallbackStatus) {
+    return fallbackStatus;
+  }
+  extractTagValue() {
+    return null;
+  }
+};
+
+// src/providers/gemini/ui/GeminiChatUIConfig.ts
+var GEMINI_ICON = {
+  viewBox: "0 0 24 24",
+  path: "M12 2l1.95 6.05L20 10l-6.05 1.95L12 18l-1.95-6.05L4 10l6.05-1.95L12 2zm6 10l.9 2.1L21 15l-2.1.9L18 18l-.9-2.1L15 15l2.1-.9L18 12zM6 14l1.05 2.95L10 18l-2.95 1.05L6 22l-1.05-2.95L2 18l2.95-1.05L6 14z"
+};
+var DEFAULT_CONTEXT_WINDOW4 = 1e6;
+var GEMINI_PERMISSION_MODE_TOGGLE = {
+  inactiveValue: "normal",
+  inactiveLabel: "Safe",
+  activeValue: "yolo",
+  activeLabel: "YOLO",
+  planValue: "plan",
+  planLabel: "Plan"
+};
+var FALLBACK_MODELS2 = [
+  { value: GEMINI_SYNTHETIC_MODEL_ID, label: "Gemini", description: "ACP runtime default model" },
+  ...GEMINI_FALLBACK_MODELS.map((model) => ({
+    value: encodeGeminiModelId(model.rawId),
+    label: model.label,
+    ...model.description ? { description: model.description } : {}
+  }))
+];
+var geminiChatUIConfig = {
+  getModelOptions(settings11) {
+    const geminiSettings = getGeminiProviderSettings(settings11);
+    const discovered = new Map(geminiSettings.discoveredModels.map((model) => [model.rawId, model]));
+    const visible = geminiSettings.visibleModels.length > 0 ? geminiSettings.visibleModels : geminiSettings.discoveredModels.map((model) => model.rawId);
+    const options = visible.flatMap((rawId) => {
+      var _a3;
+      const model = discovered.get(rawId);
+      return [{
+        value: encodeGeminiModelId(rawId),
+        label: (_a3 = model == null ? void 0 : model.label) != null ? _a3 : rawId,
+        ...(model == null ? void 0 : model.description) ? { description: model.description } : {}
+      }];
+    });
+    return options.length > 0 ? options : FALLBACK_MODELS2;
+  },
+  ownsModel(model) {
+    return isGeminiModelSelectionId(model);
+  },
+  isAdaptiveReasoningModel() {
+    return false;
+  },
+  getReasoningOptions() {
+    return [];
+  },
+  getDefaultReasoningValue() {
+    return "";
+  },
+  getContextWindowSize(model, customLimits) {
+    var _a3;
+    return (_a3 = customLimits == null ? void 0 : customLimits[model]) != null ? _a3 : DEFAULT_CONTEXT_WINDOW4;
+  },
+  isDefaultModel(model) {
+    return model === GEMINI_SYNTHETIC_MODEL_ID || model.startsWith(GEMINI_MODEL_PREFIX);
+  },
+  applyModelDefaults(model, settings11) {
+    if (!settings11 || typeof settings11 !== "object" || Array.isArray(settings11)) return;
+    const settingsBag = settings11;
+    if (isGeminiModelSelectionId(model)) settingsBag.model = model;
+  },
+  normalizeModelVariant(model) {
+    return model;
+  },
+  getCustomModelIds() {
+    return /* @__PURE__ */ new Set();
+  },
+  getPermissionModeToggle() {
+    return GEMINI_PERMISSION_MODE_TOGGLE;
+  },
+  resolvePermissionMode(settings11) {
+    return geminiApprovalModeToPermissionMode(getGeminiProviderSettings(settings11).selectedApprovalMode);
+  },
+  applyPermissionMode(value, settings11) {
+    if (!settings11 || typeof settings11 !== "object" || Array.isArray(settings11)) return;
+    const settingsBag = settings11;
+    settingsBag.permissionMode = value;
+    updateGeminiProviderSettings(settingsBag, { selectedApprovalMode: permissionModeToGeminiApprovalMode(value) });
+  },
+  getProviderIcon() {
+    return GEMINI_ICON;
+  }
+};
+
+// src/providers/gemini/auxiliary/GeminiTitleGenerationService.ts
+var GeminiTitleGenerationService = class extends QueryBackedTitleGenerationService {
+  constructor(plugin) {
+    super({
+      createRunner: () => new GeminiAuxQueryRunner(plugin),
+      resolveModel: () => {
+        const settings11 = plugin.settings;
+        const titleModel = typeof settings11.titleGenerationModel === "string" ? settings11.titleGenerationModel : "";
+        return geminiChatUIConfig.ownsModel(titleModel, settings11) ? titleModel : void 0;
+      }
+    });
+  }
+};
+
+// src/providers/gemini/env/GeminiSettingsReconciler.ts
+init_env();
+var GEMINI_ENV_HASH_KEYS = ["GEMINI_API_KEY", "GOOGLE_API_KEY", "GOOGLE_CLOUD_PROJECT", "GOOGLE_CLOUD_LOCATION", "GOOGLE_GENAI_USE_VERTEXAI"];
+function computeGeminiEnvHash(envText) {
+  const envVars = parseEnvironmentVariables(envText || "");
+  return GEMINI_ENV_HASH_KEYS.filter((key) => envVars[key]).map((key) => `${key}=${envVars[key]}`).sort().join("|");
+}
+var geminiSettingsReconciler = {
+  reconcileModelWithEnvironment(settings11, conversations) {
+    const envText = getRuntimeEnvironmentText(settings11, "gemini");
+    const currentHash = computeGeminiEnvHash(envText);
+    const savedHash = getGeminiProviderSettings(settings11).environmentHash;
+    if (currentHash === savedHash) return { changed: false, invalidatedConversations: [] };
+    const invalidatedConversations = [];
+    for (const conversation of conversations) {
+      if (conversation.providerId === "gemini" && conversation.sessionId) {
+        conversation.sessionId = null;
+        conversation.providerState = void 0;
+        invalidatedConversations.push(conversation);
+      }
+    }
+    updateGeminiProviderSettings(settings11, { environmentHash: currentHash });
+    return { changed: true, invalidatedConversations };
+  },
+  normalizeModelVariantSettings(settings11) {
+    return normalizeProjectedModel2(settings11, "gemini");
+  }
+};
+function normalizeProjectedModel2(settings11, providerId) {
+  let changed = false;
+  if (typeof settings11.model === "string" && isGeminiModelSelectionId(settings11.model)) {
+    const raw = decodeGeminiModelId(settings11.model);
+    const normalized = raw ? encodeGeminiModelId(raw) : settings11.model;
+    if (normalized !== settings11.model) {
+      settings11.model = normalized;
+      changed = true;
+    }
+  }
+  const saved = settings11.savedProviderModel;
+  if (saved && typeof saved === "object" && !Array.isArray(saved)) {
+    const map2 = saved;
+    const value = map2[providerId];
+    if (typeof value === "string" && isGeminiModelSelectionId(value)) {
+      const raw = decodeGeminiModelId(value);
+      const normalized = raw ? encodeGeminiModelId(raw) : value;
+      if (normalized !== value) {
+        map2[providerId] = normalized;
+        changed = true;
+      }
+    }
+  }
+  return changed;
+}
+
+// src/providers/gemini/registration.ts
+var noHistoryService2 = {
+  async hydrateConversationHistory() {
+  },
+  async deleteConversationSession() {
+  },
+  resolveSessionIdForConversation: (conversation) => {
+    var _a3;
+    return (_a3 = conversation == null ? void 0 : conversation.sessionId) != null ? _a3 : null;
+  },
+  isPendingForkConversation: () => false,
+  buildForkProviderState: () => ({})
+};
+var geminiProviderRegistration = {
+  blankTabOrder: 12,
+  capabilities: GEMINI_PROVIDER_CAPABILITIES,
+  chatUIConfig: geminiChatUIConfig,
+  createInlineEditService: (plugin) => new GeminiInlineEditService(plugin),
+  createInstructionRefineService: (plugin) => new GeminiInstructionRefineService(plugin),
+  createRuntime: ({ plugin }) => new GeminiChatRuntime(plugin),
+  createTitleGenerationService: (plugin) => new GeminiTitleGenerationService(plugin),
+  displayName: "Gemini",
+  environmentKeyPatterns: [/^GEMINI_/i, /^GOOGLE_/i],
+  historyService: noHistoryService2,
+  isEnabled: (settings11) => getGeminiProviderSettings(settings11).enabled,
+  settingsReconciler: geminiSettingsReconciler,
+  taskResultInterpreter: new GeminiTaskResultInterpreter()
+};
+
+// src/providers/opencode/agents/OpencodeAgentMentionProvider.ts
+var OpencodeAgentMentionProvider = class {
+  constructor(storage) {
+    this.storage = storage;
+    this.agents = [];
+  }
+  async loadAgents() {
+    this.agents = await this.storage.loadAll();
+  }
+  searchAgents(query) {
+    const q10 = query.toLowerCase();
+    return this.agents.filter((agent) => isMentionableSubagent(agent)).filter((agent) => agent.name.toLowerCase().includes(q10) || agent.description.toLowerCase().includes(q10)).map((agent) => ({
+      id: agent.name,
+      name: agent.name,
+      description: agent.description,
+      source: "vault"
+    }));
+  }
+};
+function isMentionableSubagent(agent) {
+  if (agent.hidden || agent.disable) {
+    return false;
+  }
+  return agent.mode === "subagent";
+}
+
+// src/providers/opencode/commands/OpencodeCommandCatalog.ts
+function slashCommandToEntry4(command) {
+  var _a3;
+  return {
+    id: command.id,
+    providerId: "opencode",
+    kind: "command",
+    name: command.name,
+    description: command.description,
+    content: command.content,
+    argumentHint: command.argumentHint,
+    allowedTools: command.allowedTools,
+    model: command.model,
+    disableModelInvocation: command.disableModelInvocation,
+    userInvocable: command.userInvocable,
+    context: command.context,
+    agent: command.agent,
+    hooks: command.hooks,
+    scope: "runtime",
+    source: (_a3 = command.source) != null ? _a3 : "sdk",
+    isEditable: false,
+    isDeletable: false,
+    displayPrefix: "/",
+    insertPrefix: "/"
+  };
+}
+function dedupeRuntimeCommands(commands) {
+  const deduped = [];
+  const seen = /* @__PURE__ */ new Set();
+  for (const command of commands) {
+    const normalizedName = command.name.trim().replace(/^\/+/, "");
+    if (!normalizedName) {
+      continue;
+    }
+    const key = normalizedName.toLowerCase();
+    if (seen.has(key)) {
+      continue;
+    }
+    seen.add(key);
+    deduped.push({
+      ...command,
+      name: normalizedName
+    });
+  }
+  return deduped;
+}
+var OpencodeCommandCatalog = class {
+  constructor() {
+    this.runtimeCommands = [];
+  }
+  setRuntimeCommands(commands) {
+    this.runtimeCommands = dedupeRuntimeCommands(commands);
+  }
+  async listDropdownEntries(_context) {
+    return this.runtimeCommands.map(slashCommandToEntry4);
+  }
+  async listVaultEntries() {
+    return [];
+  }
+  async saveVaultEntry(_entry) {
+    throw new Error("OpenCode runtime commands are not editable from Claudian.");
+  }
+  async deleteVaultEntry(_entry) {
+    throw new Error("OpenCode runtime commands are not deletable from Claudian.");
+  }
+  getDropdownConfig() {
+    return {
+      providerId: "opencode",
+      triggerChars: ["/"],
+      builtInPrefix: "/",
+      skillPrefix: "/",
+      commandPrefix: "/"
+    };
+  }
+  async refresh() {
+  }
+};
+
+// src/providers/opencode/runtime/OpencodeCliResolver.ts
+var fs23 = __toESM(require("node:fs"));
+init_env();
+init_path();
+var OpencodeCliResolver = class {
+  constructor() {
+    this.cachedHostname = getHostnameKey();
+    this.lastCliPath = "";
+    this.lastHostnamePath = "";
+    this.lastEnvText = "";
+    this.resolvedPath = null;
+  }
+  resolveFromSettings(settings11) {
+    var _a3;
+    const opencodeSettings = getOpencodeProviderSettings(settings11);
+    const cliPath = opencodeSettings.cliPath.trim();
+    const hostnamePath = ((_a3 = opencodeSettings.cliPathsByHost[this.cachedHostname]) != null ? _a3 : "").trim();
+    const envText = getRuntimeEnvironmentText(settings11, "opencode");
+    if (this.resolvedPath !== null && cliPath === this.lastCliPath && hostnamePath === this.lastHostnamePath && envText === this.lastEnvText) {
+      return this.resolvedPath;
+    }
+    this.lastCliPath = cliPath;
+    this.lastHostnamePath = hostnamePath;
+    this.lastEnvText = envText;
+    this.resolvedPath = this.resolve(
+      opencodeSettings.cliPathsByHost,
+      cliPath,
+      envText
+    );
+    return this.resolvedPath;
+  }
+  resolve(hostnamePaths, legacyPath, _envText) {
+    var _a3, _b2;
+    const hostnamePath = ((_a3 = hostnamePaths == null ? void 0 : hostnamePaths[this.cachedHostname]) != null ? _a3 : "").trim();
+    return (_b2 = resolveConfiguredCliPath3(hostnamePath)) != null ? _b2 : resolveConfiguredCliPath3(legacyPath.trim());
+  }
+  reset() {
+    this.lastCliPath = "";
+    this.lastHostnamePath = "";
+    this.lastEnvText = "";
+    this.resolvedPath = null;
+  }
+};
+function resolveConfiguredCliPath3(cliPath) {
+  if (!cliPath) {
+    return null;
+  }
+  try {
+    const expanded = expandHomePath(cliPath);
+    if (fs23.existsSync(expanded) && fs23.statSync(expanded).isFile()) {
+      return expanded;
+    }
+  } catch (e2) {
+    return null;
+  }
+  return null;
+}
+
+// src/providers/opencode/storage/OpencodeAgentStorage.ts
+var path18 = __toESM(require("node:path"));
+
+// src/providers/opencode/types/agent.ts
+var OPENCODE_AGENT_KNOWN_KEYS = /* @__PURE__ */ new Set([
+  "name",
+  "description",
+  "mode",
+  "model",
+  "variant",
+  "temperature",
+  "top_p",
+  "steps",
+  "maxSteps",
+  "hidden",
+  "color",
+  "disable",
+  "tools",
+  "options",
+  "permission"
+]);
+
+// src/providers/opencode/storage/OpencodeAgentStorage.ts
+var OPENCODE_AGENT_PATH = ".opencode/agent";
+var OPENCODE_AGENTS_PATH = ".opencode/agents";
+var OPENCODE_AGENT_SCAN_PATHS = [
+  OPENCODE_AGENTS_PATH,
+  OPENCODE_AGENT_PATH
+];
+var OPENCODE_DEFAULT_AGENT_SAVE_PATH = OPENCODE_AGENT_PATH;
+var OPENCODE_AGENT_PERSISTENCE_PREFIX = "opencode-agent";
+function createOpencodeAgentPersistenceKey(location) {
+  return `${OPENCODE_AGENT_PERSISTENCE_PREFIX}:${encodeURIComponent(normalizeVaultPath(location.filePath))}`;
+}
+function parseOpencodeAgentPersistenceKey(persistenceKey) {
+  if (!persistenceKey) {
+    return null;
+  }
+  const normalizedKey = normalizeVaultPath(persistenceKey);
+  if (isSupportedAgentFilePath(normalizedKey)) {
+    return { filePath: normalizedKey };
+  }
+  const [prefix, encodedRelativePath] = persistenceKey.split(":");
+  if (prefix !== OPENCODE_AGENT_PERSISTENCE_PREFIX || !encodedRelativePath) {
+    return null;
+  }
+  const decoded = normalizeVaultPath(decodeURIComponent(encodedRelativePath));
+  if (isSupportedAgentFilePath(decoded)) {
+    return { filePath: decoded };
+  }
+  return decoded.endsWith(".md") ? { filePath: `${OPENCODE_AGENTS_PATH}/${decoded}` } : null;
+}
+var OpencodeAgentStorage = class {
+  constructor(vaultAdapter) {
+    this.vaultAdapter = vaultAdapter;
+  }
+  async loadAll() {
+    return this.scanAdapter(this.vaultAdapter);
+  }
+  async load(agent) {
+    const filePath = this.resolveCurrentPath(agent);
+    try {
+      if (!await this.vaultAdapter.exists(filePath)) return null;
+      const content = await this.vaultAdapter.read(filePath);
+      return parseOpencodeAgentMarkdown(content, filePath);
+    } catch (e2) {
+      return null;
+    }
+  }
+  async save(agent, previous) {
+    const filePath = this.resolveTargetPath(agent, previous);
+    const previousPath = previous ? this.resolveCurrentPath(previous) : null;
+    await this.vaultAdapter.ensureFolder(path18.posix.dirname(filePath));
+    const content = serializeOpencodeAgentMarkdown(agent);
+    await this.vaultAdapter.write(filePath, content);
+    if (previousPath && previousPath !== filePath) {
+      await this.vaultAdapter.delete(previousPath);
+    }
+  }
+  async delete(agent) {
+    const filePath = this.resolveCurrentPath(agent);
+    await this.vaultAdapter.delete(filePath);
+  }
+  resolveCurrentPath(agent) {
+    const persistedLocation = parseOpencodeAgentPersistenceKey(agent.persistenceKey);
+    if (persistedLocation) {
+      return persistedLocation.filePath;
+    }
+    return `${OPENCODE_DEFAULT_AGENT_SAVE_PATH}/${agent.name}.md`;
+  }
+  resolveTargetPath(agent, previous) {
+    if (previous && previous.name === agent.name) {
+      return this.resolveCurrentPath(previous);
+    }
+    return `${OPENCODE_DEFAULT_AGENT_SAVE_PATH}/${agent.name}.md`;
+  }
+  async scanAdapter(adapter) {
+    const agentsByName = /* @__PURE__ */ new Map();
+    for (const rootPath of OPENCODE_AGENT_SCAN_PATHS) {
+      try {
+        const files = await adapter.listFilesRecursive(rootPath);
+        for (const filePath of files) {
+          if (!filePath.endsWith(".md")) continue;
+          try {
+            const content = await adapter.read(filePath);
+            const agent = parseOpencodeAgentMarkdown(content, filePath);
+            if (!agent) continue;
+            const dedupeKey = agent.name.toLowerCase();
+            agentsByName.delete(dedupeKey);
+            agentsByName.set(dedupeKey, agent);
+          } catch (e2) {
+          }
+        }
+      } catch (e2) {
+      }
+    }
+    return Array.from(agentsByName.values());
+  }
+};
+function parseOpencodeAgentMarkdown(content, filePath) {
+  var _a3;
+  const parsed = parseFrontmatter(content);
+  if (!parsed) {
+    return null;
+  }
+  const fileName = normalizeAgentNameFromPath(filePath);
+  const frontmatter = parsed.frontmatter;
+  const rawName = typeof frontmatter.name === "string" ? frontmatter.name.trim() : "";
+  const name = rawName || fileName;
+  const description = typeof frontmatter.description === "string" ? frontmatter.description.trim() : "";
+  if (!name || !description) {
+    return null;
+  }
+  const result = {
+    name,
+    description,
+    prompt: parsed.body.trim(),
+    persistenceKey: createOpencodeAgentPersistenceKey({
+      filePath: normalizeVaultPath(filePath)
+    })
+  };
+  const mode = normalizeMode(frontmatter.mode);
+  if (mode) result.mode = mode;
+  if (typeof frontmatter.model === "string" && frontmatter.model.trim()) {
+    result.model = frontmatter.model.trim();
+  }
+  if (typeof frontmatter.variant === "string" && frontmatter.variant.trim()) {
+    result.variant = frontmatter.variant.trim();
+  }
+  if (typeof frontmatter.temperature === "number" && Number.isFinite(frontmatter.temperature)) {
+    result.temperature = frontmatter.temperature;
+  }
+  const topP = normalizeFiniteNumber(frontmatter.top_p);
+  if (topP !== void 0) {
+    result.topP = topP;
+  }
+  if (typeof frontmatter.color === "string" && frontmatter.color.trim()) {
+    result.color = frontmatter.color.trim();
+  }
+  const steps = (_a3 = normalizePositiveInteger(frontmatter.steps)) != null ? _a3 : normalizePositiveInteger(frontmatter.maxSteps);
+  if (steps !== void 0) {
+    result.steps = steps;
+  }
+  if (extractBoolean(frontmatter, "hidden") !== void 0) {
+    result.hidden = extractBoolean(frontmatter, "hidden");
+  }
+  if (extractBoolean(frontmatter, "disable") !== void 0) {
+    result.disable = extractBoolean(frontmatter, "disable");
+  }
+  if (isBooleanRecord(frontmatter.tools)) {
+    result.tools = { ...frontmatter.tools };
+  }
+  if (isRecord(frontmatter.options)) {
+    result.options = { ...frontmatter.options };
+  }
+  if (frontmatter.permission !== void 0) {
+    result.permission = frontmatter.permission;
+  }
+  const extraFrontmatter = {};
+  for (const [key, value] of Object.entries(frontmatter)) {
+    if (!OPENCODE_AGENT_KNOWN_KEYS.has(key)) {
+      extraFrontmatter[key] = value;
+    }
+  }
+  if (Object.keys(extraFrontmatter).length > 0) {
+    result.extraFrontmatter = extraFrontmatter;
+  }
+  return result;
+}
+function serializeOpencodeAgentMarkdown(agent) {
+  const lines = ["---"];
+  lines.push(`name: ${yamlString(agent.name)}`);
+  lines.push(`description: ${yamlString(agent.description)}`);
+  if (agent.mode) {
+    lines.push(`mode: ${agent.mode}`);
+  }
+  if (agent.model) {
+    lines.push(`model: ${serializeYamlValue(agent.model)}`);
+  }
+  if (agent.variant) {
+    lines.push(`variant: ${serializeYamlValue(agent.variant)}`);
+  }
+  if (agent.temperature !== void 0) {
+    lines.push(`temperature: ${serializeYamlValue(agent.temperature)}`);
+  }
+  if (agent.topP !== void 0) {
+    lines.push(`top_p: ${serializeYamlValue(agent.topP)}`);
+  }
+  if (agent.color) {
+    lines.push(`color: ${serializeYamlValue(agent.color)}`);
+  }
+  if (agent.steps !== void 0) {
+    lines.push(`steps: ${serializeYamlValue(agent.steps)}`);
+  }
+  if (agent.hidden) {
+    lines.push("hidden: true");
+  }
+  if (agent.disable) {
+    lines.push("disable: true");
+  }
+  if (agent.tools && Object.keys(agent.tools).length > 0) {
+    lines.push(`tools: ${serializeYamlValue(agent.tools)}`);
+  }
+  if (agent.options && Object.keys(agent.options).length > 0) {
+    lines.push(`options: ${serializeYamlValue(agent.options)}`);
+  }
+  if (agent.permission !== void 0) {
+    lines.push(`permission: ${serializeYamlValue(agent.permission)}`);
+  }
+  if (agent.extraFrontmatter) {
+    for (const [key, value] of Object.entries(agent.extraFrontmatter)) {
+      lines.push(`${key}: ${serializeYamlValue(value)}`);
+    }
+  }
+  lines.push("---");
+  lines.push(agent.prompt);
+  return lines.join("\n");
+}
+function normalizeAgentNameFromPath(filePath) {
+  const relativePath = toRelativeAgentPath(filePath);
+  return relativePath.replace(/\.md$/i, "");
+}
+function toRelativeAgentPath(filePath) {
+  var _a3;
+  const normalized = normalizeVaultPath(filePath);
+  for (const rootPath of OPENCODE_AGENT_SCAN_PATHS) {
+    const prefix = `${rootPath}/`;
+    const index = normalized.lastIndexOf(prefix);
+    if (index >= 0) {
+      return normalized.slice(index + prefix.length);
+    }
+  }
+  return (_a3 = normalized.split("/").pop()) != null ? _a3 : normalized;
+}
+function normalizeMode(value) {
+  return value === "subagent" || value === "primary" || value === "all" ? value : void 0;
+}
+function normalizeFiniteNumber(value) {
+  return typeof value === "number" && Number.isFinite(value) ? value : void 0;
+}
+function normalizePositiveInteger(value) {
+  return typeof value === "number" && Number.isInteger(value) && value > 0 ? value : void 0;
+}
+function isBooleanRecord(value) {
+  if (!isRecord(value)) {
+    return false;
+  }
+  return Object.values(value).every((entry) => typeof entry === "boolean");
+}
+function serializeYamlValue(value) {
+  if (typeof value === "string") {
+    return yamlString(value);
+  }
+  if (typeof value === "number" || typeof value === "boolean") {
+    return String(value);
+  }
+  if (value === null) {
+    return "null";
+  }
+  return JSON.stringify(value);
+}
+function normalizeVaultPath(filePath) {
+  return filePath.replace(/\\/g, "/");
+}
+function isSupportedAgentFilePath(filePath) {
+  return OPENCODE_AGENT_SCAN_PATHS.some((rootPath) => filePath.startsWith(`${rootPath}/`)) && filePath.endsWith(".md");
+}
+
+// src/providers/opencode/ui/OpencodeSettingsTab.ts
+var fs24 = __toESM(require("fs"));
+var import_obsidian21 = require("obsidian");
+init_env();
+init_path();
+
+// src/providers/opencode/ui/OpencodeAgentSettings.ts
+var import_obsidian20 = require("obsidian");
+var OPENCODE_AGENT_INVALID_SEGMENT_PATTERN = /[<>:"\\|?*]/;
+function validateOpencodeAgentName(name) {
+  if (!name) return "Agent name is required";
+  const segments = name.split("/");
+  if (segments.length === 0 || segments.some((segment) => segment.length === 0)) {
+    return "Agent name must use slash-separated path segments without leading or trailing slashes";
+  }
+  for (const segment of segments) {
+    if (!segment.trim()) {
+      return "Agent name path segments cannot be empty or whitespace-only";
+    }
+    if (segment !== segment.trim()) {
+      return "Agent name path segments cannot start or end with whitespace";
+    }
+    if (segment === "." || segment === "..") {
+      return 'Agent name cannot include "." or ".." path segments';
+    }
+    if (segment.includes("\0") || OPENCODE_AGENT_INVALID_SEGMENT_PATTERN.test(segment)) {
+      return "Agent name path segments cannot contain Windows-reserved filename characters";
+    }
+  }
+  return null;
+}
+function findOpencodeAgentNameConflict(agents, name, currentPersistenceKey) {
+  var _a3;
+  const normalizedName = name.toLowerCase();
+  return (_a3 = agents.find(
+    (agent) => agent.name.toLowerCase() === normalizedName && agent.persistenceKey !== currentPersistenceKey
+  )) != null ? _a3 : null;
+}
+var OpencodeAgentModal = class extends import_obsidian20.Modal {
+  constructor(app, existing, allAgents, onSave) {
+    super(app);
+    this.existing = existing;
+    this.allAgents = allAgents;
+    this.onSave = onSave;
+  }
+  onOpen() {
+    var _a3, _b2, _c, _d2, _e, _f, _g, _h, _i, _j2, _k, _l, _m, _n, _o, _p2, _q;
+    this.setTitle(this.existing ? "Edit OpenCode Subagent" : "Add OpenCode Subagent");
+    this.modalEl.addClass("claudian-sp-modal");
+    const { contentEl } = this;
+    let nameInput;
+    let descriptionInput;
+    let modelInput;
+    let variantInput;
+    let temperatureInput;
+    let topPInput;
+    let colorInput;
+    let stepsInput;
+    let hiddenValue = (_b2 = (_a3 = this.existing) == null ? void 0 : _a3.hidden) != null ? _b2 : false;
+    let disableValue = (_d2 = (_c = this.existing) == null ? void 0 : _c.disable) != null ? _d2 : false;
+    let toolsInput;
+    let permissionInput;
+    let optionsInput;
+    new import_obsidian20.Setting(contentEl).setName("Name").setDesc("OpenCode agent name. Use slash-separated segments for nested agents.").addText((text) => {
+      var _a4, _b3;
+      nameInput = text.inputEl;
+      text.setValue((_b3 = (_a4 = this.existing) == null ? void 0 : _a4.name) != null ? _b3 : "").setPlaceholder("review");
+    });
+    new import_obsidian20.Setting(contentEl).setName("Description").setDesc("When OpenCode should use this subagent").addText((text) => {
+      var _a4, _b3;
+      descriptionInput = text.inputEl;
+      text.setValue((_b3 = (_a4 = this.existing) == null ? void 0 : _a4.description) != null ? _b3 : "").setPlaceholder("Reviews code for correctness and maintainability");
+    });
+    const details = contentEl.createEl("details", { cls: "claudian-sp-advanced-section" });
+    details.createEl("summary", {
+      text: "Advanced options",
+      cls: "claudian-sp-advanced-summary"
+    });
+    if (((_e = this.existing) == null ? void 0 : _e.model) || ((_f = this.existing) == null ? void 0 : _f.variant) || ((_g = this.existing) == null ? void 0 : _g.temperature) !== void 0 || ((_h = this.existing) == null ? void 0 : _h.topP) !== void 0 || ((_i = this.existing) == null ? void 0 : _i.color) || ((_j2 = this.existing) == null ? void 0 : _j2.steps) !== void 0 || ((_k = this.existing) == null ? void 0 : _k.hidden) || ((_l = this.existing) == null ? void 0 : _l.disable) || ((_m = this.existing) == null ? void 0 : _m.tools) || ((_n = this.existing) == null ? void 0 : _n.permission) !== void 0 || ((_o = this.existing) == null ? void 0 : _o.options)) {
+      details.open = true;
+    }
+    new import_obsidian20.Setting(details).setName("Model").setDesc("Model override in provider/model format").addText((text) => {
+      var _a4, _b3;
+      modelInput = text.inputEl;
+      text.setValue((_b3 = (_a4 = this.existing) == null ? void 0 : _a4.model) != null ? _b3 : "").setPlaceholder("anthropic/claude-sonnet-4-20250514");
+    });
+    new import_obsidian20.Setting(details).setName("Variant").setDesc("Model variant override").addText((text) => {
+      var _a4, _b3;
+      variantInput = text.inputEl;
+      text.setValue((_b3 = (_a4 = this.existing) == null ? void 0 : _a4.variant) != null ? _b3 : "").setPlaceholder("high");
+    });
+    new import_obsidian20.Setting(details).setName("Temperature").setDesc("Optional sampling temperature").addText((text) => {
+      var _a4;
+      temperatureInput = text.inputEl;
+      text.setValue(((_a4 = this.existing) == null ? void 0 : _a4.temperature) !== void 0 ? String(this.existing.temperature) : "").setPlaceholder("0.1");
+    });
+    new import_obsidian20.Setting(details).setName("Top P").setDesc("Optional nucleus sampling value").addText((text) => {
+      var _a4;
+      topPInput = text.inputEl;
+      text.setValue(((_a4 = this.existing) == null ? void 0 : _a4.topP) !== void 0 ? String(this.existing.topP) : "").setPlaceholder("0.9");
+    });
+    new import_obsidian20.Setting(details).setName("Color").setDesc("Hex color or theme token").addText((text) => {
+      var _a4, _b3;
+      colorInput = text.inputEl;
+      text.setValue((_b3 = (_a4 = this.existing) == null ? void 0 : _a4.color) != null ? _b3 : "").setPlaceholder("#FF5733");
+    });
+    new import_obsidian20.Setting(details).setName("Steps").setDesc("Maximum agentic iterations before forcing text-only output").addText((text) => {
+      var _a4;
+      stepsInput = text.inputEl;
+      text.setValue(((_a4 = this.existing) == null ? void 0 : _a4.steps) !== void 0 ? String(this.existing.steps) : "").setPlaceholder("10");
+    });
+    new import_obsidian20.Setting(details).setName("Hide From @mention").setDesc("Hide this subagent from the @ autocomplete menu").addToggle((toggle) => {
+      toggle.setValue(hiddenValue).onChange((value) => {
+        hiddenValue = value;
+      });
+    });
+    new import_obsidian20.Setting(details).setName("Disable Agent").setDesc("Disable the agent without deleting the file").addToggle((toggle) => {
+      toggle.setValue(disableValue).onChange((value) => {
+        disableValue = value;
+      });
+    });
+    new import_obsidian20.Setting(details).setName("Enabled Tools (JSON)").setDesc('Optional deprecated tools map, e.g. {"write":false,"edit":false}').addTextArea((text) => {
+      var _a4;
+      toolsInput = text.inputEl;
+      text.setValue(((_a4 = this.existing) == null ? void 0 : _a4.tools) ? JSON.stringify(this.existing.tools, null, 2) : "").setPlaceholder('{\n  "write": false,\n  "edit": false\n}');
+    });
+    new import_obsidian20.Setting(details).setName("Permission (JSON)").setDesc('Optional permission config, e.g. {"edit":"deny","bash":"allow"}').addTextArea((text) => {
+      var _a4;
+      permissionInput = text.inputEl;
+      text.setValue(((_a4 = this.existing) == null ? void 0 : _a4.permission) !== void 0 ? JSON.stringify(this.existing.permission, null, 2) : "").setPlaceholder('{\n  "edit": "deny"\n}');
+    });
+    new import_obsidian20.Setting(details).setName("Options (JSON)").setDesc("Optional custom agent options").addTextArea((text) => {
+      var _a4;
+      optionsInput = text.inputEl;
+      text.setValue(((_a4 = this.existing) == null ? void 0 : _a4.options) ? JSON.stringify(this.existing.options, null, 2) : "").setPlaceholder('{\n  "focus": "security"\n}');
+    });
+    new import_obsidian20.Setting(contentEl).setName("Prompt").setDesc("Markdown body used as the agent prompt");
+    const promptArea = contentEl.createEl("textarea", {
+      cls: "claudian-sp-content-area",
+      attr: {
+        rows: "10",
+        placeholder: "Review code changes carefully and call out correctness, regressions, and missing coverage."
+      }
+    });
+    promptArea.value = (_q = (_p2 = this.existing) == null ? void 0 : _p2.prompt) != null ? _q : "";
+    const buttonContainer = contentEl.createDiv({ cls: "claudian-sp-modal-buttons" });
+    const cancelBtn = buttonContainer.createEl("button", {
+      text: "Cancel",
+      cls: "claudian-cancel-btn"
+    });
+    cancelBtn.addEventListener("click", () => this.close());
+    const saveBtn = buttonContainer.createEl("button", {
+      text: "Save",
+      cls: "claudian-save-btn"
+    });
+    saveBtn.addEventListener("click", async () => {
+      var _a4, _b3, _c2;
+      const name = nameInput.value.trim();
+      const nameError = validateOpencodeAgentName(name);
+      if (nameError) {
+        new import_obsidian20.Notice(nameError);
+        return;
+      }
+      const description = descriptionInput.value.trim();
+      if (!description) {
+        new import_obsidian20.Notice("Description is required");
+        return;
+      }
+      const prompt = promptArea.value;
+      if (!prompt.trim()) {
+        new import_obsidian20.Notice("Prompt is required");
+        return;
+      }
+      const duplicate = findOpencodeAgentNameConflict(
+        this.allAgents,
+        name,
+        (_a4 = this.existing) == null ? void 0 : _a4.persistenceKey
+      );
+      if (duplicate) {
+        new import_obsidian20.Notice(`A subagent named "${name}" already exists`);
+        return;
+      }
+      const temperature = parseOptionalNumber(temperatureInput.value, "Temperature");
+      if (temperature.error) {
+        new import_obsidian20.Notice(temperature.error);
+        return;
+      }
+      const topP = parseOptionalNumber(topPInput.value, "Top P");
+      if (topP.error) {
+        new import_obsidian20.Notice(topP.error);
+        return;
+      }
+      const steps = parseOptionalPositiveInteger(stepsInput.value, "Steps");
+      if (steps.error) {
+        new import_obsidian20.Notice(steps.error);
+        return;
+      }
+      const tools = parseOptionalJsonObjectOfBooleans(toolsInput.value, "Enabled Tools");
+      if (tools.error) {
+        new import_obsidian20.Notice(tools.error);
+        return;
+      }
+      const permission = parseOptionalJson(permissionInput.value, "Permission");
+      if (permission.error) {
+        new import_obsidian20.Notice(permission.error);
+        return;
+      }
+      const options = parseOptionalJsonObject(optionsInput.value, "Options");
+      if (options.error) {
+        new import_obsidian20.Notice(options.error);
+        return;
+      }
+      const agent = {
+        name,
+        description,
+        prompt,
+        mode: "subagent",
+        hidden: hiddenValue || void 0,
+        disable: disableValue || void 0,
+        model: modelInput.value.trim() || void 0,
+        variant: variantInput.value.trim() || void 0,
+        temperature: temperature.value,
+        topP: topP.value,
+        color: colorInput.value.trim() || void 0,
+        steps: steps.value,
+        tools: tools.value,
+        permission: permission.value,
+        options: options.value,
+        persistenceKey: (_b3 = this.existing) == null ? void 0 : _b3.persistenceKey,
+        extraFrontmatter: (_c2 = this.existing) == null ? void 0 : _c2.extraFrontmatter
+      };
+      try {
+        await this.onSave(agent);
+      } catch (error48) {
+        const message = error48 instanceof Error ? error48.message : "Unknown error";
+        new import_obsidian20.Notice(`Failed to save subagent: ${message}`);
+        return;
+      }
+      this.close();
+    });
+  }
+  onClose() {
+    this.contentEl.empty();
+  }
+};
+var OpencodeAgentSettings = class {
+  constructor(containerEl, storage, app, onChanged) {
+    this.agents = [];
+    this.containerEl = containerEl;
+    this.storage = storage;
+    this.app = app;
+    this.onChanged = onChanged;
+    void this.render();
+  }
+  async render() {
+    this.containerEl.empty();
+    try {
+      this.agents = await this.storage.loadAll();
+    } catch (e2) {
+      this.agents = [];
+    }
+    const visibleAgents = this.agents.filter((agent) => agent.mode === "subagent");
+    const headerEl = this.containerEl.createDiv({ cls: "claudian-sp-header" });
+    headerEl.createSpan({ text: t("settings.opencode.subagents.name"), cls: "claudian-sp-label" });
+    const actionsEl = headerEl.createDiv({ cls: "claudian-sp-header-actions" });
+    const refreshBtn = actionsEl.createEl("button", {
+      cls: "claudian-settings-action-btn",
+      attr: { "aria-label": t("common.refresh") }
+    });
+    (0, import_obsidian20.setIcon)(refreshBtn, "refresh-cw");
+    refreshBtn.addEventListener("click", () => {
+      void this.render();
+    });
+    const addBtn = actionsEl.createEl("button", {
+      cls: "claudian-settings-action-btn",
+      attr: { "aria-label": t("common.add") }
+    });
+    (0, import_obsidian20.setIcon)(addBtn, "plus");
+    addBtn.addEventListener("click", () => this.openModal(null));
+    if (visibleAgents.length === 0) {
+      const emptyEl = this.containerEl.createDiv({ cls: "claudian-sp-empty-state" });
+      emptyEl.setText(t("settings.opencode.subagentsExtra.empty"));
+      return;
+    }
+    const listEl = this.containerEl.createDiv({ cls: "claudian-sp-list" });
+    for (const agent of visibleAgents) {
+      this.renderItem(listEl, agent);
+    }
+  }
+  renderItem(listEl, agent) {
+    const itemEl = listEl.createDiv({ cls: "claudian-sp-item" });
+    const infoEl = itemEl.createDiv({ cls: "claudian-sp-info" });
+    const headerRow = infoEl.createDiv({ cls: "claudian-sp-item-header" });
+    const nameEl = headerRow.createSpan({ cls: "claudian-sp-item-name" });
+    nameEl.setText(agent.name);
+    headerRow.createSpan({
+      text: "subagent",
+      cls: "claudian-slash-item-badge"
+    });
+    if (agent.model) {
+      headerRow.createSpan({ text: agent.model, cls: "claudian-slash-item-badge" });
+    }
+    if (agent.description) {
+      const descEl = infoEl.createDiv({ cls: "claudian-sp-item-desc" });
+      descEl.setText(agent.description);
+    }
+    const actionsEl = itemEl.createDiv({ cls: "claudian-sp-item-actions" });
+    const editBtn = actionsEl.createEl("button", {
+      cls: "claudian-settings-action-btn",
+      attr: { "aria-label": "Edit" }
+    });
+    (0, import_obsidian20.setIcon)(editBtn, "pencil");
+    editBtn.addEventListener("click", () => this.openModal(agent));
+    const deleteBtn = actionsEl.createEl("button", {
+      cls: "claudian-settings-action-btn claudian-settings-delete-btn",
+      attr: { "aria-label": "Delete" }
+    });
+    (0, import_obsidian20.setIcon)(deleteBtn, "trash-2");
+    deleteBtn.addEventListener("click", async () => {
+      var _a3;
+      if (!this.app) return;
+      const confirmed = await confirmDelete(
+        this.app,
+        `Delete subagent "${agent.name}"?`
+      );
+      if (!confirmed) return;
+      try {
+        await this.storage.delete(agent);
+        await this.render();
+        await ((_a3 = this.onChanged) == null ? void 0 : _a3.call(this));
+        new import_obsidian20.Notice(`Subagent "${agent.name}" deleted`);
+      } catch (e2) {
+        new import_obsidian20.Notice("Failed to delete subagent");
+      }
+    });
+  }
+  openModal(existing) {
+    if (!this.app) return;
+    const modal = new OpencodeAgentModal(
+      this.app,
+      existing,
+      this.agents,
+      async (agent) => {
+        var _a3;
+        await this.storage.save(agent, existing);
+        await this.render();
+        await ((_a3 = this.onChanged) == null ? void 0 : _a3.call(this));
+        new import_obsidian20.Notice(
+          existing ? `Subagent "${agent.name}" updated` : `Subagent "${agent.name}" created`
+        );
+      }
+    );
+    modal.open();
+  }
+};
+function parseOptionalNumber(value, label) {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return {};
+  }
+  const parsed = Number(trimmed);
+  if (!Number.isFinite(parsed)) {
+    return { error: `${label} must be a valid number` };
+  }
+  return { value: parsed };
+}
+function parseOptionalPositiveInteger(value, label) {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return {};
+  }
+  const parsed = Number(trimmed);
+  if (!Number.isInteger(parsed) || parsed <= 0) {
+    return { error: `${label} must be a positive integer` };
+  }
+  return { value: parsed };
+}
+function parseOptionalJson(value, label) {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return {};
+  }
+  try {
+    return { value: JSON.parse(trimmed) };
+  } catch (e2) {
+    return { error: `${label} must be valid JSON` };
+  }
+}
+function parseOptionalJsonObject(value, label) {
+  const parsed = parseOptionalJson(value, label);
+  if (parsed.error || parsed.value === void 0) {
+    return parsed.error ? { error: parsed.error } : {};
+  }
+  if (!isJsonObject(parsed.value)) {
+    return { error: `${label} must be a JSON object` };
+  }
+  return { value: parsed.value };
+}
+function parseOptionalJsonObjectOfBooleans(value, label) {
+  const parsed = parseOptionalJsonObject(value, label);
+  if (parsed.error || parsed.value === void 0) {
+    return parsed.error ? { error: parsed.error } : {};
+  }
+  if (!Object.values(parsed.value).every((entry) => typeof entry === "boolean")) {
+    return { error: `${label} must map tool names to boolean values` };
+  }
+  return { value: parsed.value };
+}
+function isJsonObject(value) {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+// src/providers/opencode/ui/OpencodeSettingsTab.ts
+var ALL_PROVIDERS_KEY = "all";
+var tt3 = (key, fallback) => {
+  const value = t(key);
+  return value === key ? fallback != null ? fallback : key : value;
+};
+var opencodeSettingsTabRenderer = {
+  render(container, context) {
+    const opencodeWorkspace = maybeGetOpencodeWorkspaceServices();
+    const settingsBag = context.plugin.settings;
+    const opencodeSettings = getOpencodeProviderSettings(settingsBag);
+    const hostnameKey = getHostnameKey();
+    new import_obsidian21.Setting(container).setName(tt3("settings.setup", "Setup")).setHeading();
+    new import_obsidian21.Setting(container).setName(tt3("settings.opencode.enable.name", "Enable OpenCode")).setDesc(tt3("settings.opencode.enable.desc", "Launch `opencode acp` as a provider.")).addToggle(
+      (toggle) => toggle.setValue(opencodeSettings.enabled).onChange(async (value) => {
+        updateOpencodeProviderSettings(settingsBag, { enabled: value });
+        await context.plugin.saveSettings();
+        context.refreshModelSelectors();
+      })
+    );
+    const cliPathSetting = new import_obsidian21.Setting(container).setName(tt3("settings.opencode.cliPath.name").replace("{host}", hostnameKey)).setDesc(tt3("settings.opencode.cliPath.desc"));
+    const validationEl = container.createDiv({ cls: "claudian-cli-path-validation" });
+    validationEl.style.color = "var(--text-error)";
+    validationEl.style.fontSize = "0.85em";
+    validationEl.style.marginTop = "-0.5em";
+    validationEl.style.marginBottom = "0.5em";
+    validationEl.style.display = "none";
+    const validatePath = (value) => {
+      const trimmed = value.trim();
+      if (!trimmed) {
+        return null;
+      }
+      const expandedPath = expandHomePath(trimmed);
+      if (!fs24.existsSync(expandedPath)) {
+        return tt3("settings.cliPath.validation.notExist");
+      }
+      const stat = fs24.statSync(expandedPath);
+      if (!stat.isFile()) {
+        return tt3("settings.cliPath.validation.isDirectory");
+      }
+      return null;
+    };
+    const updateCliPathValidation = (value, inputEl) => {
+      const error48 = validatePath(value);
+      if (error48) {
+        validationEl.setText(error48);
+        validationEl.style.display = "block";
+        if (inputEl) {
+          inputEl.style.borderColor = "var(--text-error)";
+        }
+        return false;
+      }
+      validationEl.style.display = "none";
+      if (inputEl) {
+        inputEl.style.borderColor = "";
+      }
+      return true;
+    };
+    const cliPathsByHost = { ...opencodeSettings.cliPathsByHost };
+    const currentValue = opencodeSettings.cliPathsByHost[hostnameKey] || "";
+    let cliPathInputEl = null;
+    const persistCliPath = async (value) => {
+      var _a3;
+      const isValid2 = updateCliPathValidation(value, cliPathInputEl != null ? cliPathInputEl : void 0);
+      if (!isValid2) {
+        return false;
+      }
+      const trimmed = value.trim();
+      if (trimmed) {
+        cliPathsByHost[hostnameKey] = trimmed;
+      } else {
+        delete cliPathsByHost[hostnameKey];
+      }
+      updateOpencodeProviderSettings(settingsBag, { cliPathsByHost: { ...cliPathsByHost } });
+      clearOpencodeDiscoveryState(settingsBag);
+      await context.plugin.saveSettings();
+      (_a3 = opencodeWorkspace == null ? void 0 : opencodeWorkspace.cliResolver) == null ? void 0 : _a3.reset();
+      await recycleOpencodeRuntime();
+      return true;
+    };
+    const recycleOpencodeRuntime = async () => {
+      var _a3, _b2;
+      for (const view of context.plugin.getAllViews()) {
+        const tabManager = view.getTabManager();
+        if (tabManager == null ? void 0 : tabManager.broadcastToProviderTabs) {
+          await tabManager.broadcastToProviderTabs("opencode", (service) => Promise.resolve(service.cleanup()));
+        } else {
+          await (tabManager == null ? void 0 : tabManager.broadcastToAllTabs(
+            (service) => Promise.resolve(service.cleanup())
+          ));
+        }
+        (_a3 = view.invalidateProviderCommandCaches) == null ? void 0 : _a3.call(view, ["opencode"]);
+        (_b2 = view.refreshModelSelector) == null ? void 0 : _b2.call(view);
+      }
+    };
+    cliPathSetting.addText((text) => {
+      text.setPlaceholder(process.platform === "win32" ? "C:\\Users\\you\\AppData\\Roaming\\npm\\opencode.cmd" : "/usr/local/bin/opencode").setValue(currentValue).onChange(async (value) => {
+        await persistCliPath(value);
+      });
+      text.inputEl.addClass("claudian-settings-cli-path-input");
+      text.inputEl.style.width = "100%";
+      cliPathInputEl = text.inputEl;
+      updateCliPathValidation(currentValue, text.inputEl);
+    });
+    new import_obsidian21.Setting(container).setName(tt3("settings.models", "Models")).setHeading();
+    new import_obsidian21.Setting(container).setName(tt3("settings.opencode.visibleModels.name", "Visible Models")).setDesc(tt3("settings.opencode.visibleModels.desc"));
+    const pickerEl = container.createDiv({ cls: "claudian-opencode-model-picker" });
+    let searchQuery = "";
+    let providerFilter = ALL_PROVIDERS_KEY;
+    const summaryEl = pickerEl.createDiv({ cls: "claudian-opencode-model-picker-summary" });
+    const selectedEl = pickerEl.createDiv({ cls: "claudian-opencode-model-picker-selected" });
+    const catalogEl = pickerEl.createEl("details", { cls: "claudian-opencode-model-picker-catalog" });
+    catalogEl.open = getOpencodeProviderSettings(settingsBag).visibleModels.length === 0;
+    const catalogSummaryEl = catalogEl.createEl("summary", {
+      cls: "claudian-opencode-model-picker-catalog-summary"
+    });
+    catalogSummaryEl.createSpan({
+      cls: "claudian-opencode-model-picker-catalog-caret",
+      text: "\u25B8"
+    });
+    catalogSummaryEl.createSpan({
+      cls: "claudian-opencode-model-picker-catalog-title",
+      text: tt3("settings.opencode.browseModels", "Browse models")
+    });
+    const catalogSummaryCountEl = catalogSummaryEl.createSpan({
+      cls: "claudian-opencode-model-picker-catalog-count"
+    });
+    const controlsEl = catalogEl.createDiv({ cls: "claudian-opencode-model-picker-controls" });
+    const searchInput = controlsEl.createEl("input", {
+      cls: "claudian-opencode-model-picker-search",
+      type: "search"
+    });
+    searchInput.placeholder = tt3("settings.opencode.filterPlaceholder");
+    searchInput.addEventListener("input", () => {
+      searchQuery = searchInput.value.trim().toLowerCase();
+      renderList();
+    });
+    const providerSelectEl = controlsEl.createEl("select", {
+      cls: "claudian-opencode-model-picker-provider"
+    });
+    providerSelectEl.addEventListener("change", () => {
+      providerFilter = providerSelectEl.value;
+      renderList();
+    });
+    const listEl = catalogEl.createDiv({ cls: "claudian-opencode-model-picker-list" });
+    const getEnrichedModels = () => {
+      const current = getOpencodeProviderSettings(settingsBag);
+      return buildEnrichedModels(current.discoveredModels, current.visibleModels);
+    };
+    const filterModels = (models) => {
+      return models.filter((model) => {
+        if (providerFilter !== ALL_PROVIDERS_KEY && model.providerKey !== providerFilter) {
+          return false;
+        }
+        if (!searchQuery) {
+          return true;
+        }
+        return model.rawId.toLowerCase().includes(searchQuery) || model.modelLabel.toLowerCase().includes(searchQuery) || model.providerLabel.toLowerCase().includes(searchQuery) || model.description.toLowerCase().includes(searchQuery);
+      });
+    };
+    const persistVisibleModels = async (visibleModels) => {
+      const currentVisibleModels = getOpencodeProviderSettings(settingsBag).visibleModels;
+      const normalized = normalizeOpencodeVisibleModels(
+        visibleModels,
+        getOpencodeProviderSettings(settingsBag).discoveredModels
+      );
+      if (sameStringList(currentVisibleModels, normalized)) {
+        return;
+      }
+      updateOpencodeProviderSettings(settingsBag, { visibleModels: normalized });
+      await context.plugin.saveSettings();
+      renderAll();
+      context.refreshModelSelectors();
+    };
+    const persistModelAliases = async (modelAliases) => {
+      updateOpencodeProviderSettings(settingsBag, { modelAliases });
+      await context.plugin.saveSettings();
+      renderSelected();
+      context.refreshModelSelectors();
+    };
+    const renderSummary = () => {
+      summaryEl.empty();
+      const current = getOpencodeProviderSettings(settingsBag);
+      const enriched = getEnrichedModels();
+      const providerCount = new Set(enriched.map((model) => model.providerKey)).size;
+      const providerWord = providerCount === 1 ? "provider" : "providers";
+      summaryEl.createSpan({ text: "Visible: " });
+      summaryEl.createSpan({
+        cls: "claudian-opencode-model-picker-summary-value",
+        text: String(current.visibleModels.length)
+      });
+      summaryEl.createSpan({
+        text: ` of ${current.discoveredModels.length} discovered \u2022 ${providerCount} ${providerWord}`
+      });
+      catalogSummaryCountEl.setText(
+        current.discoveredModels.length > 0 ? `${current.discoveredModels.length} available` : tt3("settings.opencode.noModels")
+      );
+    };
+    const renderSelected = () => {
+      var _a3;
+      selectedEl.empty();
+      const current = getOpencodeProviderSettings(settingsBag);
+      if (current.visibleModels.length === 0) {
+        selectedEl.style.display = "none";
+        return;
+      }
+      selectedEl.style.display = "";
+      const enrichedByRawId = new Map(
+        getEnrichedModels().map((model) => [model.rawId, model])
+      );
+      const headerEl = selectedEl.createDiv({ cls: "claudian-opencode-model-picker-selected-header" });
+      headerEl.createEl("span", {
+        cls: "claudian-opencode-model-picker-selected-label",
+        text: tt3("settings.opencode.selected").replace("{count}", String(current.visibleModels.length))
+      });
+      const clearAllBtn = headerEl.createEl("button", {
+        cls: "claudian-opencode-model-picker-selected-clear",
+        text: tt3("settings.opencode.clearAll")
+      });
+      clearAllBtn.setAttribute("aria-label", tt3("settings.opencode.clearAll"));
+      clearAllBtn.addEventListener("click", () => {
+        void persistVisibleModels([]);
+      });
+      const rowsEl = selectedEl.createDiv({ cls: "claudian-opencode-model-picker-selected-rows" });
+      for (const rawId of current.visibleModels) {
+        const enriched = enrichedByRawId.get(rawId);
+        const defaultLabel = enriched ? `${enriched.providerLabel}/${enriched.modelLabel}` : rawId;
+        const rowEl = rowsEl.createDiv({ cls: "claudian-opencode-model-picker-selected-row" });
+        if (enriched && !enriched.isAvailable) {
+          rowEl.classList.add("claudian-opencode-model-picker-selected-row--unavailable");
+        }
+        const infoEl = rowEl.createDiv({ cls: "claudian-opencode-model-picker-selected-info" });
+        const titleEl = infoEl.createDiv({ cls: "claudian-opencode-model-picker-selected-title" });
+        if (enriched) {
+          titleEl.createEl("span", {
+            cls: "claudian-opencode-model-picker-selected-badge",
+            text: enriched.providerLabel
+          });
+          titleEl.createEl("span", {
+            cls: "claudian-opencode-model-picker-selected-name",
+            text: enriched.modelLabel
+          });
+        } else {
+          titleEl.createEl("span", {
+            cls: "claudian-opencode-model-picker-selected-name",
+            text: rawId
+          });
+        }
+        if (enriched && !enriched.isAvailable) {
+          infoEl.createEl("div", {
+            cls: "claudian-opencode-model-picker-selected-unavailable",
+            text: tt3("settings.opencode.notDiscovered")
+          });
+        }
+        infoEl.createEl("div", {
+          cls: "claudian-opencode-model-picker-selected-id",
+          text: rawId
+        });
+        const controlsEl2 = rowEl.createDiv({ cls: "claudian-opencode-model-picker-selected-controls" });
+        const aliasInput = controlsEl2.createEl("input", {
+          cls: "claudian-opencode-model-picker-selected-alias",
+          type: "text"
+        });
+        aliasInput.placeholder = defaultLabel;
+        aliasInput.value = (_a3 = current.modelAliases[rawId]) != null ? _a3 : "";
+        aliasInput.setAttribute("aria-label", `Alias for ${defaultLabel}`);
+        aliasInput.title = "Custom label shown in the model selector. Leave empty to use the default.";
+        const commitAlias = () => {
+          var _a4;
+          const latest = getOpencodeProviderSettings(settingsBag);
+          const existing = (_a4 = latest.modelAliases[rawId]) != null ? _a4 : "";
+          const next = aliasInput.value.trim();
+          if (next === existing) {
+            aliasInput.value = existing;
+            return;
+          }
+          const nextAliases = { ...latest.modelAliases };
+          if (next) {
+            nextAliases[rawId] = next;
+          } else {
+            delete nextAliases[rawId];
+          }
+          void persistModelAliases(nextAliases);
+        };
+        aliasInput.addEventListener("blur", commitAlias);
+        aliasInput.addEventListener("keydown", (event) => {
+          var _a4;
+          if (event.key === "Enter") {
+            event.preventDefault();
+            aliasInput.blur();
+          } else if (event.key === "Escape") {
+            event.preventDefault();
+            aliasInput.value = (_a4 = getOpencodeProviderSettings(settingsBag).modelAliases[rawId]) != null ? _a4 : "";
+            aliasInput.blur();
+          }
+        });
+        const removeBtn = controlsEl2.createEl("button", {
+          cls: "claudian-opencode-model-picker-selected-remove",
+          text: "\xD7"
+        });
+        removeBtn.setAttribute("aria-label", `Remove ${defaultLabel}`);
+        removeBtn.addEventListener("click", () => {
+          void persistVisibleModels(current.visibleModels.filter((entry) => entry !== rawId));
+        });
+      }
+    };
+    const renderProviderSelect = () => {
+      const enriched = getEnrichedModels();
+      const providers = /* @__PURE__ */ new Map();
+      for (const model of enriched) {
+        const existing = providers.get(model.providerKey);
+        if (existing) {
+          existing.count += 1;
+        } else {
+          providers.set(model.providerKey, { count: 1, label: model.providerLabel });
+        }
+      }
+      providerSelectEl.empty();
+      providerSelectEl.createEl("option", {
+        text: `All providers (${enriched.length})`,
+        value: ALL_PROVIDERS_KEY
+      });
+      const sortedProviders = Array.from(providers.entries()).sort(([, left], [, right]) => left.label.localeCompare(right.label));
+      for (const [key, { count, label }] of sortedProviders) {
+        providerSelectEl.createEl("option", {
+          text: `${label} (${count})`,
+          value: key
+        });
+      }
+      if (providerFilter !== ALL_PROVIDERS_KEY && !providers.has(providerFilter)) {
+        providerFilter = ALL_PROVIDERS_KEY;
+      }
+      providerSelectEl.value = providerFilter;
+    };
+    const renderList = () => {
+      listEl.empty();
+      const current = getOpencodeProviderSettings(settingsBag);
+      const selectedIds = new Set(current.visibleModels);
+      const enriched = getEnrichedModels();
+      const filtered = filterModels(enriched);
+      if (filtered.length === 0) {
+        const emptyEl = listEl.createDiv({ cls: "claudian-opencode-model-picker-empty" });
+        emptyEl.setText(enriched.length === 0 ? tt3("settings.opencode.noModels") : tt3("settings.opencode.noModels"));
+        return;
+      }
+      for (const model of filtered) {
+        const rowEl = listEl.createEl("label", { cls: "claudian-opencode-model-picker-row" });
+        const isSelected = selectedIds.has(model.rawId);
+        if (isSelected) {
+          rowEl.classList.add("claudian-opencode-model-picker-row--selected");
+        }
+        rowEl.title = model.rawId;
+        const checkboxEl = rowEl.createEl("input", { type: "checkbox" });
+        checkboxEl.checked = isSelected;
+        checkboxEl.addEventListener("change", () => {
+          const currentVisibleModels = getOpencodeProviderSettings(settingsBag).visibleModels;
+          const next = checkboxEl.checked ? [...currentVisibleModels, model.rawId] : currentVisibleModels.filter((id) => id !== model.rawId);
+          void persistVisibleModels(next);
+        });
+        const textEl = rowEl.createDiv({ cls: "claudian-opencode-model-picker-row-text" });
+        const headerEl = textEl.createDiv({ cls: "claudian-opencode-model-picker-row-header" });
+        headerEl.createEl("span", {
+          cls: "claudian-opencode-model-picker-row-name",
+          text: model.modelLabel
+        });
+        const badgeEl = headerEl.createEl("span", {
+          cls: "claudian-opencode-model-picker-row-badge",
+          text: model.providerLabel
+        });
+        if (!model.isAvailable) {
+          badgeEl.classList.add("claudian-opencode-model-picker-row-badge--unavailable");
+          badgeEl.setText("Unavailable");
+          badgeEl.title = "Configured model not currently reported by OpenCode";
+        }
+        textEl.createDiv({
+          cls: "claudian-opencode-model-picker-row-meta",
+          text: model.rawId
+        });
+        if (model.description) {
+          textEl.createDiv({
+            cls: "claudian-opencode-model-picker-row-desc",
+            text: model.description
+          });
+        }
+      }
+    };
+    const renderAll = () => {
+      renderSummary();
+      renderSelected();
+      renderProviderSelect();
+      renderList();
+    };
+    renderAll();
+    new import_obsidian21.Setting(container).setName(tt3("settings.opencode.commandsSkills.name", "Commands and Skills")).setHeading();
+    const commandsDesc = container.createDiv({ cls: "claudian-sp-settings-desc" });
+    commandsDesc.createEl("p", {
+      cls: "setting-item-description",
+      text: tt3("settings.opencode.commandsSkills.desc")
+    });
+    context.renderHiddenProviderCommandSetting(container, "opencode", {
+      name: tt3("settings.opencode.hiddenCommands.name"),
+      desc: tt3("settings.opencode.hiddenCommands.desc"),
+      placeholder: "compact\nreview\nfix"
+    });
+    if (opencodeWorkspace == null ? void 0 : opencodeWorkspace.agentStorage) {
+      new import_obsidian21.Setting(container).setName(tt3("settings.opencode.subagents.name", "Subagents")).setHeading();
+      const subagentsDesc = container.createDiv({ cls: "claudian-sp-settings-desc" });
+      subagentsDesc.createEl("p", {
+        cls: "setting-item-description",
+        text: tt3("settings.opencode.subagents.desc")
+      });
+      const subagentsContainer = container.createDiv({ cls: "claudian-slash-commands-container" });
+      new OpencodeAgentSettings(
+        subagentsContainer,
+        opencodeWorkspace.agentStorage,
+        context.plugin.app,
+        async () => {
+          var _a3;
+          await ((_a3 = opencodeWorkspace.refreshAgentMentions) == null ? void 0 : _a3.call(opencodeWorkspace));
+          await recycleOpencodeRuntime();
+        }
+      );
+    }
+    renderEnvironmentSettingsSection({
+      container,
+      plugin: context.plugin,
+      scope: "provider:opencode",
+      heading: tt3("settings.environment", "Environment"),
+      name: tt3("settings.opencode.environment.name", "OpenCode environment"),
+      desc: tt3("settings.opencode.environment.desc", `Extra environment variables passed to OpenCode. ${OPENCODE_DEFAULT_ENVIRONMENT_VARIABLES} is enabled by default.`),
+      placeholder: `${OPENCODE_DEFAULT_ENVIRONMENT_VARIABLES}
+OPENCODE_DB=/path/to/opencode.db`,
+      renderCustomContextLimits: (target) => context.renderCustomContextLimits(target, "opencode")
+    });
+  }
+};
+function buildEnrichedModels(discoveredModels, visibleModels) {
+  var _a3;
+  const enriched = [];
+  const discoveredIds = /* @__PURE__ */ new Set();
+  const baseModels = buildOpencodeBaseModels(discoveredModels);
+  for (const model of baseModels) {
+    const { modelLabel, providerLabel } = splitOpencodeModelLabel(model.label || model.rawId);
+    discoveredIds.add(model.rawId);
+    enriched.push({
+      description: (_a3 = model.description) != null ? _a3 : "",
+      isAvailable: true,
+      modelLabel,
+      providerKey: providerLabel.toLowerCase(),
+      providerLabel,
+      rawId: model.rawId
+    });
+  }
+  for (const rawId of visibleModels) {
+    if (discoveredIds.has(rawId)) {
+      continue;
+    }
+    const { modelLabel, providerLabel } = splitOpencodeModelLabel(rawId);
+    enriched.push({
+      description: "",
+      isAvailable: false,
+      modelLabel,
+      providerKey: providerLabel.toLowerCase(),
+      providerLabel,
+      rawId
+    });
+  }
+  return enriched.sort((left, right) => {
+    const providerCmp = left.providerLabel.localeCompare(right.providerLabel);
+    if (providerCmp !== 0) {
+      return providerCmp;
+    }
+    return left.modelLabel.localeCompare(right.modelLabel);
+  });
+}
+
+// src/providers/opencode/runtime/OpencodeChatRuntime.ts
+var fs27 = __toESM(require("node:fs/promises"));
+var path21 = __toESM(require("node:path"));
+init_env();
+init_path();
 
 // src/providers/opencode/capabilities.ts
 var OPENCODE_PROVIDER_CAPABILITIES = Object.freeze({
@@ -73238,14 +77956,14 @@ function buildOpencodePromptBlocks(request, conversationHistory = []) {
 }
 
 // src/providers/opencode/runtime/OpencodeLaunchArtifacts.ts
-var fs20 = __toESM(require("node:fs/promises"));
-var path18 = __toESM(require("node:path"));
+var fs26 = __toESM(require("node:fs/promises"));
+var path20 = __toESM(require("node:path"));
 init_path();
 
 // src/providers/opencode/runtime/OpencodePaths.ts
-var fs19 = __toESM(require("node:fs"));
+var fs25 = __toESM(require("node:fs"));
 var os11 = __toESM(require("node:os"));
-var path17 = __toESM(require("node:path"));
+var path19 = __toESM(require("node:path"));
 var OPENCODE_APP_NAME = "opencode";
 var DEFAULT_DATABASE_NAME = "opencode.db";
 var DATABASE_NAME_PATTERN = /^opencode(?:-[a-z0-9._-]+)?\.db$/i;
@@ -73253,27 +77971,27 @@ function resolveOpencodeDataDir(env = process.env) {
   var _a3;
   const xdgDataHome = (_a3 = env.XDG_DATA_HOME) == null ? void 0 : _a3.trim();
   if (xdgDataHome) {
-    return path17.join(xdgDataHome, OPENCODE_APP_NAME);
+    return path19.join(xdgDataHome, OPENCODE_APP_NAME);
   }
   const home = env.HOME || os11.homedir();
   if (process.platform === "win32") {
-    const appData = env.APPDATA || env.LOCALAPPDATA || path17.join(home, "AppData", "Roaming");
-    return path17.join(appData, OPENCODE_APP_NAME);
+    const appData = env.APPDATA || env.LOCALAPPDATA || path19.join(home, "AppData", "Roaming");
+    return path19.join(appData, OPENCODE_APP_NAME);
   }
-  return path17.join(home, ".local", "share", OPENCODE_APP_NAME);
+  return path19.join(home, ".local", "share", OPENCODE_APP_NAME);
 }
 function resolveOpencodeDatabasePath(env = process.env) {
   var _a3, _b2;
   const override = (_a3 = env.OPENCODE_DB) == null ? void 0 : _a3.trim();
   if (override) {
-    if (override === ":memory:" || path17.isAbsolute(override)) {
+    if (override === ":memory:" || path19.isAbsolute(override)) {
       return override;
     }
-    return path17.join(resolveOpencodeDataDir(env), override);
+    return path19.join(resolveOpencodeDataDir(env), override);
   }
   const candidates = getOpencodeDatabasePathCandidates(env);
   for (const candidate of candidates) {
-    if (fs19.existsSync(candidate)) {
+    if (fs25.existsSync(candidate)) {
       return candidate;
     }
   }
@@ -73285,12 +78003,12 @@ function resolveExistingOpencodeDatabasePath(preferredPath, env = process.env) {
     if (preferred === ":memory:") {
       return preferred;
     }
-    if (fs19.existsSync(preferred)) {
+    if (fs25.existsSync(preferred)) {
       return preferred;
     }
   }
   const resolved = resolveOpencodeDatabasePath(env);
-  if (resolved && (resolved === ":memory:" || fs19.existsSync(resolved))) {
+  if (resolved && (resolved === ":memory:" || fs25.existsSync(resolved))) {
     return resolved;
   }
   return preferred != null ? preferred : resolved;
@@ -73301,18 +78019,18 @@ function getOpencodeDatabasePathCandidates(env) {
   const home = env.HOME || os11.homedir();
   const dataDirs = [
     resolveOpencodeDataDir(env),
-    path17.join(home, "Library", "Application Support", OPENCODE_APP_NAME)
+    path19.join(home, "Library", "Application Support", OPENCODE_APP_NAME)
   ];
   for (const dataDir of dataDirs) {
-    pushCandidate(candidates, seen, path17.join(dataDir, DEFAULT_DATABASE_NAME));
+    pushCandidate(candidates, seen, path19.join(dataDir, DEFAULT_DATABASE_NAME));
     try {
-      const matches = fs19.readdirSync(dataDir).filter((entry) => DATABASE_NAME_PATTERN.test(entry)).sort((left, right) => {
+      const matches = fs25.readdirSync(dataDir).filter((entry) => DATABASE_NAME_PATTERN.test(entry)).sort((left, right) => {
         if (left === DEFAULT_DATABASE_NAME) return -1;
         if (right === DEFAULT_DATABASE_NAME) return 1;
         return left.localeCompare(right);
       });
       for (const entry of matches) {
-        pushCandidate(candidates, seen, path17.join(dataDir, entry));
+        pushCandidate(candidates, seen, path19.join(dataDir, entry));
       }
     } catch (e2) {
     }
@@ -73356,13 +78074,13 @@ var DEFAULT_OPENCODE_MANAGED_AGENT_CONFIGS = [
 ];
 async function prepareOpencodeLaunchArtifacts(params) {
   var _a3, _b2, _c, _d2, _e, _f, _g;
-  const artifactsDir = path18.join(
+  const artifactsDir = path20.join(
     params.workspaceRoot,
     CLAUDIAN_STORAGE_PATH,
     (_a3 = params.artifactsSubdir) != null ? _a3 : "opencode"
   );
-  const systemPromptPath = path18.join(artifactsDir, "system.md");
-  const configPath = path18.join(artifactsDir, "config.json");
+  const systemPromptPath = path20.join(artifactsDir, "system.md");
+  const configPath = path20.join(artifactsDir, "config.json");
   const systemPrompt = normalizeSystemPrompt(
     (_b2 = params.systemPromptText) != null ? _b2 : buildSystemPrompt(requireSettings(params))
   );
@@ -73384,7 +78102,7 @@ async function prepareOpencodeLaunchArtifacts(params) {
   )}
 `;
   const databasePath = resolveOpencodeDatabasePath(params.runtimeEnv);
-  await fs20.mkdir(artifactsDir, { recursive: true });
+  await fs26.mkdir(artifactsDir, { recursive: true });
   await writeIfChanged(systemPromptPath, systemPrompt);
   await writeIfChanged(configPath, configContent);
   return {
@@ -73431,13 +78149,13 @@ function buildOpencodeManagedConfig(baseConfig, systemPromptPath, userName, mana
 }
 async function writeIfChanged(filePath, content) {
   try {
-    const existing = await fs20.readFile(filePath, "utf-8");
+    const existing = await fs26.readFile(filePath, "utf-8");
     if (existing === content) {
       return;
     }
   } catch (e2) {
   }
-  await fs20.writeFile(filePath, content, "utf-8");
+  await fs26.writeFile(filePath, content, "utf-8");
 }
 async function loadOpencodeBaseConfig(configuredPath, workspaceRoot) {
   const trimmedPath = configuredPath == null ? void 0 : configuredPath.trim();
@@ -73445,9 +78163,9 @@ async function loadOpencodeBaseConfig(configuredPath, workspaceRoot) {
     return {};
   }
   const expandedPath = expandHomePath(trimmedPath);
-  const resolvedPath = path18.isAbsolute(expandedPath) ? expandedPath : path18.resolve(workspaceRoot, expandedPath);
+  const resolvedPath = path20.isAbsolute(expandedPath) ? expandedPath : path20.resolve(workspaceRoot, expandedPath);
   try {
-    const rawConfig = await fs20.readFile(resolvedPath, "utf8");
+    const rawConfig = await fs26.readFile(resolvedPath, "utf8");
     const parsedConfig = JSON.parse(rawConfig);
     return isPlainObject5(parsedConfig) ? parsedConfig : {};
   } catch (e2) {
@@ -73483,7 +78201,7 @@ function buildOpencodeRuntimeEnv(settings11, cliPath, databasePathOverride) {
 }
 
 // src/providers/opencode/runtime/OpencodeChatRuntime.ts
-var StreamChunkQueue = class {
+var StreamChunkQueue3 = class {
   constructor() {
     this.closed = false;
     this.items = [];
@@ -73515,8 +78233,8 @@ var StreamChunkQueue = class {
     if (this.closed) {
       return null;
     }
-    return new Promise((resolve8) => {
-      this.waiters.push(resolve8);
+    return new Promise((resolve11) => {
+      this.waiters.push(resolve11);
     });
   }
 };
@@ -73682,7 +78400,7 @@ var OpencodeChatRuntime = class {
     const sessionId = this.sessionId;
     (_b2 = this.activeTurn) == null ? void 0 : _b2.queue.close();
     this.activeTurn = {
-      queue: new StreamChunkQueue(),
+      queue: new StreamChunkQueue3(),
       sessionId
     };
     this.currentTurnMetadata = {};
@@ -73859,7 +78577,7 @@ var OpencodeChatRuntime = class {
       OPENCODE_CONFIG: params.configPath,
       PATH: getEnhancedPath(
         params.runtimeEnv.PATH,
-        path19.isAbsolute(params.command) ? params.command : void 0
+        path21.isAbsolute(params.command) ? params.command : void 0
       )
     };
     this.process = new AcpSubprocess({
@@ -74286,7 +79004,7 @@ var OpencodeChatRuntime = class {
     if (!this.approvalCallback) {
       return { outcome: { outcome: "cancelled" } };
     }
-    const input = normalizeApprovalInput(request.toolCall.rawInput);
+    const input = normalizeApprovalInput3(request.toolCall.rawInput);
     const presentation = buildOpencodePermissionPresentation(request.toolCall.title, input, request.toolCall.locations);
     const decision = await this.approvalCallback(
       presentation.toolName,
@@ -74298,7 +79016,7 @@ var OpencodeChatRuntime = class {
         decisionOptions: buildAcpApprovalDecisionOptions(request.options)
       }
     );
-    return mapApprovalDecision(decision, request.options);
+    return mapApprovalDecision3(decision, request.options);
   }
   setSupportedCommands(commands) {
     this.supportedCommands = commands.map((command) => ({ ...command }));
@@ -74311,17 +79029,17 @@ var OpencodeChatRuntime = class {
     if (this.supportedCommands.length > 0) {
       return Promise.resolve([...this.supportedCommands]);
     }
-    return new Promise((resolve8) => {
+    return new Promise((resolve11) => {
       const waiter = (commands) => {
         clearTimeout(timeoutId);
-        resolve8([...commands]);
+        resolve11([...commands]);
       };
       const timeoutId = setTimeout(() => {
         const index = this.supportedCommandWaiters.indexOf(waiter);
         if (index >= 0) {
           this.supportedCommandWaiters.splice(index, 1);
         }
-        resolve8([...this.supportedCommands]);
+        resolve11([...this.supportedCommands]);
       }, timeoutMs);
       this.supportedCommandWaiters.push(waiter);
     });
@@ -74329,7 +79047,7 @@ var OpencodeChatRuntime = class {
   async readTextFile(request) {
     var _a3;
     const resolvedPath = this.resolveSessionPath(request.sessionId, request.path);
-    const content = await fs21.readFile(resolvedPath, "utf-8");
+    const content = await fs27.readFile(resolvedPath, "utf-8");
     if (request.line === void 0 && request.limit === void 0) {
       return { content };
     }
@@ -74342,17 +79060,17 @@ var OpencodeChatRuntime = class {
   }
   async writeTextFile(request) {
     const resolvedPath = this.resolveSessionPath(request.sessionId, request.path);
-    await fs21.mkdir(path19.dirname(resolvedPath), { recursive: true });
-    await fs21.writeFile(resolvedPath, request.content, "utf-8");
+    await fs27.mkdir(path21.dirname(resolvedPath), { recursive: true });
+    await fs27.writeFile(resolvedPath, request.content, "utf-8");
     return {};
   }
   resolveSessionPath(sessionId, rawPath) {
     var _a3, _b2;
-    if (path19.isAbsolute(rawPath)) {
+    if (path21.isAbsolute(rawPath)) {
       return rawPath;
     }
     const cwd = (_b2 = (_a3 = this.sessionCwds.get(sessionId)) != null ? _a3 : getVaultPath(this.plugin.app)) != null ? _b2 : process.cwd();
-    return path19.resolve(cwd, rawPath);
+    return path21.resolve(cwd, rawPath);
   }
   formatRuntimeError(error48) {
     var _a3;
@@ -74371,7 +79089,7 @@ ${stderr}` : baseMessage;
     this.setSupportedCommands([]);
   }
 };
-function normalizeApprovalInput(rawInput) {
+function normalizeApprovalInput3(rawInput) {
   if (rawInput && typeof rawInput === "object" && !Array.isArray(rawInput)) {
     return rawInput;
   }
@@ -74537,15 +79255,15 @@ function summarizeWorkflowTools(input) {
 function formatPermissionLabel(permissionId) {
   return permissionId.split(/[_\s]+/).filter(Boolean).map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1)).join(" ");
 }
-function mapApprovalDecision(decision, options) {
+function mapApprovalDecision3(decision, options) {
   if (decision === "allow") {
-    return selectPermissionOption(options, ["allow_once", "allow_always"]);
+    return selectPermissionOption3(options, ["allow_once", "allow_always"]);
   }
   if (decision === "allow-always") {
-    return selectPermissionOption(options, ["allow_always", "allow_once"]);
+    return selectPermissionOption3(options, ["allow_always", "allow_once"]);
   }
   if (decision === "deny") {
-    return selectPermissionOption(options, ["reject_once", "reject_always"]);
+    return selectPermissionOption3(options, ["reject_once", "reject_always"]);
   }
   if (typeof decision === "object" && decision.type === "select-option") {
     return {
@@ -74564,7 +79282,7 @@ function buildAcpApprovalDecisionOptions(options) {
     value: option.optionId
   }));
 }
-function selectPermissionOption(options, preferredKinds) {
+function selectPermissionOption3(options, preferredKinds) {
   for (const kind of preferredKinds) {
     const option = options.find((entry) => entry.kind === kind);
     if (option) {
@@ -74649,15 +79367,15 @@ function maybeGetOpencodeWorkspaceServices() {
 }
 
 // src/providers/opencode/runtime/OpencodeAuxQueryRunner.ts
-var fs22 = __toESM(require("node:fs/promises"));
-var path20 = __toESM(require("node:path"));
+var fs28 = __toESM(require("node:fs/promises"));
+var path22 = __toESM(require("node:path"));
 init_path();
 
 // src/providers/opencode/ui/OpencodeChatUIConfig.ts
 var OPENCODE_MODELS = [
   { value: OPENCODE_SYNTHETIC_MODEL_ID, label: "OpenCode", description: "ACP runtime" }
 ];
-var DEFAULT_CONTEXT_WINDOW3 = 2e5;
+var DEFAULT_CONTEXT_WINDOW5 = 2e5;
 var OPENCODE_PERMISSION_MODE_TOGGLE = {
   inactiveValue: "normal",
   inactiveLabel: "Safe",
@@ -74762,7 +79480,7 @@ var opencodeChatUIConfig = {
   },
   getContextWindowSize(model, customLimits) {
     var _a3;
-    return (_a3 = customLimits == null ? void 0 : customLimits[model]) != null ? _a3 : DEFAULT_CONTEXT_WINDOW3;
+    return (_a3 = customLimits == null ? void 0 : customLimits[model]) != null ? _a3 : DEFAULT_CONTEXT_WINDOW5;
   },
   isDefaultModel(model) {
     return isOpencodeModelSelectionId(model);
@@ -75090,7 +79808,7 @@ ${stderr}` : message,
   async readTextFile(request) {
     var _a3;
     const resolvedPath = this.resolveSessionPath(request.sessionId, request.path);
-    const content = await fs22.readFile(resolvedPath, "utf-8");
+    const content = await fs28.readFile(resolvedPath, "utf-8");
     if (request.line === void 0 && request.limit === void 0) {
       return { content };
     }
@@ -75102,7 +79820,7 @@ ${stderr}` : message,
     };
   }
   async handlePermissionRequest(request) {
-    return selectPermissionOption2(request.options, ["reject_once", "reject_always"]);
+    return selectPermissionOption4(request.options, ["reject_once", "reject_always"]);
   }
   resolveSelectedRawModel(explicitModel) {
     var _a3, _b2;
@@ -75140,9 +79858,9 @@ ${stderr}` : message,
   resolveSessionPath(sessionId, rawPath) {
     var _a3, _b2;
     const cwd = (_b2 = (_a3 = this.sessionCwds.get(sessionId)) != null ? _a3 : getVaultPath(this.plugin.app)) != null ? _b2 : process.cwd();
-    const resolvedPath = path20.isAbsolute(rawPath) ? path20.resolve(rawPath) : path20.resolve(cwd, rawPath);
-    const relative4 = path20.relative(cwd, resolvedPath);
-    if (relative4 === "" || !relative4.startsWith("..") && !path20.isAbsolute(relative4)) {
+    const resolvedPath = path22.isAbsolute(rawPath) ? path22.resolve(rawPath) : path22.resolve(cwd, rawPath);
+    const relative4 = path22.relative(cwd, resolvedPath);
+    if (relative4 === "" || !relative4.startsWith("..") && !path22.isAbsolute(relative4)) {
       return resolvedPath;
     }
     throw new Error("OpenCode aux read access is limited to the current workspace.");
@@ -75182,7 +79900,7 @@ function buildOpencodeAuxAgentConfig(profile) {
     id
   };
 }
-function selectPermissionOption2(options, preferredKinds) {
+function selectPermissionOption4(options, preferredKinds) {
   for (const kind of preferredKinds) {
     const option = options.find((entry) => entry.kind === kind);
     if (option) {
@@ -75373,11 +80091,11 @@ var opencodeSettingsReconciler = {
 };
 
 // src/providers/opencode/history/OpencodeHistoryStore.ts
-var import_node_child_process2 = require("node:child_process");
-var fs23 = __toESM(require("node:fs"));
+var import_node_child_process4 = require("node:child_process");
+var fs29 = __toESM(require("node:fs"));
 async function loadOpencodeSessionMessages(sessionId, providerState) {
   const databasePath = resolveExistingOpencodeDatabasePath(providerState == null ? void 0 : providerState.databasePath);
-  if (!databasePath || databasePath === ":memory:" || !fs23.existsSync(databasePath)) {
+  if (!databasePath || databasePath === ":memory:" || !fs29.existsSync(databasePath)) {
     return [];
   }
   const rows = await loadOpencodeSessionRows(databasePath, sessionId);
@@ -75690,7 +80408,7 @@ function loadSessionRowsWithSqliteCli(databasePath, sessionId) {
   return { messageRows, partRows };
 }
 function runSqlite3JsonQuery(databasePath, sql) {
-  const result = (0, import_node_child_process2.spawnSync)(
+  const result = (0, import_node_child_process4.spawnSync)(
     "sqlite3",
     ["-json", databasePath, sql],
     {
@@ -75774,6 +80492,1227 @@ var opencodeProviderRegistration = {
   taskResultInterpreter: new OpencodeTaskResultInterpreter()
 };
 
+// src/providers/kimi/commands/KimiCommandCatalog.ts
+function slashCommandToEntry5(command) {
+  var _a3;
+  const normalizedName = command.name.trim().replace(/^\/+/, "");
+  return {
+    id: command.id,
+    providerId: "kimi",
+    kind: "command",
+    name: normalizedName,
+    description: command.description,
+    content: command.content,
+    argumentHint: command.argumentHint,
+    allowedTools: command.allowedTools,
+    model: command.model,
+    disableModelInvocation: command.disableModelInvocation,
+    userInvocable: command.userInvocable,
+    context: command.context,
+    agent: command.agent,
+    hooks: command.hooks,
+    scope: "runtime",
+    source: (_a3 = command.source) != null ? _a3 : "sdk",
+    isEditable: false,
+    isDeletable: false,
+    displayPrefix: "/",
+    insertPrefix: "/"
+  };
+}
+function dedupe3(commands) {
+  const result = [];
+  const seen = /* @__PURE__ */ new Set();
+  for (const command of commands) {
+    const name = command.name.trim().replace(/^\/+/, "");
+    if (!name) continue;
+    const key = name.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push({ ...command, name });
+  }
+  return result;
+}
+var KimiCommandCatalog = class {
+  constructor() {
+    this.runtimeCommands = [];
+  }
+  setRuntimeCommands(commands) {
+    this.runtimeCommands = dedupe3(commands);
+  }
+  async listDropdownEntries() {
+    return this.runtimeCommands.map(slashCommandToEntry5);
+  }
+  async listVaultEntries() {
+    return [];
+  }
+  async saveVaultEntry() {
+    throw new Error("Kimi runtime commands are not editable from iClaudian.");
+  }
+  async deleteVaultEntry() {
+    throw new Error("Kimi runtime commands are not deletable from iClaudian.");
+  }
+  getDropdownConfig() {
+    return {
+      providerId: "kimi",
+      triggerChars: ["/"],
+      builtInPrefix: "/",
+      skillPrefix: "/",
+      commandPrefix: "/"
+    };
+  }
+  async refresh() {
+  }
+};
+
+// src/providers/kimi/runtime/KimiChatRuntime.ts
+var fs30 = __toESM(require("node:fs/promises"));
+var path23 = __toESM(require("node:path"));
+init_path();
+
+// src/providers/kimi/capabilities.ts
+var KIMI_PROVIDER_CAPABILITIES = Object.freeze({
+  providerId: "kimi",
+  supportsPersistentRuntime: true,
+  supportsNativeHistory: true,
+  supportsPlanMode: true,
+  supportsRewind: false,
+  supportsFork: false,
+  supportsProviderCommands: true,
+  supportsImageAttachments: true,
+  supportsInstructionMode: true,
+  supportsMcpTools: true,
+  supportsTurnSteer: false,
+  reasoningControl: "effort"
+});
+
+// src/providers/kimi/modes.ts
+function permissionModeToKimiApprovalMode(value) {
+  if (value === "yolo") return "yolo";
+  if (value === "plan") return "plan";
+  return "default";
+}
+function kimiApprovalModeToPermissionMode(value) {
+  if (value === "yolo") return "yolo";
+  if (value === "plan") return "plan";
+  return "normal";
+}
+function kimiApprovalModeToAcpModeId(value) {
+  if (value === "plan") return "plan";
+  if (value === "yolo") return "yolo";
+  return "interactive";
+}
+
+// src/providers/kimi/types/index.ts
+function getKimiState(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return {};
+  const raw = value;
+  return {
+    ...typeof raw.sessionCwd === "string" && raw.sessionCwd.trim() ? { sessionCwd: raw.sessionCwd.trim() } : {}
+  };
+}
+
+// src/providers/kimi/runtime/KimiRuntimeEnvironment.ts
+init_env();
+function buildKimiRuntimeEnv(settings11, cliPath) {
+  const envText = getRuntimeEnvironmentText(settings11, "kimi");
+  const envVars = parseEnvironmentVariables(envText);
+  return {
+    ...process.env,
+    ...envVars,
+    PATH: getEnhancedPath(envVars.PATH, cliPath || void 0),
+    TERM: process.env.TERM && process.env.TERM !== "dumb" ? process.env.TERM : "xterm-256color"
+  };
+}
+
+// src/providers/kimi/runtime/KimiChatRuntime.ts
+var StreamChunkQueue4 = class {
+  constructor() {
+    this.closed = false;
+    this.items = [];
+    this.waiters = [];
+  }
+  push(chunk) {
+    const waiter = this.waiters.shift();
+    if (waiter) waiter(chunk);
+    else this.items.push(chunk);
+  }
+  close() {
+    var _a3;
+    if (this.closed) return;
+    this.closed = true;
+    while (this.waiters.length) (_a3 = this.waiters.shift()) == null ? void 0 : _a3(null);
+  }
+  async next() {
+    var _a3;
+    if (this.items.length) return (_a3 = this.items.shift()) != null ? _a3 : null;
+    if (this.closed) return null;
+    return new Promise((resolve11) => this.waiters.push(resolve11));
+  }
+};
+var _KimiChatRuntime = class _KimiChatRuntime {
+  constructor(plugin) {
+    this.plugin = plugin;
+    this.providerId = "kimi";
+    this.activeTurn = null;
+    this.approvalCallback = null;
+    this.connection = null;
+    this.contextUsage = null;
+    this.currentLaunchKey = null;
+    this.currentSessionModelId = null;
+    this.currentSessionModeId = null;
+    this.currentTurnMetadata = {};
+    this.loadedSessionId = null;
+    this.permissionModeSyncCallback = null;
+    this.process = null;
+    this.promptUsage = null;
+    this.readyListeners = [];
+    this.ready = false;
+    this.sessionInvalidated = false;
+    this.supportedCommandWaiters = [];
+    this.supportedCommands = [];
+    this.sessionCwds = /* @__PURE__ */ new Map();
+    this.sessionId = null;
+    this.sessionUpdateNormalizer = new AcpSessionUpdateNormalizer();
+    this.transport = null;
+  }
+  getCapabilities() {
+    return KIMI_PROVIDER_CAPABILITIES;
+  }
+  prepareTurn(request) {
+    var _a3;
+    return {
+      isCompact: false,
+      mcpMentions: (_a3 = request.enabledMcpServers) != null ? _a3 : /* @__PURE__ */ new Set(),
+      persistedContent: "",
+      prompt: buildAcpPromptText(request),
+      request
+    };
+  }
+  onReadyStateChange(listener) {
+    this.readyListeners.push(listener);
+    return () => {
+      const index = this.readyListeners.indexOf(listener);
+      if (index >= 0) this.readyListeners.splice(index, 1);
+    };
+  }
+  setResumeCheckpoint(_checkpointId) {
+  }
+  syncConversationState(conversation) {
+    var _a3, _b2;
+    if (this.sessionId !== ((_a3 = conversation == null ? void 0 : conversation.sessionId) != null ? _a3 : null)) {
+      this.currentSessionModelId = null;
+      this.currentSessionModeId = null;
+      this.sessionInvalidated = false;
+      this.setSupportedCommands([]);
+    }
+    this.sessionId = (_b2 = conversation == null ? void 0 : conversation.sessionId) != null ? _b2 : null;
+  }
+  async reloadMcpServers() {
+  }
+  async ensureReady(options) {
+    var _a3, _b2;
+    const settings11 = getKimiProviderSettings(this.plugin.settings);
+    if (!settings11.enabled) {
+      this.setReady(false);
+      return false;
+    }
+    const cwd = (_a3 = getVaultPath(this.plugin.app)) != null ? _a3 : process.cwd();
+    const targetSessionId = this.sessionId;
+    const resolvedCliPath = (_b2 = this.plugin.getResolvedProviderCliPath("kimi")) != null ? _b2 : "kimi";
+    const runtimeEnv = buildKimiRuntimeEnv(this.plugin.settings, resolvedCliPath);
+    const launchArgs = this.buildLaunchArgs();
+    const nextLaunchKey = JSON.stringify({ command: resolvedCliPath, cwd, env: this.getEnvFingerprint(runtimeEnv), args: launchArgs });
+    const shouldRestart = !this.process || !this.transport || !this.connection || !this.process.isAlive() || (options == null ? void 0 : options.force) === true || this.currentLaunchKey !== nextLaunchKey;
+    if (shouldRestart) {
+      await this.shutdownProcess();
+      await this.startProcess({ command: resolvedCliPath, args: launchArgs, cwd, runtimeEnv });
+      this.currentLaunchKey = nextLaunchKey;
+      this.loadedSessionId = null;
+    }
+    if (targetSessionId) {
+      if (this.loadedSessionId !== targetSessionId) {
+        const loaded = await this.loadSession(targetSessionId, cwd);
+        if (!loaded) {
+          this.sessionInvalidated = true;
+          this.clearActiveSession();
+        }
+      }
+      return true;
+    }
+    if (!this.sessionId && !this.sessionInvalidated) {
+      if ((options == null ? void 0 : options.allowSessionCreation) === false) return true;
+      return Boolean(await this.createSession(cwd));
+    }
+    return true;
+  }
+  async *query(turn, conversationHistory, queryOptions) {
+    var _a3, _b2;
+    const previousMessages = conversationHistory != null ? conversationHistory : [];
+    const expectedSessionId = this.sessionId;
+    let shouldBootstrapHistory = previousMessages.length > 0 && (!expectedSessionId || this.sessionInvalidated);
+    if (!await this.ensureReady()) {
+      yield { type: "error", content: "Failed to start Kimi. Check the CLI path and login state." };
+      yield { type: "done" };
+      return;
+    }
+    if (!this.connection) {
+      yield { type: "error", content: "Kimi runtime is not ready." };
+      yield { type: "done" };
+      return;
+    }
+    const cwd = (_a3 = getVaultPath(this.plugin.app)) != null ? _a3 : process.cwd();
+    if (expectedSessionId && !this.sessionId) shouldBootstrapHistory = previousMessages.length > 0;
+    if (!this.sessionId) {
+      const sessionId2 = await this.createSession(cwd);
+      if (!sessionId2) {
+        yield { type: "error", content: "Failed to create a Kimi session." };
+        yield { type: "done" };
+        return;
+      }
+    }
+    const sessionId = this.sessionId;
+    (_b2 = this.activeTurn) == null ? void 0 : _b2.queue.close();
+    this.activeTurn = { queue: new StreamChunkQueue4(), sessionId };
+    this.currentTurnMetadata = {};
+    this.contextUsage = null;
+    this.promptUsage = null;
+    this.sessionUpdateNormalizer.reset();
+    const activeTurn = this.activeTurn;
+    try {
+      await this.applySelectedMode(sessionId);
+      await this.applySelectedModel(sessionId, queryOptions);
+    } catch (error48) {
+      yield { type: "error", content: this.formatRuntimeError(error48) };
+      yield { type: "done" };
+      activeTurn.queue.close();
+      this.activeTurn = null;
+      return;
+    }
+    const promptPromise = this.connection.prompt({
+      prompt: buildAcpPromptBlocks(
+        turn.request,
+        shouldBootstrapHistory ? previousMessages : []
+      ),
+      sessionId
+    }).then((response) => {
+      var _a4;
+      if (response.userMessageId) this.currentTurnMetadata.userMessageId = response.userMessageId;
+      this.promptUsage = (_a4 = response.usage) != null ? _a4 : null;
+      const usage = buildAcpUsageInfo({ contextWindow: this.contextUsage, model: this.getActiveDisplayModel(queryOptions), promptUsage: this.promptUsage });
+      if (usage) activeTurn.queue.push({ sessionId, type: "usage", usage });
+      activeTurn.queue.push({ type: "done" });
+      activeTurn.queue.close();
+    }).catch((error48) => {
+      activeTurn.queue.push({ type: "error", content: this.formatRuntimeError(error48) });
+      activeTurn.queue.push({ type: "done" });
+      activeTurn.queue.close();
+    }).finally(() => {
+      if (this.activeTurn === activeTurn) this.activeTurn = null;
+    });
+    try {
+      while (true) {
+        const chunk = await activeTurn.queue.next();
+        if (!chunk) break;
+        yield chunk;
+      }
+      await promptPromise;
+    } finally {
+      if (this.activeTurn === activeTurn) this.activeTurn = null;
+    }
+  }
+  cancel() {
+    var _a3;
+    if (this.connection && this.sessionId) this.connection.cancel({ sessionId: this.sessionId });
+    (_a3 = this.activeTurn) == null ? void 0 : _a3.queue.close();
+  }
+  resetSession() {
+    this.clearActiveSession();
+    this.sessionInvalidated = false;
+  }
+  getSessionId() {
+    return this.sessionId;
+  }
+  consumeSessionInvalidation() {
+    const v2 = this.sessionInvalidated;
+    this.sessionInvalidated = false;
+    return v2;
+  }
+  isReady() {
+    return this.ready;
+  }
+  async getSupportedCommands() {
+    if (this.supportedCommands.length > 0 && this.loadedSessionId === this.sessionId) return [...this.supportedCommands];
+    if (this.sessionId && this.loadedSessionId !== this.sessionId) {
+      const ready = await this.ensureReady({ allowSessionCreation: false });
+      if (!ready) return [];
+    }
+    if (!this.sessionId) return [];
+    if (this.supportedCommands.length > 0) return [...this.supportedCommands];
+    return this.waitForSupportedCommands();
+  }
+  cleanup() {
+    var _a3;
+    (_a3 = this.activeTurn) == null ? void 0 : _a3.queue.close();
+    void this.shutdownProcess();
+  }
+  async rewind() {
+    return { canRewind: false };
+  }
+  setApprovalCallback(callback) {
+    this.approvalCallback = callback;
+  }
+  setApprovalDismisser(_dismisser) {
+  }
+  setAskUserQuestionCallback(_callback) {
+  }
+  setExitPlanModeCallback(_callback) {
+  }
+  setPermissionModeSyncCallback(callback) {
+    this.permissionModeSyncCallback = callback;
+  }
+  setSubagentHookProvider(_getState) {
+  }
+  setAutoTurnCallback(_callback) {
+  }
+  consumeTurnMetadata() {
+    const metadata = this.currentTurnMetadata;
+    this.currentTurnMetadata = {};
+    return metadata;
+  }
+  buildSessionUpdates(params) {
+    const state = params.conversation ? getKimiState(params.conversation.providerState) : {};
+    const providerState = { ...state.sessionCwd ? { sessionCwd: state.sessionCwd } : {} };
+    return {
+      updates: {
+        providerState: Object.keys(providerState).length > 0 ? providerState : void 0,
+        sessionId: params.sessionInvalidated && !this.sessionId ? null : this.sessionId
+      }
+    };
+  }
+  resolveSessionIdForFork(conversation) {
+    var _a3, _b2;
+    return (_b2 = (_a3 = this.sessionId) != null ? _a3 : conversation == null ? void 0 : conversation.sessionId) != null ? _b2 : null;
+  }
+  async loadSubagentToolCalls() {
+    return [];
+  }
+  async loadSubagentFinalResult() {
+    return null;
+  }
+  async startProcess(params) {
+    var _a3, _b2;
+    console.log("[Kimi] Starting process:", params.command, params.args.join(" "), "cwd=", params.cwd);
+    this.process = new AcpSubprocess({ args: params.args, command: params.command, cwd: params.cwd, env: { ...process.env, ...params.runtimeEnv } });
+    this.process.start();
+    console.log("[Kimi] Process started");
+    this.transport = new AcpJsonRpcTransport({ input: this.process.stdout, onClose: (listener) => this.process.onClose(listener), output: this.process.stdin });
+    this.connection = new AcpClientConnection({
+      clientInfo: { name: "iclaudian", version: (_b2 = (_a3 = this.plugin.manifest) == null ? void 0 : _a3.version) != null ? _b2 : "0.0.0" },
+      delegate: {
+        fileSystem: { readTextFile: (request) => this.readTextFile(request), writeTextFile: (request) => this.writeTextFile(request) },
+        onSessionNotification: (notification) => this.handleSessionNotification(notification),
+        requestPermission: (request) => this.handlePermissionRequest(request)
+      },
+      transport: this.transport
+    });
+    this.transport.start();
+    console.log("[Kimi] Transport started");
+    try {
+      console.log("[Kimi] Initializing connection...");
+      await this.connection.initialize();
+      console.log("[Kimi] Initialize success");
+    } catch (e2) {
+      console.error("[Kimi] Initialize failed:", e2);
+      throw e2;
+    }
+    this.setReady(true);
+  }
+  async shutdownProcess() {
+    var _a3, _b2, _c;
+    this.setReady(false);
+    (_a3 = this.activeTurn) == null ? void 0 : _a3.queue.close();
+    this.activeTurn = null;
+    this.currentSessionModelId = null;
+    this.currentSessionModeId = null;
+    this.setSupportedCommands([]);
+    (_b2 = this.connection) == null ? void 0 : _b2.dispose();
+    this.connection = null;
+    (_c = this.transport) == null ? void 0 : _c.dispose();
+    this.transport = null;
+    if (this.process) {
+      await this.process.shutdown().catch(() => {
+      });
+      this.process = null;
+    }
+  }
+  setReady(ready) {
+    if (this.ready === ready) return;
+    this.ready = ready;
+    for (const listener of this.readyListeners) listener(ready);
+  }
+  getEnvFingerprint(env) {
+    return Object.entries(env).filter(([key, value]) => /^(KIMI_|MOONSHOT_)/i.test(key) && typeof value === "string" && value).map(([key, value]) => `${key}=${value}`).sort().join("|");
+  }
+  buildLaunchArgs() {
+    return ["acp"];
+  }
+  resolveSelectedApprovalMode() {
+    const providerSettings = getKimiProviderSettings(this.plugin.settings);
+    return providerSettings.selectedApprovalMode;
+  }
+  resolveSelectedRawModelId(queryOptions) {
+    const selectedModel = typeof (queryOptions == null ? void 0 : queryOptions.model) === "string" ? queryOptions.model : typeof this.plugin.settings.model === "string" ? this.plugin.settings.model : "";
+    if (!selectedModel || !isKimiModelSelectionId(selectedModel)) return null;
+    return decodeKimiModelId(selectedModel);
+  }
+  getActiveDisplayModel(queryOptions) {
+    var _a3;
+    const raw = (_a3 = this.resolveSelectedRawModelId(queryOptions)) != null ? _a3 : this.currentSessionModelId;
+    return raw ? encodeKimiModelId(raw) : void 0;
+  }
+  async applySelectedMode(sessionId) {
+    if (!this.connection) return;
+    const selected = getKimiProviderSettings(this.plugin.settings).selectedApprovalMode;
+    const modeId = kimiApprovalModeToAcpModeId(selected);
+    if (!modeId || modeId === this.currentSessionModeId) return;
+    try {
+      await this.connection.setMode({ modeId, sessionId });
+      this.currentSessionModeId = modeId;
+      this.emitPermissionModeSync(modeId);
+    } catch (e2) {
+    }
+  }
+  async applySelectedModel(sessionId, queryOptions) {
+    if (!this.connection) return;
+    const rawModelId = this.resolveSelectedRawModelId(queryOptions);
+    if (!rawModelId || rawModelId === this.currentSessionModelId) return;
+    try {
+      const response = await this.connection.setConfigOption({ configId: "model", sessionId, type: "select", value: rawModelId });
+      this.currentSessionModelId = rawModelId;
+      await this.syncSessionModelState({ configOptions: response.configOptions });
+    } catch (e2) {
+    }
+  }
+  async syncSessionModelState(params) {
+    const acpState = extractAcpSessionModelState(params);
+    const models = normalizeKimiDiscoveredModels(acpState.availableModels.map((model) => {
+      var _a3;
+      return { rawId: model.id, label: model.name, description: (_a3 = model.description) != null ? _a3 : void 0 };
+    }));
+    if (acpState.currentModelId) this.currentSessionModelId = acpState.currentModelId;
+    const settingsBag = this.plugin.settings;
+    const current = getKimiProviderSettings(settingsBag);
+    const modelChanged = JSON.stringify(current.discoveredModels) !== JSON.stringify(models) && models.length > 0;
+    const shouldSeedVisible = current.visibleModels.length === 0 && acpState.currentModelId;
+    if (!modelChanged && !shouldSeedVisible) return;
+    updateKimiProviderSettings(settingsBag, {
+      ...modelChanged ? { discoveredModels: models } : {},
+      ...shouldSeedVisible && acpState.currentModelId ? { visibleModels: [acpState.currentModelId] } : {}
+    });
+    await this.plugin.saveSettings();
+    this.refreshModelSelectors();
+  }
+  async syncSessionModeState(params) {
+    var _a3;
+    const acpState = extractAcpSessionModeState(params);
+    const currentModeId = (_a3 = params.currentModeId) != null ? _a3 : acpState.currentModeId;
+    if (currentModeId) {
+      this.currentSessionModeId = currentModeId;
+      this.emitPermissionModeSync(currentModeId);
+    }
+  }
+  refreshModelSelectors() {
+    for (const view of this.plugin.getAllViews()) view.refreshModelSelector();
+  }
+  emitPermissionModeSync(modeId) {
+    var _a3;
+    const mode = modeId === "autoEdit" ? "auto_edit" : modeId;
+    const permissionMode = kimiApprovalModeToPermissionMode(mode);
+    try {
+      (_a3 = this.permissionModeSyncCallback) == null ? void 0 : _a3.call(this, permissionMode);
+    } catch (e2) {
+    }
+  }
+  async createSession(cwd) {
+    var _a3, _b2, _c, _d2;
+    if (!this.connection) return null;
+    try {
+      this.setSupportedCommands([]);
+      const response = await this.connection.newSession({ cwd, mcpServers: [] });
+      this.loadedSessionId = response.sessionId;
+      this.sessionId = response.sessionId;
+      this.sessionCwds.set(response.sessionId, cwd);
+      await this.syncSessionModelState({ configOptions: (_a3 = response.configOptions) != null ? _a3 : null, models: (_b2 = response.models) != null ? _b2 : null });
+      await this.syncSessionModeState({ configOptions: (_c = response.configOptions) != null ? _c : null, modes: (_d2 = response.modes) != null ? _d2 : null });
+      return response.sessionId;
+    } catch (e2) {
+      return null;
+    }
+  }
+  async loadSession(sessionId, cwd) {
+    var _a3, _b2, _c, _d2;
+    if (!this.connection) return false;
+    try {
+      this.setSupportedCommands([]);
+      const response = await this.connection.loadSession({ cwd, mcpServers: [], sessionId });
+      this.sessionInvalidated = false;
+      this.loadedSessionId = response.sessionId;
+      this.sessionId = response.sessionId;
+      this.sessionCwds.set(response.sessionId, cwd);
+      await this.syncSessionModelState({ configOptions: (_a3 = response.configOptions) != null ? _a3 : null, models: (_b2 = response.models) != null ? _b2 : null });
+      await this.syncSessionModeState({ configOptions: (_c = response.configOptions) != null ? _c : null, modes: (_d2 = response.modes) != null ? _d2 : null });
+      return true;
+    } catch (e2) {
+      return false;
+    }
+  }
+  async handleSessionNotification(notification) {
+    var _a3;
+    if (notification.sessionId !== this.sessionId) return;
+    const normalized = this.sessionUpdateNormalizer.normalize(notification.update);
+    if (normalized.type === "config_options") {
+      await this.syncSessionModelState({ configOptions: normalized.configOptions });
+      await this.syncSessionModeState({ configOptions: normalized.configOptions });
+      return;
+    }
+    if (normalized.type === "current_mode") {
+      await this.syncSessionModeState({ currentModeId: normalized.currentModeId });
+      return;
+    }
+    if (normalized.type === "commands") {
+      this.setSupportedCommands(normalized.commands);
+      (_a3 = _KimiChatRuntime.commandCatalog) == null ? void 0 : _a3.setRuntimeCommands(normalized.commands);
+      return;
+    }
+    if (!this.activeTurn || this.activeTurn.sessionId !== notification.sessionId) return;
+    switch (normalized.type) {
+      case "message_chunk":
+        if (normalized.role === "assistant" && normalized.messageId) this.currentTurnMetadata.assistantMessageId = normalized.messageId;
+        if (normalized.role === "user" && normalized.messageId) this.currentTurnMetadata.userMessageId = normalized.messageId;
+        for (const chunk of normalized.streamChunks) this.activeTurn.queue.push(chunk);
+        return;
+      case "tool_call":
+      case "tool_call_update":
+        for (const chunk of normalized.streamChunks) this.activeTurn.queue.push(chunk);
+        return;
+      case "usage": {
+        this.contextUsage = normalized.usage;
+        const usage = buildAcpUsageInfo({ contextWindow: normalized.usage, model: this.getActiveDisplayModel(), promptUsage: this.promptUsage });
+        if (usage) this.activeTurn.queue.push({ sessionId: notification.sessionId, type: "usage", usage });
+        return;
+      }
+      default:
+        return;
+    }
+  }
+  async handlePermissionRequest(request) {
+    var _a3;
+    if (!this.approvalCallback) return { outcome: { outcome: "cancelled" } };
+    const input = normalizeApprovalInput4(request.toolCall.rawInput);
+    const toolName = ((_a3 = request.toolCall.title) == null ? void 0 : _a3.trim()) || request.toolCall.kind || "tool";
+    const decision = await this.approvalCallback(toolName, input, `Kimi wants permission to use ${toolName}.`, { decisionOptions: buildApprovalOptions3(request.options) });
+    return mapApprovalDecision4(decision, request.options);
+  }
+  setSupportedCommands(commands) {
+    var _a3;
+    this.supportedCommands = commands.map((command) => ({ ...command }));
+    (_a3 = _KimiChatRuntime.commandCatalog) == null ? void 0 : _a3.setRuntimeCommands(this.supportedCommands);
+    const waiters = this.supportedCommandWaiters.splice(0);
+    for (const waiter of waiters) waiter(this.supportedCommands);
+  }
+  waitForSupportedCommands(timeoutMs = 250) {
+    if (this.supportedCommands.length > 0) return Promise.resolve([...this.supportedCommands]);
+    return new Promise((resolve11) => {
+      const waiter = (commands) => {
+        clearTimeout(timeoutId);
+        resolve11([...commands]);
+      };
+      const timeoutId = setTimeout(() => {
+        const index = this.supportedCommandWaiters.indexOf(waiter);
+        if (index >= 0) this.supportedCommandWaiters.splice(index, 1);
+        resolve11([...this.supportedCommands]);
+      }, timeoutMs);
+      this.supportedCommandWaiters.push(waiter);
+    });
+  }
+  async readTextFile(request) {
+    var _a3;
+    const resolvedPath = this.resolveSessionPath(request.sessionId, request.path);
+    const content = await fs30.readFile(resolvedPath, "utf-8");
+    if (request.line === void 0 && request.limit === void 0) return { content };
+    const lines = content.split(/\r?\n/);
+    const startIndex = Math.max(0, ((_a3 = request.line) != null ? _a3 : 1) - 1);
+    const endIndex = request.limit ? startIndex + Math.max(0, request.limit) : lines.length;
+    return { content: lines.slice(startIndex, endIndex).join("\n") };
+  }
+  async writeTextFile(request) {
+    const resolvedPath = this.resolveSessionPath(request.sessionId, request.path);
+    await fs30.mkdir(path23.dirname(resolvedPath), { recursive: true });
+    await fs30.writeFile(resolvedPath, request.content, "utf-8");
+    return {};
+  }
+  resolveSessionPath(sessionId, rawPath) {
+    var _a3, _b2;
+    if (path23.isAbsolute(rawPath)) return rawPath;
+    const cwd = (_b2 = (_a3 = this.sessionCwds.get(sessionId)) != null ? _a3 : getVaultPath(this.plugin.app)) != null ? _b2 : process.cwd();
+    return path23.resolve(cwd, rawPath);
+  }
+  formatRuntimeError(error48) {
+    var _a3;
+    const baseMessage = error48 instanceof Error ? error48.message : "Kimi request failed";
+    const stderr = (_a3 = this.process) == null ? void 0 : _a3.getStderrSnapshot();
+    return stderr ? `${baseMessage}
+
+${stderr}` : baseMessage;
+  }
+  clearActiveSession() {
+    this.sessionId = null;
+    this.loadedSessionId = null;
+    this.currentSessionModelId = null;
+    this.currentSessionModeId = null;
+    this.setSupportedCommands([]);
+  }
+};
+_KimiChatRuntime.commandCatalog = null;
+var KimiChatRuntime = _KimiChatRuntime;
+function normalizeApprovalInput4(rawInput) {
+  if (rawInput && typeof rawInput === "object" && !Array.isArray(rawInput)) return rawInput;
+  if (rawInput === void 0) return {};
+  return { value: rawInput };
+}
+function buildApprovalOptions3(options) {
+  return options.map((option) => ({
+    ...option.kind === "allow_once" ? { decision: "allow" } : option.kind === "allow_always" ? { decision: "allow-always" } : {},
+    label: option.name,
+    value: option.optionId
+  }));
+}
+function mapApprovalDecision4(decision, options) {
+  if (decision === "allow") return selectPermissionOption5(options, ["allow_once", "allow_always"]);
+  if (decision === "allow-always") return selectPermissionOption5(options, ["allow_always", "allow_once"]);
+  if (decision === "deny") return selectPermissionOption5(options, ["reject_once", "reject_always"]);
+  if (typeof decision === "object" && decision.type === "select-option") return { outcome: { optionId: decision.value, outcome: "selected" } };
+  return { outcome: { outcome: "cancelled" } };
+}
+function selectPermissionOption5(options, preferredKinds) {
+  for (const kind of preferredKinds) {
+    const option = options.find((entry) => entry.kind === kind);
+    if (option) return { outcome: { optionId: option.optionId, outcome: "selected" } };
+  }
+  return { outcome: { outcome: "cancelled" } };
+}
+
+// src/providers/kimi/runtime/KimiCliResolver.ts
+var fs31 = __toESM(require("node:fs"));
+init_env();
+init_path();
+var KimiCliResolver = class {
+  constructor() {
+    this.cachedHostname = getHostnameKey();
+    this.lastCliPath = "";
+    this.lastHostnamePath = "";
+    this.lastEnvText = "";
+    this.resolvedPath = null;
+  }
+  resolveFromSettings(settings11) {
+    var _a3, _b2;
+    const kimiSettings = getKimiProviderSettings(settings11);
+    const cliPath = kimiSettings.cliPath.trim();
+    const hostnamePath = ((_a3 = kimiSettings.cliPathsByHost[this.cachedHostname]) != null ? _a3 : "").trim();
+    const envText = getRuntimeEnvironmentText(settings11, "kimi");
+    if (this.resolvedPath !== null && cliPath === this.lastCliPath && hostnamePath === this.lastHostnamePath && envText === this.lastEnvText) {
+      return this.resolvedPath;
+    }
+    this.lastCliPath = cliPath;
+    this.lastHostnamePath = hostnamePath;
+    this.lastEnvText = envText;
+    this.resolvedPath = (_b2 = resolveConfiguredCliPath4(hostnamePath)) != null ? _b2 : resolveConfiguredCliPath4(cliPath);
+    return this.resolvedPath;
+  }
+  reset() {
+    this.lastCliPath = "";
+    this.lastHostnamePath = "";
+    this.lastEnvText = "";
+    this.resolvedPath = null;
+  }
+};
+function resolveConfiguredCliPath4(cliPath) {
+  if (!cliPath) return null;
+  try {
+    const expanded = expandHomePath(cliPath);
+    if (fs31.existsSync(expanded) && fs31.statSync(expanded).isFile()) return expanded;
+  } catch (e2) {
+    return null;
+  }
+  return null;
+}
+
+// src/providers/kimi/ui/kimiSettingsTab.ts
+var fs32 = __toESM(require("fs"));
+var import_obsidian22 = require("obsidian");
+init_env();
+init_path();
+var tt4 = (key, fallback) => {
+  const value = t(key);
+  return value === key ? fallback : value;
+};
+function parseLines2(value) {
+  return value.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+}
+var kimiSettingsTabRenderer = {
+  render(container, context) {
+    const kimiWorkspace = maybeGetKimiWorkspaceServices();
+    const settingsBag = context.plugin.settings;
+    const kimiSettings = getKimiProviderSettings(settingsBag);
+    const hostnameKey = getHostnameKey();
+    const recycleKimiRuntime = async () => {
+      var _a3, _b2;
+      for (const view of context.plugin.getAllViews()) {
+        const tabManager = view.getTabManager();
+        if (tabManager == null ? void 0 : tabManager.broadcastToProviderTabs) {
+          await tabManager.broadcastToProviderTabs("kimi", (service) => Promise.resolve(service.cleanup()));
+        } else {
+          await (tabManager == null ? void 0 : tabManager.broadcastToAllTabs((service) => Promise.resolve(service.cleanup())));
+        }
+        (_a3 = view.invalidateProviderCommandCaches) == null ? void 0 : _a3.call(view, ["kimi"]);
+        (_b2 = view.refreshModelSelector) == null ? void 0 : _b2.call(view);
+      }
+    };
+    const saveAndRecycle = async () => {
+      await context.plugin.saveSettings();
+      await recycleKimiRuntime();
+      context.refreshModelSelectors();
+    };
+    new import_obsidian22.Setting(container).setName(tt4("settings.setup", "Setup")).setHeading();
+    new import_obsidian22.Setting(container).setName(tt4("settings.kimi.enable.name", "Enable Kimi provider")).setDesc(tt4("settings.kimi.enable.desc", "Launch Kimi Code CLI as an ACP provider.")).addToggle((toggle) => toggle.setValue(kimiSettings.enabled).onChange(async (value) => {
+      updateKimiProviderSettings(settingsBag, { enabled: value });
+      await context.plugin.saveSettings();
+      context.refreshModelSelectors();
+    }));
+    const cliPathSetting = new import_obsidian22.Setting(container).setName(tt4("settings.kimi.cliPath.name", "Kimi CLI path ({host})").replace("{host}", hostnameKey)).setDesc(tt4("settings.kimi.cliPath.desc", "Absolute path to Kimi Code CLI on this computer. Leave empty to use `kimi` from PATH."));
+    const validationEl = container.createDiv({ cls: "claudian-cli-path-validation" });
+    validationEl.style.color = "var(--text-error)";
+    validationEl.style.fontSize = "0.85em";
+    validationEl.style.marginTop = "-0.5em";
+    validationEl.style.marginBottom = "0.5em";
+    validationEl.style.display = "none";
+    const validatePath = (value) => {
+      const trimmed = value.trim();
+      if (!trimmed) return null;
+      const expandedPath = expandHomePath(trimmed);
+      if (!fs32.existsSync(expandedPath)) return tt4("settings.cliPath.validation.notExist", "Path does not exist.");
+      if (!fs32.statSync(expandedPath).isFile()) return tt4("settings.cliPath.validation.isDirectory", "Path is a directory.");
+      return null;
+    };
+    const updateCliPathValidation = (value, inputEl) => {
+      const error48 = validatePath(value);
+      if (error48) {
+        validationEl.setText(error48);
+        validationEl.style.display = "block";
+        if (inputEl) inputEl.style.borderColor = "var(--text-error)";
+        return false;
+      }
+      validationEl.style.display = "none";
+      if (inputEl) inputEl.style.borderColor = "";
+      return true;
+    };
+    const cliPathsByHost = { ...kimiSettings.cliPathsByHost };
+    const currentValue = kimiSettings.cliPathsByHost[hostnameKey] || "";
+    let cliPathInputEl = null;
+    const persistCliPath = async (value) => {
+      var _a3;
+      if (!updateCliPathValidation(value, cliPathInputEl != null ? cliPathInputEl : void 0)) return false;
+      const trimmed = value.trim();
+      if (trimmed) cliPathsByHost[hostnameKey] = trimmed;
+      else delete cliPathsByHost[hostnameKey];
+      updateKimiProviderSettings(settingsBag, { cliPathsByHost: { ...cliPathsByHost } });
+      await context.plugin.saveSettings();
+      (_a3 = kimiWorkspace == null ? void 0 : kimiWorkspace.cliResolver) == null ? void 0 : _a3.reset();
+      await recycleKimiRuntime();
+      return true;
+    };
+    cliPathSetting.addText((text) => {
+      text.setPlaceholder(process.platform === "win32" ? "C:\\Users\\you\\.local\\bin\\kimi.exe" : "/Users/you/.local/bin/kimi").setValue(currentValue).onChange(async (value) => {
+        await persistCliPath(value);
+      });
+      text.inputEl.addClass("claudian-settings-cli-path-input");
+      text.inputEl.style.width = "100%";
+      cliPathInputEl = text.inputEl;
+      updateCliPathValidation(currentValue, text.inputEl);
+    });
+    new import_obsidian22.Setting(container).setName(tt4("settings.safety", "Safety")).setHeading();
+    new import_obsidian22.Setting(container).setName(tt4("settings.kimi.approvalMode.name", "Permission mode")).setDesc(tt4("settings.kimi.approvalMode.desc", "Maps to Kimi CLI safe defaults, --plan, or --yolo.")).addDropdown((dropdown) => dropdown.addOption("default", tt4("settings.kimi.approvalMode.default", "Safe")).addOption("yolo", "YOLO").addOption("plan", tt4("settings.kimi.approvalMode.plan", "Plan")).setValue(kimiSettings.selectedApprovalMode).onChange(async (value) => {
+      updateKimiProviderSettings(settingsBag, { selectedApprovalMode: value });
+      await saveAndRecycle();
+    }));
+    new import_obsidian22.Setting(container).setName(tt4("settings.kimi.thinking.name", "Thinking mode")).setDesc(tt4("settings.kimi.thinking.desc", "Pass --thinking to Kimi CLI.")).addToggle((toggle) => toggle.setValue(kimiSettings.thinking).onChange(async (value) => {
+      updateKimiProviderSettings(settingsBag, { thinking: value });
+      await saveAndRecycle();
+    }));
+    new import_obsidian22.Setting(container).setName(tt4("settings.models", "Models")).setHeading();
+    const visibleModels = kimiSettings.visibleModels.length > 0 ? kimiSettings.visibleModels : KIMI_FALLBACK_MODELS.map((model) => model.rawId);
+    new import_obsidian22.Setting(container).setName(tt4("settings.kimi.customVisibleModels.name", "Model IDs")).setDesc(tt4("settings.kimi.customVisibleModels.desc", "One Kimi CLI model ID per line. These are passed to `kimi --model`.")).addTextArea((text) => {
+      text.setPlaceholder("k2.6\nk2.5\nk1.5").setValue(visibleModels.join("\n")).onChange(async (value) => {
+        const models = parseLines2(value);
+        updateKimiProviderSettings(settingsBag, { visibleModels: models });
+        await context.plugin.saveSettings();
+        const savedProviderModel = settingsBag.savedProviderModel;
+        if (!settingsBag.model && models[0]) settingsBag.model = encodeKimiModelId(models[0]);
+        if (savedProviderModel && !savedProviderModel.kimi && models[0]) savedProviderModel.kimi = encodeKimiModelId(models[0]);
+        context.refreshModelSelectors();
+      });
+      text.inputEl.rows = 5;
+      text.inputEl.cols = 40;
+    });
+    new import_obsidian22.Setting(container).setName(tt4("settings.experimental", "Advanced")).setHeading();
+    new import_obsidian22.Setting(container).setName(tt4("settings.kimi.agent.name", "Custom agent")).setDesc("Optional --agent value.").addText((text) => text.setValue(kimiSettings.customAgent).setPlaceholder("agent-name").onChange(async (value) => {
+      updateKimiProviderSettings(settingsBag, { customAgent: value.trim() });
+      await saveAndRecycle();
+    }));
+    const addTextAreaSetting = (name, desc, value, key, placeholder) => {
+      new import_obsidian22.Setting(container).setName(name).setDesc(desc).addTextArea((text) => {
+        text.setValue(value).setPlaceholder(placeholder).onChange(async (next) => {
+          updateKimiProviderSettings(settingsBag, { [key]: next });
+          await saveAndRecycle();
+        });
+        text.inputEl.rows = 3;
+        text.inputEl.cols = 40;
+      });
+    };
+    addTextAreaSetting("Additional MCP config", "One JSON string or @file path per line. Passed as repeated --mcp-config-file.", kimiSettings.additionalMcpConfig, "additionalMcpConfig", "@/path/to/mcp.json");
+    addTextAreaSetting("Allowed tools", "One tool permission pattern per line. Passed as repeated --allow-tool.", kimiSettings.allowTools, "allowTools", "shell(git:*)\nwrite");
+    addTextAreaSetting("Denied tools", "One tool permission pattern per line. Passed as repeated --deny-tool.", kimiSettings.denyTools, "denyTools", "shell(git push)");
+    addTextAreaSetting("Available tools", "Restrict the model to these tools, one per line. Passed as repeated --available-tools.", kimiSettings.availableTools, "availableTools", "read\nedit");
+    new import_obsidian22.Setting(container).setName(tt4("settings.mcpServers.name", "MCP Servers")).setHeading();
+    container.createEl("p", {
+      cls: "setting-item-description",
+      text: "Kimi CLI manages MCP through its own config and launch flags. Configure persistent MCP with `kimi mcp`; use fields above for per-session MCP extras."
+    });
+    renderEnvironmentSettingsSection({
+      container,
+      plugin: context.plugin,
+      scope: "provider:kimi",
+      heading: tt4("settings.environment", "Environment"),
+      name: tt4("settings.kimi.environment.name", "Kimi environment"),
+      desc: tt4("settings.kimi.environment.desc", "Kimi-owned runtime variables only. Shared PATH changes should go in shared environment settings."),
+      placeholder: "KIMI_API_KEY=...\nMOONSHOT_API_KEY=...\nKIMI_LOG_LEVEL=info",
+      renderCustomContextLimits: (target) => context.renderCustomContextLimits(target, "kimi")
+    });
+  }
+};
+
+// src/providers/kimi/app/KimiRuntimeCommandLoader.ts
+var KimiRuntimeCommandLoader = class {
+  isAvailable(settings11) {
+    return getKimiProviderSettings(settings11).enabled;
+  }
+  async loadCommands(context) {
+    var _a3, _b2, _c;
+    const shouldWarmBlankSession = context.allowSessionCreation === true && !((_a3 = context.conversation) == null ? void 0 : _a3.sessionId);
+    const shouldWarmPreSessionConversation = !!context.conversation && !context.conversation.sessionId && context.conversation.messages.length > 0;
+    if (!context.runtime && !((_b2 = context.conversation) == null ? void 0 : _b2.sessionId) && !shouldWarmBlankSession && !shouldWarmPreSessionConversation) return [];
+    const canReuseRuntime = ((_c = context.runtime) == null ? void 0 : _c.providerId) === "kimi" && !shouldWarmPreSessionConversation;
+    const runtime = canReuseRuntime ? context.runtime : new KimiChatRuntime(context.plugin);
+    try {
+      if (context.conversation) runtime.syncConversationState(context.conversation, context.externalContextPaths);
+      const ready = await runtime.ensureReady({ allowSessionCreation: shouldWarmBlankSession || shouldWarmPreSessionConversation });
+      if (!ready) return [];
+      return await runtime.getSupportedCommands();
+    } finally {
+      if (runtime !== context.runtime) runtime.cleanup();
+    }
+  }
+};
+
+// src/providers/kimi/app/KimiWorkspaceServices.ts
+var KimiTabWarmupPolicy = { resolveMode: () => "commands" };
+async function createKimiWorkspaceServices() {
+  const commandCatalog = new KimiCommandCatalog();
+  KimiChatRuntime.commandCatalog = commandCatalog;
+  return {
+    commandCatalog,
+    cliResolver: new KimiCliResolver(),
+    runtimeCommandLoader: new KimiRuntimeCommandLoader(),
+    settingsTabRenderer: kimiSettingsTabRenderer,
+    tabWarmupPolicy: KimiTabWarmupPolicy
+  };
+}
+var KimiWorkspaceRegistration = {
+  initialize: async () => createKimiWorkspaceServices()
+};
+function maybeGetKimiWorkspaceServices() {
+  return ProviderWorkspaceRegistry.getServices("kimi");
+}
+
+// src/providers/kimi/runtime/KimiAuxQueryRunner.ts
+var import_node_child_process5 = require("node:child_process");
+init_path();
+var KimiAuxQueryRunner = class {
+  constructor(plugin) {
+    this.plugin = plugin;
+    this.currentAbortController = null;
+  }
+  async query(config2, prompt) {
+    var _a3, _b2, _c, _d2;
+    const resolvedCliPath = (_a3 = this.plugin.getResolvedProviderCliPath("kimi")) != null ? _a3 : "kimi";
+    const cwd = (_b2 = getVaultPath(this.plugin.app)) != null ? _b2 : process.cwd();
+    const env = buildKimiRuntimeEnv(this.plugin.settings, resolvedCliPath);
+    const model = config2.model ? (_c = decodeKimiModelId(config2.model)) != null ? _c : config2.model : "";
+    const args = ["--print", "--quiet", "--prompt", prompt];
+    if (model) args.unshift("--model", model);
+    this.currentAbortController = (_d2 = config2.abortController) != null ? _d2 : new AbortController();
+    return await new Promise((resolve11, reject) => {
+      var _a4;
+      const child = (0, import_node_child_process5.spawn)(resolvedCliPath, args, { cwd, env, stdio: ["ignore", "pipe", "pipe"], signal: (_a4 = this.currentAbortController) == null ? void 0 : _a4.signal });
+      let stdout = "";
+      let stderr = "";
+      child.stdout.on("data", (chunk) => {
+        var _a5;
+        stdout += chunk.toString("utf8");
+        (_a5 = config2.onTextChunk) == null ? void 0 : _a5.call(config2, stdout);
+      });
+      child.stderr.on("data", (chunk) => {
+        stderr += chunk.toString("utf8");
+      });
+      child.on("error", reject);
+      child.on("exit", (code, signal) => {
+        if (code === 0) resolve11(stdout.trim());
+        else reject(new Error(stderr.trim() || `Kimi exited with ${signal != null ? signal : code}`));
+      });
+    });
+  }
+  reset() {
+    var _a3;
+    (_a3 = this.currentAbortController) == null ? void 0 : _a3.abort();
+    this.currentAbortController = null;
+  }
+};
+
+// src/providers/kimi/auxiliary/KimiInlineEditService.ts
+var KimiInlineEditService = class extends QueryBackedInlineEditService {
+  constructor(plugin) {
+    super(new KimiAuxQueryRunner(plugin));
+  }
+};
+
+// src/providers/kimi/auxiliary/KimiInstructionRefineService.ts
+var KimiInstructionRefineService = class extends QueryBackedInstructionRefineService {
+  constructor(plugin) {
+    super(new KimiAuxQueryRunner(plugin));
+  }
+};
+
+// src/providers/kimi/auxiliary/KimiTaskResultInterpreter.ts
+var KimiTaskResultInterpreter = class {
+  hasAsyncLaunchMarker() {
+    return false;
+  }
+  extractAgentId() {
+    return null;
+  }
+  extractStructuredResult() {
+    return null;
+  }
+  resolveTerminalStatus(_toolUseResult, fallbackStatus) {
+    return fallbackStatus;
+  }
+  extractTagValue() {
+    return null;
+  }
+};
+
+// src/providers/kimi/ui/kimiChatUIConfig.ts
+var KIMI_ICON = {
+  viewBox: "0 0 24 24",
+  path: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2v-6h2v6zm-2-8h-2V7h2v2z"
+};
+var DEFAULT_CONTEXT_WINDOW6 = 256e3;
+var KIMI_DEFAULT_THINKING = false;
+var KIMI_PERMISSION_MODE_TOGGLE = {
+  inactiveValue: "normal",
+  inactiveLabel: "Safe",
+  activeValue: "yolo",
+  activeLabel: "YOLO",
+  planValue: "plan",
+  planLabel: "Plan"
+};
+var FALLBACK_MODELS3 = [
+  { value: KIMI_SYNTHETIC_MODEL_ID, label: "Kimi", description: "Kimi Code CLI ACP runtime default model" },
+  ...KIMI_FALLBACK_MODELS.map((model) => ({
+    value: encodeKimiModelId(model.rawId),
+    label: model.label,
+    ...model.description ? { description: model.description } : {}
+  }))
+];
+var THINKING_OPTIONS = [
+  { value: "off", label: "Off" },
+  { value: "on", label: "On" }
+];
+var kimiChatUIConfig = {
+  getModelOptions(settings11) {
+    const kimiSettings = getKimiProviderSettings(settings11);
+    const discovered = new Map(kimiSettings.discoveredModels.map((model) => [model.rawId, model]));
+    const visible = kimiSettings.visibleModels.length > 0 ? kimiSettings.visibleModels : kimiSettings.discoveredModels.map((model) => model.rawId);
+    const options = visible.flatMap((rawId) => {
+      var _a3;
+      const model = discovered.get(rawId);
+      return [{
+        value: encodeKimiModelId(rawId),
+        label: (_a3 = model == null ? void 0 : model.label) != null ? _a3 : rawId,
+        ...(model == null ? void 0 : model.description) ? { description: model.description } : {}
+      }];
+    });
+    return options.length > 0 ? options : FALLBACK_MODELS3;
+  },
+  ownsModel(model) {
+    return isKimiModelSelectionId(model);
+  },
+  isAdaptiveReasoningModel() {
+    return true;
+  },
+  getReasoningOptions() {
+    return THINKING_OPTIONS;
+  },
+  getDefaultReasoningValue() {
+    return KIMI_DEFAULT_THINKING ? "on" : "off";
+  },
+  getContextWindowSize(model, customLimits) {
+    var _a3;
+    return (_a3 = customLimits == null ? void 0 : customLimits[model]) != null ? _a3 : DEFAULT_CONTEXT_WINDOW6;
+  },
+  isDefaultModel(model) {
+    return model === KIMI_SYNTHETIC_MODEL_ID || model.startsWith(KIMI_MODEL_PREFIX);
+  },
+  applyModelDefaults(model, settings11) {
+    if (!settings11 || typeof settings11 !== "object" || Array.isArray(settings11)) return;
+    const settingsBag = settings11;
+    if (isKimiModelSelectionId(model)) settingsBag.model = model;
+  },
+  applyReasoningSelection(_model, value, settings11) {
+    if (!settings11 || typeof settings11 !== "object" || Array.isArray(settings11)) return;
+    settings11.effortLevel = value;
+  },
+  normalizeModelVariant(model) {
+    var _a3;
+    return isKimiModelSelectionId(model) ? encodeKimiModelId((_a3 = decodeKimiModelId(model)) != null ? _a3 : "") : model;
+  },
+  getCustomModelIds() {
+    return /* @__PURE__ */ new Set();
+  },
+  getPermissionModeToggle() {
+    return KIMI_PERMISSION_MODE_TOGGLE;
+  },
+  resolvePermissionMode(settings11) {
+    return kimiApprovalModeToPermissionMode(getKimiProviderSettings(settings11).selectedApprovalMode);
+  },
+  applyPermissionMode(value, settings11) {
+    if (!settings11 || typeof settings11 !== "object" || Array.isArray(settings11)) return;
+    const settingsBag = settings11;
+    settingsBag.permissionMode = value;
+    updateKimiProviderSettings(settingsBag, { selectedApprovalMode: permissionModeToKimiApprovalMode(value) });
+  },
+  getProviderIcon() {
+    return KIMI_ICON;
+  }
+};
+
+// src/providers/kimi/auxiliary/KimiTitleGenerationService.ts
+var KimiTitleGenerationService = class extends QueryBackedTitleGenerationService {
+  constructor(plugin) {
+    super({
+      createRunner: () => new KimiAuxQueryRunner(plugin),
+      resolveModel: () => {
+        const settings11 = plugin.settings;
+        const titleModel = typeof settings11.titleGenerationModel === "string" ? settings11.titleGenerationModel : "";
+        return kimiChatUIConfig.ownsModel(titleModel, settings11) ? titleModel : void 0;
+      }
+    });
+  }
+};
+
+// src/providers/kimi/env/kimiSettingsReconciler.ts
+init_env();
+var KIMI_ENV_HASH_KEYS = ["KIMI_API_KEY", "MOONSHOT_API_KEY", "KIMI_LOG_LEVEL"];
+function computeKimiEnvHash(envText) {
+  const envVars = parseEnvironmentVariables(envText || "");
+  return KIMI_ENV_HASH_KEYS.filter((key) => envVars[key]).map((key) => `${key}=${envVars[key]}`).sort().join("|");
+}
+var kimiSettingsReconciler = {
+  reconcileModelWithEnvironment(settings11, conversations) {
+    const envText = getRuntimeEnvironmentText(settings11, "kimi");
+    const currentHash = computeKimiEnvHash(envText);
+    const savedHash = getKimiProviderSettings(settings11).environmentHash;
+    if (currentHash === savedHash) return { changed: false, invalidatedConversations: [] };
+    const invalidatedConversations = [];
+    for (const conversation of conversations) {
+      if (conversation.providerId === "kimi" && conversation.sessionId) {
+        conversation.sessionId = null;
+        conversation.providerState = void 0;
+        invalidatedConversations.push(conversation);
+      }
+    }
+    updateKimiProviderSettings(settings11, { environmentHash: currentHash });
+    return { changed: true, invalidatedConversations };
+  },
+  normalizeModelVariantSettings(settings11) {
+    return normalizeProjectedModel3(settings11, "kimi");
+  }
+};
+function normalizeProjectedModel3(settings11, providerId) {
+  let changed = false;
+  if (typeof settings11.model === "string" && isKimiModelSelectionId(settings11.model)) {
+    const raw = decodeKimiModelId(settings11.model);
+    const normalized = raw ? encodeKimiModelId(raw) : settings11.model;
+    if (normalized !== settings11.model) {
+      settings11.model = normalized;
+      changed = true;
+    }
+  }
+  const saved = settings11.savedProviderModel;
+  if (saved && typeof saved === "object" && !Array.isArray(saved)) {
+    const map2 = saved;
+    const value = map2[providerId];
+    if (typeof value === "string" && isKimiModelSelectionId(value)) {
+      const raw = decodeKimiModelId(value);
+      const normalized = raw ? encodeKimiModelId(raw) : value;
+      if (normalized !== value) {
+        map2[providerId] = normalized;
+        changed = true;
+      }
+    }
+  }
+  return changed;
+}
+
+// src/providers/kimi/registration.ts
+var noHistoryService3 = {
+  async hydrateConversationHistory() {
+  },
+  async deleteConversationSession() {
+  },
+  resolveSessionIdForConversation: (conversation) => {
+    var _a3;
+    return (_a3 = conversation == null ? void 0 : conversation.sessionId) != null ? _a3 : null;
+  },
+  isPendingForkConversation: () => false,
+  buildForkProviderState: () => ({})
+};
+var KimiProviderRegistration = {
+  blankTabOrder: 15,
+  capabilities: KIMI_PROVIDER_CAPABILITIES,
+  chatUIConfig: kimiChatUIConfig,
+  createInlineEditService: (plugin) => new KimiInlineEditService(plugin),
+  createInstructionRefineService: (plugin) => new KimiInstructionRefineService(plugin),
+  createRuntime: ({ plugin }) => new KimiChatRuntime(plugin),
+  createTitleGenerationService: (plugin) => new KimiTitleGenerationService(plugin),
+  displayName: "Kimi",
+  environmentKeyPatterns: [/^KIMI_/i, /^MOONSHOT_/i],
+  historyService: noHistoryService3,
+  isEnabled: (settings11) => getKimiProviderSettings(settings11).enabled,
+  settingsReconciler: kimiSettingsReconciler,
+  taskResultInterpreter: new KimiTaskResultInterpreter()
+};
+
 // src/providers/index.ts
 var builtInProvidersRegistered = false;
 function registerBuiltInProviders() {
@@ -75782,19 +81721,25 @@ function registerBuiltInProviders() {
   }
   ProviderRegistry.register("claude", claudeProviderRegistration);
   ProviderRegistry.register("codex", codexProviderRegistration);
+  ProviderRegistry.register("copilot", copilotProviderRegistration);
+  ProviderRegistry.register("gemini", geminiProviderRegistration);
   ProviderRegistry.register("opencode", opencodeProviderRegistration);
+  ProviderRegistry.register("kimi", KimiProviderRegistration);
   ProviderWorkspaceRegistry.register("claude", claudeWorkspaceRegistration);
   ProviderWorkspaceRegistry.register("codex", codexWorkspaceRegistration);
+  ProviderWorkspaceRegistry.register("copilot", copilotWorkspaceRegistration);
+  ProviderWorkspaceRegistry.register("gemini", geminiWorkspaceRegistration);
   ProviderWorkspaceRegistry.register("opencode", opencodeWorkspaceRegistration);
+  ProviderWorkspaceRegistry.register("kimi", KimiWorkspaceRegistration);
   builtInProvidersRegistered = true;
 }
 registerBuiltInProviders();
 
 // src/main.ts
-var import_obsidian47 = require("obsidian");
+var import_obsidian50 = require("obsidian");
 
 // src/app/storage/SharedStorageService.ts
-var import_obsidian20 = require("obsidian");
+var import_obsidian23 = require("obsidian");
 var SharedStorageService = class {
   constructor(plugin) {
     this.plugin = plugin;
@@ -75816,7 +81761,7 @@ var SharedStorageService = class {
       data.tabManagerState = state;
       await this.plugin.saveData(data);
     } catch (e2) {
-      new import_obsidian20.Notice("Failed to save tab layout");
+      new import_obsidian23.Notice("Failed to save tab layout");
     }
   }
   async getTabManagerState() {
@@ -75868,10 +81813,10 @@ var SharedStorageService = class {
 };
 
 // src/features/chat/ClaudianView.ts
-var import_obsidian44 = require("obsidian");
+var import_obsidian47 = require("obsidian");
 
 // src/features/chat/tabs/Tab.ts
-var import_obsidian41 = require("obsidian");
+var import_obsidian44 = require("obsidian");
 
 // src/core/providers/modelRouting.ts
 function getProviderForModel(model, settings11) {
@@ -76618,7 +82563,7 @@ var CanvasSelectionController = class {
 };
 
 // src/features/chat/controllers/ConversationController.ts
-var import_obsidian21 = require("obsidian");
+var import_obsidian24 = require("obsidian");
 
 // src/features/chat/rendering/collapsible.ts
 function setupCollapsible(wrapperEl, headerEl, contentEl, state, options = {}) {
@@ -76911,27 +82856,27 @@ var ConversationController = class {
     const { plugin, state, renderer } = this.deps;
     const agentServiceForCheck = this.getAgentService();
     if (agentServiceForCheck && !agentServiceForCheck.getCapabilities().supportsRewind) {
-      new import_obsidian21.Notice(t("chat.rewind.failed", { error: "Rewind is not supported by this provider." }));
+      new import_obsidian24.Notice(t("chat.rewind.failed", { error: "Rewind is not supported by this provider." }));
       return;
     }
     if (state.isStreaming) {
-      new import_obsidian21.Notice(t("chat.rewind.unavailableStreaming"));
+      new import_obsidian24.Notice(t("chat.rewind.unavailableStreaming"));
       return;
     }
     const msgs = state.messages;
     const userIdx = msgs.findIndex((m2) => m2.id === userMessageId);
     if (userIdx === -1) {
-      new import_obsidian21.Notice(t("chat.rewind.failed", { error: "Message not found" }));
+      new import_obsidian24.Notice(t("chat.rewind.failed", { error: "Message not found" }));
       return;
     }
     const userMsg = msgs[userIdx];
     if (!userMsg.userMessageId) {
-      new import_obsidian21.Notice(t("chat.rewind.unavailableNoUuid"));
+      new import_obsidian24.Notice(t("chat.rewind.unavailableNoUuid"));
       return;
     }
     const rewindCtx = findRewindContext(msgs, userIdx);
     if (!rewindCtx.hasResponse || !rewindCtx.prevAssistantUuid) {
-      new import_obsidian21.Notice(t("chat.rewind.unavailableNoUuid"));
+      new import_obsidian24.Notice(t("chat.rewind.unavailableNoUuid"));
       return;
     }
     const prevAssistantUuid = rewindCtx.prevAssistantUuid;
@@ -76942,23 +82887,23 @@ var ConversationController = class {
     );
     if (!confirmed) return;
     if (state.isStreaming) {
-      new import_obsidian21.Notice(t("chat.rewind.unavailableStreaming"));
+      new import_obsidian24.Notice(t("chat.rewind.unavailableStreaming"));
       return;
     }
     const agentService = this.getAgentService();
     if (!agentService) {
-      new import_obsidian21.Notice(t("chat.rewind.failed", { error: "Agent service not available" }));
+      new import_obsidian24.Notice(t("chat.rewind.failed", { error: "Agent service not available" }));
       return;
     }
     let result;
     try {
       result = await agentService.rewind(userMsg.userMessageId, prevAssistantUuid);
     } catch (e2) {
-      new import_obsidian21.Notice(t("chat.rewind.failed", { error: e2 instanceof Error ? e2.message : "Unknown error" }));
+      new import_obsidian24.Notice(t("chat.rewind.failed", { error: e2 instanceof Error ? e2.message : "Unknown error" }));
       return;
     }
     if (!result.canRewind) {
-      new import_obsidian21.Notice(t("chat.rewind.cannot", { error: (_a3 = result.error) != null ? _a3 : "Unknown error" }));
+      new import_obsidian24.Notice(t("chat.rewind.cannot", { error: (_a3 = result.error) != null ? _a3 : "Unknown error" }));
       return;
     }
     state.truncateAt(userMessageId);
@@ -76976,10 +82921,10 @@ var ConversationController = class {
       saveError = e2 instanceof Error ? e2.message : "Failed to save";
     }
     if (saveError) {
-      new import_obsidian21.Notice(t("chat.rewind.noticeSaveFailed", { count: String(filesChanged), error: saveError }));
+      new import_obsidian24.Notice(t("chat.rewind.noticeSaveFailed", { count: String(filesChanged), error: saveError }));
       return;
     }
-    new import_obsidian21.Notice(t("chat.rewind.notice", { count: String(filesChanged) }));
+    new import_obsidian24.Notice(t("chat.rewind.notice", { count: String(filesChanged) }));
   }
   /**
    * Saves the current conversation.
@@ -77134,7 +83079,7 @@ var ConversationController = class {
         cls: `claudian-history-item${isCurrent ? " active" : ""}`
       });
       const iconEl = item.createDiv({ cls: "claudian-history-item-icon" });
-      (0, import_obsidian21.setIcon)(iconEl, isCurrent ? "message-square-dot" : "message-square");
+      (0, import_obsidian24.setIcon)(iconEl, isCurrent ? "message-square-dot" : "message-square");
       const content = item.createDiv({ cls: "claudian-history-item-content" });
       const titleEl = content.createDiv({ cls: "claudian-history-item-title", text: conv.title });
       titleEl.setAttribute("title", conv.title);
@@ -77184,30 +83129,30 @@ var ConversationController = class {
       const actions = item.createDiv({ cls: "claudian-history-item-actions" });
       if (conv.titleGenerationStatus === "pending") {
         const loadingEl = actions.createEl("span", { cls: "claudian-action-btn claudian-action-loading" });
-        (0, import_obsidian21.setIcon)(loadingEl, "loader-2");
+        (0, import_obsidian24.setIcon)(loadingEl, "loader-2");
         loadingEl.setAttribute("aria-label", "Generating title...");
       } else if (conv.titleGenerationStatus === "failed") {
         const regenerateBtn = actions.createEl("button", { cls: "claudian-action-btn" });
-        (0, import_obsidian21.setIcon)(regenerateBtn, "refresh-cw");
+        (0, import_obsidian24.setIcon)(regenerateBtn, "refresh-cw");
         regenerateBtn.setAttribute("aria-label", "Regenerate title");
         regenerateBtn.addEventListener("click", async (e2) => {
           e2.stopPropagation();
           try {
             await this.regenerateTitle(conv.id);
           } catch (e4) {
-            new import_obsidian21.Notice("Failed to regenerate response");
+            new import_obsidian24.Notice("Failed to regenerate response");
           }
         });
       }
       const renameBtn = actions.createEl("button", { cls: "claudian-action-btn" });
-      (0, import_obsidian21.setIcon)(renameBtn, "pencil");
+      (0, import_obsidian24.setIcon)(renameBtn, "pencil");
       renameBtn.setAttribute("aria-label", "Rename");
       renameBtn.addEventListener("click", (e2) => {
         e2.stopPropagation();
         this.showRenameInput(item, conv.id, conv.title);
       });
       const deleteBtn = actions.createEl("button", { cls: "claudian-action-btn claudian-delete-btn" });
-      (0, import_obsidian21.setIcon)(deleteBtn, "trash-2");
+      (0, import_obsidian24.setIcon)(deleteBtn, "trash-2");
       deleteBtn.setAttribute("aria-label", "Delete");
       deleteBtn.addEventListener("click", async (e2) => {
         e2.stopPropagation();
@@ -77225,12 +83170,12 @@ var ConversationController = class {
     try {
       await action();
     } catch (e2) {
-      new import_obsidian21.Notice(errorMessage);
+      new import_obsidian24.Notice(errorMessage);
     }
   }
   showHistoryContextMenu(item, conversationId, title, isCurrent, options, event) {
     var _a3, _b2;
-    const menu = new import_obsidian21.Menu();
+    const menu = new import_obsidian24.Menu();
     const openState = (_b2 = (_a3 = options.getConversationOpenState) == null ? void 0 : _a3.call(options, conversationId)) != null ? _b2 : isCurrent ? "current" : "closed";
     if (!isCurrent) {
       if (openState === "closed" && options.onOpenConversationInNewTab) {
@@ -77298,7 +83243,7 @@ var ConversationController = class {
         await this.deps.plugin.renameConversation(convId, newTitle);
         this.updateHistoryDropdown();
       } catch (e2) {
-        new import_obsidian21.Notice("Failed to rename conversation");
+        new import_obsidian24.Notice("Failed to rename conversation");
       }
     };
     input.addEventListener("blur", finishRename);
@@ -77333,7 +83278,7 @@ var ConversationController = class {
     };
     const getTimeGreetings = () => {
       if (hour >= 5 && hour < 12) {
-        return [personalize("Good morning"), "Coffee and Claudian time?"];
+        return [personalize("Good morning"), "Coffee and iClaudian time?"];
       } else if (hour >= 12 && hour < 18) {
         return [personalize("Good afternoon"), personalize("Hey there"), personalize("How's it going") + "?"];
       } else if (hour >= 18 && hour < 22) {
@@ -77451,10 +83396,10 @@ var ConversationController = class {
 };
 
 // src/features/chat/controllers/InputController.ts
-var import_obsidian26 = require("obsidian");
+var import_obsidian29 = require("obsidian");
 
 // src/shared/components/ResumeSessionDropdown.ts
-var import_obsidian22 = require("obsidian");
+var import_obsidian25 = require("obsidian");
 var ResumeSessionDropdown = class {
   constructor(containerEl, inputEl, conversations, currentConversationId, callbacks) {
     this.selectedIndex = 0;
@@ -77557,7 +83502,7 @@ var ResumeSessionDropdown = class {
       if (isCurrent) item.addClass("current");
       if (i2 === this.selectedIndex) item.addClass("selected");
       const iconEl = item.createDiv({ cls: "claudian-resume-item-icon" });
-      (0, import_obsidian22.setIcon)(iconEl, isCurrent ? "message-square-dot" : "message-square");
+      (0, import_obsidian25.setIcon)(iconEl, isCurrent ? "message-square-dot" : "message-square");
       const content = item.createDiv({ cls: "claudian-resume-item-content" });
       const titleEl = content.createDiv({ cls: "claudian-resume-item-title", text: conv.title });
       titleEl.setAttribute("title", conv.title);
@@ -77589,8 +83534,8 @@ var ResumeSessionDropdown = class {
 };
 
 // src/shared/modals/InstructionConfirmModal.ts
-var import_obsidian23 = require("obsidian");
-var InstructionModal = class extends import_obsidian23.Modal {
+var import_obsidian26 = require("obsidian");
+var InstructionModal = class extends import_obsidian26.Modal {
   constructor(app, rawInstruction, callbacks) {
     super(app);
     this.state = "loading";
@@ -77634,7 +83579,7 @@ var InstructionModal = class extends import_obsidian23.Modal {
     const responseSection = this.clarificationEl.createDiv({ cls: "claudian-instruction-section" });
     const responseLabel = responseSection.createDiv({ cls: "claudian-instruction-label" });
     responseLabel.setText("Your response:");
-    this.responseTextarea = new import_obsidian23.TextAreaComponent(responseSection);
+    this.responseTextarea = new import_obsidian26.TextAreaComponent(responseSection);
     this.responseTextarea.inputEl.addClass("claudian-instruction-response-textarea");
     this.responseTextarea.inputEl.rows = 3;
     this.responseTextarea.inputEl.placeholder = "Provide more details...";
@@ -77652,7 +83597,7 @@ var InstructionModal = class extends import_obsidian23.Modal {
     this.refinedDisplayEl = refinedSection.createDiv({ cls: "claudian-instruction-refined" });
     this.editContainerEl = refinedSection.createDiv({ cls: "claudian-instruction-edit-container" });
     this.editContainerEl.style.display = "none";
-    this.editTextarea = new import_obsidian23.TextAreaComponent(this.editContainerEl);
+    this.editTextarea = new import_obsidian26.TextAreaComponent(this.editContainerEl);
     this.editTextarea.inputEl.addClass("claudian-instruction-edit-textarea");
     this.editTextarea.inputEl.rows = 4;
     this.buttonsEl = contentEl.createDiv({ cls: "claudian-instruction-buttons" });
@@ -77923,7 +83868,7 @@ var FLAVOR_TEXTS = [
 var HINTS_TEXT = "Enter to select \xB7 Tab/Arrow keys to navigate \xB7 Esc to cancel";
 var HINTS_TEXT_IMMEDIATE = "Enter to select \xB7 Arrow keys to navigate \xB7 Esc to cancel";
 var InlineAskUserQuestion = class {
-  constructor(containerEl, input, resolve8, signal, config2) {
+  constructor(containerEl, input, resolve11, signal, config2) {
     this.resolved = false;
     this.questions = [];
     this.answers = /* @__PURE__ */ new Map();
@@ -77937,7 +83882,7 @@ var InlineAskUserQuestion = class {
     var _a3, _b2, _c;
     this.containerEl = containerEl;
     this.input = input;
-    this.resolveCallback = resolve8;
+    this.resolveCallback = resolve11;
     this.signal = signal;
     this.config = {
       title: (_a3 = config2 == null ? void 0 : config2.title) != null ? _a3 : "Question",
@@ -78486,7 +84431,7 @@ var InlineAskUserQuestion = class {
 var nodePath = __toESM(require("path"));
 var HINTS_TEXT2 = "Arrow keys to navigate \xB7 Enter to select \xB7 Esc to cancel";
 var InlineExitPlanMode = class {
-  constructor(containerEl, input, resolve8, signal, renderContent, planPathPrefix) {
+  constructor(containerEl, input, resolve11, signal, renderContent, planPathPrefix) {
     this.resolved = false;
     this.planContent = null;
     this.planReadError = null;
@@ -78496,7 +84441,7 @@ var InlineExitPlanMode = class {
     this.abortHandler = null;
     this.containerEl = containerEl;
     this.input = input;
-    this.resolveCallback = resolve8;
+    this.resolveCallback = resolve11;
     this.signal = signal;
     this.renderContent = renderContent;
     this.planPathPrefix = planPathPrefix;
@@ -78597,8 +84542,8 @@ var InlineExitPlanMode = class {
       return null;
     }
     try {
-      const fs26 = require("fs");
-      const content = fs26.readFileSync(planFilePath, "utf-8");
+      const fs35 = require("fs");
+      const content = fs35.readFileSync(planFilePath, "utf-8");
       return content.trim() || null;
     } catch (err) {
       this.planReadError = err instanceof Error ? err.message : "unknown error";
@@ -78711,13 +84656,13 @@ ${this.planContent}`;
 // src/features/chat/rendering/InlinePlanApproval.ts
 var HINTS_TEXT3 = "Arrow keys to navigate \xB7 Enter to select \xB7 Esc to cancel";
 var InlinePlanApproval = class {
-  constructor(containerEl, resolve8) {
+  constructor(containerEl, resolve11) {
     this.resolved = false;
     this.focusedIndex = 0;
     this.items = [];
     this.isInputFocused = false;
     this.containerEl = containerEl;
-    this.resolveCallback = resolve8;
+    this.resolveCallback = resolve11;
     this.boundKeyDown = this.handleKeyDown.bind(this);
   }
   render() {
@@ -78864,7 +84809,7 @@ var InlinePlanApproval = class {
 };
 
 // src/features/chat/rendering/ToolCallRenderer.ts
-var import_obsidian25 = require("obsidian");
+var import_obsidian28 = require("obsidian");
 
 // src/core/tools/toolIcons.ts
 var TOOL_ICONS = {
@@ -78986,7 +84931,7 @@ function renderDiffContent(containerEl, diffLines, contextLines = 3) {
 }
 
 // src/features/chat/rendering/todoUtils.ts
-var import_obsidian24 = require("obsidian");
+var import_obsidian27 = require("obsidian");
 function getTodoStatusIcon(status) {
   return status === "completed" ? "check" : "dot";
 }
@@ -78999,7 +84944,7 @@ function renderTodoItems(container, todos) {
     const item = container.createDiv({ cls: `claudian-todo-item claudian-todo-${todo.status}` });
     const icon = item.createSpan({ cls: "claudian-todo-status-icon" });
     icon.setAttribute("aria-hidden", "true");
-    (0, import_obsidian24.setIcon)(icon, getTodoStatusIcon(todo.status));
+    (0, import_obsidian27.setIcon)(icon, getTodoStatusIcon(todo.status));
     const text = item.createSpan({ cls: "claudian-todo-text" });
     text.setText(getTodoDisplayText(todo));
   }
@@ -79011,7 +84956,7 @@ function setToolIcon(el, name) {
   if (icon === MCP_ICON_MARKER) {
     el.innerHTML = MCP_ICON_SVG;
   } else {
-    (0, import_obsidian25.setIcon)(el, icon);
+    (0, import_obsidian28.setIcon)(el, icon);
   }
 }
 function getToolName(name, input) {
@@ -79238,7 +85183,7 @@ function appendToolLink(parent, title, url2) {
   linkEl.setAttribute("target", "_blank");
   linkEl.setAttribute("rel", "noopener noreferrer");
   const iconEl = linkEl.createSpan({ cls: "claudian-tool-link-icon" });
-  (0, import_obsidian25.setIcon)(iconEl, "external-link");
+  (0, import_obsidian28.setIcon)(iconEl, "external-link");
   linkEl.createSpan({ cls: "claudian-tool-link-title", text: title });
 }
 function isPlaceholderWebSearchResult(result) {
@@ -79434,10 +85379,10 @@ function renderApplyPatchExpanded(container, input, result) {
     const linesEl = container.createDiv({ cls: "claudian-tool-lines" });
     for (const change of changes) {
       if (!change || typeof change !== "object") continue;
-      const path24 = typeof change.path === "string" ? change.path : "";
+      const path27 = typeof change.path === "string" ? change.path : "";
       const kind = typeof change.kind === "string" ? change.kind : "change";
-      if (!path24) continue;
-      linesEl.createDiv({ cls: "claudian-tool-line", text: `${kind}: ${path24}` });
+      if (!path27) continue;
+      linesEl.createDiv({ cls: "claudian-tool-line", text: `${kind}: ${path27}` });
     }
     return;
   }
@@ -79553,12 +85498,12 @@ function setTodoWriteStatus(statusEl, input) {
   const status = isComplete ? "completed" : "running";
   const ariaLabel = isComplete ? "Status: completed" : "Status: in progress";
   resetStatusElement(statusEl, `status-${status}`, ariaLabel);
-  if (isComplete) (0, import_obsidian25.setIcon)(statusEl, "check");
+  if (isComplete) (0, import_obsidian28.setIcon)(statusEl, "check");
 }
 function setToolStatus(statusEl, status) {
   resetStatusElement(statusEl, `status-${status}`, `Status: ${status}`);
   const icon = STATUS_ICONS[status];
-  if (icon) (0, import_obsidian25.setIcon)(statusEl, icon);
+  if (icon) (0, import_obsidian28.setIcon)(statusEl, icon);
 }
 function renderTodoWriteResult(container, input) {
   container.empty();
@@ -80012,7 +85957,7 @@ var InputController = class {
     if (this.deps.ensureServiceInitialized) {
       const ready = await this.deps.ensureServiceInitialized();
       if (!ready) {
-        new import_obsidian26.Notice("Failed to initialize agent service. Please try again.");
+        new import_obsidian29.Notice("Failed to initialize agent service. Please try again.");
         streamController.hideThinkingIndicator();
         state.isStreaming = false;
         this.activeStreamingAssistantMessage = null;
@@ -80022,7 +85967,7 @@ var InputController = class {
     }
     const agentService = this.getAgentService();
     if (!agentService) {
-      new import_obsidian26.Notice("Agent service not available. Please reload the plugin.");
+      new import_obsidian29.Notice("Agent service not available. Please reload the plugin.");
       this.activeStreamingAssistantMessage = null;
       this.resetProviderMessageBoundaryState();
       return;
@@ -80079,7 +86024,7 @@ var InputController = class {
       if (!wasInvalidated && state.streamGeneration === streamGeneration) {
         const didCancelThisTurn = wasInterrupted || state.cancelRequested;
         if (didCancelThisTurn && !state.pendingNewSessionPlan) {
-          await streamController.appendText('\n\n<span class="claudian-interrupted">Interrupted</span> <span class="claudian-interrupted-hint">\xB7 What should Claudian do instead?</span>');
+          await streamController.appendText('\n\n<span class="claudian-interrupted">Interrupted</span> <span class="claudian-interrupted-hint">\xB7 What should iClaudian do instead?</span>');
         }
         streamController.hideThinkingIndicator();
         state.isStreaming = false;
@@ -80388,7 +86333,7 @@ var InputController = class {
       });
     } catch (e2) {
       this.restoreQueuedMessageAfterSteerFailure(queuedMessage);
-      new import_obsidian26.Notice("Failed to steer the queued Codex message. It is still available.");
+      new import_obsidian29.Notice("Failed to steer the queued Codex message. It is still available.");
     }
   }
   restoreQueuedMessageAfterSteerFailure(message) {
@@ -80629,7 +86574,7 @@ var InputController = class {
             const currentPrompt = plugin.settings.systemPrompt;
             plugin.settings.systemPrompt = appendMarkdownSnippet(currentPrompt, finalInstruction);
             await plugin.saveSettings();
-            new import_obsidian26.Notice("Instruction added to custom system prompt");
+            new import_obsidian29.Notice("Instruction added to custom system prompt");
             instructionModeManager == null ? void 0 : instructionModeManager.clear();
           },
           onReject: () => {
@@ -80647,7 +86592,7 @@ var InputController = class {
               if (result2.error === "Cancelled") {
                 return;
               }
-              new import_obsidian26.Notice(result2.error || "Failed to process response");
+              new import_obsidian29.Notice(result2.error || "Failed to process response");
               modal == null ? void 0 : modal.showError(result2.error || "Failed to process response");
               return;
             }
@@ -80674,7 +86619,7 @@ var InputController = class {
           instructionModeManager == null ? void 0 : instructionModeManager.clear();
           return;
         }
-        new import_obsidian26.Notice(result.error || "Failed to refine instruction");
+        new import_obsidian29.Notice(result.error || "Failed to refine instruction");
         modal.showError(result.error || "Failed to refine instruction");
         instructionModeManager == null ? void 0 : instructionModeManager.clear();
         return;
@@ -80684,13 +86629,13 @@ var InputController = class {
       } else if (result.refinedInstruction) {
         modal.showConfirmation(result.refinedInstruction);
       } else {
-        new import_obsidian26.Notice("No instruction received");
+        new import_obsidian29.Notice("No instruction received");
         modal.showError("No instruction received");
         instructionModeManager == null ? void 0 : instructionModeManager.clear();
       }
     } catch (error48) {
       const errorMsg = error48 instanceof Error ? error48.message : "Unknown error";
-      new import_obsidian26.Notice(`Error: ${errorMsg}`);
+      new import_obsidian29.Notice(`Error: ${errorMsg}`);
       modal == null ? void 0 : modal.showError(errorMsg);
       instructionModeManager == null ? void 0 : instructionModeManager.clear();
     }
@@ -80758,7 +86703,7 @@ var InputController = class {
     const selected = Object.values(result)[0];
     const selectedValue = Array.isArray(selected) ? selected[0] : selected;
     if (typeof selectedValue !== "string") {
-      new import_obsidian26.Notice(`Unexpected approval selection: "${String(selectedValue)}"`);
+      new import_obsidian29.Notice(`Unexpected approval selection: "${String(selectedValue)}"`);
       return "cancel";
     }
     const decision = optionDecisionMap.get(selectedValue);
@@ -80789,14 +86734,14 @@ var InputController = class {
   showInlineQuestion(parentEl, inputContainerEl, input, setPending, signal, config2) {
     this.deps.streamController.hideThinkingIndicator();
     this.hideInputContainer(inputContainerEl);
-    return new Promise((resolve8, reject) => {
+    return new Promise((resolve11, reject) => {
       const inline = new InlineAskUserQuestion(
         parentEl,
         input,
         (result) => {
           setPending(null);
           this.restoreInputContainer(inputContainerEl);
-          resolve8(result);
+          resolve11(result);
         },
         signal,
         config2
@@ -80823,14 +86768,14 @@ var InputController = class {
     const enrichedInput = state.planFilePath ? { ...input, planFilePath: state.planFilePath } : input;
     const renderContent = (el, markdown) => this.deps.renderer.renderContent(el, markdown);
     const planPathPrefix = this.getActiveCapabilities().planPathPrefix;
-    return new Promise((resolve8, reject) => {
+    return new Promise((resolve11, reject) => {
       const inline = new InlineExitPlanMode(
         parentEl,
         enrichedInput,
         (decision) => {
           this.pendingExitPlanModeInline = null;
           this.restoreInputContainer(inputContainerEl);
-          resolve8(decision);
+          resolve11(decision);
         },
         signal,
         renderContent,
@@ -80873,7 +86818,7 @@ var InputController = class {
     }
     this.hideInputContainer(inputContainerEl);
     this.pendingPlanApprovalInvalidated = false;
-    return new Promise((resolve8, reject) => {
+    return new Promise((resolve11, reject) => {
       const inline = new InlinePlanApproval(
         parentEl,
         (decision) => {
@@ -80881,7 +86826,7 @@ var InputController = class {
           this.pendingPlanApprovalInvalidated = false;
           this.pendingPlanApproval = null;
           this.restoreInputContainer(inputContainerEl);
-          resolve8({ decision, invalidated });
+          resolve11({ decision, invalidated });
         }
       );
       this.pendingPlanApproval = inline;
@@ -80929,7 +86874,7 @@ var InputController = class {
     const { conversationController } = this.deps;
     const capabilities = this.getActiveCapabilities();
     if (!isBuiltInCommandSupported(command, capabilities)) {
-      new import_obsidian26.Notice(`/${command.name} is not supported by this provider.`);
+      new import_obsidian29.Notice(`/${command.name} is not supported by this provider.`);
       return;
     }
     switch (command.action) {
@@ -80939,14 +86884,14 @@ var InputController = class {
       case "add-dir": {
         const externalContextSelector = this.deps.getExternalContextSelector();
         if (!externalContextSelector) {
-          new import_obsidian26.Notice("External context selector not available.");
+          new import_obsidian29.Notice("External context selector not available.");
           return;
         }
         const result = externalContextSelector.addExternalContext(args);
         if (result.success) {
-          new import_obsidian26.Notice(`Added external context: ${result.normalizedPath}`);
+          new import_obsidian29.Notice(`Added external context: ${result.normalizedPath}`);
         } else {
-          new import_obsidian26.Notice(result.error);
+          new import_obsidian29.Notice(result.error);
         }
         break;
       }
@@ -80955,18 +86900,18 @@ var InputController = class {
         break;
       case "fork": {
         if (!this.getActiveCapabilities().supportsFork) {
-          new import_obsidian26.Notice("Fork is not supported by this provider.");
+          new import_obsidian29.Notice("Fork is not supported by this provider.");
           return;
         }
         if (!this.deps.onForkAll) {
-          new import_obsidian26.Notice("Fork not available.");
+          new import_obsidian29.Notice("Fork not available.");
           return;
         }
         await this.deps.onForkAll();
         break;
       }
       default:
-        new import_obsidian26.Notice(`Unknown command: ${command.action}`);
+        new import_obsidian29.Notice(`Unknown command: ${command.action}`);
     }
   }
   // ============================================
@@ -80993,7 +86938,7 @@ var InputController = class {
     this.destroyResumeDropdown();
     const conversations = plugin.getConversationList();
     if (conversations.length === 0) {
-      new import_obsidian26.Notice("No conversations to resume");
+      new import_obsidian29.Notice("No conversations to resume");
       return;
     }
     const openConversation = (_a3 = this.deps.openConversation) != null ? _a3 : ((id) => conversationController.switchTo(id));
@@ -81007,7 +86952,7 @@ var InputController = class {
           this.destroyResumeDropdown();
           openConversation(id).catch((err) => {
             const msg = err instanceof Error ? err.message : String(err);
-            new import_obsidian26.Notice(`Failed to open conversation: ${msg}`);
+            new import_obsidian29.Notice(`Failed to open conversation: ${msg}`);
           });
         },
         onDismiss: () => {
@@ -81145,7 +87090,7 @@ var NavigationController = class {
 };
 
 // src/features/chat/controllers/SelectionController.ts
-var import_obsidian27 = require("obsidian");
+var import_obsidian30 = require("obsidian");
 
 // src/shared/components/SelectionHighlight.ts
 var import_state = require("@codemirror/state");
@@ -81250,7 +87195,7 @@ var SelectionController = class {
   // ============================================
   poll() {
     var _a3;
-    const view = this.app.workspace.getActiveViewOfType(import_obsidian27.MarkdownView);
+    const view = this.app.workspace.getActiveViewOfType(import_obsidian30.MarkdownView);
     if (!view) {
       this.clearWhenMarkdownContextIsUnavailable();
       return;
@@ -81475,7 +87420,7 @@ var SelectionController = class {
 };
 
 // src/features/chat/controllers/StreamController.ts
-var import_obsidian30 = require("obsidian");
+var import_obsidian33 = require("obsidian");
 
 // src/core/tools/todo.ts
 function isValidTodoItem(item) {
@@ -81533,7 +87478,7 @@ function adapterOwnsTool(adapter, toolName) {
 }
 
 // src/features/chat/rendering/SubagentRenderer.ts
-var import_obsidian28 = require("obsidian");
+var import_obsidian31 = require("obsidian");
 var SUBAGENT_TOOL_STATUS_ICONS = {
   completed: "check",
   error: "x",
@@ -81592,7 +87537,7 @@ function setSubagentToolStatus(view, status) {
   view.statusEl.setAttribute("aria-label", `Status: ${status}`);
   const statusIcon = SUBAGENT_TOOL_STATUS_ICONS[status];
   if (statusIcon) {
-    (0, import_obsidian28.setIcon)(view.statusEl, statusIcon);
+    (0, import_obsidian31.setIcon)(view.statusEl, statusIcon);
   }
 }
 function updateSubagentToolView(view, toolCall) {
@@ -81697,7 +87642,7 @@ function createSubagentBlock(parentEl, taskToolId, taskInput) {
   headerEl.setAttribute("role", "button");
   const iconEl = headerEl.createDiv({ cls: "claudian-subagent-icon" });
   iconEl.setAttribute("aria-hidden", "true");
-  (0, import_obsidian28.setIcon)(iconEl, getToolIcon(TOOL_TASK));
+  (0, import_obsidian31.setIcon)(iconEl, getToolIcon(TOOL_TASK));
   const labelEl = headerEl.createDiv({ cls: "claudian-subagent-label" });
   labelEl.setText(truncateDescription(description));
   const statusEl = headerEl.createDiv({ cls: "claudian-subagent-status status-running" });
@@ -81772,11 +87717,11 @@ function finalizeSubagentBlock(state, result, isError) {
   state.statusEl.addClass(`status-${state.info.status}`);
   state.statusEl.empty();
   if (state.info.status === "completed") {
-    (0, import_obsidian28.setIcon)(state.statusEl, "check");
+    (0, import_obsidian31.setIcon)(state.statusEl, "check");
     state.wrapperEl.removeClass("error");
     state.wrapperEl.addClass("done");
   } else {
-    (0, import_obsidian28.setIcon)(state.statusEl, "x");
+    (0, import_obsidian31.setIcon)(state.statusEl, "x");
     state.wrapperEl.removeClass("done");
     state.wrapperEl.addClass("error");
   }
@@ -81898,7 +87843,7 @@ function createAsyncSubagentBlock(parentEl, taskToolId, taskInput) {
   headerEl.setAttribute("aria-label", `Background task: ${description} - Initializing - click to expand`);
   const iconEl = headerEl.createDiv({ cls: "claudian-subagent-icon" });
   iconEl.setAttribute("aria-hidden", "true");
-  (0, import_obsidian28.setIcon)(iconEl, getToolIcon(TOOL_TASK));
+  (0, import_obsidian31.setIcon)(iconEl, getToolIcon(TOOL_TASK));
   const labelEl = headerEl.createDiv({ cls: "claudian-subagent-label" });
   labelEl.setText(truncateDescription(description));
   const statusTextEl = headerEl.createDiv({ cls: "claudian-subagent-status-text" });
@@ -81937,9 +87882,9 @@ function finalizeAsyncSubagent(state, result, isError) {
   state.statusEl.addClass(`status-${isError ? "error" : "completed"}`);
   state.statusEl.empty();
   if (isError) {
-    (0, import_obsidian28.setIcon)(state.statusEl, "x");
+    (0, import_obsidian31.setIcon)(state.statusEl, "x");
   } else {
-    (0, import_obsidian28.setIcon)(state.statusEl, "check");
+    (0, import_obsidian31.setIcon)(state.statusEl, "check");
   }
   if (isError) {
     state.wrapperEl.addClass("error");
@@ -81957,7 +87902,7 @@ function markAsyncSubagentOrphaned(state) {
   state.statusTextEl.setText("Orphaned");
   state.statusEl.className = "claudian-subagent-status status-error";
   state.statusEl.empty();
-  (0, import_obsidian28.setIcon)(state.statusEl, "alert-circle");
+  (0, import_obsidian31.setIcon)(state.statusEl, "alert-circle");
   state.wrapperEl.addClass("error");
   state.wrapperEl.addClass("orphaned");
   renderAsyncContentLikeSync(state.contentEl, state.info, "orphaned");
@@ -81984,7 +87929,7 @@ function renderStoredAsyncSubagent(parentEl, subagent) {
   );
   const iconEl = headerEl.createDiv({ cls: "claudian-subagent-icon" });
   iconEl.setAttribute("aria-hidden", "true");
-  (0, import_obsidian28.setIcon)(iconEl, getToolIcon(TOOL_TASK));
+  (0, import_obsidian31.setIcon)(iconEl, getToolIcon(TOOL_TASK));
   const labelEl = headerEl.createDiv({ cls: "claudian-subagent-label" });
   labelEl.setText(truncateDescription(subagent.description));
   const statusTextEl = headerEl.createDiv({ cls: "claudian-subagent-status-text" });
@@ -82005,13 +87950,13 @@ function renderStoredAsyncSubagent(parentEl, subagent) {
   statusEl.setAttribute("aria-label", `Status: ${statusAriaLabel}`);
   switch (displayStatus) {
     case "completed":
-      (0, import_obsidian28.setIcon)(statusEl, "check");
+      (0, import_obsidian31.setIcon)(statusEl, "check");
       break;
     case "error":
-      (0, import_obsidian28.setIcon)(statusEl, "x");
+      (0, import_obsidian31.setIcon)(statusEl, "x");
       break;
     case "orphaned":
-      (0, import_obsidian28.setIcon)(statusEl, "alert-circle");
+      (0, import_obsidian31.setIcon)(statusEl, "alert-circle");
       break;
   }
   const contentEl = wrapperEl.createDiv({ cls: "claudian-subagent-content" });
@@ -82022,7 +87967,7 @@ function renderStoredAsyncSubagent(parentEl, subagent) {
 }
 
 // src/features/chat/rendering/WriteEditRenderer.ts
-var import_obsidian29 = require("obsidian");
+var import_obsidian32 = require("obsidian");
 function shortenPath2(filePath, maxLength = 40) {
   if (!filePath) return "file";
   const normalized = filePath.replace(/\\/g, "/");
@@ -82063,7 +88008,7 @@ function createWriteEditBlock(parentEl, toolCall) {
   headerEl.setAttribute("aria-label", `${toolName}: ${shortenPath2(filePath)} - click to expand`);
   const iconEl = headerEl.createDiv({ cls: "claudian-write-edit-icon" });
   iconEl.setAttribute("aria-hidden", "true");
-  (0, import_obsidian29.setIcon)(iconEl, getToolIcon(toolName));
+  (0, import_obsidian32.setIcon)(iconEl, getToolIcon(toolName));
   const nameEl = headerEl.createDiv({ cls: "claudian-write-edit-name" });
   nameEl.setText(toolName);
   const summaryEl = headerEl.createDiv({ cls: "claudian-write-edit-summary" });
@@ -82104,7 +88049,7 @@ function finalizeWriteEditBlock(state, isError) {
   state.statusEl.empty();
   if (isError) {
     state.statusEl.addClass("status-error");
-    (0, import_obsidian29.setIcon)(state.statusEl, "x");
+    (0, import_obsidian32.setIcon)(state.statusEl, "x");
     state.statusEl.setAttribute("aria-label", "Status: error");
     if (!state.diffLines) {
       state.contentEl.empty();
@@ -82140,7 +88085,7 @@ function renderStoredWriteEdit(parentEl, toolCall) {
   headerEl.setAttribute("role", "button");
   const iconEl = headerEl.createDiv({ cls: "claudian-write-edit-icon" });
   iconEl.setAttribute("aria-hidden", "true");
-  (0, import_obsidian29.setIcon)(iconEl, getToolIcon(toolName));
+  (0, import_obsidian32.setIcon)(iconEl, getToolIcon(toolName));
   const nameEl = headerEl.createDiv({ cls: "claudian-write-edit-name" });
   nameEl.setText(toolName);
   const summaryEl = headerEl.createDiv({ cls: "claudian-write-edit-summary" });
@@ -82152,7 +88097,7 @@ function renderStoredWriteEdit(parentEl, toolCall) {
   const statusEl = headerEl.createDiv({ cls: "claudian-write-edit-status" });
   if (isError) {
     statusEl.addClass("status-error");
-    (0, import_obsidian29.setIcon)(statusEl, "x");
+    (0, import_obsidian32.setIcon)(statusEl, "x");
   }
   const contentEl = wrapperEl.createDiv({ cls: "claudian-write-edit-content" });
   const row = contentEl.createDiv({ cls: "claudian-write-edit-diff-row" });
@@ -82634,8 +88579,8 @@ var _StreamController = class _StreamController {
   }
   scheduleCurrentTextRender() {
     if (!this.pendingTextRenderPromise) {
-      this.pendingTextRenderPromise = new Promise((resolve8) => {
-        this.resolvePendingTextRender = resolve8;
+      this.pendingTextRenderPromise = new Promise((resolve11) => {
+        this.resolvePendingTextRender = resolve11;
       });
     }
     if (this.pendingTextRenderFrame === null && !this.isTextRenderRunning) {
@@ -82678,20 +88623,20 @@ var _StreamController = class _StreamController {
       });
       return;
     }
-    const resolve8 = this.resolvePendingTextRender;
+    const resolve11 = this.resolvePendingTextRender;
     this.pendingTextRenderPromise = null;
     this.resolvePendingTextRender = null;
-    resolve8 == null ? void 0 : resolve8();
+    resolve11 == null ? void 0 : resolve11();
   }
   cancelPendingTextRender() {
     if (this.pendingTextRenderFrame !== null) {
       cancelScheduledAnimationFrame(this.pendingTextRenderFrame);
       this.pendingTextRenderFrame = null;
     }
-    const resolve8 = this.resolvePendingTextRender;
+    const resolve11 = this.resolvePendingTextRender;
     this.pendingTextRenderPromise = null;
     this.resolvePendingTextRender = null;
-    resolve8 == null ? void 0 : resolve8();
+    resolve11 == null ? void 0 : resolve11();
   }
   scheduleToolOutputRender(toolId, toolCall) {
     if (this.pendingToolOutputFrames.has(toolId)) return;
@@ -82747,8 +88692,8 @@ var _StreamController = class _StreamController {
   }
   scheduleCurrentThinkingRender() {
     if (!this.pendingThinkingRenderPromise) {
-      this.pendingThinkingRenderPromise = new Promise((resolve8) => {
-        this.resolvePendingThinkingRender = resolve8;
+      this.pendingThinkingRenderPromise = new Promise((resolve11) => {
+        this.resolvePendingThinkingRender = resolve11;
       });
     }
     if (this.pendingThinkingRenderFrame === null && !this.isThinkingRenderRunning) {
@@ -82792,20 +88737,20 @@ var _StreamController = class _StreamController {
       });
       return;
     }
-    const resolve8 = this.resolvePendingThinkingRender;
+    const resolve11 = this.resolvePendingThinkingRender;
     this.pendingThinkingRenderPromise = null;
     this.resolvePendingThinkingRender = null;
-    resolve8 == null ? void 0 : resolve8();
+    resolve11 == null ? void 0 : resolve11();
   }
   cancelPendingThinkingRender() {
     if (this.pendingThinkingRenderFrame !== null) {
       cancelScheduledAnimationFrame(this.pendingThinkingRenderFrame);
       this.pendingThinkingRenderFrame = null;
     }
-    const resolve8 = this.resolvePendingThinkingRender;
+    const resolve11 = this.resolvePendingThinkingRender;
     this.pendingThinkingRenderPromise = null;
     this.resolvePendingThinkingRender = null;
-    resolve8 == null ? void 0 : resolve8();
+    resolve11 == null ? void 0 : resolve11();
   }
   // ============================================
   // Subagent Tool Handling (via SubagentManager)
@@ -83188,7 +89133,7 @@ var _StreamController = class _StreamController {
     setTimeout(() => {
       const { vault } = this.deps.plugin.app;
       const file2 = vault.getAbstractFileByPath(relativePath);
-      if (file2 instanceof import_obsidian30.TFile) {
+      if (file2 instanceof import_obsidian33.TFile) {
         vault.trigger("modify", file2);
       } else {
         const parentDir = relativePath.includes("/") ? relativePath.substring(0, relativePath.lastIndexOf("/")) : "";
@@ -83266,7 +89211,7 @@ _StreamController.THINKING_INDICATOR_DELAY = 400;
 var StreamController = _StreamController;
 
 // src/features/chat/rendering/MessageRenderer.ts
-var import_obsidian31 = require("obsidian");
+var import_obsidian34 = require("obsidian");
 
 // src/utils/fileLink.ts
 var WIKILINK_PATTERN_SOURCE = "(?<!!)\\[\\[([^\\]|#^]+)(?:#[^\\]|]+)?(?:\\^[^\\]|]+)?(?:\\|[^\\]]+)?\\]\\]";
@@ -83449,9 +89394,9 @@ var IMAGE_EXTENSIONS = /* @__PURE__ */ new Set([
   "ico"
 ]);
 var IMAGE_EMBED_PATTERN = /!\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g;
-function isImagePath(path24) {
+function isImagePath(path27) {
   var _a3;
-  const ext = (_a3 = path24.split(".").pop()) == null ? void 0 : _a3.toLowerCase();
+  const ext = (_a3 = path27.split(".").pop()) == null ? void 0 : _a3.toLowerCase();
   return ext ? IMAGE_EXTENSIONS.has(ext) : false;
 }
 function resolveImageFile(app, imagePath, mediaFolder) {
@@ -83707,7 +89652,7 @@ var _MessageRenderer = class _MessageRenderer {
   }
   appendInterruptIndicator(contentEl) {
     const textEl = contentEl.createDiv({ cls: "claudian-text-block" });
-    textEl.innerHTML = '<span class="claudian-interrupted">Interrupted</span> <span class="claudian-interrupted-hint">\xB7 What should Claudian do instead?</span>';
+    textEl.innerHTML = '<span class="claudian-interrupted">Interrupted</span> <span class="claudian-interrupted-hint">\xB7 What should iClaudian do instead?</span>';
   }
   /**
    * Renders assistant message content (content blocks or fallback).
@@ -83951,7 +89896,7 @@ var _MessageRenderer = class _MessageRenderer {
         this.app,
         this.plugin.settings.mediaFolder
       );
-      await import_obsidian31.MarkdownRenderer.renderMarkdown(
+      await import_obsidian34.MarkdownRenderer.renderMarkdown(
         processedMarkdown,
         el,
         "",
@@ -84090,7 +90035,7 @@ var _MessageRenderer = class _MessageRenderer {
       try {
         await ((_a3 = this.rewindCallback) == null ? void 0 : _a3.call(this, messageId));
       } catch (err) {
-        new import_obsidian31.Notice(t("chat.rewind.failed", { error: err instanceof Error ? err.message : "Unknown error" }));
+        new import_obsidian34.Notice(t("chat.rewind.failed", { error: err instanceof Error ? err.message : "Unknown error" }));
       }
     });
   }
@@ -84107,7 +90052,7 @@ var _MessageRenderer = class _MessageRenderer {
       try {
         await ((_a3 = this.forkCallback) == null ? void 0 : _a3.call(this, messageId));
       } catch (err) {
-        new import_obsidian31.Notice(t("chat.fork.failed", { error: err instanceof Error ? err.message : "Unknown error" }));
+        new import_obsidian34.Notice(t("chat.fork.failed", { error: err instanceof Error ? err.message : "Unknown error" }));
       }
     });
   }
@@ -84148,7 +90093,7 @@ var BangBashService = class {
     this.enhancedPath = enhancedPath;
   }
   execute(command) {
-    return new Promise((resolve8) => {
+    return new Promise((resolve11) => {
       (0, import_child_process7.exec)(command, {
         cwd: this.cwd,
         env: { ...process.env, PATH: this.enhancedPath },
@@ -84158,7 +90103,7 @@ var BangBashService = class {
       }, (error48, stdout, stderr) => {
         if (error48 && "killed" in error48 && error48.killed) {
           const isMaxBuffer = "code" in error48 && error48.code === "ERR_CHILD_PROCESS_STDIO_MAXBUFFER";
-          resolve8({
+          resolve11({
             command,
             stdout: stdout != null ? stdout : "",
             stderr: stderr != null ? stderr : "",
@@ -84167,7 +90112,7 @@ var BangBashService = class {
           });
           return;
         }
-        resolve8({
+        resolve11({
           command,
           stdout: stdout != null ? stdout : "",
           stderr: stderr != null ? stderr : "",
@@ -84181,7 +90126,7 @@ var BangBashService = class {
 // src/features/chat/services/SubagentManager.ts
 var import_fs6 = require("fs");
 var import_os4 = require("os");
-var import_path29 = require("path");
+var import_path41 = require("path");
 var _SubagentManager = class _SubagentManager {
   constructor(onStateChange, taskResultInterpreter = ProviderRegistry.getTaskResultInterpreter()) {
     this.syncSubagents = /* @__PURE__ */ new Map();
@@ -84951,7 +90896,7 @@ var _SubagentManager = class _SubagentManager {
     return Array.from(roots);
   }
   isTrustedOutputPath(fullOutputPath) {
-    if (!(0, import_path29.isAbsolute)(fullOutputPath)) {
+    if (!(0, import_path41.isAbsolute)(fullOutputPath)) {
       return false;
     }
     if (!fullOutputPath.toLowerCase().endsWith(_SubagentManager.TRUSTED_OUTPUT_EXT)) {
@@ -84964,7 +90909,7 @@ var _SubagentManager = class _SubagentManager {
       return false;
     }
     return _SubagentManager.TRUSTED_TMP_ROOTS.some(
-      (root) => resolvedPath === root || resolvedPath.startsWith(`${root}${import_path29.sep}`)
+      (root) => resolvedPath === root || resolvedPath.startsWith(`${root}${import_path41.sep}`)
     );
   }
 };
@@ -85297,7 +91242,7 @@ var ChatState = class {
 };
 
 // src/features/chat/ui/BangBashModeManager.ts
-var import_obsidian32 = require("obsidian");
+var import_obsidian35 = require("obsidian");
 var BangBashModeManager = class {
   constructor(inputEl, callbacks) {
     this.state = { active: false, rawCommand: "" };
@@ -85367,7 +91312,7 @@ var BangBashModeManager = class {
       this.clear();
       await this.callbacks.onSubmit(rawCommand);
     } catch (e2) {
-      new import_obsidian32.Notice(`Command failed: ${e2 instanceof Error ? e2.message : String(e2)}`);
+      new import_obsidian35.Notice(`Command failed: ${e2 instanceof Error ? e2.message : String(e2)}`);
     } finally {
       this.isSubmitting = false;
     }
@@ -85384,13 +91329,13 @@ var BangBashModeManager = class {
 };
 
 // src/features/chat/ui/FileContext.ts
-var import_obsidian36 = require("obsidian");
+var import_obsidian39 = require("obsidian");
 
 // src/shared/mention/MentionDropdownController.ts
-var import_obsidian33 = require("obsidian");
+var import_obsidian36 = require("obsidian");
 
 // src/utils/externalContext.ts
-var fs24 = __toESM(require("fs"));
+var fs33 = __toESM(require("fs"));
 init_path();
 function normalizePathForComparison3(p) {
   return normalizePathForComparison(p);
@@ -85450,7 +91395,7 @@ function buildExternalContextDisplayEntries(externalContexts) {
 }
 function validateDirectoryPath(p) {
   try {
-    const stats = fs24.statSync(p);
+    const stats = fs33.statSync(p);
     if (!stats.isDirectory()) {
       return { valid: false, error: "Path exists but is not a directory" };
     }
@@ -85478,8 +91423,8 @@ function isDuplicatePath(newPath, existingPaths) {
 }
 
 // src/utils/externalContextScanner.ts
-var fs25 = __toESM(require("fs"));
-var path21 = __toESM(require("path"));
+var fs34 = __toESM(require("fs"));
+var path24 = __toESM(require("path"));
 init_path();
 var CACHE_TTL_MS = 3e4;
 var MAX_FILES_PER_PATH = 1e3;
@@ -85525,25 +91470,25 @@ var ExternalContextScanner = class {
     if (depth > MAX_DEPTH) return [];
     const files = [];
     try {
-      if (!fs25.existsSync(dir)) return [];
-      const stat = fs25.statSync(dir);
+      if (!fs34.existsSync(dir)) return [];
+      const stat = fs34.statSync(dir);
       if (!stat.isDirectory()) return [];
-      const entries = fs25.readdirSync(dir, { withFileTypes: true });
+      const entries = fs34.readdirSync(dir, { withFileTypes: true });
       for (const entry of entries) {
         if (entry.name.startsWith(".")) continue;
         if (SKIP_DIRECTORIES.has(entry.name)) continue;
         if (entry.isSymbolicLink()) continue;
-        const fullPath = path21.join(dir, entry.name);
+        const fullPath = path24.join(dir, entry.name);
         if (entry.isDirectory()) {
           const subFiles = this.scanDirectory(fullPath, contextRoot, depth + 1);
           files.push(...subFiles);
         } else if (entry.isFile()) {
           try {
-            const fileStat = fs25.statSync(fullPath);
+            const fileStat = fs34.statSync(fullPath);
             files.push({
               path: fullPath,
               name: entry.name,
-              relativePath: path21.relative(contextRoot, fullPath),
+              relativePath: path24.relative(contextRoot, fullPath),
               contextRoot,
               mtime: fileStat.mtimeMs
             });
@@ -86001,17 +91946,17 @@ var MentionDropdownController = class {
             break;
           case "agent":
           case "agent-folder":
-            (0, import_obsidian33.setIcon)(iconEl, "bot");
+            (0, import_obsidian36.setIcon)(iconEl, "bot");
             break;
           case "context-file":
-            (0, import_obsidian33.setIcon)(iconEl, "folder-open");
+            (0, import_obsidian36.setIcon)(iconEl, "folder-open");
             break;
           case "folder":
           case "context-folder":
-            (0, import_obsidian33.setIcon)(iconEl, "folder");
+            (0, import_obsidian36.setIcon)(iconEl, "folder");
             break;
           default:
-            (0, import_obsidian33.setIcon)(iconEl, "file-text");
+            (0, import_obsidian36.setIcon)(iconEl, "file-text");
         }
         const textEl = itemEl.createSpan({ cls: "claudian-mention-text" });
         switch (item.type) {
@@ -86158,7 +92103,7 @@ var MentionDropdownController = class {
 };
 
 // src/shared/mention/VaultMentionCache.ts
-var import_obsidian34 = require("obsidian");
+var import_obsidian37 = require("obsidian");
 var VaultFileCache = class {
   constructor(app, options = {}) {
     this.app = app;
@@ -86237,7 +92182,7 @@ var VaultFolderCache = class {
     }
   }
   loadFolders() {
-    return this.app.vault.getAllLoadedFiles().filter((file2) => file2 instanceof import_obsidian34.TFolder && isVisibleFolder(file2));
+    return this.app.vault.getAllLoadedFiles().filter((file2) => file2 instanceof import_obsidian37.TFolder && isVisibleFolder(file2));
   }
 };
 
@@ -86422,11 +92367,11 @@ var FileContextState = class {
       this.attachedFiles.add(file2);
     }
   }
-  attachFile(path24) {
-    this.attachedFiles.add(path24);
+  attachFile(path27) {
+    this.attachedFiles.add(path27);
   }
-  detachFile(path24) {
-    this.attachedFiles.delete(path24);
+  detachFile(path27) {
+    this.attachedFiles.delete(path27);
   }
   clearAttachments() {
     this.attachedFiles.clear();
@@ -86450,7 +92395,7 @@ var FileContextState = class {
 };
 
 // src/features/chat/ui/file-context/view/FileChipsView.ts
-var import_obsidian35 = require("obsidian");
+var import_obsidian38 = require("obsidian");
 var FileChipsView = class {
   constructor(containerEl, callbacks) {
     this.containerEl = containerEl;
@@ -86478,7 +92423,7 @@ var FileChipsView = class {
   renderFileChip(filePath, onRemove) {
     const chipEl = this.fileIndicatorEl.createDiv({ cls: "claudian-file-chip" });
     const iconEl = chipEl.createSpan({ cls: "claudian-file-chip-icon" });
-    (0, import_obsidian35.setIcon)(iconEl, "file-text");
+    (0, import_obsidian38.setIcon)(iconEl, "file-text");
     const normalizedPath = filePath.replace(/\\/g, "/");
     const filename = normalizedPath.split("/").pop() || filePath;
     const nameEl = chipEl.createSpan({ cls: "claudian-file-chip-name" });
@@ -86525,14 +92470,14 @@ var FileContextManager = class {
       },
       onOpenFile: async (filePath) => {
         const file2 = this.app.vault.getAbstractFileByPath(filePath);
-        if (!(file2 instanceof import_obsidian36.TFile)) {
-          new import_obsidian36.Notice(`Could not open file: ${filePath}`);
+        if (!(file2 instanceof import_obsidian39.TFile)) {
+          new import_obsidian39.Notice(`Could not open file: ${filePath}`);
           return;
         }
         try {
           await this.app.workspace.getLeaf().openFile(file2);
         } catch (error48) {
-          new import_obsidian36.Notice(`Failed to open file: ${error48 instanceof Error ? error48.message : String(error48)}`);
+          new import_obsidian39.Notice(`Failed to open file: ${error48 instanceof Error ? error48.message : String(error48)}`);
         }
       }
     });
@@ -86562,10 +92507,10 @@ var FileContextManager = class {
       }
     );
     this.deleteEventRef = this.app.vault.on("delete", (file2) => {
-      if (file2 instanceof import_obsidian36.TFile) this.handleFileDeleted(file2.path);
+      if (file2 instanceof import_obsidian39.TFile) this.handleFileDeleted(file2.path);
     });
     this.renameEventRef = this.app.vault.on("rename", (file2, oldPath) => {
-      if (file2 instanceof import_obsidian36.TFile) this.handleFileRenamed(oldPath, file2.path);
+      if (file2 instanceof import_obsidian39.TFile) this.handleFileRenamed(oldPath, file2.path);
     });
   }
   /** Returns the current note path (shown as chip). */
@@ -86789,8 +92734,8 @@ var FileContextManager = class {
 };
 
 // src/features/chat/ui/ImageContext.ts
-var import_obsidian37 = require("obsidian");
-var path22 = __toESM(require("path"));
+var import_obsidian40 = require("obsidian");
+var path25 = __toESM(require("path"));
 var MAX_IMAGE_SIZE = 5 * 1024 * 1024;
 var IMAGE_EXTENSIONS2 = {
   ".jpg": "image/jpeg",
@@ -86936,12 +92881,12 @@ var ImageContextManager = class {
     return file2.type.startsWith("image/") && this.getMediaType(file2.name) !== null;
   }
   getMediaType(filename) {
-    const ext = path22.extname(filename).toLowerCase();
+    const ext = path25.extname(filename).toLowerCase();
     return IMAGE_EXTENSIONS2[ext] || null;
   }
   async addImageFromFile(file2, source) {
     if (!this.enabled) {
-      new import_obsidian37.Notice("Image attachments are not supported by this provider.");
+      new import_obsidian40.Notice("Image attachments are not supported by this provider.");
       return false;
     }
     if (file2.size > MAX_IMAGE_SIZE) {
@@ -87050,7 +92995,7 @@ var ImageContextManager = class {
   }
   truncateName(name, maxLen) {
     if (name.length <= maxLen) return name;
-    const ext = path22.extname(name);
+    const ext = path25.extname(name);
     const base = name.slice(0, name.length - ext.length);
     const truncatedBase = base.slice(0, maxLen - ext.length - 3);
     return `${truncatedBase}...${ext}`;
@@ -87069,13 +93014,13 @@ var ImageContextManager = class {
         userMessage = `${message} (Permission denied)`;
       }
     }
-    new import_obsidian37.Notice(userMessage);
+    new import_obsidian40.Notice(userMessage);
   }
 };
 
 // src/features/chat/ui/InputToolbar.ts
-var import_obsidian38 = require("obsidian");
-var path23 = __toESM(require("path"));
+var import_obsidian41 = require("obsidian");
+var path26 = __toESM(require("path"));
 init_path();
 var ModelSelector = class {
   constructor(parentEl, callbacks) {
@@ -87403,7 +93348,7 @@ var ServiceTierToggle = class {
     this.container.empty();
     this.buttonEl = this.container.createDiv({ cls: "claudian-service-tier-button" });
     this.iconEl = this.buttonEl.createSpan({ cls: "claudian-service-tier-icon" });
-    (0, import_obsidian38.setIcon)(this.iconEl, "zap");
+    (0, import_obsidian41.setIcon)(this.iconEl, "zap");
     this.updateDisplay();
     this.buttonEl.addEventListener("click", () => this.toggle());
   }
@@ -87480,28 +93425,28 @@ var ExternalContextSelector = class {
     this.renderDropdown();
     if (invalidPaths.length > 0) {
       const pathNames = invalidPaths.map((p) => this.shortenPath(p)).join(", ");
-      new import_obsidian38.Notice(`Removed ${invalidPaths.length} invalid external context path(s): ${pathNames}`, 5e3);
+      new import_obsidian41.Notice(`Removed ${invalidPaths.length} invalid external context path(s): ${pathNames}`, 5e3);
       (_a3 = this.onPersistenceChangeCallback) == null ? void 0 : _a3.call(this, [...this.persistentPaths]);
     }
   }
-  togglePersistence(path24) {
+  togglePersistence(path27) {
     var _a3;
-    if (this.persistentPaths.has(path24)) {
-      this.persistentPaths.delete(path24);
+    if (this.persistentPaths.has(path27)) {
+      this.persistentPaths.delete(path27);
     } else {
-      if (!isValidDirectoryPath(path24)) {
-        new import_obsidian38.Notice(`Cannot persist "${this.shortenPath(path24)}" - directory no longer exists`, 4e3);
+      if (!isValidDirectoryPath(path27)) {
+        new import_obsidian41.Notice(`Cannot persist "${this.shortenPath(path27)}" - directory no longer exists`, 4e3);
         return;
       }
-      this.persistentPaths.add(path24);
+      this.persistentPaths.add(path27);
     }
     (_a3 = this.onPersistenceChangeCallback) == null ? void 0 : _a3.call(this, [...this.persistentPaths]);
     this.renderDropdown();
   }
   mergePersistentPaths() {
     const pathSet = new Set(this.externalContextPaths);
-    for (const path24 of this.persistentPaths) {
-      pathSet.add(path24);
+    for (const path27 of this.persistentPaths) {
+      pathSet.add(path27);
     }
     this.externalContextPaths = [...pathSet];
   }
@@ -87548,7 +93493,7 @@ var ExternalContextSelector = class {
     }
     const expandedPath = expandHomePath(cleanPath);
     const normalizedPath = normalizePathForFilesystem(expandedPath);
-    if (!path23.isAbsolute(normalizedPath)) {
+    if (!path26.isAbsolute(normalizedPath)) {
       return { success: false, error: "Path must be absolute. Usage: /add-dir /absolute/path" };
     }
     const validation = validateDirectoryPath(normalizedPath);
@@ -87586,7 +93531,7 @@ var ExternalContextSelector = class {
     this.container.empty();
     const iconWrapper = this.container.createDiv({ cls: "claudian-external-context-icon-wrapper" });
     this.iconEl = iconWrapper.createDiv({ cls: "claudian-external-context-icon" });
-    (0, import_obsidian38.setIcon)(this.iconEl, "folder");
+    (0, import_obsidian41.setIcon)(this.iconEl, "folder");
     this.badgeEl = iconWrapper.createDiv({ cls: "claudian-external-context-badge" });
     this.updateDisplay();
     iconWrapper.addEventListener("click", (e2) => {
@@ -87607,12 +93552,12 @@ var ExternalContextSelector = class {
       if (!result.canceled && result.filePaths.length > 0) {
         const selectedPath = result.filePaths[0];
         if (isDuplicatePath(selectedPath, this.externalContextPaths)) {
-          new import_obsidian38.Notice("This folder is already added as an external context.", 3e3);
+          new import_obsidian41.Notice("This folder is already added as an external context.", 3e3);
           return;
         }
         const conflict = findConflictingPath(selectedPath, this.externalContextPaths);
         if (conflict) {
-          new import_obsidian38.Notice(this.formatConflictMessage(selectedPath, conflict), 5e3);
+          new import_obsidian41.Notice(this.formatConflictMessage(selectedPath, conflict), 5e3);
           return;
         }
         this.externalContextPaths = [...this.externalContextPaths, selectedPath];
@@ -87621,7 +93566,7 @@ var ExternalContextSelector = class {
         this.renderDropdown();
       }
     } catch (e2) {
-      new import_obsidian38.Notice("Unable to open folder picker.", 5e3);
+      new import_obsidian41.Notice("Unable to open folder picker.", 5e3);
     }
   }
   /** Formats a conflict error message for display. */
@@ -87651,14 +93596,14 @@ var ExternalContextSelector = class {
         if (isPersistent) {
           lockBtn.addClass("locked");
         }
-        (0, import_obsidian38.setIcon)(lockBtn, isPersistent ? "lock" : "unlock");
+        (0, import_obsidian41.setIcon)(lockBtn, isPersistent ? "lock" : "unlock");
         lockBtn.setAttribute("title", isPersistent ? "Persistent (click to make session-only)" : "Session-only (click to persist)");
         lockBtn.addEventListener("click", (e2) => {
           e2.stopPropagation();
           this.togglePersistence(pathStr);
         });
         const removeBtn = itemEl.createSpan({ cls: "claudian-external-context-remove" });
-        (0, import_obsidian38.setIcon)(removeBtn, "x");
+        (0, import_obsidian41.setIcon)(removeBtn, "x");
         removeBtn.setAttribute("title", "Remove path");
         removeBtn.addEventListener("click", (e2) => {
           e2.stopPropagation();
@@ -88098,7 +94043,7 @@ var InstructionModeManager = class {
 };
 
 // src/features/chat/ui/NavigationSidebar.ts
-var import_obsidian39 = require("obsidian");
+var import_obsidian42 = require("obsidian");
 var NavigationSidebar = class {
   constructor(parentEl, messagesEl) {
     this.parentEl = parentEl;
@@ -88117,7 +94062,7 @@ var NavigationSidebar = class {
   }
   createButton(cls, icon, label) {
     const btn = this.container.createDiv({ cls: `claudian-nav-btn ${cls}` });
-    (0, import_obsidian39.setIcon)(btn, icon);
+    (0, import_obsidian42.setIcon)(btn, icon);
     btn.setAttribute("aria-label", label);
     return btn;
   }
@@ -88188,7 +94133,7 @@ var NavigationSidebar = class {
 };
 
 // src/features/chat/ui/StatusPanel.ts
-var import_obsidian40 = require("obsidian");
+var import_obsidian43 = require("obsidian");
 var MAX_BASH_OUTPUTS = 50;
 var StatusPanel = class {
   constructor() {
@@ -88352,7 +94297,7 @@ var StatusPanel = class {
     this.todoHeaderEl.empty();
     const icon = document.createElement("span");
     icon.className = "claudian-status-panel-icon";
-    (0, import_obsidian40.setIcon)(icon, getToolIcon(TOOL_TODO_WRITE));
+    (0, import_obsidian43.setIcon)(icon, getToolIcon(TOOL_TODO_WRITE));
     this.todoHeaderEl.appendChild(icon);
     const label = document.createElement("span");
     label.className = "claudian-status-panel-label";
@@ -88362,7 +94307,7 @@ var StatusPanel = class {
       if (completedCount === totalCount && totalCount > 0) {
         const status = document.createElement("span");
         status.className = "claudian-status-panel-status status-completed";
-        (0, import_obsidian40.setIcon)(status, "check");
+        (0, import_obsidian43.setIcon)(status, "check");
         this.todoHeaderEl.appendChild(status);
       }
       if (currentTask) {
@@ -88464,7 +94409,7 @@ var StatusPanel = class {
     const headerIconEl = document.createElement("span");
     headerIconEl.className = "claudian-tool-icon";
     headerIconEl.setAttribute("aria-hidden", "true");
-    (0, import_obsidian40.setIcon)(headerIconEl, "terminal");
+    (0, import_obsidian43.setIcon)(headerIconEl, "terminal");
     this.bashHeaderEl.appendChild(headerIconEl);
     const latest = Array.from(this.currentBashOutputs.values()).at(-1);
     const headerLabelEl = document.createElement("span");
@@ -88484,8 +94429,8 @@ var StatusPanel = class {
     if (!this.isBashExpanded && latest) {
       summaryStatusEl.classList.add(`status-${latest.status}`);
       summaryStatusEl.setAttribute("aria-label", t("chat.bangBash.statusLabel", { status: latest.status }));
-      if (latest.status === "completed") (0, import_obsidian40.setIcon)(summaryStatusEl, "check");
-      if (latest.status === "error") (0, import_obsidian40.setIcon)(summaryStatusEl, "x");
+      if (latest.status === "completed") (0, import_obsidian43.setIcon)(summaryStatusEl, "check");
+      if (latest.status === "error") (0, import_obsidian43.setIcon)(summaryStatusEl, "x");
     } else {
       summaryStatusEl.style.display = "none";
     }
@@ -88523,7 +94468,7 @@ var StatusPanel = class {
     const entryIconEl = document.createElement("span");
     entryIconEl.className = "claudian-tool-icon";
     entryIconEl.setAttribute("aria-hidden", "true");
-    (0, import_obsidian40.setIcon)(entryIconEl, "dollar-sign");
+    (0, import_obsidian43.setIcon)(entryIconEl, "dollar-sign");
     entryHeaderEl.appendChild(entryIconEl);
     const entryLabelEl = document.createElement("span");
     entryLabelEl.className = "claudian-tool-label";
@@ -88533,8 +94478,8 @@ var StatusPanel = class {
     entryStatusEl.className = "claudian-tool-status";
     entryStatusEl.classList.add(`status-${info.status}`);
     entryStatusEl.setAttribute("aria-label", t("chat.bangBash.statusLabel", { status: info.status }));
-    if (info.status === "completed") (0, import_obsidian40.setIcon)(entryStatusEl, "check");
-    if (info.status === "error") (0, import_obsidian40.setIcon)(entryStatusEl, "x");
+    if (info.status === "completed") (0, import_obsidian43.setIcon)(entryStatusEl, "check");
+    if (info.status === "error") (0, import_obsidian43.setIcon)(entryStatusEl, "x");
     entryHeaderEl.appendChild(entryStatusEl);
     entryEl.appendChild(entryHeaderEl);
     const contentEl = document.createElement("div");
@@ -88578,7 +94523,7 @@ ${output}` : `$ ${latest.command}`;
     try {
       await navigator.clipboard.writeText(text);
     } catch (e2) {
-      new import_obsidian40.Notice(t("chat.bangBash.copyFailed"));
+      new import_obsidian43.Notice(t("chat.bangBash.copyFailed"));
     }
   }
   appendActionButton(parent, name, ariaLabel, icon, action) {
@@ -88587,7 +94532,7 @@ ${output}` : `$ ${latest.command}`;
     el.setAttribute("role", "button");
     el.setAttribute("tabindex", "0");
     el.setAttribute("aria-label", ariaLabel);
-    (0, import_obsidian40.setIcon)(el, icon);
+    (0, import_obsidian43.setIcon)(el, icon);
     el.addEventListener("click", (e2) => {
       e2.stopPropagation();
       action();
@@ -88966,6 +94911,16 @@ function buildTabDOM(contentEl) {
       dir: "auto"
     }
   });
+  const stopButtonEl = inputWrapper.createEl("button", {
+    cls: "claudian-stop-button",
+    attr: {
+      "aria-label": "Stop current task",
+      title: "Stop current task",
+      type: "button"
+    }
+  });
+  (0, import_obsidian44.setIcon)(stopButtonEl, "square");
+  stopButtonEl.style.display = "none";
   return {
     contentEl,
     messagesEl,
@@ -88975,6 +94930,7 @@ function buildTabDOM(contentEl) {
     queueIndicatorEl,
     inputWrapper,
     inputEl,
+    stopButtonEl,
     navRowEl,
     contextRowEl,
     selectionIndicatorEl: null,
@@ -89201,7 +95157,7 @@ function initializeInputToolbar(tab, plugin, getProviderCatalogConfig, onProvide
       const boundProvider = tab.providerId;
       const modelProvider = getProviderForModel(model, plugin.settings);
       if (modelProvider !== boundProvider) {
-        new import_obsidian41.Notice("Cannot switch provider on a bound session. Start a new tab instead.");
+        new import_obsidian44.Notice("Cannot switch provider on a bound session. Start a new tab instead.");
         (_g = tab.ui.modelSelector) == null ? void 0 : _g.updateDisplay();
         return;
       }
@@ -89321,6 +95277,7 @@ function initializeTabUI(tab, plugin, options = {}) {
   }
   initializeInstructionAndTodo(tab, plugin);
   initializeInputToolbar(tab, plugin, options.getProviderCatalogConfig, options.onProviderChanged);
+  const previousStreamingStateHandler = state.callbacks.onStreamingStateChanged;
   state.callbacks = {
     ...state.callbacks,
     onUsageChanged: (usage) => {
@@ -89334,6 +95291,11 @@ function initializeTabUI(tab, plugin, options = {}) {
     onAutoScrollChanged: () => {
       var _a4;
       return (_a4 = tab.ui.navigationSidebar) == null ? void 0 : _a4.updateVisibility();
+    },
+    onStreamingStateChanged: (isStreaming) => {
+      previousStreamingStateHandler == null ? void 0 : previousStreamingStateHandler(isStreaming);
+      tab.dom.stopButtonEl.style.display = isStreaming ? "inline-flex" : "none";
+      tab.dom.inputWrapper.toggleClass("claudian-input-streaming", isStreaming);
     }
   };
   const resizeObserver = new ResizeObserver(() => {
@@ -89358,7 +95320,7 @@ function resolveForkSource(tab, plugin) {
   const conversation = tab.conversationId ? plugin.getConversationSync(tab.conversationId) : null;
   const sourceSessionId = tab.service ? tab.service.resolveSessionIdForFork(conversation != null ? conversation : null) : ProviderRegistry.getConversationHistoryService((_a3 = conversation == null ? void 0 : conversation.providerId) != null ? _a3 : tab.providerId).resolveSessionIdForConversation(conversation);
   if (!sourceSessionId) {
-    new import_obsidian41.Notice(t("chat.fork.failed", { error: t("chat.fork.errorNoSession") }));
+    new import_obsidian44.Notice(t("chat.fork.failed", { error: t("chat.fork.errorNoSession") }));
     return null;
   }
   return {
@@ -89372,26 +95334,26 @@ function resolveForkSource(tab, plugin) {
 async function handleForkRequest(tab, plugin, userMessageId, forkRequestCallback) {
   const { state } = tab;
   if (!getTabCapabilities(tab, plugin).supportsFork) {
-    new import_obsidian41.Notice("Fork is not supported by this provider.");
+    new import_obsidian44.Notice("Fork is not supported by this provider.");
     return;
   }
   if (state.isStreaming) {
-    new import_obsidian41.Notice(t("chat.fork.unavailableStreaming"));
+    new import_obsidian44.Notice(t("chat.fork.unavailableStreaming"));
     return;
   }
   const msgs = state.messages;
   const userIdx = msgs.findIndex((m2) => m2.id === userMessageId);
   if (userIdx === -1) {
-    new import_obsidian41.Notice(t("chat.fork.failed", { error: t("chat.fork.errorMessageNotFound") }));
+    new import_obsidian44.Notice(t("chat.fork.failed", { error: t("chat.fork.errorMessageNotFound") }));
     return;
   }
   if (!msgs[userIdx].userMessageId) {
-    new import_obsidian41.Notice(t("chat.fork.unavailableNoUuid"));
+    new import_obsidian44.Notice(t("chat.fork.unavailableNoUuid"));
     return;
   }
   const rewindCtx = findRewindContext(msgs, userIdx);
   if (!rewindCtx.hasResponse || !rewindCtx.prevAssistantUuid) {
-    new import_obsidian41.Notice(t("chat.fork.unavailableNoResponse"));
+    new import_obsidian44.Notice(t("chat.fork.unavailableNoResponse"));
     return;
   }
   const source = resolveForkSource(tab, plugin);
@@ -89410,16 +95372,16 @@ async function handleForkRequest(tab, plugin, userMessageId, forkRequestCallback
 async function handleForkAll(tab, plugin, forkRequestCallback) {
   const { state } = tab;
   if (!getTabCapabilities(tab, plugin).supportsFork) {
-    new import_obsidian41.Notice("Fork is not supported by this provider.");
+    new import_obsidian44.Notice("Fork is not supported by this provider.");
     return;
   }
   if (state.isStreaming) {
-    new import_obsidian41.Notice(t("chat.fork.unavailableStreaming"));
+    new import_obsidian44.Notice(t("chat.fork.unavailableStreaming"));
     return;
   }
   const msgs = state.messages;
   if (msgs.length === 0) {
-    new import_obsidian41.Notice(t("chat.fork.commandNoMessages"));
+    new import_obsidian44.Notice(t("chat.fork.commandNoMessages"));
     return;
   }
   let lastAssistantUuid;
@@ -89430,7 +95392,7 @@ async function handleForkAll(tab, plugin, forkRequestCallback) {
     }
   }
   if (!lastAssistantUuid) {
-    new import_obsidian41.Notice(t("chat.fork.commandNoAssistantUuid"));
+    new import_obsidian44.Notice(t("chat.fork.commandNoAssistantUuid"));
     return;
   }
   const source = resolveForkSource(tab, plugin);
@@ -89630,7 +95592,7 @@ function initializeTabControllers(tab, plugin, component, arg4, arg5, arg6, arg7
         applyProviderUIGating(tab, plugin);
         return true;
       } catch (error48) {
-        new import_obsidian41.Notice(error48 instanceof Error ? error48.message : "Failed to initialize chat service");
+        new import_obsidian44.Notice(error48 instanceof Error ? error48.message : "Failed to initialize chat service");
         return false;
       }
     },
@@ -89714,6 +95676,14 @@ function wireTabInputEvents(tab, plugin) {
   };
   dom.inputEl.addEventListener("keydown", keydownHandler);
   dom.eventCleanups.push(() => dom.inputEl.removeEventListener("keydown", keydownHandler));
+  const stopHandler = (event) => {
+    var _a4;
+    event.preventDefault();
+    event.stopPropagation();
+    (_a4 = controllers.inputController) == null ? void 0 : _a4.cancelStreaming();
+  };
+  dom.stopButtonEl.addEventListener("click", stopHandler);
+  dom.eventCleanups.push(() => dom.stopButtonEl.removeEventListener("click", stopHandler));
   const inputHandler = () => {
     var _a4, _b3, _c, _d2;
     if (!((_a4 = ui.bangBashModeManager) == null ? void 0 : _a4.isActive())) {
@@ -90007,20 +95977,20 @@ var TabBar = class {
 };
 
 // src/features/chat/tabs/TabManager.ts
-var import_obsidian43 = require("obsidian");
+var import_obsidian46 = require("obsidian");
 
 // src/shared/modals/ForkTargetModal.ts
-var import_obsidian42 = require("obsidian");
+var import_obsidian45 = require("obsidian");
 function chooseForkTarget(app) {
-  return new Promise((resolve8) => {
-    new ForkTargetModal(app, resolve8).open();
+  return new Promise((resolve11) => {
+    new ForkTargetModal(app, resolve11).open();
   });
 }
-var ForkTargetModal = class extends import_obsidian42.Modal {
-  constructor(app, resolve8) {
+var ForkTargetModal = class extends import_obsidian45.Modal {
+  constructor(app, resolve11) {
     super(app);
     this.resolved = false;
-    this.resolve = resolve8;
+    this.resolve = resolve11;
   }
   onOpen() {
     this.setTitle(t("chat.fork.chooseTarget"));
@@ -90343,10 +96313,10 @@ var TabManager = class {
       this.maybePrimeProviderRuntime(tab);
     }
   }
-  *filterTabsByProvider(providerIds, resolve8) {
+  *filterTabsByProvider(providerIds, resolve11) {
     const filter = providerIds ? new Set(Array.isArray(providerIds) ? providerIds : [providerIds]) : null;
     for (const tab of this.tabs.values()) {
-      if (filter && !filter.has(resolve8(tab))) {
+      if (filter && !filter.has(resolve11(tab))) {
         continue;
       }
       yield tab;
@@ -90362,17 +96332,17 @@ var TabManager = class {
       const tab = await this.forkToNewTab(context);
       if (!tab) {
         const maxTabs = this.getMaxTabs();
-        new import_obsidian43.Notice(t("chat.fork.maxTabsReached", { count: String(maxTabs) }));
+        new import_obsidian46.Notice(t("chat.fork.maxTabsReached", { count: String(maxTabs) }));
         return;
       }
-      new import_obsidian43.Notice(t("chat.fork.notice"));
+      new import_obsidian46.Notice(t("chat.fork.notice"));
     } else {
       const success2 = await this.forkInCurrentTab(context);
       if (!success2) {
-        new import_obsidian43.Notice(t("chat.fork.failed", { error: t("chat.fork.errorNoActiveTab") }));
+        new import_obsidian46.Notice(t("chat.fork.failed", { error: t("chat.fork.errorNoActiveTab") }));
         return;
       }
-      new import_obsidian43.Notice(t("chat.fork.noticeCurrentTab"));
+      new import_obsidian46.Notice(t("chat.fork.noticeCurrentTab"));
     }
   }
   async forkToNewTab(context) {
@@ -90752,7 +96722,7 @@ var TabManager = class {
 };
 
 // src/features/chat/ClaudianView.ts
-var ClaudianView = class extends import_obsidian44.ItemView {
+var ClaudianView = class extends import_obsidian47.ItemView {
   constructor(leaf, plugin) {
     super(leaf);
     // Tab management
@@ -90797,7 +96767,7 @@ var ClaudianView = class extends import_obsidian44.ItemView {
     return VIEW_TYPE_CLAUDIAN;
   }
   getDisplayText() {
-    return "Claudian";
+    return "iClaudian";
   }
   getIcon() {
     return "bot";
@@ -90931,7 +96901,7 @@ var ClaudianView = class extends import_obsidian44.ItemView {
     this.titleSlotEl = header.createDiv({ cls: "claudian-title-slot" });
     this.logoEl = this.titleSlotEl.createSpan({ cls: "claudian-logo" });
     this.syncHeaderLogo(DEFAULT_CHAT_PROVIDER_ID);
-    this.titleTextEl = this.titleSlotEl.createEl("h4", { text: "Claudian", cls: "claudian-title-text" });
+    this.titleTextEl = this.titleSlotEl.createEl("h4", { text: "iClaudian", cls: "claudian-title-text" });
     this.headerActionsEl = header.createDiv({ cls: "claudian-header-actions claudian-header-actions-slot" });
     this.headerActionsEl.style.display = "none";
   }
@@ -90952,13 +96922,13 @@ var ClaudianView = class extends import_obsidian44.ItemView {
     this.headerActionsContent = document.createElement("div");
     this.headerActionsContent.className = "claudian-header-actions";
     const newTabBtn = this.headerActionsContent.createDiv({ cls: "claudian-header-btn claudian-new-tab-btn" });
-    (0, import_obsidian44.setIcon)(newTabBtn, "square-plus");
+    (0, import_obsidian47.setIcon)(newTabBtn, "square-plus");
     newTabBtn.setAttribute("aria-label", "New tab");
     newTabBtn.addEventListener("click", async () => {
       await this.createNewTab();
     });
     const newBtn = this.headerActionsContent.createDiv({ cls: "claudian-header-btn" });
-    (0, import_obsidian44.setIcon)(newBtn, "square-pen");
+    (0, import_obsidian47.setIcon)(newBtn, "square-pen");
     newBtn.setAttribute("aria-label", "New conversation");
     newBtn.addEventListener("click", async () => {
       var _a3;
@@ -90967,7 +96937,7 @@ var ClaudianView = class extends import_obsidian44.ItemView {
     });
     const historyContainer = this.headerActionsContent.createDiv({ cls: "claudian-history-container" });
     const historyBtn = historyContainer.createDiv({ cls: "claudian-header-btn" });
-    (0, import_obsidian44.setIcon)(historyBtn, "history");
+    (0, import_obsidian47.setIcon)(historyBtn, "history");
     historyBtn.setAttribute("aria-label", "Chat history");
     this.historyDropdown = historyContainer.createDiv({ cls: "claudian-history-menu" });
     historyBtn.addEventListener("click", (e2) => {
@@ -91039,7 +97009,7 @@ var ClaudianView = class extends import_obsidian44.ItemView {
     const tab = await ((_a3 = this.tabManager) == null ? void 0 : _a3.createTab());
     if (!tab) {
       const maxTabs = (_b2 = this.plugin.settings.maxTabs) != null ? _b2 : 3;
-      new import_obsidian44.Notice(`Maximum ${maxTabs} tabs allowed`);
+      new import_obsidian47.Notice(`Maximum ${maxTabs} tabs allowed`);
       return;
     }
     this.updateTabBarVisibility();
@@ -91186,7 +97156,7 @@ var ClaudianView = class extends import_obsidian44.ItemView {
         }
       }
     });
-    this.scope = new import_obsidian44.Scope(this.app.scope);
+    this.scope = new import_obsidian47.Scope(this.app.scope);
     this.scope.register([], "Escape", () => {
       var _a3, _b2;
       const activeTab = (_a3 = this.tabManager) == null ? void 0 : _a3.getActiveTab();
@@ -91278,7 +97248,7 @@ var ClaudianView = class extends import_obsidian44.ItemView {
 // src/features/inline-edit/ui/InlineEditModal.ts
 var import_state2 = require("@codemirror/state");
 var import_view2 = require("@codemirror/view");
-var import_obsidian45 = require("obsidian");
+var import_obsidian48 = require("obsidian");
 init_path();
 var showInlineEdit = import_state2.StateEffect.define();
 var showDiff = import_state2.StateEffect.define();
@@ -91444,10 +97414,10 @@ var InlineEditModal = class {
       editorView = getEditorView(editor);
     }
     if (!editorView) {
-      new import_obsidian45.Notice("Inline edit unavailable: could not access the active editor. Try reopening the note.");
+      new import_obsidian48.Notice("Inline edit unavailable: could not access the active editor. Try reopening the note.");
       return { decision: "reject" };
     }
-    return new Promise((resolve8) => {
+    return new Promise((resolve11) => {
       this.controller = new InlineEditController(
         this.app,
         this.plugin,
@@ -91456,7 +97426,7 @@ var InlineEditModal = class {
         this.editContext,
         this.notePath,
         this.getExternalContexts,
-        resolve8
+        resolve11
       );
       activeController = this.controller;
       this.controller.show();
@@ -91464,14 +97434,14 @@ var InlineEditModal = class {
   }
 };
 var InlineEditController = class {
-  constructor(app, plugin, editorView, editor, editContext, notePath, getExternalContexts, resolve8) {
+  constructor(app, plugin, editorView, editor, editContext, notePath, getExternalContexts, resolve11) {
     this.app = app;
     this.plugin = plugin;
     this.editorView = editorView;
     this.editor = editor;
     this.notePath = notePath;
     this.getExternalContexts = getExternalContexts;
-    this.resolve = resolve8;
+    this.resolve = resolve11;
     this.inputEl = null;
     this.spinnerEl = null;
     this.agentReplyEl = null;
@@ -91498,7 +97468,7 @@ var InlineEditController = class {
     this.resolvedProviderId = providerId;
     this.mentionDataProvider = new VaultMentionDataProvider(this.app, {
       onFileLoadError: () => {
-        new import_obsidian45.Notice("Failed to load vault files. Vault @-mentions may be unavailable.");
+        new import_obsidian48.Notice("Failed to load vault files. Vault @-mentions may be unavailable.");
       }
     });
     this.mentionDataProvider.initializeInBackground();
@@ -91851,7 +97821,7 @@ var InlineEditController = class {
       const vaultPath = getVaultPath(this.app);
       return normalizePathForVault(rawPath, vaultPath);
     } catch (e2) {
-      new import_obsidian45.Notice("Failed to attach file: invalid path");
+      new import_obsidian48.Notice("Failed to attach file: invalid path");
       return null;
     }
   }
@@ -91902,7 +97872,7 @@ var InlineEditController = class {
 };
 
 // src/features/settings/ClaudianSettings.ts
-var import_obsidian46 = require("obsidian");
+var import_obsidian49 = require("obsidian");
 init_env();
 
 // src/features/settings/keyboardNavigation.ts
@@ -91972,7 +97942,7 @@ function openHotkeySettings(app) {
     if (!searchEl) {
       return;
     }
-    searchEl.value = "Claudian";
+    searchEl.value = "iClaudian";
     (_c = tab.updateHotkeyVisibility) == null ? void 0 : _c.call(tab);
   }, 100);
 }
@@ -91998,7 +97968,7 @@ function addHotkeySettingRow(containerEl, app, commandId, translationPrefix) {
   }
   item.addEventListener("click", () => openHotkeySettings(app));
 }
-var ClaudianSettingTab = class extends import_obsidian46.PluginSettingTab {
+var ClaudianSettingTab = class extends import_obsidian49.PluginSettingTab {
   constructor(app, plugin) {
     super(app, plugin);
     this.activeTab = "general";
@@ -92059,7 +98029,7 @@ var ClaudianSettingTab = class extends import_obsidian46.PluginSettingTab {
     }
   }
   renderGeneralTab(container) {
-    new import_obsidian46.Setting(container).setName(t("settings.language.name")).setDesc(t("settings.language.desc")).addDropdown((dropdown) => {
+    new import_obsidian49.Setting(container).setName(t("settings.language.name")).setDesc(t("settings.language.desc")).addDropdown((dropdown) => {
       const locales = getAvailableLocales();
       for (const locale of locales) {
         dropdown.addOption(locale, getLocaleDisplayName(locale));
@@ -92075,8 +98045,8 @@ var ClaudianSettingTab = class extends import_obsidian46.PluginSettingTab {
         this.display();
       });
     });
-    new import_obsidian46.Setting(container).setName(t("settings.display")).setHeading();
-    new import_obsidian46.Setting(container).setName(t("settings.tabBarPosition.name")).setDesc(t("settings.tabBarPosition.desc")).addDropdown((dropdown) => {
+    new import_obsidian49.Setting(container).setName(t("settings.display")).setHeading();
+    new import_obsidian49.Setting(container).setName(t("settings.tabBarPosition.name")).setDesc(t("settings.tabBarPosition.desc")).addDropdown((dropdown) => {
       var _a3;
       dropdown.addOption("input", t("settings.tabBarPosition.input")).addOption("header", t("settings.tabBarPosition.header")).setValue((_a3 = this.plugin.settings.tabBarPosition) != null ? _a3 : "input").onChange(async (value) => {
         this.plugin.settings.tabBarPosition = value;
@@ -92086,7 +98056,7 @@ var ClaudianSettingTab = class extends import_obsidian46.PluginSettingTab {
         }
       });
     });
-    const maxTabsSetting = new import_obsidian46.Setting(container).setName(t("settings.maxTabs.name")).setDesc(t("settings.maxTabs.desc"));
+    const maxTabsSetting = new import_obsidian49.Setting(container).setName(t("settings.maxTabs.name")).setDesc(t("settings.maxTabs.desc"));
     const maxTabsWarningEl = container.createDiv({ cls: "claudian-max-tabs-warning" });
     maxTabsWarningEl.style.color = "var(--text-warning)";
     maxTabsWarningEl.style.fontSize = "0.85em";
@@ -92106,13 +98076,13 @@ var ClaudianSettingTab = class extends import_obsidian46.PluginSettingTab {
       });
       updateMaxTabsWarning((_b2 = this.plugin.settings.maxTabs) != null ? _b2 : 3);
     });
-    new import_obsidian46.Setting(container).setName(t("settings.openInMainTab.name")).setDesc(t("settings.openInMainTab.desc")).addToggle(
+    new import_obsidian49.Setting(container).setName(t("settings.openInMainTab.name")).setDesc(t("settings.openInMainTab.desc")).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.openInMainTab).onChange(async (value) => {
         this.plugin.settings.openInMainTab = value;
         await this.plugin.saveSettings();
       })
     );
-    new import_obsidian46.Setting(container).setName(t("settings.enableAutoScroll.name")).setDesc(t("settings.enableAutoScroll.desc")).addToggle(
+    new import_obsidian49.Setting(container).setName(t("settings.enableAutoScroll.name")).setDesc(t("settings.enableAutoScroll.desc")).addToggle(
       (toggle) => {
         var _a3;
         return toggle.setValue((_a3 = this.plugin.settings.enableAutoScroll) != null ? _a3 : true).onChange(async (value) => {
@@ -92121,8 +98091,8 @@ var ClaudianSettingTab = class extends import_obsidian46.PluginSettingTab {
         });
       }
     );
-    new import_obsidian46.Setting(container).setName(t("settings.conversations")).setHeading();
-    new import_obsidian46.Setting(container).setName(t("settings.autoTitle.name")).setDesc(t("settings.autoTitle.desc")).addToggle(
+    new import_obsidian49.Setting(container).setName(t("settings.conversations")).setHeading();
+    new import_obsidian49.Setting(container).setName(t("settings.autoTitle.name")).setDesc(t("settings.autoTitle.desc")).addToggle(
       (toggle) => toggle.setValue(this.plugin.settings.enableAutoTitleGeneration).onChange(async (value) => {
         this.plugin.settings.enableAutoTitleGeneration = value;
         await this.plugin.saveSettings();
@@ -92130,7 +98100,7 @@ var ClaudianSettingTab = class extends import_obsidian46.PluginSettingTab {
       })
     );
     if (this.plugin.settings.enableAutoTitleGeneration) {
-      new import_obsidian46.Setting(container).setName(t("settings.titleModel.name")).setDesc(t("settings.titleModel.desc")).addDropdown((dropdown) => {
+      new import_obsidian49.Setting(container).setName(t("settings.titleModel.name")).setDesc(t("settings.titleModel.desc")).addDropdown((dropdown) => {
         dropdown.addOption("", t("settings.titleModel.auto"));
         const settingsBag = this.plugin.settings;
         const seenValues = /* @__PURE__ */ new Set();
@@ -92149,15 +98119,15 @@ var ClaudianSettingTab = class extends import_obsidian46.PluginSettingTab {
         });
       });
     }
-    new import_obsidian46.Setting(container).setName(t("settings.content")).setHeading();
-    new import_obsidian46.Setting(container).setName(t("settings.userName.name")).setDesc(t("settings.userName.desc")).addText((text) => {
+    new import_obsidian49.Setting(container).setName(t("settings.content")).setHeading();
+    new import_obsidian49.Setting(container).setName(t("settings.userName.name")).setDesc(t("settings.userName.desc")).addText((text) => {
       text.setPlaceholder(t("settings.userName.name")).setValue(this.plugin.settings.userName).onChange(async (value) => {
         this.plugin.settings.userName = value;
         await this.plugin.saveSettings();
       });
       text.inputEl.addEventListener("blur", () => this.restartServiceForPromptChange());
     });
-    new import_obsidian46.Setting(container).setName(t("settings.systemPrompt.name")).setDesc(t("settings.systemPrompt.desc")).addTextArea((text) => {
+    new import_obsidian49.Setting(container).setName(t("settings.systemPrompt.name")).setDesc(t("settings.systemPrompt.desc")).addTextArea((text) => {
       text.setPlaceholder(t("settings.systemPrompt.name")).setValue(this.plugin.settings.systemPrompt).onChange(async (value) => {
         this.plugin.settings.systemPrompt = value;
         await this.plugin.saveSettings();
@@ -92166,7 +98136,7 @@ var ClaudianSettingTab = class extends import_obsidian46.PluginSettingTab {
       text.inputEl.cols = 50;
       text.inputEl.addEventListener("blur", () => this.restartServiceForPromptChange());
     });
-    new import_obsidian46.Setting(container).setName(t("settings.excludedTags.name")).setDesc(t("settings.excludedTags.desc")).addTextArea((text) => {
+    new import_obsidian49.Setting(container).setName(t("settings.excludedTags.name")).setDesc(t("settings.excludedTags.desc")).addTextArea((text) => {
       text.setPlaceholder("system\nprivate\ndraft").setValue(this.plugin.settings.excludedTags.join("\n")).onChange(async (value) => {
         this.plugin.settings.excludedTags = value.split(/\r?\n/).map((entry) => entry.trim().replace(/^#/, "")).filter((entry) => entry.length > 0);
         await this.plugin.saveSettings();
@@ -92174,7 +98144,7 @@ var ClaudianSettingTab = class extends import_obsidian46.PluginSettingTab {
       text.inputEl.rows = 4;
       text.inputEl.cols = 30;
     });
-    new import_obsidian46.Setting(container).setName(t("settings.mediaFolder.name")).setDesc(t("settings.mediaFolder.desc")).addText((text) => {
+    new import_obsidian49.Setting(container).setName(t("settings.mediaFolder.name")).setDesc(t("settings.mediaFolder.desc")).addText((text) => {
       text.setPlaceholder("attachments").setValue(this.plugin.settings.mediaFolder).onChange(async (value) => {
         this.plugin.settings.mediaFolder = value.trim();
         await this.plugin.saveSettings();
@@ -92182,8 +98152,8 @@ var ClaudianSettingTab = class extends import_obsidian46.PluginSettingTab {
       text.inputEl.addClass("claudian-settings-media-input");
       text.inputEl.addEventListener("blur", () => this.restartServiceForPromptChange());
     });
-    new import_obsidian46.Setting(container).setName(t("settings.input")).setHeading();
-    new import_obsidian46.Setting(container).setName(t("settings.navMappings.name")).setDesc(t("settings.navMappings.desc")).addTextArea((text) => {
+    new import_obsidian49.Setting(container).setName(t("settings.input")).setHeading();
+    new import_obsidian49.Setting(container).setName(t("settings.navMappings.name")).setDesc(t("settings.navMappings.desc")).addTextArea((text) => {
       let pendingValue = buildNavMappingText(this.plugin.settings.keyboardNavigation);
       let saveTimeout = null;
       const commitValue = async (showError) => {
@@ -92194,7 +98164,7 @@ var ClaudianSettingTab = class extends import_obsidian46.PluginSettingTab {
         const result = parseNavMappings(pendingValue);
         if (!result.settings) {
           if (showError) {
-            new import_obsidian46.Notice(`${t("common.error")}: ${result.error}`);
+            new import_obsidian49.Notice(`${t("common.error")}: ${result.error}`);
             pendingValue = buildNavMappingText(this.plugin.settings.keyboardNavigation);
             text.setValue(pendingValue);
           }
@@ -92224,7 +98194,7 @@ var ClaudianSettingTab = class extends import_obsidian46.PluginSettingTab {
         await commitValue(true);
       });
     });
-    new import_obsidian46.Setting(container).setName(t("settings.hotkeys")).setHeading();
+    new import_obsidian49.Setting(container).setName(t("settings.hotkeys")).setHeading();
     const hotkeyGrid = container.createDiv({ cls: "claudian-hotkey-grid" });
     addHotkeySettingRow(hotkeyGrid, this.app, "claudian:inline-edit", "settings.inlineEditHotkey");
     addHotkeySettingRow(hotkeyGrid, this.app, "claudian:open-view", "settings.openChatHotkey");
@@ -92243,7 +98213,7 @@ var ClaudianSettingTab = class extends import_obsidian46.PluginSettingTab {
     });
   }
   renderHiddenProviderCommandSetting(container, providerId, copy) {
-    new import_obsidian46.Setting(container).setName(copy.name).setDesc(copy.desc).addTextArea((text) => {
+    new import_obsidian49.Setting(container).setName(copy.name).setDesc(copy.desc).addTextArea((text) => {
       text.setPlaceholder(copy.placeholder).setValue(getHiddenProviderCommands(this.plugin.settings, providerId).join("\n")).onChange(async (value) => {
         var _a3;
         this.plugin.settings.hiddenProviderCommands = {
@@ -92337,7 +98307,7 @@ var ClaudianSettingTab = class extends import_obsidian46.PluginSettingTab {
 // src/main.ts
 init_path();
 patchSetMaxListenersForElectron();
-var ClaudianPlugin = class extends import_obsidian47.Plugin {
+var ClaudianPlugin = class extends import_obsidian50.Plugin {
   constructor() {
     super(...arguments);
     this.conversations = [];
@@ -92350,12 +98320,12 @@ var ClaudianPlugin = class extends import_obsidian47.Plugin {
       VIEW_TYPE_CLAUDIAN,
       (leaf) => new ClaudianView(leaf, this)
     );
-    this.addRibbonIcon("bot", "Open Claudian", () => {
+    this.addRibbonIcon("bot", "Open iClaudian", () => {
       this.activateView();
     });
     this.addCommand({
       id: "open-view",
-      name: "Open chat view",
+      name: "Open iClaudian chat view",
       callback: () => {
         this.activateView();
       }
@@ -92365,9 +98335,9 @@ var ClaudianPlugin = class extends import_obsidian47.Plugin {
       name: "Inline edit",
       editorCallback: async (editor, ctx) => {
         var _a3;
-        const view = ctx instanceof import_obsidian47.MarkdownView ? ctx : this.app.workspace.getActiveViewOfType(import_obsidian47.MarkdownView);
+        const view = ctx instanceof import_obsidian50.MarkdownView ? ctx : this.app.workspace.getActiveViewOfType(import_obsidian50.MarkdownView);
         if (!view) {
-          new import_obsidian47.Notice("Inline edit unavailable: could not access the active markdown view.");
+          new import_obsidian50.Notice("Inline edit unavailable: could not access the active markdown view.");
           return;
         }
         const selectedText = editor.getSelection();
@@ -92399,7 +98369,7 @@ var ClaudianPlugin = class extends import_obsidian47.Plugin {
         );
         const result = await modal.openAndWait();
         if (result.decision === "accept" && result.editedText !== void 0) {
-          new import_obsidian47.Notice(editContext.mode === "cursor" ? "Inserted" : "Edit applied");
+          new import_obsidian50.Notice(editContext.mode === "cursor" ? "Inserted" : "Edit applied");
         }
       }
     });
@@ -92416,7 +98386,7 @@ var ClaudianPlugin = class extends import_obsidian47.Plugin {
     });
     this.addCommand({
       id: "new-session",
-      name: "New session (in current tab)",
+      name: "New iClaudian session (in current tab)",
       checkCallback: (checking) => {
         const leaf = this.app.workspace.getLeavesOfType(VIEW_TYPE_CLAUDIAN)[0];
         if (!leaf) return false;
@@ -92697,7 +98667,7 @@ var ClaudianPlugin = class extends import_obsidian47.Plugin {
         }
       }
       if (failedTabs > 0) {
-        new import_obsidian47.Notice(`Environment changes applied, but ${failedTabs} affected tab(s) failed to restart.`);
+        new import_obsidian50.Notice(`Environment changes applied, but ${failedTabs} affected tab(s) failed to restart.`);
       }
     }
     for (const openView of this.getAllViews()) {
@@ -92705,7 +98675,7 @@ var ClaudianPlugin = class extends import_obsidian47.Plugin {
       openView.refreshModelSelector();
     }
     const noticeText = changed ? "Environment variables applied. Sessions will be rebuilt on next message." : "Environment variables applied.";
-    new import_obsidian47.Notice(noticeText);
+    new import_obsidian50.Notice(noticeText);
   }
   /** Returns the runtime environment variables (fixed at plugin load). */
   getActiveEnvironmentVariables(providerId = ProviderRegistry.resolveSettingsProviderId(

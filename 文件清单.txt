@@ -1,0 +1,328 @@
+================================================================================
+  C:\Users\Spane\Desktop\Obsidian_study\ 完整文件清单
+  生成日期：2026-04-30
+================================================================================
+
+
+一、根目录
+--------------------------------------------------------------------------------
+  .gitignore
+  2026-04-27.md
+  关系幂运算_OCR整理.md
+  基础提示词记忆备份.txt
+
+
+二、circuit\ （电路）
+--------------------------------------------------------------------------------
+  circuit\circuit-Chapter1.pdf
+  circuit\circuit-Chapter2.pdf
+  circuit\circuit-Chapter3.pdf
+  circuit\circuit-Chapter4.pdf
+  circuit\circuit-Chapter5.pdf
+  circuit\circuit-Chapter6.pdf
+  circuit\circuit-Chapter7.pdf
+  circuit\第1章PPT.pdf
+  circuit\第2章PPT.pdf
+  circuit\第3章PPT.pdf
+  circuit\第4章PPT.pdf
+  circuit\experiment\实验2-1 电位、电压的测定及电位图的绘制.doc
+  circuit\experiment\实验2-1 电位、电压的测定及电位图的绘制2(1).doc
+  circuit\experiment\实验2-1 电位、电压的测定及电位图的绘制2.doc
+  circuit\experiment\实验2-1 电位、电压的测定及电位图的绘制_史彬乐.doc
+  circuit\experiment\电位、电压的测定及电位图的绘制 (3).doc
+  circuit\experiment\微信图片_20260327165446_404_14.jpg
+
+
+三、linear_algebra\ （线性代数）
+--------------------------------------------------------------------------------
+
+  [tmp_doc_extract\ — 实验文档提取]
+  linear_algebra\tmp_doc_extract\experiment.docx
+  linear_algebra\tmp_doc_extract\verify.docx
+  linear_algebra\tmp_doc_extract\experiment.htm
+  linear_algebra\tmp_doc_extract\experiment.pdf
+  linear_algebra\tmp_doc_extract\experiment.txt
+  linear_algebra\tmp_doc_extract\experiment.files\colorschememapping.xml
+  linear_algebra\tmp_doc_extract\experiment.files\filelist.xml
+  linear_algebra\tmp_doc_extract\experiment.files\header.htm
+  linear_algebra\tmp_doc_extract\experiment.files\image001.emz
+  linear_algebra\tmp_doc_extract\experiment.files\image002.png
+  linear_algebra\tmp_doc_extract\experiment.files\image003.jpg
+  linear_algebra\tmp_doc_extract\experiment.files\image004.jpg
+  linear_algebra\tmp_doc_extract\experiment.files\image005.png
+  linear_algebra\tmp_doc_extract\experiment.files\image006.jpg
+  linear_algebra\tmp_doc_extract\experiment.files\image007.jpg
+  linear_algebra\tmp_doc_extract\experiment.files\image008.jpg
+  linear_algebra\tmp_doc_extract\experiment.files\image009.jpg
+  linear_algebra\tmp_doc_extract\experiment.files\image010.jpg
+  linear_algebra\tmp_doc_extract\experiment.files\image011.wmz
+  linear_algebra\tmp_doc_extract\experiment.files\image012.png
+  linear_algebra\tmp_doc_extract\experiment.files\themedata.thmx
+  linear_algebra\tmp_doc_extract\media\image1.emf
+  linear_algebra\tmp_doc_extract\media\image2.jpeg
+  linear_algebra\tmp_doc_extract\media\image3.png
+  linear_algebra\tmp_doc_extract\media\image4.jpeg
+  linear_algebra\tmp_doc_extract\media\image5.jpeg
+  linear_algebra\tmp_doc_extract\media\image6.wmf
+
+  [第一章 — 行列式]
+  linear_algebra\第一章\1.0课程介绍.pdf
+  linear_algebra\第一章\1.1二阶与三阶行列式.pdf
+  linear_algebra\第一章\1.2全排列与对换.pdf
+  linear_algebra\第一章\1.3 n阶行列式的定义.pdf
+  linear_algebra\第一章\1.4行列式的性质 （1）.pdf
+  linear_algebra\第一章\1.4行列式的性质 （2）.pdf
+  linear_algebra\第一章\1.5行列式按行(列)展开.pdf
+  linear_algebra\第一章\范德蒙行列式.pdf
+  linear_algebra\第一章\_pdf_txt\1.4行列式的性质（1）.txt
+  linear_algebra\第一章\_pdf_txt\1.4行列式的性质（2）.txt
+
+  [第二章 — 矩阵]
+  linear_algebra\第二章\2.1线性方程组与矩阵.pdf
+  linear_algebra\第二章\2.2矩阵的运算（1）.pdf
+  linear_algebra\第二章\2.2矩阵的运算（2）.pdf
+  linear_algebra\第二章\2.3逆矩阵（1）.pdf
+  linear_algebra\第二章\2.3逆矩阵（2）.pdf
+  linear_algebra\第二章\2.4克拉默法则.pdf
+  linear_algebra\第二章\2.5分块矩阵(1).pdf
+  linear_algebra\第二章\2.5分块矩阵 (2).pdf
+  linear_algebra\第二章\第二章讲义.md
+  linear_algebra\第二章\task.txt
+  linear_algebra\第二章\_pdf_txt\2.1线性方程组与矩阵.txt
+  linear_algebra\第二章\_pdf_txt\2.2矩阵的运算（1）.txt
+  linear_algebra\第二章\_pdf_txt\2.2矩阵的运算（2）.txt
+  linear_algebra\第二章\_pdf_txt\2.3逆矩阵（1）.txt
+  linear_algebra\第二章\_pdf_txt\2.3逆矩阵（2）.txt
+  linear_algebra\第二章\_pdf_txt\2.4克拉默法则.txt
+  linear_algebra\第二章\_pdf_txt\2.5分块矩阵(1).txt
+  linear_algebra\第二章\_pdf_txt\2.5分块矩阵 (2).txt
+  linear_algebra\第二章\homework\IMG20260416130936.jpg
+  linear_algebra\第二章\homework\IMG20260416172437.jpg
+  linear_algebra\第二章\homework\IMG20260416172439.jpg
+  linear_algebra\第二章\tmp\ocr\hw1.txt
+  linear_algebra\第二章\tmp\ocr\hw2.txt
+  linear_algebra\第二章\tmp\ocr\hw3.txt
+
+  [第三章 — 矩阵初等变换与线性方程组]
+  linear_algebra\第三章\3.1矩阵的初等变换（1）.pdf
+  linear_algebra\第三章\3.1矩阵的初等变换（2）.pdf
+  linear_algebra\第三章\3.2矩阵的秩.pdf
+  linear_algebra\第三章\3.3线性方程组的解.pdf
+  linear_algebra\第三章\第三章讲义.md
+  linear_algebra\第三章\task.txt
+  linear_algebra\第三章\_pdf_txt\3.1矩阵的初等变换（1）.txt
+  linear_algebra\第三章\_pdf_txt\3.1矩阵的初等变换（2）.txt
+  linear_algebra\第三章\_pdf_txt\3.2矩阵的秩.txt
+  linear_algebra\第三章\_pdf_txt\3.3线性方程组的解.txt
+  linear_algebra\第三章\homework\IMG20260416173120.jpg
+  linear_algebra\第三章\homework\IMG20260416173124.jpg
+  linear_algebra\第三章\homework\IMG20260416173130.jpg
+  linear_algebra\第三章\tmp_pdf_pages\3.1矩阵的初等变换（2）_p17.png
+  linear_algebra\第三章\tmp_pdf_pages\3.1矩阵的初等变换（2）_p20.png
+  linear_algebra\第三章\tmp_pdf_pages\3.2矩阵的秩_p14.png
+  linear_algebra\第三章\tmp_pdf_pages\3.2矩阵的秩_p19.png
+  linear_algebra\第三章\tmp_pdf_pages\3.2矩阵的秩_p23.png
+  linear_algebra\第三章\tmp_pdf_pages\3.2矩阵的秩_p24.png
+  linear_algebra\第三章\tmp_pdf_pages\3.2矩阵的秩_p25.png
+  linear_algebra\第三章\tmp_pdf_pages\3.3线性方程组的解_p11.png
+  linear_algebra\第三章\tmp_pdf_pages\3.3线性方程组的解_p12.png
+  linear_algebra\第三章\tmp_pdf_pages\3.3线性方程组的解_p13.png
+  linear_algebra\第三章\tmp_pdf_pages\3.3线性方程组的解_p14.png
+  linear_algebra\第三章\tmp_pdf_pages\3.3线性方程组的解_p15.png
+  linear_algebra\第三章\tmp_pdf_pages\3.3线性方程组的解_p17.png
+  linear_algebra\第三章\tmp_pdf_pages\3.3线性方程组的解_p19.png
+  linear_algebra\第三章\tmp_pdf_pages\3.3线性方程组的解_p20.png
+  linear_algebra\第三章\tmp_pdf_pages\3.3线性方程组的解_p29.png
+
+  [第四章 — 向量组与向量空间]
+  linear_algebra\第四章\4.1向量组及其线性组合.pdf
+  linear_algebra\第四章\4.2向量组的线性相关性.pdf
+  linear_algebra\第四章\4.3向量组的秩.pdf
+  linear_algebra\第四章\4.4线性方程组的解的结构.pdf
+  linear_algebra\第四章\4.5向量空间.pdf
+  linear_algebra\第四章\第四章讲义.md
+
+  [第五章 — 特征值与二次型]
+  linear_algebra\第五章\5.1.1向量的内积、长度及正交性.pdf
+  linear_algebra\第五章\5.1.2向量的内积、长度及正交性.pdf
+  linear_algebra\第五章\5.2.1方阵的特征值与特征向量.pdf
+  linear_algebra\第五章\5.2.2方阵的特征值与特征向量.pdf
+  linear_algebra\第五章\5.3.1相似矩阵.pdf
+  linear_algebra\第五章\5.3.2相似矩阵.pdf
+  linear_algebra\第五章\5.4对称矩阵的对角化.pdf
+  linear_algebra\第五章\5.5二次型及其标准形.pdf
+  linear_algebra\第五章\5.6用配方法化二次型成标准形.pdf
+  linear_algebra\第五章\5.7正定二次型.pdf
+
+
+四、mathematical_logics\ （数理逻辑）
+--------------------------------------------------------------------------------
+  mathematical_logics\数理逻辑－第1章全-2023春.pdf
+  mathematical_logics\数理逻辑－第2章全-2023春.pdf
+  mathematical_logics\数理逻辑－第3章-2023春.pdf
+  mathematical_logics\数理逻辑－第4章全-2023春.pdf
+  mathematical_logics\数理逻辑－第5章-2023春.pdf
+  mathematical_logics\数理逻辑-第6章-2023春.pptx
+  mathematical_logics\数理逻辑-第7章-2023春.pdf
+  mathematical_logics\总复习.pptx
+  mathematical_logics\第1章-命题逻辑基础.md
+  mathematical_logics\第2章-命题逻辑等值演算与范式.md
+  mathematical_logics\第3章-命题逻辑的推理理论.md
+  mathematical_logics\第4章-一阶逻辑基本概念.md
+  mathematical_logics\第5章-一阶逻辑等值演算与推理.md
+  mathematical_logics\第6章-集合代数.md
+  mathematical_logics\第7章-二元关系.md
+
+
+五、calculus\ （高等数学／微积分）
+--------------------------------------------------------------------------------
+
+  [chapter7 — 微分方程]
+  calculus\chapter7\chapter7_微分方程_重构版.md
+  calculus\chapter7\chapter7_05_可降阶的高阶微分方程.md
+  calculus\chapter7\chapter7_06_高阶线性微分方程理论.md
+  calculus\chapter7\chapter7_07_常系数齐次线性微分方程.md
+  calculus\chapter7\chapter7_08_常系数非齐次线性微分方程.md
+  calculus\chapter7\chapter7_09_欧拉方程.md
+  calculus\chapter7\chapter7_10_常系数线性微分方程组.md
+  calculus\chapter7\chapter7_11_总习题七.md
+
+  [第8章 — 向量代数与空间解析几何]
+  calculus\第8章_向量代数与空间解析几何\01_章节定位.md
+  calculus\第8章_向量代数与空间解析几何\02_读这一章的方法.md
+  calculus\第8章_向量代数与空间解析几何\03_8.1_向量的概念与线性运算.md
+  calculus\第8章_向量代数与空间解析几何\04_8.2_空间直角坐标系与向量坐标.md
+  calculus\第8章_向量代数与空间解析几何\05_8.3_向量的模、距离、方向角与投影.md
+  calculus\第8章_向量代数与空间解析几何\06_8.4_数量积：把长度信息和夹角信息合在一起.md
+  calculus\第8章_向量代数与空间解析几何\07_8.5_向量积与混合积：面积、体积、垂直关系.md
+  calculus\第8章_向量代数与空间解析几何\08_8.6_平面方程：先抓法向量.md
+  calculus\第8章_向量代数与空间解析几何\09_8.7_空间直线：先抓一点，再抓方向.md
+  calculus\第8章_向量代数与空间解析几何\10_8.8_曲面怎么读：球面、旋转曲面、柱面与常见二次曲面.md
+  calculus\第8章_向量代数与空间解析几何\11_8.9_空间曲线与投影：把"线"看成两个曲面的交线.md
+  calculus\第8章_向量代数与空间解析几何\12_8.10_章末方法清单：看到题目时该先想什么.md
+
+  [第9章 — 多元函数微分法及其应用]
+  calculus\第9章_多元函数微分法及其应用\01_阅读说明.md
+  calculus\第9章_多元函数微分法及其应用\02_1_先把对象看清：多元函数、定义域、极限与连续.md
+  calculus\第9章_多元函数微分法及其应用\03_2_偏导数：先固定别人，只看一个变量怎么变.md
+  calculus\第9章_多元函数微分法及其应用\04_3_全微分：把函数的总变化拆成线性主部.md
+  calculus\第9章_多元函数微分法及其应用\05_4_复合函数求导：外层对里层，链子一层一层传.md
+  calculus\第9章_多元函数微分法及其应用\06_5_隐函数求导：函数不显式写出来，也一样能求导.md
+  calculus\第9章_多元函数微分法及其应用\07_6_几何应用：切线、切平面、法线从哪儿来.md
+  calculus\第9章_多元函数微分法及其应用\08_7_方向导数与梯度：函数往哪边长得最快.md
+  calculus\第9章_多元函数微分法及其应用\09_8_多元函数极值：先找驻点，再判断是山顶、谷底还是马鞍.md
+  calculus\第9章_多元函数微分法及其应用\10_9_二元函数的泰勒公式：用多项式近似函数.md
+  calculus\第9章_多元函数微分法及其应用\11_10_最小二乘法：用微积分给实验数据找一条"最合适"的曲线.md
+  calculus\第9章_多元函数微分法及其应用\12_本章速查表.md
+  calculus\第9章_多元函数微分法及其应用\13_本章最后的学习建议.md
+
+  [第10章 — 重积分]
+  calculus\第10章_重积分\01_本章导读.md
+  calculus\第10章_重积分\02_第一节_二重积分的概念与性质.md
+  calculus\第10章_重积分\03_第二节_二重积分的计算法.md
+  calculus\第10章_重积分\04_第三节_三重积分.md
+  calculus\第10章_重积分\05_第四节_重积分的应用.md
+  calculus\第10章_重积分\06_第五节_含参变量的积分（选学）.md
+  calculus\第10章_重积分\07_本章总小结.md
+
+  [第11章 — 曲线积分与曲面积分]
+  calculus\第11章_曲线积分与曲面积分\01_本章导学.md
+  calculus\第11章_曲线积分与曲面积分\02_一、第一类曲线积分：沿曲线累计"标量".md
+  calculus\第11章_曲线积分与曲面积分\03_二、第二类曲线积分：沿曲线累计"切向作用".md
+  calculus\第11章_曲线积分与曲面积分\04_三、Green_公式：闭曲线积分和二重积分之间的桥.md
+  calculus\第11章_曲线积分与曲面积分\05_四、第一类曲面积分：在曲面上累计"标量".md
+  calculus\第11章_曲线积分与曲面积分\06_五、第二类曲面积分：穿过曲面的通量.md
+  calculus\第11章_曲线积分与曲面积分\07_六、Gauss_公式与散度：闭曲面上的通量怎么一下子算出来.md
+  calculus\第11章_曲线积分与曲面积分\08_七、Stokes_公式与旋度：边界上的环流和曲面上的旋转强度.md
+  calculus\第11章_曲线积分与曲面积分\09_八、本章总结：遇到题该先想到什么.md
+
+  [第12章 — 无穷级数]
+  calculus\第12章_无穷级数\01_本章总览.md
+  calculus\第12章_无穷级数\02_12.1_从数列到无穷级数：部分和、收敛与余项.md
+  calculus\第12章_无穷级数\03_12.2_正项级数：最常用的审敛法.md
+  calculus\第12章_无穷级数\04_12.3_交错级数、绝对收敛与条件收敛.md
+  calculus\第12章_无穷级数\05_12.4_幂级数：把函数写成"无限次多项式".md
+  calculus\第12章_无穷级数\06_12.5_函数展开成幂级数：泰勒级数与麦克劳林级数.md
+  calculus\第12章_无穷级数\07_12.6_幂级数的应用：近似、积分、微分方程与欧拉公式.md
+  calculus\第12章_无穷级数\08_12.7_选学：一致收敛为什么重要.md
+  calculus\第12章_无穷级数\09_12.8_傅里叶级数：把周期函数写成三角级数.md
+  calculus\第12章_无穷级数\10_12.9_选学：一般周期函数、半区间展开与复数形式.md
+  calculus\第12章_无穷级数\11_本章做题路线图.md
+  calculus\第12章_无穷级数\12_本章高频误区清单.md
+  calculus\第12章_无穷级数\13_章节小结.md
+
+
+六、tmp\ （临时文件）
+--------------------------------------------------------------------------------
+  tmp\pdfs\circuit-Chapter5.txt
+
+
+七、.obsidian\ （Obsidian 配置与插件）
+--------------------------------------------------------------------------------
+
+  [配置文件]
+  .obsidian\app.json
+  .obsidian\appearance.json
+  .obsidian\community-plugins.json
+  .obsidian\core-plugins.json
+  .obsidian\text-generator.json
+  .obsidian\workspace.json
+
+  [插件: obsidian-git]
+  .obsidian\plugins\obsidian-git\data.json
+  .obsidian\plugins\obsidian-git\main.js
+  .obsidian\plugins\obsidian-git\manifest.json
+  .obsidian\plugins\obsidian-git\styles.css
+
+  [插件: obsidian-textgenerator-plugin]
+  .obsidian\plugins\obsidian-textgenerator-plugin\main.js
+  .obsidian\plugins\obsidian-textgenerator-plugin\manifest.json
+  .obsidian\plugins\obsidian-textgenerator-plugin\styles.css
+
+  [插件: obsidian42-brat]
+  .obsidian\plugins\obsidian42-brat\brat-migrations.json
+  .obsidian\plugins\obsidian42-brat\main.js
+  .obsidian\plugins\obsidian42-brat\manifest.json
+  .obsidian\plugins\obsidian42-brat\styles.css
+
+  [插件: remotely-secure]
+  .obsidian\plugins\remotely-secure\.gitignore
+  .obsidian\plugins\remotely-secure\main.js
+  .obsidian\plugins\remotely-secure\manifest.json
+  .obsidian\plugins\remotely-secure\styles.css
+
+  [插件: claudian]
+  .obsidian\plugins\claudian\data.json
+  .obsidian\plugins\claudian\main.js
+  .obsidian\plugins\claudian\manifest.json
+  .obsidian\plugins\claudian\styles.css
+
+
+八、.git\ （Git 版本控制 — 内部文件，省略 .git\objects\ 下的 blob 文件）
+--------------------------------------------------------------------------------
+  .git\config
+  .git\HEAD
+  .git\packed-refs
+  .git\description
+  .git\info\exclude
+  .git\refs\remotes\origin\HEAD
+  .git\logs\refs\remotes\origin\HEAD
+  .git\objects\pack\pack-b169d1c930cc349040df96265bcc7061c0bb8cb4.idx
+  .git\objects\pack\pack-b169d1c930cc349040df96265bcc7061c0bb8cb4.rev
+  .git\hooks\ (15 个 .sample 文件)
+
+
+================================================================================
+  汇总
+================================================================================
+  根目录文件:              4
+  circuit\:                16
+  linear_algebra\:         ~90
+  mathematical_logics\:    15
+  calculus\:               62
+  tmp\:                     1
+  .obsidian\:              25
+  .git\:                   ~22
+
+  总计（不含 .git 内部 blob）:  约 235 个文件
+================================================================================
