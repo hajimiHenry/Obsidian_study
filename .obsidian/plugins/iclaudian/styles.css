@@ -7,8 +7,10 @@
    ============================================ */
 /* Brand & semantic color tokens */
 .claudian-container {
-  --claudian-brand: #D97757;
-  --claudian-brand-rgb: 217, 119, 87;
+  --claudian-brand: #2B7DE9;
+  --claudian-brand-rgb: 43, 125, 233;
+  --claudian-brand-kimi: #2B7DE9;
+  --claudian-brand-kimi-rgb: 43, 125, 233;
   --claudian-brand-claude: #D97757;
   --claudian-brand-claude-rgb: 217, 119, 87;
   --claudian-brand-codex: #d0d0d0;
@@ -28,6 +30,11 @@ body.theme-light .claudian-container {
 }
 
 /* Active-provider alias for single-provider surfaces. */
+.claudian-container[data-provider="kimi"] {
+  --claudian-brand: var(--claudian-brand-kimi);
+  --claudian-brand-rgb: var(--claudian-brand-kimi-rgb);
+}
+
 .claudian-container[data-provider="claude"] {
   --claudian-brand: var(--claudian-brand-claude);
   --claudian-brand-rgb: var(--claudian-brand-claude-rgb);

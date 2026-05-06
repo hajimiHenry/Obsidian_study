@@ -72740,10 +72740,10 @@ var CopilotCommandCatalog = class {
     return [];
   }
   async saveVaultEntry() {
-    throw new Error("Copilot runtime commands are not editable from iClaudian.");
+    throw new Error("Copilot runtime commands are not editable from Kimi.");
   }
   async deleteVaultEntry() {
-    throw new Error("Copilot runtime commands are not deletable from iClaudian.");
+    throw new Error("Copilot runtime commands are not deletable from Kimi.");
   }
   getDropdownConfig() {
     return {
@@ -75115,10 +75115,10 @@ var GeminiCommandCatalog = class {
     return [];
   }
   async saveVaultEntry() {
-    throw new Error("Gemini runtime commands are not editable from iClaudian.");
+    throw new Error("Gemini runtime commands are not editable from Kimi.");
   }
   async deleteVaultEntry() {
-    throw new Error("Gemini runtime commands are not deletable from iClaudian.");
+    throw new Error("Gemini runtime commands are not deletable from Kimi.");
   }
   getDropdownConfig() {
     return {
@@ -80546,10 +80546,10 @@ var KimiCommandCatalog = class {
     return [];
   }
   async saveVaultEntry() {
-    throw new Error("Kimi runtime commands are not editable from iClaudian.");
+    throw new Error("Kimi runtime commands are not editable from Kimi.");
   }
   async deleteVaultEntry() {
-    throw new Error("Kimi runtime commands are not deletable from iClaudian.");
+    throw new Error("Kimi runtime commands are not deletable from Kimi.");
   }
   getDropdownConfig() {
     return {
@@ -81558,7 +81558,7 @@ var kimiChatUIConfig = {
       const model = discovered.get(rawId);
       return [{
         value: encodeKimiModelId(rawId),
-        label: (_a3 = model == null ? void 0 : model.label) != null ? _a3 : rawId,
+        label: "Kimi",
         ...(model == null ? void 0 : model.description) ? { description: model.description } : {}
       }];
     });
@@ -83278,7 +83278,7 @@ var ConversationController = class {
     };
     const getTimeGreetings = () => {
       if (hour >= 5 && hour < 12) {
-        return [personalize("Good morning"), "Coffee and iClaudian time?"];
+        return [personalize("Good morning"), "Coffee and Kimi time?"];
       } else if (hour >= 12 && hour < 18) {
         return [personalize("Good afternoon"), personalize("Hey there"), personalize("How's it going") + "?"];
       } else if (hour >= 18 && hour < 22) {
@@ -86024,7 +86024,7 @@ var InputController = class {
       if (!wasInvalidated && state.streamGeneration === streamGeneration) {
         const didCancelThisTurn = wasInterrupted || state.cancelRequested;
         if (didCancelThisTurn && !state.pendingNewSessionPlan) {
-          await streamController.appendText('\n\n<span class="claudian-interrupted">Interrupted</span> <span class="claudian-interrupted-hint">\xB7 What should iClaudian do instead?</span>');
+          await streamController.appendText('\n\n<span class="claudian-interrupted">Interrupted</span> <span class="claudian-interrupted-hint">\xB7 What should Kimi do instead?</span>');
         }
         streamController.hideThinkingIndicator();
         state.isStreaming = false;
@@ -89652,7 +89652,7 @@ var _MessageRenderer = class _MessageRenderer {
   }
   appendInterruptIndicator(contentEl) {
     const textEl = contentEl.createDiv({ cls: "claudian-text-block" });
-    textEl.innerHTML = '<span class="claudian-interrupted">Interrupted</span> <span class="claudian-interrupted-hint">\xB7 What should iClaudian do instead?</span>';
+    textEl.innerHTML = '<span class="claudian-interrupted">Interrupted</span> <span class="claudian-interrupted-hint">\xB7 What should Kimi do instead?</span>';
   }
   /**
    * Renders assistant message content (content blocks or fallback).
@@ -97942,7 +97942,7 @@ function openHotkeySettings(app) {
     if (!searchEl) {
       return;
     }
-    searchEl.value = "iClaudian";
+    searchEl.value = "Kimi";
     (_c = tab.updateHotkeyVisibility) == null ? void 0 : _c.call(tab);
   }, 100);
 }
@@ -98320,12 +98320,12 @@ var ClaudianPlugin = class extends import_obsidian50.Plugin {
       VIEW_TYPE_CLAUDIAN,
       (leaf) => new ClaudianView(leaf, this)
     );
-    this.addRibbonIcon("bot", "Open iClaudian", () => {
+    this.addRibbonIcon("bot", "Open Kimi", () => {
       this.activateView();
     });
     this.addCommand({
       id: "open-view",
-      name: "Open iClaudian chat view",
+      name: "Open Kimi chat view",
       callback: () => {
         this.activateView();
       }
@@ -98386,7 +98386,7 @@ var ClaudianPlugin = class extends import_obsidian50.Plugin {
     });
     this.addCommand({
       id: "new-session",
-      name: "New iClaudian session (in current tab)",
+      name: "New Kimi session (in current tab)",
       checkCallback: (checking) => {
         const leaf = this.app.workspace.getLeavesOfType(VIEW_TYPE_CLAUDIAN)[0];
         if (!leaf) return false;
