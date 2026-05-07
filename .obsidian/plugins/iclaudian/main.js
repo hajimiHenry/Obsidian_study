@@ -73636,7 +73636,13 @@ var AcpSubprocess = class {
     if (this.proc) {
       return;
     }
-    const proc = (0, import_node_child_process.spawn)(this.launchSpec.command, this.launchSpec.args, {
+    var command = this.launchSpec.command;
+    var args = this.launchSpec.args;
+    if (process.platform === "win32" && (command.endsWith(".cmd") || command.endsWith(".bat"))) {
+      args = ["/c", command.replace(/\\/g, "/"), ...args];
+      command = "cmd.exe";
+    }
+    const proc = (0, import_node_child_process.spawn)(command, args, {
       cwd: this.launchSpec.cwd,
       env: this.launchSpec.env,
       stdio: "pipe",
@@ -76012,7 +76018,13 @@ var GeminiAuxQueryRunner = class {
     this.currentAbortController = (_d2 = config2.abortController) != null ? _d2 : new AbortController();
     return await new Promise((resolve11, reject) => {
       var _a4;
-      const child = (0, import_node_child_process3.spawn)(resolvedCliPath, args, { cwd, env, stdio: ["ignore", "pipe", "pipe"], signal: (_a4 = this.currentAbortController) == null ? void 0 : _a4.signal });
+      var spawnCommand = resolvedCliPath;
+      var spawnArgs = args;
+      if (process.platform === "win32" && (spawnCommand.endsWith(".cmd") || spawnCommand.endsWith(".bat"))) {
+        spawnArgs = ["/c", spawnCommand.replace(/\\/g, "/"), ...args];
+        spawnCommand = "cmd.exe";
+      }
+      const child = (0, import_node_child_process3.spawn)(spawnCommand, spawnArgs, { cwd, env, stdio: ["ignore", "pipe", "pipe"], signal: (_a4 = this.currentAbortController) == null ? void 0 : _a4.signal });
       let stdout = "";
       let stderr = "";
       child.stdout.on("data", (chunk) => {
