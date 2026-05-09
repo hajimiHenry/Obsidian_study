@@ -1,0 +1,10 @@
+{
+  "id": "iclaudian",
+  "name": "Kimi",
+  "version": "2.0.12",
+  "minAppVersion": "1.4.5",
+  "description": "Embeds Kimi Code CLI, Claude Code, Codex, OpenCode, Gemini CLI, and GitHub Copilot CLI as AI collaborators in your vault.",
+  "author": "hajimiHenry",
+  "authorUrl": "https://github.com/hajimiHenry",
+  "isDesktopOnly": true
+}
