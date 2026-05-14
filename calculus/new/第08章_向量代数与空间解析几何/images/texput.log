@@ -1,0 +1,295 @@
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.7)  14 MAY 2026 12:01
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**\scrollmode
+
+*
+(Please type a command or say `\end')
+*\documentclass[12pt]{article}
+
+*\let\paperwidthsave\paperwidth\let\paperwidth\undefined
+(c:/Users/Spane/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(c:/Users/Spane/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count271
+\c@section=\count272
+\c@subsection=\count273
+\c@subsubsection=\count274
+\c@paragraph=\count275
+\c@subparagraph=\count276
+\c@figure=\count277
+\c@table=\count278
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen150
+)
+*\usepackage{graphicx}
+
+*\let\paperwidth\paperwidthsave
+(c:/Users/Spane/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+ (c:/Users/Spane/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+) (c:/Users/Spane/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+ (c:/Users/Spane/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (c:/Users/Spane/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 106.
+ (c:/Users/Spane/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2025/11/01 v5.0p Graphics/color driver for xetex
+))
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
+)
+*\newbox\ASYbox
+\ASYbox=\box53
+
+*\newdimen\ASYdimen
+\ASYdimen=\dimen153
+
+*\def\ASYprefix{}
+
+*\long\def\ASYbase#1#2{\leavevmode\setbox\ASYbox=\hbox{#1}%\ASYdimen=\ht\ASYbox%
+
+*\setbox\ASYbox=\hbox{#2}\lower\ASYdimen\box\ASYbox}
+
+*\begin{document}
+(c:/Users/Spane/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2026-02-18 L3 backend support: XeTeX
+\g__graphics_track_int=\count279
+\g__pdfannot_backend_int=\count280
+\g__pdfannot_backend_link_int=\count281
+) (./texput.aux)
+\openout1 = `texput.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 0.
+LaTeX Font Info:    ... okay on input line 0.
+
+*\makeatletter%
+
+*\let\ASYencoding\f@encoding%
+
+*\let\ASYfamily\f@family%
+
+*\let\ASYseries\f@series%
+
+*\let\ASYshape\f@shape%
+
+*\makeatother%
+
+*\fontsize{20.075}{24.09}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$x$}
+LaTeX Font Info:    Calculating math sizes for size <20.075> on input line 0.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <20.075> not available
+(Font)              size <20.74> substituted on input line 0.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <20.075> not available
+(Font)              size <20.74> substituted on input line 0.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <20.075> not available
+(Font)              size <20.74> substituted on input line 0.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <20.075> on input line 0.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.05243> on input line 0.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.03749> on input line 0.
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(11.54013pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(8.92973pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(0.0pt)dim
+
+*\fontsize{20.075}{24.09}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$y$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(10.64594pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(8.92973pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(4.03276pt)dim
+
+*\fontsize{20.075}{24.09}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$z$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(10.35791pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(8.92973pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(0.0pt)dim
+
+*\fontsize{20.075}{24.09}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\Pi_1$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(21.92924pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(14.1694pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(3.111pt)dim
+
+*\fontsize{20.075}{24.09}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\Pi_2$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(21.92924pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(14.1694pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(3.111pt)dim
+
+*\fontsize{20.075}{24.09}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\mathbf{n}_1$}
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <20.075> not available
+(Font)              size <20.74> substituted on input line 0.
+
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(20.5124pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(9.21776pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(3.111pt)dim
+
+*\fontsize{20.075}{24.09}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\mathbf{n}_2$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(20.5124pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(9.21776pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(3.111pt)dim
+
+*\fontsize{20.075}{24.09}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\theta$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(10.02782pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(14.40276pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(0.0pt)dim
+
+*\fontsize{20.075}{24.09}\selectfont%
+
+*
+(Please type a command or 

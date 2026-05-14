@@ -1,0 +1,41 @@
+\documentclass[12pt]{article}
+\newbox\ASYbox
+\newdimen\ASYdimen
+\def\ASYprefix{}
+\long\def\ASYbase#1#2{\leavevmode\setbox\ASYbox=\hbox{#1}%\ASYdimen=\ht\ASYbox%
+\setbox\ASYbox=\hbox{#2}\lower\ASYdimen\box\ASYbox}
+\pagestyle{empty}
+\textheight=2048pt
+\textwidth=2048pt
+\begin{document}
+\makeatletter%
+\let\ASYencoding\f@encoding%
+\let\ASYfamily\f@family%
+\let\ASYseries\f@series%
+\let\ASYshape\f@shape%
+\makeatother%
+\fontsize{12.000000}{14.400000}\selectfont%
+\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+$\\Pi_1$\ %
+\fontsize{12.000000}{14.400000}\selectfont%
+\newpage
+$\\Pi_2$\ %
+\fontsize{12.000000}{14.400000}\selectfont%
+\newpage
+$\\mathbf{n}_1$\ %
+\fontsize{12.000000}{14.400000}\selectfont%
+\newpage
+$\\mathbf{n}_2$\ %
+\fontsize{12.000000}{14.400000}\selectfont%
+\newpage
+$\\theta$\ %
+\fontsize{12.000000}{14.400000}\selectfont%
+\newpage
+$x$\ %
+\fontsize{12.000000}{14.400000}\selectfont%
+\newpage
+$y$\ %
+\fontsize{12.000000}{14.400000}\selectfont%
+\newpage
+$z$\ %
+\end{document}
