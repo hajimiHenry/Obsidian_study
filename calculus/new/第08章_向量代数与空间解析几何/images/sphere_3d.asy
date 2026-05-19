@@ -2,7 +2,7 @@ settings.outformat="png";
 settings.prc = false;
 settings.render = 0;
 settings.tex="xelatex";
-size(900);
+size(650);
 import three;
 
 currentprojection = perspective(4.8,3.2,2.6);
@@ -14,9 +14,9 @@ real R = 1.55;
 draw((-1.95,0,0)--(2.05,0,0), black+1.0, arrow=Arrow3());
 draw((0,-1.95,0)--(0,2.05,0), black+1.0, arrow=Arrow3());
 draw((0,0,-1.80)--(0,0,2.05), black+1.0, arrow=Arrow3());
-label("$x$", (1.86,-0.04,0), S, fontsize(20));
-label("$y$", (-0.04,1.86,0), E, fontsize(20));
-label("$z$", (0.14,0.10,1.86), E, fontsize(20));
+label("$x$", (1.86,-0.04,0), S, fontsize(16));
+label("$y$", (-0.04,1.86,0), E, fontsize(16));
+label("$z$", (0.14,0.10,1.86), E, fontsize(16));
 
 for(int k=-3; k<=3; ++k) {
   real z = C.z + 0.28*k*R;
@@ -41,6 +41,6 @@ triple M = C + R*(cos(up)*cos(tp), cos(up)*sin(tp), sin(up));
 draw(C--M, heavyred+1.7, arrow=Arrow3());
 dot(C, linewidth(7));
 dot(M, linewidth(5));
-label("$M_0$", C+(0.12,-0.06,-0.06), SE, fontsize(20));
-label("$M$", M+(0.12,0.08,0.10), E, fontsize(18));
-label("$R$", 0.5*(C+M)+(0.10,0.06,0.08), N, fontsize(20));
+label("$M_0$", C+(0.12,-0.06,-0.06), SE, fontsize(16));
+label("$M$", M+(0.12,0.08,0.10), E, fontsize(15));
+label("$R$", 0.5*(C+M)+(0.10,0.06,0.08), N, fontsize(16));

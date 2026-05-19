@@ -2,22 +2,21 @@ settings.outformat="png";
 settings.prc = false;
 settings.render = 0;
 settings.tex="xelatex";
-size(900);
+size(600);
 import three;
 
-currentprojection = perspective(5.2,3.4,2.6);
+currentprojection = perspective(5.5,4.2,3.2);
 
 triple O = (0,0,0);
-real H = 2.8;
-real R = 1.85;
+real H = 2.65;
+real R = 1.62;
 int n = 40;
 
-// yOz 平面：用来强调母线最初所在的平面
+// yOz 平面：只保留贴近母线的小三角面，避免大矩形拖出无效留白
 path3 planeFace =
-  (0,-0.30,0)--
-  (0,2.05,0)--
-  (0,2.05,H+0.08)--
-  (0,-0.30,H+0.08)--
+  (0,0,0)--
+  (0,R+0.12,H+0.03)--
+  (0,0,H+0.03)--
   cycle;
 draw(surface(planeFace), lightblue+opacity(0.14));
 draw(planeFace, gray(0.65)+0.7);
@@ -40,20 +39,20 @@ for(int i=0; i<6; ++i) {
 }
 
 // 坐标轴
-draw(O--(2.20,0,0), black+1.1, arrow=Arrow3());
-draw(O--(0,2.18,0), black+1.1, arrow=Arrow3());
-draw(O--(0,0,H+0.45), black+1.2, arrow=Arrow3());
-label("$x$", (1.82,-0.02,-0.02), SW, fontsize(22));
-label("$y$", (-0.04,1.82,-0.02), E, fontsize(22));
-label("$z$", (0.22,0.14,H+0.04), E, fontsize(22));
+draw(O--(1.34,0,0), black+1.1, arrow=Arrow3());
+draw(O--(0,1.36,0), black+1.1, arrow=Arrow3());
+draw(O--(0,0,H+0.30), black+1.2, arrow=Arrow3());
+label("$x$", (1.16,-0.02,-0.02), SW, fontsize(16));
+label("$y$", (-0.04,1.16,-0.02), E, fontsize(16));
+label("$z$", (0.20,0.12,H+0.14), E, fontsize(16));
 
 // yOz 面内的母线 l
 triple G = (0,R,H);
 draw(O--G, heavyred+1.6, arrow=Arrow3());
-label("$l$", (0,1.12,1.72), E, fontsize(22));
+label("$l$", (0,0.88,1.58), E, fontsize(16));
 
 // 旋转方向
-real rr = 0.86*R;
+real rr = 0.70*R;
 path3 rotArc =
   (rr*cos(-0.45), rr*sin(-0.45), H)--
   (rr*cos(0.00), rr*sin(0.00), H)--
@@ -67,8 +66,8 @@ triple P = (R*cos(tp), R*sin(tp), H);
 triple Q = (0,0,H);
 draw(Q--P, deepgreen+1.5);
 dot(P, linewidth(5));
-label("$M(x,y,z)$", P+(0.18,0.22,0.16), E, fontsize(18));
-label("$\sqrt{x^2+y^2}$", 0.5*(P+Q)+(0.06,0.18,0.12), N, fontsize(18));
+label("$M(x,y,z)$", P+(0.10,0.10,0.08), E, fontsize(15));
+label("$\sqrt{x^2+y^2}$", 0.5*(P+Q)+(0.02,0.12,0.10), N, fontsize(15));
 
 // 半顶角 alpha
 real beta = atan(R/H);
@@ -79,7 +78,10 @@ for(int k=1; k<=18; ++k) {
   alphaArc = alphaArc--(0,r0*sin(t),r0*cos(t));
 }
 draw(alphaArc, black+1.0);
-label("$\alpha$", (0,0.42*r0*sin(beta/2),1.08*r0*cos(beta/2)), E, fontsize(22));
+label("$\alpha$", (0,0.42*r0*sin(beta/2),1.08*r0*cos(beta/2)), E, fontsize(16));
 
 dot(O, linewidth(7));
-label("$O$", O, SW, fontsize(24));
+label("$O$", O, SW, fontsize(17));
+
+// 给顶圈和 z 轴箭头留出上边距；用白色极细线参与边界但不影响观感。
+draw((0,0,H+0.48)--(0.01,0,H+0.48), white+0.1);
