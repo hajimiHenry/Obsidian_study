@@ -1,10 +1,5 @@
-# Obsidian local UI state
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
-
-# Plugin local state and secrets
-.obsidian/plugins/*/data.json
-!.obsidian/plugins/obsidian-git/data.json
+# Obsidian local config, themes, plugins, UI state, and plugin secrets
+.obsidian/
 
 # Local assistant/plugin state
 .claude/
