@@ -34,7 +34,7 @@ for(int i=-4; i<=4; ++i) {
     real y = j*1.02/36;
     g = (j==-36) ? S(x,y) : g--S(x,y);
   }
-  draw(g, gray(0.60)+0.42);
+  draw(g, gray(0.70)+0.30);
 }
 for(int j=-4; j<=4; ++j) {
   real y = j*0.24;
@@ -43,12 +43,12 @@ for(int j=-4; j<=4; ++j) {
     real x = i*1.05/36;
     g = (i==-36) ? S(x,y) : g--S(x,y);
   }
-  draw(g, gray(0.60)+0.42);
+  draw(g, gray(0.70)+0.30);
 }
 
 path3 plane =
   T(x0-0.70,y0-0.58)--T(x0+0.72,y0-0.58)--T(x0+0.72,y0+0.58)--T(x0-0.70,y0+0.58)--cycle;
-draw(surface(plane), lightblue+opacity(0.28));
+draw(surface(plane), lightblue+opacity(0.36));
 draw(plane, deepblue+0.9);
 
 guide3 curve;

@@ -1,0 +1,98 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+
+\begin{document}
+
+  % ==================== (a) 原电路 ====================
+  \begin{circuitikz}[semithick, scale=1.0, transform shape]
+    % 5V电源
+    \draw (0,0) to[vsource, l={\SI{5}{\volt}}] (0,3)
+          to[R, l={$25\text{ k}\Omega$}] (2.5,3);
+          
+    % 双掷开关触点与闸刀
+    \node[circle, fill, inner sep=1.2pt] (P1) at (2.5, 3) {};
+    \node[above] at (2.5,3) {1};
+    \node[circle, fill, inner sep=1.2pt] (P2) at (2.5, 1.2) {};
+    \node[left] at (2.3,1.2) {2};
+    \node[circle, fill, inner sep=1.2pt] (P0) at (4.0, 3) {};
+    
+    % 开关闸刀 (指向1，带转向2的箭头)
+    \draw[very thick] (4.0,3) -- (2.6,3.1);
+    \draw[->, >=stealth, thin] (2.8, 2.9) arc (160:200:1.8);
+    \node[left] at (3.4, 2.3) {$t=0$};
+    
+    % 连接位置2的电阻
+    \draw (2.5,1.2) to[R, l={$100\text{ k}\Omega$}] (2.5,0);
+    
+    % 动端连接右侧 C 和 R1 的并联
+    \draw (4.0,3) -- (5.0,3)
+          to[C, l_={$10\text{ }\mu\text{F}$}] (5.0,0);
+    \draw (5.0,3) -- (6.5,3)
+          to[R, l={$100\text{ k}\Omega$}] (6.5,0);
+          
+    % 底部地线
+    \draw (6.5,0) -- (0,0);
+    \draw (3.25,0) node[ground] {};
+    
+    \node[below] at (3.25,-0.5) {(a) 原电路};
+  \end{circuitikz}
+
+  % ==================== (b) t=0- 稳态等效电路 ====================
+  \begin{circuitikz}[semithick, scale=1.0, transform shape]
+    % 5V电源与25k电阻
+    \draw (0,0) to[vsource, l={\SI{5}{\volt}}] (0,3)
+          to[R, l={$25\text{ k}\Omega$}] (2.5,3)
+          -- (4.0,3);
+          
+    % 电容在稳态下开路 (极性及名称标注在右侧)
+    \draw (4.0,3) -- (5.0,3)
+          to[open] (5.0,0);
+    \node[right] at (5.2,2.2) {$+$};
+    \node[right] at (5.2,0.8) {$-$};
+    \node[right] at (5.2,1.5) {$u_C(0^-)$};
+    
+    % 100k电阻R1
+    \draw (5.0,3) -- (6.5,3)
+          to[R, l={$100\text{ k}\Omega$}] (6.5,0);
+          
+    % 底部地线
+    \draw (6.5,0) -- (0,0);
+    \draw (3.25,0) node[ground] {};
+    
+    % 结果文本框 (移动至 x=2.2 避开左侧电源与右侧极性)
+    \node[draw, align=left, font=\small] at (2.2,1.1) {
+      $u_C(0^-) = \SI{4}{\volt}$
+    };
+    
+    \node[below] at (3.25,-0.5) {(b) $t=0^-$ 稳态等效电路};
+  \end{circuitikz}
+
+  % ==================== (c) t>=0 放电电路 ====================
+  \begin{circuitikz}[semithick, scale=1.0, transform shape]
+    % 电容在最左侧
+    \draw (0,3) to[C, l_={$10\text{ }\mu\text{F}$}] (0,0);
+    \node[left] at (-0.2,1.5) {$u_C(t)$};
+    \node[left] at (-0.2,2.2) {$+$};
+    \node[left] at (-0.2,0.8) {$-$};
+    % 电容电流标注 (放电电流向下)
+    \node[right] at (0.2,2.2) {$i_C(t)$};
+    \draw[->, >=stealth, thin] (0.2,2.5) -- (0.2,1.9);
+    
+    % 并联的电阻R2 (左侧，即开关拨到的那个电阻，流过电流i)
+    \draw (0,3) -- (2.0,3)
+          to[R, l_={$100\text{ k}\Omega$}, i_>={$i(t)$}] (2.0,0);
+          
+    % 并联的电阻R1 (右侧)
+    \draw (2.0,3) -- (4.0,3)
+          to[R, l={$100\text{ k}\Omega$}] (4.0,0);
+          
+    % 底部地线
+    \draw (4.0,0) -- (0,0);
+    \draw (2.0,0) node[ground] {};
+    
+    \node[below] at (2.0,-0.5) {(c) $t\ge0$ 放电电路};
+  \end{circuitikz}
+
+\end{document}

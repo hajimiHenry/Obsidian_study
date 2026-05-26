@@ -4,6 +4,7 @@ settings.render = 0;
 settings.tex="xelatex";
 size(680);
 import three;
+texpreamble("\usepackage{ctex}");
 
 currentprojection = perspective(4.8,-5.4,3.4);
 
@@ -39,7 +40,7 @@ draw(plane, deepblue+0.85);
 draw(M-0.70*v--M+0.82*v, heavyred+2.0, arrow=Arrow3());
 
 dot(M, linewidth(6));
-label("$M$", M+(0.08,0.06,0.04), E, fontsize(17));
-label("$\mathbf r'(t_0)$", M+0.83*v+(0.02,0.04,0.05), NE, red+fontsize(16));
-label("法平面", M-0.48*a+0.55*b+(0.02,0.02,0.03), W, deepblue+fontsize(16));
-label("切线", M-0.64*v+(0.02,-0.02,0.02), S, red+fontsize(16));
+label("$M$", M+(0.06,0.06,0.05), NE, fontsize(16));
+label("$\mathbf r'(t_0)$", M+0.83*v+(0.05,0.05,0.05), NE, red+fontsize(16));
+label("法平面", M-0.55*a+0.62*b, W, deepblue+fontsize(15));
+label("切线", M-0.58*v+(-0.05,-0.05,0.02), S, red+fontsize(15));

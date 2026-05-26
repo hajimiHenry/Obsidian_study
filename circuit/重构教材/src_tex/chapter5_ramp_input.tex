@@ -1,0 +1,54 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, siunitx]{circuitikz}
+\usetikzlibrary{arrows.meta}
+\standaloneenv{circuitikz}
+
+\begin{document}
+\begin{circuitikz}[semithick, scale=1.0, transform shape]
+
+  % ==================== (a) 电路图 ====================
+  \begin{scope}[xshift=0cm]
+    % 单回路串联 RL 回路
+    \draw (0,0) to[vsource, l={$u_s(t)=t\,\varepsilon(t)\,\text{V}$}] (0,3)
+          to[R, l={$R=1\,\Omega$}] (3,3)
+          to[L, l={$L=1\,\text{H}$}, i^={$i_L(t)$}] (3,0)
+          -- (0,0);
+          
+    \draw (3,0) node[ground] {};
+    
+    \node[below] at (1.5,-0.5) {(a) 电路图};
+  \end{scope}
+
+  % ==================== (b) 波形图 ====================
+  \begin{scope}[xshift=6.5cm]
+    % 绘制直角坐标系
+    \draw[-{Stealth}] (-0.2,0) -- (4.8,0) node[right] {$t/\text{s}$};
+    \draw[-{Stealth}] (0,-0.2) -- (0,4.8) node[above] {$u_s/\text{V},\ i_L/\text{A}$};
+    
+    % 坐标原点
+    \node[below left] at (0,0) {0};
+    
+    % X 轴刻度
+    \foreach \x in {1,2,3,4} {
+      \draw (\x,0.05) -- (\x,-0.05) node[below] {\x};
+    }
+    % Y 轴刻度
+    \foreach \y in {1,2,3,4} {
+      \draw (0.05,\y) -- (-0.05,\y) node[left] {\y};
+    }
+    
+    % 绘制输入信号 us(t) = t (蓝色)
+    \draw[blue, thick] (0,0) -- (4.5,4.5) node[above right] {$u_s(t)$};
+    
+    % 绘制渐近线 y = t - 1 (灰色虚线)
+    \draw[dashed, gray] (1,0) -- (4.5,3.5) node[right] {$t-1$};
+    
+    % 绘制响应 iL(t) = t - 1 + e^(-t) (红色很粗曲线)
+    \draw[red, very thick, domain=0:4.2, samples=100] plot (\x, {\x - 1 + exp(-\x)}) node[right] {$i_L(t)$};
+    
+    \node[below] at (2.25,-0.5) {(b) 激励与响应波形};
+  \end{scope}
+
+\end{circuitikz}
+\end{document}

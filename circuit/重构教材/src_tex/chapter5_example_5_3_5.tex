@@ -1,0 +1,98 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+
+\begin{document}
+
+  % ==================== (a) 原电路 ====================
+  \begin{circuitikz}[semithick, scale=1.0, transform shape]
+    % 左侧位置1支路 (24V, 12Ω)
+    \draw (0,0) to[vsource, l={\SI{24}{\volt}}] (0,3)
+          to[R, l={$12\,\Omega$}] (2.5,3)
+          -- (2.5,2.2);
+          
+    % 右侧位置2支路 (60V, 12Ω)
+    \draw (8.0,0) to[vsource, l_={\SI{60}{\volt}}] (8.0,3)
+          to[R, l_={$12\,\Omega$}] (5.5,3)
+          -- (5.5,2.2);
+          
+    % 开关端点
+    \node[circle, fill, inner sep=1.2pt] (Sa_in) at (4.0,1.5) {};
+    \node[circle, fill, inner sep=1.2pt] (Sa_1) at (2.5,2.2) {};
+    \node[above left] at (2.5,2.2) {1};
+    \node[circle, fill, inner sep=1.2pt] (Sa_2) at (5.5,2.2) {};
+    \node[above right] at (5.5,2.2) {2};
+    \draw[very thick] (Sa_in) -- (2.7,2.1); % 闸刀指向1
+    
+    % 拨动方向指示
+    \draw[-{Stealth}, bend left=30, thin] (2.7,2.3) to node[above] {$t=0$} (5.3,2.3);
+    
+    % 中间并联支路 (电感 L=3H 和电阻 Rp=12Ω)
+    \draw (Sa_in) -- (4.0,1.2);
+    \draw (4.0,1.2) -- (3.0,1.2) to[L, l_={$L=\SI{3}{\henry}$}, i^={$i_L(t)$}] (3.0,0) -- (4.0,0);
+    \draw (4.0,1.2) -- (5.0,1.2) to[R, l={$12\,\Omega$}] (5.0,0) -- (4.0,0);
+    
+    % 底部地线与接地
+    \draw (0,0) -- (8.0,0);
+    \draw (4.0,0) node[ground] {};
+    
+    \node[below] at (4.0,-0.5) {(a) 原电路};
+  \end{circuitikz}
+
+  % ==================== (b) t=0- 等效电路 ====================
+  \begin{circuitikz}[semithick, scale=1.0, transform shape]
+    % 24V源, 12Ω电阻, 电感短路 (并联12Ω也被短路)
+    \draw (0,0) to[vsource, l={\SI{24}{\volt}}] (0,3)
+          to[R, l={$12\,\Omega$}] (2.5,3);
+    \draw (2.5,3) to[short, i={$i_L(0^-)$}] (2.5,0);
+    \draw (2.5,0) node[ground] {} -- (0,0);
+    
+    % 结果框
+    \node[draw, align=left, font=\small] at (4.5,1.5) {
+      $i_L(0^-) = \SI{2}{\ampere}$
+    };
+    
+    \node[below] at (2.25,-0.5) {(b) $t=0^-$ 等效电路};
+  \end{circuitikz}
+
+  % ==================== (c) t->∞ 稳态等效电路 ====================
+  \begin{circuitikz}[semithick, scale=1.0, transform shape]
+    % 60V源, 12Ω电阻, 电感短路
+    \draw (0,0) to[vsource, l={\SI{60}{\volt}}] (0,3)
+          to[R, l={$12\,\Omega$}] (2.5,3);
+    \draw (2.5,3) to[short, i={$i_L(\infty)$}] (2.5,0);
+    \draw (2.5,0) node[ground] {} -- (0,0);
+    
+    % 结果框
+    \node[draw, align=left, font=\small] at (4.5,1.5) {
+      $i_L(\infty) = \SI{5}{\ampere}$
+    };
+    
+    \node[below] at (2.25,-0.5) {(c) $t\to\infty$ 等效电路};
+  \end{circuitikz}
+
+  % ==================== (d) 求 Req 的去源电路 ====================
+  \begin{circuitikz}[semithick, scale=1.0, transform shape]
+    % 端口 A, B (A为上方，B为下方)
+    \node[circle, fill=white, draw, inner sep=1.2pt] (tA) at (0,1.5) {};
+    \node[left] at (tA) {A};
+    \node[circle, fill=white, draw, inner sep=1.2pt] (tB) at (2.5,1.5) {};
+    \node[right] at (tB) {B};
+    
+    % 两个 12Ω 电阻并联在 A, B 之间
+    \draw (tA) -- (0.4,1.5);
+    \draw (0.4,1.5) -- (0.4,2.3) to[R, l={$12\,\Omega$}] (2.1,2.3) -- (2.1,1.5);
+    \draw (0.4,1.5) -- (0.4,0.7) to[R, l_={$12\,\Omega$}] (2.1,0.7) -- (2.1,1.5);
+    \draw (2.1,1.5) -- (tB);
+    
+    \draw (tB) node[ground] {};
+    
+    % 结果框
+    \node[draw, align=left, font=\small] at (4.5,1.5) {
+      $R_{eq} = \SI{6}{\ohm}$
+    };
+    
+    \node[below] at (2.25,-0.5) {(d) 求 $R_{eq}$ 去源电路};
+  \end{circuitikz}
+\end{document}

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="430" viewBox="0 0 1000 430">
+<style>
+  @media (prefers-color-scheme: dark) {
+    svg {
+      filter: invert(1) hue-rotate(180deg) !important;
+    }
+  }
+</style>
+
+  <defs><style>text{font-family:"Microsoft YaHei","SimSun",sans-serif;font-size:18px;fill:#111}.title{font-size:24px;font-weight:700}.small{font-size:15px}.wire{stroke:#111;stroke-width:2.7;fill:none;stroke-linecap:round;stroke-linejoin:round}.panel{fill:#fff;stroke:#111;stroke-width:1.8;rx:8}</style></defs>
+  
+  
+<text class="title" x="40" y="45">时间常数：从动态元件端口看进去的等效电阻</text>
+  <rect class="panel" x="45" y="80" width="430" height="285"/>
+  <text x="70" y="115" font-weight="700">RC 电路：τ = Req · C</text>
+  <line class="wire" x1="90" y1="220" x2="180" y2="220"/><polyline class="wire" points="180,220 192,200 206,240 220,200 234,240 248,200 260,220"/>
+  <line class="wire" x1="260" y1="220" x2="330" y2="220"/><line class="wire" x1="330" y1="185" x2="330" y2="255"/><line class="wire" x1="360" y1="185" x2="360" y2="255"/><line class="wire" x1="360" y1="220" x2="420" y2="220"/>
+  <text class="small" x="175" y="180">Req</text><text class="small" x="334" y="285">C</text>
+  <text class="small" x="80" y="315">独立电压源短路，独立电流源开路；受控源保留。</text>
+  <rect class="panel" x="525" y="80" width="430" height="285"/>
+  <text x="550" y="115" font-weight="700">RL 电路：τ = L / Req</text>
+  <line class="wire" x1="570" y1="220" x2="650" y2="220"/><path class="wire" d="M650 220 C660 185 690 185 700 220 C710 255 740 255 750 220"/>
+  <line class="wire" x1="750" y1="220" x2="820" y2="220"/><polyline class="wire" points="820,220 832,200 846,240 860,200 874,240 888,200 900,220"/>
+  <text class="small" x="680" y="180">L</text><text class="small" x="825" y="180">Req</text>
+  <text class="small" x="555" y="315">同样的 Req，对 RC 是乘上 C，对 RL 是 L 除以 Req。</text>
+</svg>

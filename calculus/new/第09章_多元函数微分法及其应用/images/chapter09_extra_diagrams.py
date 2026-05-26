@@ -1,4 +1,5 @@
 from pathlib import Path
+import shutil
 
 import matplotlib
 
@@ -201,35 +202,74 @@ def gradient_contours():
 
 def lagrange_multiplier():
     fig, ax = plt.subplots(figsize=(6.4, 4.9))
-    x = np.linspace(-2.2, 2.35, 320)
-    y = np.linspace(-1.8, 1.8, 260)
-    X, Y = np.meshgrid(x, y)
-    F = (X - 0.85) ** 2 + 0.72 * (Y - 0.34) ** 2
-    ax.contour(X, Y, F, levels=[0.25, 0.55, 0.95, 1.45, 2.15], colors="#90a4ae", linewidths=1.25)
-
-    t = np.linspace(0, 2 * np.pi, 360)
-    cx = 1.45 * np.cos(t) - 0.10
-    cy = 0.92 * np.sin(t)
-    ax.plot(cx, cy, color="#1565c0", lw=2.8)
-
-    P = np.array([1.31, 0.39])
-    ax.plot(P[0], P[1], "o", color="#111111", ms=6)
-    arrow(ax, P, P + np.array([0.58, 0.00]), "#d62728", lw=2.5, ms=16)
-    q = P + np.array([0.00, 0.12])
-    arrow(ax, q, q + np.array([0.58, 0.00]), "#2e7d32", lw=2.5, ms=16)
-    ax.text(P[0] + 0.64, P[1] - 0.06, r"$\nabla f$", color="#d62728", fontsize=13)
-    ax.text(q[0] + 0.64, q[1] - 0.02, r"$\nabla \varphi$", color="#2e7d32", fontsize=13)
-    ax.text(0.62, 1.34, r"相切时：$\nabla f=\lambda\nabla\varphi$", fontsize=14, weight="bold")
-    ax.text(-1.92, -1.55, "蓝色曲线是约束，灰色曲线是目标函数等值线。", fontsize=11, color="#444444")
-    ax.axhline(0, color="#333333", lw=0.9)
-    ax.axvline(0, color="#333333", lw=0.9)
     ax.set_aspect("equal")
     ax.set_xlim(-2.05, 2.20)
     ax.set_ylim(-1.65, 1.65)
-    ax.set_xlabel("$x$", fontsize=12)
-    ax.set_ylabel("$y$", fontsize=12, rotation=0, labelpad=10)
-    ax.set_xticks([])
-    ax.set_yticks([])
+    ax.axis("off")
+
+    # 画坐标轴
+    ax.axhline(0, color="#333333", lw=0.9)
+    ax.axvline(0, color="#333333", lw=0.9)
+    ax.text(2.10, -0.15, "$x$", fontsize=12)
+    ax.text(-0.15, 1.55, "$y$", fontsize=12)
+
+    # 约束曲线（圆，半径 R = 1.35）
+    R = 1.35
+    t = np.linspace(0, 2 * np.pi, 360)
+    cx = R * np.cos(t)
+    cy = R * np.sin(t)
+    ax.plot(cx, cy, color="#1565c0", lw=2.8)
+    ax.text(-1.52, -1.05, "约束曲线 $\\varphi(x,y)=0$", color="#1565c0", fontsize=12)
+
+    # 切向 v = (-0.6, 0.8)，法向 u = (0.8, 0.6)
+    u = np.array([0.8, 0.6])
+    v = np.array([-0.6, 0.8])
+
+    # 绘制若干条相交与不相交的等值线（使用虚线，灰色）
+    ds = [-0.9, -0.3, 0.3, 0.9]
+    for d in ds:
+        p1 = d * u - 1.8 * v
+        p2 = d * u + 1.8 * v
+        ax.plot([p1[0], p2[0]], [p1[1], p2[1]], color="#90a4ae", lw=1.25, ls="--")
+
+    # 绘制一条圆外不相交的等值线 (虚线)
+    d_out = 1.8
+    po1 = d_out * u - 1.2 * v
+    po2 = d_out * u + 1.2 * v
+    ax.plot([po1[0], po2[0]], [po1[1], po2[1]], color="#90a4ae", lw=1.25, ls="--")
+
+    # 标注等值线（精确计算以保证在画布内整齐排列）
+    ax.text(-0.25, -1.28, "$f(x,y)=c_1$", color="#78909c", fontsize=10)
+    ax.text(0.50, -1.28, "$f(x,y)=c_2$", color="#78909c", fontsize=10)
+    ax.text(1.25, -1.28, "$f(x,y)=c_3$", color="#78909c", fontsize=10)
+    ax.text(2.00, -1.28, "$f(x,y)=c_4$", color="#78909c", fontsize=10)
+    ax.text(2.00, 0.28, "$f(x,y)=c_5$", color="#78909c", fontsize=10)
+
+    # 绘制极值点处的相切等值线（实线，红色）
+    pt1 = R * u - 1.8 * v
+    pt2 = R * u + 1.8 * v
+    ax.plot([pt1[0], pt2[0]], [pt1[1], pt2[1]], color="#d62728", lw=1.5)
+    ax.text(1.35, -0.65, "等值线 $f(x,y)=c_{\\max}$", color="#d62728", fontsize=11)
+
+    # 相切点 P (即 M)
+    P = R * u
+    ax.plot(P[0], P[1], "o", color="#111111", ms=6, zorder=5)
+    ax.text(P[0] - 0.35, P[1] - 0.25, "$M(x_0,y_0)$", fontsize=12, fontweight="bold")
+
+    # 绘制梯度向量
+    grad_f_end = P + 0.55 * u
+    arrow(ax, P, grad_f_end, "#d62728", lw=2.5, ms=16)
+
+    # 约束梯度，沿着切线平移一小段以避免重叠
+    q = P + 0.12 * v
+    grad_phi_end = q + 0.95 * u
+    arrow(ax, q, grad_phi_end, "#1565c0", lw=2.5, ms=16)
+
+    ax.text(1.55, 0.95, r"$\nabla f$", color="#d62728", fontsize=14)
+    ax.text(1.80, 1.30, r"$\nabla \varphi$", color="#1565c0", fontsize=14)
+
+    ax.text(-1.95, 1.35, r"相切时：$\nabla f=\lambda\nabla\varphi$ (梯度平行)", fontsize=13, weight="bold")
+    ax.text(-1.95, -1.52, "蓝色曲线是约束，灰色虚线是目标函数等值线。", fontsize=11, color="#444444")
     save(fig, "lagrange_multiplier.png")
 
 
@@ -281,6 +321,94 @@ def stationary_point_warning():
     save(fig, "stationary_point_types.png")
 
 
+def implicit_function_geometry():
+    fig, ax = plt.subplots(figsize=(6.4, 5.0))
+    ax.set_aspect("equal")
+    ax.set_xlim(-2.4, 2.4)
+    ax.set_ylim(-2.4, 2.4)
+    ax.axis("off")
+
+    # 画坐标轴
+    ax.axhline(0, color="#333333", lw=1.0)
+    ax.axvline(0, color="#333333", lw=1.0)
+    ax.text(2.3, -0.18, "$x$", fontsize=13)
+    ax.text(-0.18, 2.3, "$y$", fontsize=13)
+
+    # 画曲线 F(x,y) = 0. 使用圆弧来表示，半径为 2
+    theta = np.linspace(-np.pi/3, 5*np.pi/6, 300)
+    R = 2.0
+    cx = R * np.cos(theta)
+    cy = R * np.sin(theta)
+    ax.plot(cx, cy, color="#1976d2", lw=2.5)
+    ax.text(-1.8, 1.4, "$F(x,y)=0$", color="#1976d2", fontsize=13)
+
+    # 选择圆上的点 P(1.2, 1.6)
+    px, py = 1.2, 1.6
+    ax.plot(px, py, "o", color="#111111", ms=6)
+    ax.text(px - 0.22, py - 0.26, "$P(x_0, y_0)$", fontsize=12, fontweight="bold")
+
+    # 法向量 \nabla F = (F_x, F_y)
+    # 在 (1.2, 1.6) 处，法向量方向为径向 (0.6, 0.8)
+    # 画一个长度为 1.1 的箭头
+    nx, ny = 0.6, 0.8
+    arrow_len = 1.1
+    ax.add_patch(
+        FancyArrowPatch(
+            (px, py),
+            (px + arrow_len * nx, py + arrow_len * ny),
+            arrowstyle="-|>",
+            mutation_scale=15,
+            linewidth=2.5,
+            color="#2e7d32",
+            shrinkA=0,
+            shrinkB=0,
+            zorder=4,
+        )
+    )
+    # 标注 \nabla F = (F_x, F_y)
+    ax.text(px + arrow_len * nx + 0.05, py + arrow_len * ny, r"$\nabla F = (F_x, F_y)$", color="#2e7d32", fontsize=13)
+
+    # 切线。斜率为 -0.75。方程为 y - 1.6 = -0.75(x - 1.2) => y = -0.75x + 2.5
+    # 切线画在 x 范围为 [0.2, 2.2] 之间
+    tx = np.linspace(0.2, 2.2, 100)
+    ty = -0.75 * tx + 2.5
+    ax.plot(tx, ty, color="#d32f2f", lw=2.2)
+    ax.text(0.5, 2.2, "切线", color="#d32f2f", fontsize=12)
+
+    # 在 P 点画直角符号（切线与法线垂直）
+    # 切向向量为 (0.8, -0.6)
+    s = 0.15
+    p_n = np.array([px + s*nx, py + s*ny])
+    p_t = np.array([px + s*0.8, py - s*0.6])
+    p_corner = p_n + np.array([s*0.8, -s*0.6])
+    ax.plot([p_n[0], p_corner[0], p_t[0]], [p_n[1], p_corner[1], p_t[1]], color="#555555", lw=1.0)
+
+    # 右下角放置精美的公式卡片 (bbox)
+    formula_text = (
+        r"$F_x + F_y y' = 0$" + "\n" +
+        r"$y' = -\frac{F_x}{F_y}$"
+    )
+    ax.text(
+        0.5, -1.8, formula_text,
+        fontsize=13, color="#0f172a",
+        bbox=dict(
+            boxstyle="round,pad=0.6",
+            facecolor="#f8fafc",
+            edgecolor="#cbd5e1",
+            linewidth=1.2
+        )
+    )
+
+    # 保存图片
+    save(fig, "implicit_function_geometry.png")
+
+    # 额外拷贝一份到桌面以满足规范
+    try:
+        shutil.copy(ROOT / "implicit_function_geometry.png", Path(r"C:\Users\Spane\Desktop") / "implicit_function_geometry.png")
+    except Exception as e:
+        print(f"Copy to desktop failed: {e}")
+
+
 if __name__ == "__main__":
     setup_font()
     limit_paths()
@@ -291,3 +419,4 @@ if __name__ == "__main__":
     lagrange_multiplier()
     extrema_candidates()
     stationary_point_warning()
+    implicit_function_geometry()

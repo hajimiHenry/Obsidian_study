@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520">
+<style>
+  @media (prefers-color-scheme: dark) {
+    svg {
+      filter: invert(1) hue-rotate(180deg) !important;
+    }
+  }
+</style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/>
+    </marker>
+    <style>
+      text{font-family:"Microsoft YaHei","SimSun",sans-serif;font-size:19px;fill:#111}
+      .title{font-size:23px;font-weight:700}
+      .small{font-size:16px}
+      .wire{stroke:#111;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+      .thin{stroke:#111;stroke-width:2;fill:none}
+      .panel{fill:#fff;stroke:#111;stroke-width:1.8;rx:8}
+      .curve{stroke:#111;stroke-width:3;fill:none}
+    </style>
+  </defs>
+  
+  
+<rect class="panel" x="30" y="30" width="440" height="210"/>
+  <text class="title" x="55" y="65">RC 零状态：电容充电</text>
+  <line class="wire" x1="75" y1="140" x2="130" y2="140"/>
+  <circle class="thin" cx="160" cy="140" r="25"/><text x="150" y="148" class="small">Us</text>
+  <line class="wire" x1="185" y1="140" x2="240" y2="140"/>
+  <polyline class="wire" points="240,140 252,120 266,160 280,120 294,160 308,120 320,140"/>
+  <line class="wire" x1="320" y1="140" x2="370" y2="140"/>
+  <line class="wire" x1="370" y1="105" x2="370" y2="175"/>
+  <line class="wire" x1="398" y1="105" x2="398" y2="175"/>
+  <text class="small" x="70" y="215">uC(t)=Us(1-e^(-t/RC))，终值是 Us</text>
+
+  <rect class="panel" x="530" y="30" width="440" height="210"/>
+  <text class="title" x="555" y="65">RC 零输入：电容放电</text>
+  <line class="wire" x1="600" y1="140" x2="690" y2="140"/>
+  <polyline class="wire" points="690,140 702,120 716,160 730,120 744,160 758,120 770,140"/>
+  <line class="wire" x1="770" y1="140" x2="835" y2="140"/>
+  <line class="wire" x1="835" y1="105" x2="835" y2="175"/>
+  <line class="wire" x1="862" y1="105" x2="862" y2="175"/>
+  <line class="wire" x1="862" y1="140" x2="920" y2="140"/>
+  <text class="small" x="572" y="215">uC(t)=U0 e^(-t/RC)，无外源时衰减到 0</text>
+
+  <rect class="panel" x="30" y="275" width="440" height="210"/>
+  <text class="title" x="55" y="310">RL 零状态：电流建立</text>
+  <line class="wire" x1="75" y1="390" x2="130" y2="390"/>
+  <circle class="thin" cx="160" cy="390" r="25"/><text x="150" y="398" class="small">Us</text>
+  <line class="wire" x1="185" y1="390" x2="240" y2="390"/>
+  <polyline class="wire" points="240,390 252,370 266,410 280,370 294,410 308,370 320,390"/>
+  <line class="wire" x1="320" y1="390" x2="355" y2="390"/>
+  <path class="wire" d="M355 390 C363 360 387 360 395 390 C403 420 427 420 435 390"/>
+  <text class="small" x="60" y="465">iL(t)=Us/R·(1-e^(-Rt/L))，终值是 Us/R</text>
+
+  <rect class="panel" x="530" y="275" width="440" height="210"/>
+  <text class="title" x="555" y="310">统一趋势：三要素公式</text>
+  <line class="thin" marker-end="url(#arrow)" x1="590" y1="430" x2="910" y2="430"/>
+  <line class="thin" marker-end="url(#arrow)" x1="590" y1="430" x2="590" y2="340"/>
+  <path class="curve" d="M590 420 C650 390 725 360 910 348"/>
+  <path class="curve" d="M590 350 C650 380 725 412 910 424"/>
+  <text class="small" x="620" y="455">x(t)=x(∞)+[x(0+)-x(∞)]e^(-t/τ)</text>
+  <text class="small" x="610" y="335">靠近终值</text>
+  <text class="small" x="745" y="405">暂态差值逐渐消失</text>
+</svg>

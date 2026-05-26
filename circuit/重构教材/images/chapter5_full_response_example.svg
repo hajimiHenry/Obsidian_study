@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="500" viewBox="0 0 1080 500">
+<style>
+  @media (prefers-color-scheme: dark) {
+    svg {
+      filter: invert(1) hue-rotate(180deg) !important;
+    }
+  }
+</style>
+
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#111"/></marker><style>text{font-family:"Microsoft YaHei","SimSun",sans-serif;font-size:18px;fill:#111}.title{font-size:24px;font-weight:700}.small{font-size:15px}.wire,.axis{stroke:#111;stroke-width:2.7;fill:none;stroke-linecap:round;stroke-linejoin:round}.thin{stroke:#111;stroke-width:1.4;fill:none}.curve{stroke:#111;stroke-width:3;fill:none}.panel{fill:#fff;stroke:#111;stroke-width:1.8;rx:8}</style></defs>
+  
+  
+<rect class="panel" x="35" y="35" width="1010" height="405"/>
+  <text class="title" x="60" y="72">全响应例题：初值不等于终值时，用三要素连接</text>
+  <line class="wire" x1="80" y1="310" x2="360" y2="310"/><line class="wire" x1="80" y1="150" x2="80" y2="310"/><circle cx="80" cy="225" r="28" stroke="#111" stroke-width="2" fill="none"/><text class="small" x="67" y="232">10V</text>
+  <line class="wire" x1="80" y1="150" x2="165" y2="150"/><polyline class="wire" points="165,150 177,130 191,170 205,130 219,170 233,130 245,150"/>
+  <text class="small" x="155" y="118">2kΩ</text><line class="wire" x1="245" y1="150" x2="360" y2="150"/><line class="wire" x1="360" y1="150" x2="360" y2="310"/>
+  <line class="wire" x1="332" y1="195" x2="332" y2="260"/><line class="wire" x1="360" y1="195" x2="360" y2="260"/><text class="small" x="285" y="190">1000μF</text><text class="small" x="265" y="350">uC(0-)=4V</text>
+  <text class="small" x="430" y="145">三要素：</text><text class="small" x="430" y="178">uC(0+)=4V</text><text class="small" x="430" y="210">uC(∞)=10V</text><text class="small" x="430" y="242">τ=RC=2s</text><text class="small" x="430" y="286">uC(t)=10-6e^(-t/2)</text>
+  <line class="axis" marker-end="url(#arrow)" x1="690" y1="330" x2="985" y2="330"/><line class="axis" marker-end="url(#arrow)" x1="710" y1="355" x2="710" y2="125"/>
+  <path class="curve" d="M710 270 C780 215 880 165 980 150"/>
+  <line class="thin" x1="710" y1="150" x2="985" y2="150"/><line class="thin" x1="710" y1="270" x2="760" y2="270"/>
+  <text class="small" x="675" y="154">10V</text><text class="small" x="682" y="274">4V</text><text class="small" x="990" y="350">t</text>
+  <text class="small" x="725" y="405">曲线不是从 0 开始，而是从换路继承的 4V 开始。</text>
+</svg>

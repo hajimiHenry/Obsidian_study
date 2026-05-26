@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420">
+<style>
+  @media (prefers-color-scheme: dark) {
+    svg {
+      filter: invert(1) hue-rotate(180deg) !important;
+    }
+  }
+</style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/>
+    </marker>
+    <style>
+      text{font-family:"Microsoft YaHei","SimSun",sans-serif;font-size:20px;fill:#111}
+      .title{font-size:24px;font-weight:700}
+      .small{font-size:17px}
+      .wire{stroke:#111;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+      .thin{stroke:#111;stroke-width:2;fill:none}
+      .panel{fill:#fff;stroke:#111;stroke-width:1.8;rx:8}
+    </style>
+  </defs>
+  
+  
+<text class="title" x="45" y="45">换路题的三张图：0⁻、0⁺、∞</text>
+  <line class="thin" x1="110" y1="95" x2="850" y2="95"/>
+  <circle cx="185" cy="95" r="9" fill="#111"/><circle cx="490" cy="95" r="9" fill="#111"/><circle cx="795" cy="95" r="9" fill="#111"/>
+  <text x="160" y="78">0⁻</text><text x="464" y="78">0⁺</text><text x="780" y="78">∞</text>
+  <text class="small" x="90" y="125">换路前稳态：找历史状态</text>
+  <text class="small" x="390" y="125">换路后一瞬：状态继承</text>
+  <text class="small" x="695" y="125">换路后稳态：找终值</text>
+
+  <rect class="panel" x="55" y="165" width="260" height="195"/>
+  <text x="78" y="198" font-weight="700">0⁺ 电容等效</text>
+  <line class="wire" x1="110" y1="285" x2="170" y2="285"/>
+  <circle class="thin" cx="210" cy="285" r="34"/>
+  <text x="200" y="279" class="small">+</text><text x="202" y="306" class="small">−</text>
+  <line class="wire" x1="244" y1="285" x2="300" y2="285"/>
+  <text class="small" x="88" y="340">用电压源 uC(0⁻) 代替</text>
+
+  <rect class="panel" x="360" y="165" width="260" height="195"/>
+  <text x="383" y="198" font-weight="700">0⁺ 电感等效</text>
+  <line class="wire" x1="415" y1="285" x2="475" y2="285"/>
+  <circle class="thin" cx="515" cy="285" r="34"/>
+  <line class="thin" marker-end="url(#arrow)" x1="496" y1="285" x2="534" y2="285"/>
+  <line class="wire" x1="549" y1="285" x2="605" y2="285"/>
+  <text class="small" x="387" y="340">用电流源 iL(0⁻) 代替</text>
+
+  <rect class="panel" x="665" y="165" width="260" height="195"/>
+  <text x="690" y="198" font-weight="700">直流稳态等效</text>
+  <line class="wire" x1="700" y1="260" x2="770" y2="260"/>
+  <line class="wire" x1="800" y1="220" x2="800" y2="300"/>
+  <line class="wire" x1="832" y1="220" x2="832" y2="300"/>
+  <line class="wire" x1="862" y1="260" x2="910" y2="260"/>
+  <text class="small" x="745" y="315">C 开路</text>
+  <line class="wire" x1="700" y1="340" x2="910" y2="340"/>
+  <text class="small" x="745" y="390">L 短路</text>
+</svg>

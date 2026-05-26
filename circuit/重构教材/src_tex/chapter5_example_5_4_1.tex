@@ -1,0 +1,27 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+
+\begin{document}
+\begin{circuitikz}[semithick, scale=1.0, transform shape]
+
+  % 电流源 is(t) = ε(t) A
+  \draw (0,0) to[I, l={$i_s(t)=\varepsilon(t)\,\text{A}$}] (0,3)
+        -- (4,3);
+        
+  % 并联电阻 R = 2 Ω
+  \draw (2,3) to[R, l={$R=2\,\Omega$}] (2,0);
+  
+  % 并联电容 C = 0.5 F，手动高保真标注极性与电压
+  \draw (4,3) to[C, l={$C=0.5\,\text{F}$}] (4,0);
+  \node[left] at (4.0,2.3) {$+$};
+  \node[left] at (4.0,0.7) {$-$};
+  \node[left] at (3.9,1.5) {$u_C(t)$};
+  
+  % 底部地线连通并接地
+  \draw (4,0) -- (0,0);
+  \draw (2,0) node[ground] {};
+
+\end{circuitikz}
+\end{document}

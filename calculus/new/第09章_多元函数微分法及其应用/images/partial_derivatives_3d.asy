@@ -2,80 +2,128 @@ settings.outformat="png";
 settings.prc = false;
 settings.render = 0;
 settings.tex="xelatex";
-size(900);
+size(700);
 import three;
 
-currentprojection = perspective(4.6,-5.4,3.5);
+// 定义曲面：椭圆抛物面 z = 4 - 0.2*x^2 - 0.15*y^2
+real f(real x, real y) {
+  return 4.0 - 0.2*x*x - 0.15*y*y;
+}
+triple S(real x, real y) {
+  return (x, y, f(x, y));
+}
 
-real f(real x, real y) { return 0.20*x*x + 0.14*y*y + 0.16*x*y + 0.42; }
-triple S(real x, real y) { return (x,y,f(x,y)); }
+// 目标点 P_0(x_0, y_0) = (1.2, 1.2)
+real x0 = 1.2;
+real y0 = 1.2;
+real z0 = f(x0, y0);
+triple M0 = (x0, y0, z0);
 
-real x0 = 0.42;
-real y0 = 0.28;
-real z0 = f(x0,y0);
-real fx = 0.40*x0 + 0.16*y0;
-real fy = 0.28*y0 + 0.16*x0;
-triple P = (x0,y0,z0);
+// 偏导数值
+real fx = -0.4 * x0; // -0.48
+real fy = -0.3 * y0; // -0.36
 
-draw((-1.45,0,0)--(1.65,0,0), black+0.9, arrow=Arrow3());
-draw((0,-1.35,0)--(0,1.55,0), black+0.9, arrow=Arrow3());
-draw((0,0,0)--(0,0,1.58), black+1.0, arrow=Arrow3());
-label("$x$", (1.48,-0.04,0), S, fontsize(20));
-label("$y$", (0.08,1.50,0.08), NE, fontsize(20));
-label("$z$", (0.24,-0.16,1.42), E, fontsize(20));
+// 视角设定
+currentprojection = perspective(5.0, -5.5, 4.0);
 
-// 只画稀疏网格，避免曲面线条抢走截线信息。
-for(int i=-4; i<=4; ++i) {
-  real x = i*0.26;
+// 1. 绘制坐标轴
+draw((-0.5,0,0)--(3.5,0,0), black+1.0, arrow=Arrow3());
+draw((0,-0.5,0)--(0,3.5,0), black+1.0, arrow=Arrow3());
+draw((0,0,0)--(0,0,4.5), black+1.0, arrow=Arrow3());
+
+label("$x$", (3.6,0,0), E, fontsize(16));
+label("$y$", (0,3.6,0), E, fontsize(16));
+label("$z$", (0,0,4.6), N, fontsize(16));
+label("$O$", (0,0,0), SW, fontsize(16));
+
+// 2. 绘制曲面网格 (仅在第一卦限绘制部分以保持画面简洁)
+real xMin = 0, xMax = 2.4;
+real yMin = 0, yMax = 2.4;
+int steps = 12;
+for(int i=0; i<=steps; ++i) {
+  real x = xMin + i * (xMax - xMin) / steps;
   guide3 g;
-  for(int j=-36; j<=36; ++j) {
-    real y = j*1.08/36;
-    g = (j==-36) ? S(x,y) : g--S(x,y);
+  for(int j=0; j<=steps; ++j) {
+    real y = yMin + j * (yMax - yMin) / steps;
+    g = (j==0) ? S(x,y) : g--S(x,y);
   }
-  draw(g, gray(0.58)+0.45);
+  draw(g, gray(0.7)+0.45);
 }
-for(int j=-4; j<=4; ++j) {
-  real y = j*0.26;
+for(int j=0; j<=steps; ++j) {
+  real y = yMin + j * (yMax - yMin) / steps;
   guide3 g;
-  for(int i=-36; i<=36; ++i) {
-    real x = i*1.08/36;
-    g = (i==-36) ? S(x,y) : g--S(x,y);
+  for(int i=0; i<=steps; ++i) {
+    real x = xMin + i * (xMax - i) / steps; // 修正这个循环中的 i/steps，注意刚才的 asy 文件中是 i * (xMax - xMin) / steps
+    real xVal = xMin + i * (xMax - xMin) / steps;
+    g = (i==0) ? S(xVal,y) : g--S(xVal,y);
   }
-  draw(g, gray(0.58)+0.45);
+  draw(g, gray(0.7)+0.45);
 }
 
-// 用 xy 平面上的固定变量轨迹提示截线，避免半透明竖墙遮挡曲面。
-draw((x0-0.76,y0,0)--(x0+0.76,y0,0), red+1.0);
-draw((x0,y0-0.72,0)--(x0,y0+0.72,0), blue+1.0);
-draw((x0-0.64,y0,0)--S(x0-0.64,y0), red+0.45);
-draw((x0+0.64,y0,0)--S(x0+0.64,y0), red+0.45);
-draw((x0,y0-0.60,0)--S(x0,y0-0.60), blue+0.45);
-draw((x0,y0+0.60,0)--S(x0,y0+0.60), blue+0.45);
+// 3. 绘制投影点与竖直辅助线
+triple P0 = (x0, y0, 0);
+draw(M0--P0, dashed+gray(0.4)+0.8);
+draw(P0--(x0, 0, 0), dashed+gray(0.4)+0.8);
+draw(P0--(0, y0, 0), dashed+gray(0.4)+0.8);
 
-guide3 cx;
-for(int i=-50; i<=50; ++i) {
-  real x = x0 + i*0.72/50;
-  cx = (i==-50) ? S(x,y0) : cx--S(x,y0);
+// 4. 绘制半透明截平面
+// 截面 y = y0 (平行于 xOz 平面，用浅红色表示)
+path3 planeY = (0, y0, 0)--(2.4, y0, 0)--(2.4, y0, 4.2)--(0, y0, 4.2)--cycle;
+draw(surface(planeY), lightred+opacity(0.12));
+draw(planeY, red+0.5+dashed);
+
+// 截面 x = x0 (平行于 yOz 平面，用浅蓝色表示)
+path3 planeX = (x0, 0, 0)--(x0, 2.4, 0)--(x0, 2.4, 4.2)--(x0, 0, 4.2)--cycle;
+draw(surface(planeX), lightblue+opacity(0.12));
+draw(planeX, blue+0.5+dashed);
+
+// 5. 绘制曲线截线
+// x 截线 (y 固定为 y0)
+guide3 curveX;
+int nPoints = 40;
+for(int i=0; i<=nPoints; ++i) {
+  real x = xMin + i * (xMax - xMin) / nPoints;
+  curveX = (i==0) ? S(x, y0) : curveX--S(x, y0);
 }
-draw(cx, heavyred+1.7);
+draw(curveX, heavyred+1.6);
 
-guide3 cy;
-for(int j=-50; j<=50; ++j) {
-  real y = y0 + j*0.68/50;
-  cy = (j==-50) ? S(x0,y) : cy--S(x0,y);
+// y 截线 (x 固定为 x0)
+guide3 curveY;
+for(int j=0; j<=nPoints; ++j) {
+  real y = yMin + j * (yMax - yMin) / nPoints;
+  curveY = (j==0) ? S(x0, y) : curveY--S(x0, y);
 }
-draw(cy, deepblue+1.7);
+draw(curveY, deepblue+1.6);
 
-triple tx1 = P + (-0.42,0,-0.42*fx);
-triple tx2 = P + ( 0.42,0, 0.42*fx);
-triple ty1 = P + (0,-0.42,-0.42*fy);
-triple ty2 = P + (0, 0.42, 0.42*fy);
-draw(tx1--tx2, red+2.1);
-draw(ty1--ty2, blue+2.1);
+// 6. 绘制切线
+// x 方向切线
+triple txStart = M0 - 0.7 * (1.0, 0.0, fx);
+triple txEnd = M0 + 0.7 * (1.0, 0.0, fx);
+draw(txStart--txEnd, red+2.2);
 
-dot(P, linewidth(7));
-label("$P$", P+(0.08,0.07,0.05), E, fontsize(22));
-label("$y=y_0$", (x0-0.74,y0,0.08), SW, red+fontsize(18));
-label("$x=x_0$", (x0,y0+0.72,0.08), E, blue+fontsize(18));
-label("$f_x(x_0,y_0)$", tx1+(-0.08,-0.02,0.04), W, red+fontsize(18));
-label("$f_y(x_0,y_0)$", ty2+(0.07,0.05,0.10), NE, blue+fontsize(18));
+// y 方向切线
+triple tyStart = M0 - 0.7 * (0.0, 1.0, fy);
+triple tyEnd = M0 + 0.7 * (0.0, 1.0, fy);
+draw(tyStart--tyEnd, blue+2.2);
+
+// 7. 绘制关键点 (最后画，以防被覆盖)
+dot(M0, black+linewidth(7.0));
+dot(P0, gray(0.3)+linewidth(5.0));
+
+// 8. 绘制标签
+label("$M_0(x_0,y_0,z_0)$", M0 + (0.05, 0.05, 0.15), N, fontsize(15));
+label("$P_0(x_0,y_0)$", P0 + (0.05, 0.05, -0.15), E, fontsize(14));
+
+label("$x_0$", (x0, 0, 0), S, fontsize(14));
+label("$y_0$", (0, y0, 0), W, fontsize(14));
+
+label("$y=y_0$", (2.4, y0, 4.2), N, red+fontsize(14));
+label("$x=x_0$", (x0, 2.4, 4.2), N, blue+fontsize(14));
+
+// 将曲线标签放到 x/y 较小的左侧，避免与切线标签在右侧重叠
+label("$z=f(x,y_0)$", (0.5, y0, f(0.5, y0)) + (-0.05, 0.0, 0.15), NW, red+fontsize(13));
+label("$z=f(x_0,y)$", (x0, 0.5, f(x0, 0.5)) + (0.0, -0.05, 0.15), NW, blue+fontsize(13));
+
+// 切线标签微调位置
+label("切线斜率 $f_x(x_0,y_0)$", txEnd + (0.1, 0.0, -0.1), E, red+fontsize(14));
+label("切线斜率 $f_y(x_0,y_0)$", tyEnd + (0.0, 0.1, -0.1), E, blue+fontsize(14));

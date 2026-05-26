@@ -1,0 +1,34 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+
+\begin{document}
+\begin{circuitikz}[semithick, scale=1.2, transform shape]
+  % 1. 绘制上方回路 (L=2H, 与us串联，关联参考方向)
+  % 基准高度偏移为 y=3.0
+  \def\cy{3.2}
+  
+  \draw (0.5,\cy) to[vsource, l={$u_s(t)$}] (0.5,\cy+1.5)
+        to[L, l={$L = \SI{2}{\henry}$}, i^>={$i_L(t)$}, v={$u_L(t)$}] (3.5,\cy+1.5)
+        -- (3.5,\cy)
+        -- (0.5,\cy);
+
+  % 2. 绘制下方波形图
+  % 绘制坐标轴
+  \draw[->] (-0.5,0) -- (4.5,0) node[right] {$t / \text{s}$};
+  \draw[->] (0,-0.3) -- (0,2.0) node[above] {$u_s(t) / \text{V}$};
+  
+  % 绘制刻度和数值
+  \draw (0,0) node[below left] {$0$};
+  \draw (2.0, 0.05) -- (2.0, -0.05) node[below] {$2$};
+  \draw (0.05, 1.2) -- (-0.05, 1.2) node[left] {$12$};
+  
+  % 绘制虚线辅助线
+  \draw[dashed, thin, gray] (2.0,0) -- (2.0,1.2) -- (0,1.2);
+  
+  % 绘制波形折线 (教材手绘蓝线风格)
+  \draw[very thick, blue!80!black] (-0.5,0) -- (0,0) -- (2.0,1.2) -- (2.0,0) -- (4.0,0);
+
+\end{circuitikz}
+\end{document}

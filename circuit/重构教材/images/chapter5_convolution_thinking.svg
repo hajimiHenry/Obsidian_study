@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="430" viewBox="0 0 1000 430">
+<style>
+  @media (prefers-color-scheme: dark) {
+    svg {
+      filter: invert(1) hue-rotate(180deg) !important;
+    }
+  }
+</style>
+
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#111"/></marker><style>text{font-family:"Microsoft YaHei","SimSun",sans-serif;font-size:18px;fill:#111}.title{font-size:24px;font-weight:700}.small{font-size:15px}.axis,.thin{stroke:#111;stroke-width:2;fill:none}.curve{stroke:#111;stroke-width:3;fill:none}.panel{fill:#fff;stroke:#111;stroke-width:1.8;rx:8}.pulse{fill:#ddd;stroke:#111;stroke-width:1.5}</style></defs>
+  
+  
+<rect class="panel" x="35" y="35" width="930" height="340"/>
+  <text class="title" x="60" y="72">卷积思想：任意输入 = 很多小脉冲的响应叠加</text>
+  <line class="axis" marker-end="url(#arrow)" x1="90" y1="250" x2="405" y2="250"/><line class="axis" marker-end="url(#arrow)" x1="110" y1="275" x2="110" y2="110"/>
+  <path class="curve" d="M110 235 C160 130 240 135 300 190 C340 225 370 230 400 215"/>
+  <rect class="pulse" x="230" y="178" width="18" height="72"/><text class="small" x="220" y="300">ξ 时刻的一小段输入</text><text class="small" x="95" y="100">f(t)</text>
+  <line class="axis" marker-end="url(#arrow)" x1="570" y1="250" x2="900" y2="250"/><line class="axis" marker-end="url(#arrow)" x1="590" y1="275" x2="590" y2="110"/>
+  <path class="curve" d="M590 120 C660 175 755 230 900 248"/>
+  <text class="small" x="610" y="100">h(t-ξ)</text><text class="small" x="610" y="300">这小段输入到 t 时刻还剩多少影响</text>
+  <text class="small" x="330" y="350">y(t)=∫₀ᵗ h(t-ξ)f(ξ)dξ</text>
+</svg>

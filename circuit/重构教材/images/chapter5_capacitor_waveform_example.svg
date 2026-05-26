@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520">
+<style>
+  @media (prefers-color-scheme: dark) {
+    svg {
+      filter: invert(1) hue-rotate(180deg) !important;
+    }
+  }
+</style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#111"/></marker>
+    <style>
+      text{font-family:"Microsoft YaHei","SimSun",sans-serif;font-size:18px;fill:#111}.title{font-size:24px;font-weight:700}.small{font-size:15px}
+      .wire,.axis{stroke:#111;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}.thin{stroke:#111;stroke-width:1.5;fill:none}.curve{stroke:#111;stroke-width:3;fill:none}
+      .panel{fill:#fff;stroke:#111;stroke-width:1.8;rx:8}
+    </style>
+  </defs>
+  
+  
+<rect class="panel" x="35" y="35" width="930" height="445"/>
+  <text class="title" x="60" y="72">例：已知电容电压波形，求 iC(t)、pC(t)、储能</text>
+  <line class="wire" x1="70" y1="142" x2="170" y2="142"/>
+  <line class="wire" x1="170" y1="108" x2="170" y2="176"/><line class="wire" x1="198" y1="108" x2="198" y2="176"/>
+  <line class="wire" x1="198" y1="142" x2="310" y2="142"/>
+  <text x="165" y="205">C=1F</text><text class="small" x="150" y="98">+</text><text class="small" x="210" y="98">-</text>
+  <line class="thin" marker-end="url(#arrow)" x1="92" y1="105" x2="154" y2="105"/><text class="small" x="100" y="95">iC</text>
+  <text class="small" x="60" y="245">关键：iC=C·duC/dt，所以电压斜率就是电流形状。</text>
+  <text class="small" x="60" y="272">pC=uC·iC；pC&gt;0 充电，pC&lt;0 放电。</text>
+  <line class="axis" marker-end="url(#arrow)" x1="410" y1="210" x2="900" y2="210"/><line class="axis" marker-end="url(#arrow)" x1="430" y1="230" x2="430" y2="95"/>
+  <polyline class="curve" points="430,210 530,130 630,130 760,250 870,250"/>
+  <text x="410" y="88">uC</text><text x="895" y="235">t</text><text class="small" x="515" y="230">1s</text><text class="small" x="615" y="230">2s</text><text class="small" x="750" y="230">4s</text>
+  <line class="thin" x1="530" y1="210" x2="530" y2="130"/><line class="thin" x1="630" y1="210" x2="630" y2="130"/><line class="thin" x1="760" y1="210" x2="760" y2="250"/>
+  <line class="axis" marker-end="url(#arrow)" x1="410" y1="410" x2="900" y2="410"/><line class="axis" marker-end="url(#arrow)" x1="430" y1="435" x2="430" y2="310"/>
+  <polyline class="curve" points="430,340 530,340 530,410 630,410 630,455 760,455 760,410 870,410"/>
+  <text x="410" y="305">iC</text><text x="895" y="435">t</text><text class="small" x="468" y="332">正斜率</text><text class="small" x="548" y="398">斜率0</text><text class="small" x="668" y="475">负斜率</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="430" viewBox="0 0 1000 430">
+<style>
+  @media (prefers-color-scheme: dark) {
+    svg {
+      filter: invert(1) hue-rotate(180deg) !important;
+    }
+  }
+</style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/>
+    </marker>
+    <style>
+      text{font-family:"Microsoft YaHei","SimSun",sans-serif;font-size:19px;fill:#111}
+      .title{font-size:23px;font-weight:700}
+      .small{font-size:16px}
+      .wire{stroke:#111;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+      .thin{stroke:#111;stroke-width:2;fill:none}
+      .panel{fill:#fff;stroke:#111;stroke-width:1.8;rx:8}
+      .curve{stroke:#111;stroke-width:3;fill:none}
+    </style>
+  </defs>
+  
+  
+<rect class="panel" x="35" y="35" width="440" height="340"/>
+  <text class="title" x="60" y="72">阶跃与矩形脉冲</text>
+  <line class="thin" marker-end="url(#arrow)" x1="85" y1="270" x2="410" y2="270"/>
+  <line class="thin" marker-end="url(#arrow)" x1="110" y1="300" x2="110" y2="105"/>
+  <polyline class="curve" points="88,270 155,270 155,150 315,150 315,270 400,270"/>
+  <line class="thin" x1="155" y1="270" x2="155" y2="150"/>
+  <line class="thin" x1="315" y1="270" x2="315" y2="150"/>
+  <text class="small" x="148" y="292">0</text>
+  <text class="small" x="305" y="292">a</text>
+  <text class="small" x="72" y="154">A</text>
+  <text class="small" x="85" y="340">A[ε(t)-ε(t-a)]：0 到 a 之间接入，a 后撤去</text>
+
+  <rect class="panel" x="525" y="35" width="440" height="340"/>
+  <text class="title" x="550" y="72">冲激的作用：面积改变状态</text>
+  <line class="thin" marker-end="url(#arrow)" x1="565" y1="270" x2="910" y2="270"/>
+  <line class="thin" marker-end="url(#arrow)" x1="610" y1="300" x2="610" y2="105"/>
+  <path class="curve" d="M595 270 L610 115 L625 270"/>
+  <text class="small" x="585" y="98">δ(t)，面积为 1</text>
+  <line class="wire" x1="650" y1="185" x2="720" y2="185"/>
+  <line class="wire" x1="720" y1="150" x2="720" y2="220"/>
+  <line class="wire" x1="746" y1="150" x2="746" y2="220"/>
+  <line class="wire" x1="746" y1="185" x2="830" y2="185"/>
+  <text class="small" x="650" y="240">电容：ΔuC = (1/C)∫iC dt</text>
+  <path class="wire" d="M650 320 C658 290 682 290 690 320 C698 350 722 350 730 320"/>
+  <text class="small" x="760" y="326">电感：ΔiL = (1/L)∫uL dt</text>
+</svg>

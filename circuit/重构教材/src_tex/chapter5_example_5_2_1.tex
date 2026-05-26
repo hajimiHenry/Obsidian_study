@@ -1,0 +1,104 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+
+\begin{document}
+
+  % ==================== (a) 原电路 ====================
+  \begin{circuitikz}[semithick, scale=1.0, transform shape]
+    % 电源与开关并联支路
+    \draw (0,0) to[vsource, l_={\SI{12}{\volt}}] (0,3)
+          -- (1.0,3);
+          
+    % 8Ω与开关并联
+    \draw (1.0,3) -- (1.0,3.6) to[R, l={$8\text{ }\Omega$}] (3.0,3.6) -- (3.0,3);
+    \draw (1.0,3) -- (1.0,2.4) to[cspst, l_={$t=0$}] (3.0,2.4) -- (3.0,3);
+    
+    % 电感支路 (iL在上方，uL极性和uL(t)手动标在下方)
+    \draw (3.0,3) to[L, l={$L$}, i^>={$i_L(t)$}] (6.0,3);
+    \node[below] at (3.3,3) {$+$};
+    \node[below] at (5.7,3) {$-$};
+    \node[below] at (4.5,2.4) {$u_L(t)$};
+    
+    % 4Ω电阻支路 (4Ω标注在右侧以避让左侧，iR在右侧)
+    \draw (6.0,3) to[R, l^={$4\text{ }\Omega$}, i_>={$i_R(t)$}, *-*] (6.0,0);
+    
+    % 电容支路 (在引线上标注iC，电容左侧标大小C，右侧标uC极性，彻底避免重叠)
+    \draw (6.0,3) -- (8.5,3)
+          to[short, i^>={$i_C(t)$}] (8.5,2.2)
+          to[C] (8.5,0.8)
+          -- (8.5,0);
+    \node[left] at (8.3,1.5) {$C$};
+    \node[right] at (8.7,1.9) {$+$};
+    \node[right] at (8.7,1.1) {$-$};
+    \node[right] at (8.7,1.5) {$u_C(t)$};
+          
+    % 底部公共导线与接地
+    \draw (8.5,0) -- (0,0);
+    \draw (4.25,0) node[ground] {};
+    
+    \node[below] at (4.25,-0.5) {(a) 原电路};
+  \end{circuitikz}
+
+  % ==================== (b) t=0- 等效电路 ====================
+  \begin{circuitikz}[semithick, scale=1.0, transform shape]
+    % 电源与8Ω电阻 (开关断开，电感短路)
+    \draw (0,0) to[vsource, l_={\SI{12}{\volt}}] (0,3)
+          to[R, l={$8\text{ }\Omega$}] (3.0,3)
+          to[short, i^>={$i_L(0^-)$}, -*] (6.0,3);
+          
+    % 4Ω电阻支路 (标注在右侧)
+    \draw (6.0,3) to[R, l^={$4\text{ }\Omega$}, *-*] (6.0,0);
+    
+    % 电容开路 (极性及名称标注在右侧)
+    \draw (6.0,3) -- (8.5,3)
+          to[open] (8.5,0);
+    \node[right] at (8.7,2.2) {$+$};
+    \node[right] at (8.7,0.8) {$-$};
+    \node[right] at (8.7,1.5) {$u_C(0^-)$};
+          
+    % 底部公共导线与接地
+    \draw (8.5,0) -- (0,0);
+    \draw (4.25,0) node[ground] {};
+    
+    % 标出状态量结果 (移动至 x=3.6, y=1.1，避开两边元件)
+    \node[draw, align=left, text width=2.4cm, font=\small] at (3.6,1.1) {
+      $u_C(0^-) = \SI{4}{\volt}$ \\
+      $i_L(0^-) = \SI{1}{\ampere}$
+    };
+    
+    \node[below] at (4.25,-0.5) {(b) $t=0^-$ 稳态等效电路};
+  \end{circuitikz}
+
+  % ==================== (c) t=0+ 等效电路 ====================
+  \begin{circuitikz}[semithick, scale=1.0, transform shape]
+    % 开关闭合(8Ω短路)，电感代以1A电流源
+    \draw (0,0) to[vsource, l_={\SI{12}{\volt}}] (0,3)
+          -- (3.0,3)
+          to[isource, l={$i_L(0^+)=\SI{1}{\ampere}$}, -*] (6.0,3);
+    \node[below] at (3.3,3) {$+$};
+    \node[below] at (5.7,3) {$-$};
+    \node[below] at (5.2,2.4) {$u_L(0^+)$}; % 将此标号右移至 5.2 避开左侧文本框
+          
+    % 4Ω电阻支路 (标在右侧)
+    \draw (6.0,3) to[R, l^={$4\text{ }\Omega$}, i_>={$i_R(0^+)$}, *-*] (6.0,0);
+    
+    % 电容代以4V电压源 (使用l^使标注在右侧)
+    \draw (6.0,3) -- (8.5,3)
+          to[vsource, l^={$u_C(0^+)=\SI{4}{\volt}$}, i_>={$i_C(0^+)$}] (8.5,0);
+          
+    % 底部公共导线与接地
+    \draw (8.5,0) -- (0,0);
+    \draw (4.25,0) node[ground] {};
+    
+    % 标出状态量结果 (移动至 x=3.6, y=1.1，避开两边元件)
+    \node[draw, align=left, text width=2.4cm, font=\small] at (3.6,1.1) {
+      $i_R(0^+) = \SI{1}{\ampere}$ \\
+      $i_C(0^+) = \SI{0}{\ampere}$ \\
+      $u_L(0^+) = -\SI{8}{\volt}$
+    };
+    
+    \node[below] at (4.25,-0.5) {(c) $t=0^+$ 暂态等效电路};
+  \end{circuitikz}
+\end{document}

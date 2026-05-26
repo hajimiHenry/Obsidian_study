@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="500" viewBox="0 0 1000 500">
+<style>
+  @media (prefers-color-scheme: dark) {
+    svg {
+      filter: invert(1) hue-rotate(180deg) !important;
+    }
+  }
+</style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#111"/></marker>
+    <style>text{font-family:"Microsoft YaHei","SimSun",sans-serif;font-size:18px;fill:#111}.title{font-size:24px;font-weight:700}.small{font-size:15px}.wire,.axis{stroke:#111;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}.thin{stroke:#111;stroke-width:1.5;fill:none}.curve{stroke:#111;stroke-width:3;fill:none}.panel{fill:#fff;stroke:#111;stroke-width:1.8;rx:8}</style>
+  </defs>
+  
+  
+<rect class="panel" x="35" y="35" width="930" height="425"/>
+  <text class="title" x="60" y="72">例：已知电感电压波形，求 iL(t)、储能</text>
+  <line class="wire" x1="70" y1="145" x2="150" y2="145"/>
+  <path class="wire" d="M150 145 C160 110 190 110 200 145 C210 180 240 180 250 145"/>
+  <line class="wire" x1="250" y1="145" x2="330" y2="145"/>
+  <line class="thin" marker-end="url(#arrow)" x1="92" y1="108" x2="155" y2="108"/><text class="small" x="100" y="98">iL</text>
+  <text x="180" y="210">L=2H</text>
+  <text class="small" x="60" y="250">关键：iL=iL(0-)+(1/L)∫uL dt，所以电压面积决定电流增量。</text>
+  <text class="small" x="60" y="278">uL 为正时 iL 上升；uL 为负时 iL 下降；uL 为 0 时 iL 保持。</text>
+  <line class="axis" marker-end="url(#arrow)" x1="410" y1="210" x2="900" y2="210"/><line class="axis" marker-end="url(#arrow)" x1="430" y1="235" x2="430" y2="95"/>
+  <polyline class="curve" points="430,210 430,130 610,130 610,210 730,210 730,270 850,270 850,210"/>
+  <text x="410" y="88">uL</text><text x="895" y="235">t</text><text class="small" x="515" y="230">正面积</text><text class="small" x="742" y="292">负面积</text>
+  <line class="axis" marker-end="url(#arrow)" x1="410" y1="405" x2="900" y2="405"/><line class="axis" marker-end="url(#arrow)" x1="430" y1="430" x2="430" y2="320"/>
+  <polyline class="curve" points="430,405 610,330 730,330 850,380 900,380"/>
+  <text x="410" y="315">iL</text><text x="895" y="430">t</text><text class="small" x="520" y="356">斜率为正</text><text class="small" x="633" y="322">保持</text><text class="small" x="760" y="392">斜率为负</text>
+</svg>

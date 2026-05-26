@@ -1,0 +1,148 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+
+\begin{document}
+
+  % ==================== (a) 原电路 ====================
+  \begin{circuitikz}[semithick, scale=1.0, transform shape]
+    % 左侧位置1网络 (5V, 25k, 100k)
+    \draw (0,0) to[vsource, l={\SI{5}{\volt}}] (0,3)
+          to[R, l={$25\text{ k}\Omega$}] (2.5,3);
+    \draw (2.5,3) to[R, l_={$100\text{ k}\Omega$}, *-] (2.5,0);
+    
+    % 右侧位置2网络 (15V, 6k, 3k) (15V电源右移至9.5，避开中间)
+    \draw (9.5,0) to[vsource, l={\SI{15}{\volt}}] (9.5,3)
+          to[R, l_={$6\text{ k}\Omega$}] (8.0,3);
+    \draw (8.0,3) to[R, l_={$3\text{ k}\Omega$}, *-] (8.0,0);
+    
+    % 电容在中间下方 (极性及uC标在电容下方，避开上方开关与虚线)
+    \draw (4.0,1.5) to[C, l={$C=\SI{5}{\mu\text{F}}$}] (6.5,1.5);
+    \node[below] at (4.0,1.2) {$+$};
+    \node[below] at (6.5,1.2) {$-$};
+    \node[below] at (5.25,1.0) {$u_C(t)$};
+    
+    % 开关Sa (控制电容左端)
+    \node[circle, fill, inner sep=1.2pt] (Sa_in) at (4.0, 1.5) {};
+    \node[circle, fill, inner sep=1.2pt] (Sa_1) at (3.0, 2.2) {};
+    \node[above left] at (3.0,2.2) {1};
+    \node[circle, fill, inner sep=1.2pt] (Sa_2) at (3.0, 1.0) {};
+    \node[left] at (3.0,1.0) {2};
+    \draw[very thick] (Sa_in) -- (3.15,2.05); % 闸刀Sa指向1
+    
+    % 开关Sb (控制电容右端)
+    \node[circle, fill, inner sep=1.2pt] (Sb_in) at (6.5, 1.5) {};
+    \node[circle, fill, inner sep=1.2pt] (Sb_1) at (7.5, 2.2) {};
+    \node[above right] at (7.5,2.2) {1};
+    \node[circle, fill, inner sep=1.2pt] (Sb_2) at (7.5, 1.0) {};
+    \node[right] at (7.5,1.0) {2};
+    \draw[very thick] (Sb_in) -- (7.35,2.05); % 闸刀Sb指向1
+    
+    % Sa, Sb 之间的联动虚线 (标在上方闸口处，高度设为 2.35，彻底避开电容)
+    \draw[dashed, thin] (3.0, 2.3) -- (7.5, 2.3);
+    \node[above] at (5.25, 2.3) {$t=0$};
+    
+    % Sa引线
+    \draw (Sa_1) |- (2.5,3);
+    \draw (Sa_2) -| (8.0,3);
+    
+    % Sb引线 (1接地，2接5V电源)
+    \draw (Sb_1) |- (7.5,0);
+    \draw (Sb_2) -- (11.0,1.0)
+          to[vsource, l_={\SI{5}{\volt}}] (11.0,0);
+          
+    % 底部地线 (延长到11.0)
+    \draw (11.0,0) -- (0,0);
+    \draw (2.5,0) node[ground] {};
+    \draw (8.0,0) node[ground] {};
+    \draw (7.5,0) node[ground] {};
+    
+    \node[below] at (5.5,-0.5) {(a) 原电路};
+  \end{circuitikz}
+
+  % ==================== (b) t=0- 等效电路 ====================
+  \begin{circuitikz}[semithick, scale=1.0, transform shape]
+    % 仅画左侧网络，电容在 100kΩ 两端开路
+    \draw (0,0) to[vsource, l={\SI{5}{\volt}}] (0,3)
+          to[R, l={$25\text{ k}\Omega$}] (2.0,3)
+          to[R, l_={$100\text{ k}\Omega$}, *-] (2.0,0);
+          
+    % 开路端点用圆圈表示，不连线
+    \draw (2.0,3) -- (3.5,3);
+    \node[circle, fill=white, draw, inner sep=1.2pt] at (3.5,3) {};
+    \node[circle, fill=white, draw, inner sep=1.2pt] at (3.5,0) {};
+    \draw (3.5,0) -- (2.0,0);
+    
+    % 极性标在左侧，与右侧结果框彻底拉开距离
+    \node[left] at (3.3,2.2) {$+$};
+    \node[left] at (3.3,0.8) {$-$};
+    \node[left] at (3.3,1.5) {$u_C(0^-)$};
+    
+    \draw (2.0,0) node[ground] {};
+    
+    % 结果框 (右移至 6.2)
+    \node[draw, align=left, font=\small] at (6.2,1.5) {
+      $u_C(0^-) = \SI{4}{\volt}$
+    };
+    
+    \node[below] at (2.25,-0.5) {(b) $t=0^-$ 等效电路};
+  \end{circuitikz}
+
+  % ==================== (c) t->∞ 稳态等效电路 ====================
+  \begin{circuitikz}[semithick, scale=1.0, transform shape]
+    % 仅画右侧网络与5V电源，电容开路
+    \draw (0,0) to[vsource, l={\SI{15}{\volt}}] (0,3)
+          to[R, l={$6\text{ k}\Omega$}] (2.0,3)
+          to[R, l_={$3\text{ k}\Omega$}, *-] (2.0,0);
+          
+    % 5V电源 (使用l^将标注放右侧以避让开路)
+    \draw (5.5,0) to[vsource, l^={\SI{5}{\volt}}] (5.5,1.5)
+          -- (4.0,1.5);
+          
+    % 用分段绝对坐标画，确保中间 3.0 -> 4.0 绝无多余连线
+    \draw (2.0,3) -- (2.0,1.5) -- (3.0,1.5);
+    \node[circle, fill=white, draw, inner sep=1.2pt] at (3.0,1.5) {};
+    \node[circle, fill=white, draw, inner sep=1.2pt] at (4.0,1.5) {};
+    
+    \node[above] at (3.0,1.7) {$+$};
+    \node[above] at (4.0,1.7) {$-$};
+    \node[above] at (3.5,1.7) {$u_C(\infty)$};
+    
+    \draw (2.0,0) -- (0,0);
+    \draw (2.0,0) node[ground] {};
+    \draw (5.5,0) node[ground] {};
+    
+    % 结果框
+    \node[draw, align=left, font=\small] at (3.5,0.4) {
+      $u_C(\infty) = \SI{0}{\volt}$
+    };
+    
+    \node[below] at (2.75,-0.5) {(c) $t\to\infty$ 等效电路};
+  \end{circuitikz}
+
+  % ==================== (d) 求 Req 的去源电路 ====================
+  \begin{circuitikz}[semithick, scale=1.0, transform shape]
+    % 电容两端看进去 A, B
+    \node[circle, fill=white, draw, inner sep=1.2pt] (tA) at (0,1.5) {};
+    \node[left] at (tA) {A};
+    \node[circle, fill=white, draw, inner sep=1.2pt] (tB) at (3.5,1.5) {};
+    \node[right] at (tB) {B};
+    
+    % A端连 6k 和 3k 并联接地
+    \draw (tA) -- (1.0,1.5);
+    \draw (1.0,1.5) -- (1.0,2.5) to[R, l={$6\text{ k}\Omega$}] (2.2,2.5) -- (2.2,1.5);
+    \draw (1.0,1.5) -- (1.0,0.5) to[R, l_={$3\text{ k}\Omega$}] (2.2,0.5) -- (2.2,1.5);
+    \draw (2.2,1.5) node[ground] {};
+          
+    % B端直接接地
+    \draw (tB) -- (3.5,0.5) node[ground] {};
+    
+    % 结果框
+    \node[draw, align=left, font=\small] at (4.8,1.5) {
+      $R_{eq} = \SI{2}{\kilo\ohm}$
+    };
+    
+    \node[below] at (1.8,-0.5) {(d) 求 $R_{eq}$ 去源电路};
+  \end{circuitikz}
+\end{document}

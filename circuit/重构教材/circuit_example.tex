@@ -1,0 +1,27 @@
+\documentclass[border=2mm]{standalone}
+\usepackage[european, straightvoltages]{circuitikz}
+\usepackage{amsmath}
+\standaloneenv{circuitikz} % 显式声明让 standalone 裁剪 circuitikz 环境
+
+\begin{document}
+\begin{circuitikz}[american voltages, american currents]
+  % 1. 绘制左半回路：8V 电压源与电阻 (宽度 4, 高度 4)
+  \draw (0,0) to[V, l_=$8\text{V}$, invert] (0,4)
+        to[R, l=$1.5\,\Omega$] (4,4);
+  \draw (0,0) to[R, l=$2.5\,\Omega$] (4,0);
+  
+  % 2. 绘制中间支路：受控电压源与 2欧姆电阻 (拉伸高度至 4，受控源占上半，电阻占下半)
+  \draw (4,4) to[controlled voltage source, l=$3U$] (4,2)
+        to[R, l=$2\,\Omega$, v=$U$, i=$I$] (4,0);
+        
+  % 3. 绘制右半回路：1A 电流源 (宽度从 4 到 8)
+  \draw (4,0) -- (8,0) 
+        to[I, l=$1\text{A}$] (8,4) 
+        -- (4,4);
+  
+  % 4. 绘制回路 1 的顺时针旋转指示 (中心移至 2, 2，半径扩大至 0.5)
+  \node at (2, 2) {1};
+  \draw[->, >=latex] (2, 2) +(135:0.5) arc (135:-180:0.5);
+  
+\end{circuitikz}
+\end{document}

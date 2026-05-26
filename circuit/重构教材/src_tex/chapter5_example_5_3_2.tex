@@ -1,0 +1,37 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+
+\begin{document}
+\begin{circuitikz}[semithick, scale=1.0, transform shape]
+
+  % 1A电流源
+  \draw (0,0) to[isource, l={\SI{1}{\ampere}}] (0,3)
+        -- (2.0,3);
+        
+  % 第一支路：6Ω电阻 (使用node手动精准标在左侧)
+  \draw (2.0,3) to[R, *-*] (2.0,0);
+  \node[left] at (1.5,1.5) {$6\text{ }\Omega$};
+  
+  % 第二支路：开关S(t=0闭合) 与 6Ω电阻串联 (手动控制左侧文字定位，右侧电流定位)
+  \draw (2.0,3) -- (4.5,3)
+        to[cspst] (4.5,1.8)
+        to[R, i_>={$i(t)$}] (4.5,0);
+  \node[left] at (4.0,2.4) {$t=0$};
+  \node[left] at (4.0,0.9) {$6\text{ }\Omega$};
+        
+  % 第三支路：电容C=1F (手动控制左侧容量定位，右侧电压定位)
+  \draw (4.5,3) -- (7.0,3)
+        to[C] (7.0,0);
+  \node[left] at (6.3,1.5) {$C = \SI{1}{\farad}$}; % x移至 6.3 彻底消除与电容极板的碰撞
+  \node[right] at (7.2,1.9) {$+$};
+  \node[right] at (7.2,1.1) {$-$};
+  \node[right] at (7.2,1.5) {$u_C(t)$};
+        
+  % 底部公共导线与接地
+  \draw (7.0,0) -- (0,0);
+  \draw (3.25,0) node[ground] {};
+
+\end{circuitikz}
+\end{document}

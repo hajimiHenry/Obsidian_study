@@ -4,6 +4,7 @@ settings.render = 0;
 settings.tex="xelatex";
 size(700);
 import three;
+texpreamble("\usepackage{ctex}");
 
 currentprojection = perspective(4.9,-5.3,3.6);
 
@@ -48,9 +49,17 @@ draw(M-0.55*tau--M+0.72*tau, red+2.0, arrow=Arrow3());
 draw(M--M+0.42*n1, gray(0.25)+1.3, arrow=Arrow3());
 draw(M--M+0.44*n2, deepblue+1.3, arrow=Arrow3());
 
-dot(M, linewidth(6));
-label("$M$", M+(0.07,0.05,0.04), E, fontsize(17));
-label("$\mathbf n_1$", M+0.43*n1+(0.02,0.00,0.03), E, fontsize(16));
-label("$\mathbf n_2$", M+0.44*n2+(0.02,0.03,0.03), NE, deepblue+fontsize(16));
-label("$\mathbf t=\mathbf n_1\times\mathbf n_2$", M+0.72*tau+(0.02,0.03,0.03), NE, red+fontsize(16));
-label("交线", C(3.85)+(0.02,-0.02,0.04), S, red+fontsize(16));
+dot(M, linewidth(5.5));
+label("$M$", M+(0.06,0.04,0.03), E, fontsize(16));
+label("$\mathbf n_1$", M+0.43*n1+(0.01,-0.02,0.02), N, fontsize(15));
+label("$\mathbf n_2$", M+0.44*n2+(0.02,0.02,0.02), NE, deepblue+fontsize(15));
+label("$\mathbf t=\mathbf n_1\times\mathbf n_2$", M+0.72*tau+(0.02,0.02,0.02), NE, red+fontsize(15));
+label("交线", C(3.85)+(0.02,-0.02,0.04), S, red+fontsize(15));
+
+// 绘制直角符号表示垂直关系
+real s_ang = 0.08;
+// t 和 n1 垂直
+draw((M + s_ang*n1) -- (M + s_ang*n1 + s_ang*tau) -- (M + s_ang*tau), gray(0.4)+0.6);
+// t 和 n2 垂直
+draw((M + s_ang*n2) -- (M + s_ang*n2 + s_ang*tau) -- (M + s_ang*tau), gray(0.4)+0.6);
+

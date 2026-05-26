@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="430" viewBox="0 0 720 430">
+  <defs>
+    <style>
+      .label { font-family: 'Microsoft YaHei', 'Segoe UI', Arial, sans-serif; font-size: 20px; fill: #222; }
+      .small { font-family: 'Microsoft YaHei', 'Segoe UI', Arial, sans-serif; font-size: 17px; fill: #333; }
+      .math { font-family: 'Times New Roman', 'Cambria Math', serif; font-size: 22px; fill: #222; font-style: italic; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#444" />
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="720" height="430" fill="white"/>
+
+  <!-- set D -->
+  <circle cx="290" cy="215" r="115" fill="#cfe8ff" stroke="#2f80ed" stroke-width="4"/>
+  <text x="260" y="220" class="math">D</text>
+  <text x="196" y="90" class="small" fill="#2f80ed">蓝色区域：集合 D</text>
+
+  <!-- boundary point P and neighborhood -->
+  <circle cx="405" cy="215" r="62" fill="none" stroke="#e74c3c" stroke-width="3" stroke-dasharray="9 7"/>
+  <circle cx="405" cy="215" r="6.5" fill="#e74c3c" stroke="white" stroke-width="2"/>
+  <text x="417" y="207" class="math" fill="#e74c3c">P</text>
+  <text x="445" y="270" class="small" fill="#e74c3c">任意小邻域</text>
+  <text x="454" y="292" class="math" fill="#e74c3c">U(P, ε)</text>
+
+  <!-- sample points in neighborhood -->
+  <circle cx="374" cy="215" r="5" fill="#1f77b4"/>
+  <text x="333" y="250" class="small" fill="#1f77b4">D 中的点</text>
+  <line x1="350" y1="243" x2="371" y2="220" stroke="#1f77b4" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <circle cx="438" cy="215" r="5" fill="#8e44ad"/>
+  <text x="455" y="190" class="small" fill="#8e44ad">不属于 D 的点</text>
+  <line x1="455" y1="194" x2="441" y2="211" stroke="#8e44ad" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- boundary label -->
+  <path d="M 363 135 C 390 155, 405 183, 405 215" fill="none" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="398" y="120" class="small">边界 ∂D</text>
+
+  <!-- explanatory strip -->
+  <rect x="60" y="340" width="600" height="55" rx="12" fill="#f7f7f7" stroke="#ddd"/>
+  <text x="83" y="374" class="label">P 是边界点：再小的红色圆圈里，都同时碰到 D 内和 D 外。</text>
+</svg>

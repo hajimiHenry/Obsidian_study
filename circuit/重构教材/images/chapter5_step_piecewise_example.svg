@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="520" viewBox="0 0 1080 520">
+<style>
+  @media (prefers-color-scheme: dark) {
+    svg {
+      filter: invert(1) hue-rotate(180deg) !important;
+    }
+  }
+</style>
+
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#111"/></marker><style>text{font-family:"Microsoft YaHei","SimSun",sans-serif;font-size:18px;fill:#111}.title{font-size:24px;font-weight:700}.small{font-size:15px}.wire,.axis{stroke:#111;stroke-width:2.7;fill:none;stroke-linecap:round;stroke-linejoin:round}.thin{stroke:#111;stroke-width:1.4;fill:none}.curve{stroke:#111;stroke-width:3;fill:none}.panel{fill:#fff;stroke:#111;stroke-width:1.8;rx:8}</style></defs>
+  
+  
+<rect class="panel" x="35" y="35" width="1010" height="420"/>
+  <text class="title" x="60" y="72">分段阶跃例题：每个区间重新取初值</text>
+  <line class="axis" marker-end="url(#arrow)" x1="90" y1="235" x2="430" y2="235"/><line class="axis" marker-end="url(#arrow)" x1="120" y1="260" x2="120" y2="120"/>
+  <polyline class="curve" points="100,235 160,235 160,150 310,150 310,235 410,235"/>
+  <text class="small" x="80" y="150">10V</text><text class="small" x="153" y="258">0</text><text class="small" x="303" y="258">2s</text><text class="small" x="178" y="115">us(t)=10[ε(t)-ε(t-2)]</text>
+  <line class="wire" x1="95" y1="390" x2="380" y2="390"/><line class="wire" x1="95" y1="300" x2="95" y2="390"/><circle cx="95" cy="345" r="24" stroke="#111" stroke-width="2" fill="none"/><text class="small" x="85" y="352">us</text>
+  <line class="wire" x1="95" y1="300" x2="170" y2="300"/><polyline class="wire" points="170,300 182,280 196,320 210,280 224,320 238,280 250,300"/>
+  <line class="wire" x1="250" y1="300" x2="380" y2="300"/><line class="wire" x1="380" y1="300" x2="380" y2="390"/><line class="wire" x1="352" y1="325" x2="352" y2="375"/><line class="wire" x1="380" y1="325" x2="380" y2="375"/>
+  <text class="small" x="160" y="270">R=1Ω</text><text class="small" x="335" y="415">C=1F</text>
+  <text class="small" x="500" y="140">0≤t&lt;2：uC(t)=10(1-e^(-t))</text>
+  <text class="small" x="500" y="180">t=2-：uC(2-)=10(1-e^-2)</text>
+  <text class="small" x="500" y="220">t≥2：电源变 0，电容从 uC(2-) 开始放电</text>
+  <text class="small" x="500" y="260">uC(t)=10(1-e^-2)e^(-(t-2))</text>
+  <line class="axis" marker-end="url(#arrow)" x1="560" y1="395" x2="960" y2="395"/><line class="axis" marker-end="url(#arrow)" x1="580" y1="415" x2="580" y2="300"/>
+  <path class="curve" d="M580 395 C650 340 710 315 760 310 C810 340 880 380 950 392"/>
+  <line class="thin" x1="760" y1="395" x2="760" y2="310"/><text class="small" x="750" y="418">2s</text><text class="small" x="620" y="295">先充电</text><text class="small" x="825" y="342">后放电</text>
+</svg>
