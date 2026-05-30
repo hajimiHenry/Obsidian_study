@@ -5,93 +5,106 @@ settings.tex="xelatex";
 size(700);
 import three;
 
-currentprojection = perspective(4.4,-5.2,3.2);
+currentprojection = perspective(8, 3, 3.5);
 
-triple Sph(real r, real ph, real th) {
-  return (r*sin(ph)*cos(th), r*sin(ph)*sin(th), r*cos(ph));
+// Axes
+draw(O--4.2X, arrow=Arrow3(), L=Label("$x$", position=EndPoint));
+draw(O--4.2Y, arrow=Arrow3(), L=Label("$y$", position=EndPoint));
+draw(O--4.2Z, arrow=Arrow3(), L=Label("$z$", position=EndPoint));
+label("$O$", O, SW);
+
+real R = 3;
+real dr = 0.8;
+real theta1 = 55;
+real dtheta = 20;
+real phi1 = 30;
+real dphi = 20;
+
+real theta2 = theta1 + dtheta;
+real phi2 = phi1 + dphi;
+
+triple P(real r, real ph, real th) {
+    return (r*Sin(ph)*Cos(th), r*Sin(ph)*Sin(th), r*Cos(ph));
 }
 
-real r1 = 1.35;
-real r2 = 1.78;
-real p1 = 0.62;
-real p2 = 0.90;
-real t1 = 0.48;
-real t2 = 0.82;
+triple P111 = P(R, phi1, theta1);
+triple P211 = P(R+dr, phi1, theta1);
+triple P121 = P(R, phi2, theta1);
+triple P221 = P(R+dr, phi2, theta1);
+triple P112 = P(R, phi1, theta2);
+triple P212 = P(R+dr, phi1, theta2);
+triple P122 = P(R, phi2, theta2);
+triple P222 = P(R+dr, phi2, theta2);
 
-draw((-0.35,0,0)--(1.95,0,0), black+0.85, arrow=Arrow3());
-draw((0,-0.35,0)--(0,1.75,0), black+0.85, arrow=Arrow3());
-draw((0,0,0)--(0,0,1.95), black+0.85, arrow=Arrow3());
-label("$x$", (1.82,-0.05,0), S, fontsize(16));
-label("$y$", (0.06,1.62,0), E, fontsize(16));
-label("$z$", (0.10,-0.08,1.78), E, fontsize(16));
+path3 edge_dr1 = P111--P211;
+path3 edge_dr2 = P121--P221;
+path3 edge_dr3 = P112--P212;
+path3 edge_dr4 = P122--P222;
 
-guide3 patch;
-for(int i=0; i<=24; ++i) {
-  real th = t1 + (t2-t1)*i/24;
-  patch = (i==0) ? Sph(r2,p1,th) : patch--Sph(r2,p1,th);
-}
-for(int i=0; i<=24; ++i) {
-  real ph = p1 + (p2-p1)*i/24;
-  patch = patch--Sph(r2,ph,t2);
-}
-for(int i=24; i>=0; --i) {
-  real th = t1 + (t2-t1)*i/24;
-  patch = patch--Sph(r2,p2,th);
-}
-for(int i=24; i>=0; --i) {
-  real ph = p1 + (p2-p1)*i/24;
-  patch = patch--Sph(r2,ph,t1);
-}
-path3 outer = patch--cycle;
-draw(surface(outer), rgb(1.0,0.84,0.46)+opacity(0.56));
-draw(outer, rgb(0.84,0.45,0.02)+1.15);
+path3 edge_dphi1 = arc(O, P111, P121, cross(P111, P121));
+path3 edge_dphi2 = arc(O, P211, P221, cross(P211, P221));
+path3 edge_dphi3 = arc(O, P112, P122, cross(P112, P122));
+path3 edge_dphi4 = arc(O, P212, P222, cross(P212, P222));
 
-for(int i=0; i<2; ++i) {
-  real ph = (i==0) ? p1 : p2;
-  for(int j=0; j<2; ++j) {
-    real th = (j==0) ? t1 : t2;
-    draw(Sph(r1,ph,th)--Sph(r2,ph,th), rgb(0.84,0.45,0.02)+1.0);
-  }
-}
+triple C1 = (0, 0, R*Cos(phi1));
+triple C2 = (0, 0, (R+dr)*Cos(phi1));
+triple C3 = (0, 0, R*Cos(phi2));
+triple C4 = (0, 0, (R+dr)*Cos(phi2));
 
-for(int i=0; i<2; ++i) {
-  real ph = (i==0) ? p1 : p2;
-  guide3 g;
-  for(int k=0; k<=24; ++k) {
-    real th = t1 + (t2-t1)*k/24;
-    g = (k==0) ? Sph(r1,ph,th) : g--Sph(r1,ph,th);
-  }
-  draw(g, gray(0.45)+0.7);
-}
-for(int j=0; j<2; ++j) {
-  real th = (j==0) ? t1 : t2;
-  guide3 g;
-  for(int k=0; k<=24; ++k) {
-    real ph = p1 + (p2-p1)*k/24;
-    g = (k==0) ? Sph(r1,ph,th) : g--Sph(r1,ph,th);
-  }
-  draw(g, gray(0.45)+0.7);
-}
+path3 edge_dtheta1 = arc(C1, P111, P112, Z);
+path3 edge_dtheta2 = arc(C2, P211, P212, Z);
+path3 edge_dtheta3 = arc(C3, P121, P122, Z);
+path3 edge_dtheta4 = arc(C4, P221, P222, Z);
 
-draw((0,0,0)--Sph(r2,0.76,0.64), deepblue+1.2, arrow=Arrow3());
-draw(Sph(r1,p2,t2)--Sph(r2,p2,t2), heavyred+1.4, arrow=Arrow3());
+// Draw outlines
+draw(edge_dr1, red+2.0);
+draw(edge_dr2, black+0.8);
+draw(edge_dr3, black+0.8);
+draw(edge_dr4, black+0.8);
 
-guide3 pharc;
-for(int i=0; i<=36; ++i) {
-  real ph = p1 + (p2-p1)*i/36;
-  pharc = (i==0) ? Sph(r2,ph,t2) : pharc--Sph(r2,ph,t2);
-}
-draw(pharc, heavyred+1.4);
+draw(edge_dphi1, blue+2.0);
+draw(edge_dphi2, black+0.8);
+draw(edge_dphi3, black+0.8);
+draw(edge_dphi4, black+0.8);
 
-guide3 tharc;
-for(int i=0; i<=36; ++i) {
-  real th = t1 + (t2-t1)*i/36;
-  tharc = (i==0) ? Sph(r2,p2,th) : tharc--Sph(r2,p2,th);
-}
-draw(tharc, heavyred+1.4);
+draw(edge_dtheta1, darkgreen+2.0);
+draw(edge_dtheta2, black+0.8);
+draw(edge_dtheta3, black+0.8);
+draw(edge_dtheta4, black+0.8);
 
-label("$r$", 0.52*Sph(r2,0.76,0.64)+(0.05,0.02,0.04), N, fontsize(17));
-label("$dr$", Sph(1.58,p2,t2)+(0.04,0.06,0.04), NE, fontsize(16));
-label("$r\,d\varphi$", Sph(r2,0.77,t2)+(0.08,0.04,0.04), E, fontsize(16));
-label("$r\sin\varphi\,d\theta$", Sph(r2,p2,0.66)+(0.08,0.04,0.02), N, fontsize(16));
-label("$dV=r^2\sin\varphi\,dr\,d\varphi\,d\theta$", (0.58,1.17,1.62), N, fontsize(17));
+// Labels for the three edges
+label("$dr$", (P111+P211)/2, SE, red);
+
+triple mid_dphi1 = unit(P111+P121) * (R - 0.2);
+label("$r\,d\varphi$", mid_dphi1, NW, blue);
+
+triple mid_dtheta1 = C1 + unit(P111-C1 + P112-C1) * R * Sin(phi1);
+label("$r\sin\varphi\,d\theta$", mid_dtheta1, N, darkgreen);
+
+// Show the connection to origin
+draw(O--P111, dashed+black+0.6);
+draw(O--P121, dashed+black+0.6);
+draw(O--P112, dashed+black+0.6);
+
+// Angles at origin
+triple mid_dphi_angle = 1.0*unit(unit(P111)+unit(P121));
+path3 arc_dphi = arc(O, 1.0*unit(P111), 1.0*unit(P121), cross(P111, P121));
+draw(arc_dphi, black+0.8);
+label("$d\varphi$", mid_dphi_angle, W);
+
+// Horizontal plane angle dtheta
+triple Pxy111 = (P111.x, P111.y, 0);
+triple Pxy112 = (P112.x, P112.y, 0);
+draw(O--Pxy111, dashed+black+0.6);
+draw(O--Pxy112, dashed+black+0.6);
+draw(P111--Pxy111, dashed+black+0.6);
+draw(P112--Pxy112, dashed+black+0.6);
+
+triple mid_dtheta_angle = 1.8*unit(unit(Pxy111)+unit(Pxy112));
+path3 arc_dtheta = arc(O, 1.8*unit(Pxy111), 1.8*unit(Pxy112), Z);
+draw(arc_dtheta, black+0.8);
+label("$d\theta$", mid_dtheta_angle, E);
+
+// Draw radius on the horizontal plane
+draw(C1--P111, dashed+magenta+0.8);
+label("$r\sin\varphi$", (C1+P111)/2, S, magenta);

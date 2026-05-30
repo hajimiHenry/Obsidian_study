@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.7)  21 MAY 2026 20:43
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.7)  28 MAY 2026 19:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -98,7 +98,7 @@ LaTeX Font Info:    ... okay on input line 0.
 
 *\makeatother%
 
-*\fontsize{13.0487}{15.6585}\selectfont%
+*\fontsize{14.0525}{16.863}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -107,6 +107,76 @@ LaTeX Font Info:    ... okay on input line 0.
 *
 (Please type a command or say `\end')
 *\setbox\ASYbox=\hbox{$x$}
+LaTeX Font Info:    Calculating math sizes for size <14.0525> on input line 0.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.0525> on input line 0.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9.8367> on input line 0.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7.02625> on input line 0.
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(8.01242pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(6.2pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(0.0pt)dim
+
+*\fontsize{14.0525}{16.863}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$y$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(7.39159pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(6.2pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(2.79999pt)dim
+
+*\fontsize{14.0525}{16.863}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$z$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(7.19159pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(6.2pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(0.0pt)dim
+
+*\fontsize{13.0487}{15.6585}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$O$}
 LaTeX Font Info:    Calculating math sizes for size <13.0487> on input line 0.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <13.0487> not available
@@ -142,10 +212,10 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(6.67703pt)dim
+>dim(9.30602pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(5.16667pt)dim
+>dim(8.2pt)dim
 
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(0.0pt)dim
@@ -158,102 +228,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$y$}
-
-*
-(Please type a command or say `\end')
-*\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(6.15965pt)dim
-
-*\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(5.16667pt)dim
-
-*\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(2.33331pt)dim
-
-*\fontsize{13.0487}{15.6585}\selectfont%
-
-*
-(Please type a command or say `\end')
-*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
-
-*
-(Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$z$}
-
-*
-(Please type a command or say `\end')
-*\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(5.993pt)dim
-
-*\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(5.16667pt)dim
-
-*\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(0.0pt)dim
-
-*\fontsize{14.0525}{16.863}\selectfont%
-
-*
-(Please type a command or say `\end')
-*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
-
-*
-(Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$\Sigma$ (线框曲面)}
-LaTeX Font Info:    Calculating math sizes for size <14.0525> on input line 0.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.0525> on input line 0.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9.8367> on input line 0.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7.02625> on input line 0.
-Missing character: There is no 线 (U+7EBF) in font [lmroman12-regular]:mapping=tex-text;!
-Missing character: There is no 框 (U+6846) in font [lmroman12-regular]:mapping=tex-text;!
-Missing character: There is no 曲 (U+66F2) in font [lmroman12-regular]:mapping=tex-text;!
-Missing character: There is no 面 (U+9762) in font [lmroman12-regular]:mapping=tex-text;!
-
-*
-(Please type a command or say `\end')
-*\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(41.21114pt)dim
-
-*\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(10.53938pt)dim
-
-*\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(3.52716pt)dim
-
-*\fontsize{14.0525}{16.863}\selectfont%
-
-*
-(Please type a command or say `\end')
-*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
-
-*
-(Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$\Gamma$}
-
-*
-(Please type a command or say `\end')
-*\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(8.8099pt)dim
-
-*\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(9.84pt)dim
-
-*\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(0.0pt)dim
-
-*\fontsize{13.0487}{15.6585}\selectfont%
-
-*
-(Please type a command or say `\end')
-*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
-
-*
-(Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$\mathbf{n}$}
+*\setbox\ASYbox=\hbox{$\mathbf{n}_1 = \mathbf{i}$}
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <13.0487> not available
 (Font)              size <12> substituted on input line 0.
@@ -266,133 +241,139 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <6.52435> not available
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(7.5pt)dim
+>dim(32.18033pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(5.33331pt)dim
+>dim(8.33331pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(1.79999pt)dim
+
+*\fontsize{13.0487}{15.6585}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\mathbf{n}_2 = -\mathbf{i}$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(41.51369pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(8.33331pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(1.79999pt)dim
+
+*\fontsize{13.0487}{15.6585}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\mathbf{n}_3 = \mathbf{j}$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(32.55533pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(8.33331pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(2.33331pt)dim
+
+*\fontsize{13.0487}{15.6585}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\mathbf{n}_4 = -\mathbf{j}$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(41.88869pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(8.33331pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(2.33331pt)dim
+
+*\fontsize{13.0487}{15.6585}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\mathbf{n}_5 = \mathbf{k}$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(35.55533pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(8.33331pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(1.79999pt)dim
+
+*\fontsize{13.0487}{15.6585}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\mathbf{n}_6 = -\mathbf{k}$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(44.88869pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(8.33331pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(1.79999pt)dim
+
+*\fontsize{14.0525}{16.863}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\mathbf{F} = x^2\mathbf{i}$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(47.16216pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(11.67007pt)dim
 
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(0.0pt)dim
-
-*\fontsize{11.0412}{13.2495}\selectfont%
-
-*
-(Please type a command or say `\end')
-*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
-
-*
-(Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$\nabla\times\mathbf{F}$}
-LaTeX Font Info:    Calculating math sizes for size <11.0412> on input line 0.
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5206> not available
-(Font)              size <6> substituted on input line 0.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.5206> not available
-(Font)              size <6> substituted on input line 0.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5206> not available
-(Font)              size <6> substituted on input line 0.
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <11.0412> on input line 0.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7.72879> on input line 0.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5.5206> on input line 0.
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5206> not available
-(Font)              size <6> substituted on input line 0.
-
-
-*
-(Please type a command or say `\end')
-*\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(30.43178pt)dim
-
-*\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(7.51291pt)dim
-
-*\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(0.9125pt)dim
-
-*\fontsize{15.0562}{18.0675}\selectfont%
-
-*
-(Please type a command or say `\end')
-*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
-
-*
-(Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$\int_\Gamma \mathbf{F}\cdot d\mathbf{r} = \int_\Sigma (\nabla\times\mathbf{F})\cdot\mathbf{n}\,dS$}
-LaTeX Font Info:    Calculating math sizes for size <15.0562> on input line 0.
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <15.0562> not available
-(Font)              size <14.4> substituted on input line 0.
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <10.53929> not available
-(Font)              size <10.95> substituted on input line 0.
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.52809> not available
-(Font)              size <8> substituted on input line 0.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <15.0562> not available
-(Font)              size <14.4> substituted on input line 0.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <10.53929> not available
-(Font)              size <10.95> substituted on input line 0.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <7.52809> not available
-(Font)              size <8> substituted on input line 0.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <15.0562> not available
-(Font)              size <14.4> substituted on input line 0.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <10.53929> not available
-(Font)              size <10.95> substituted on input line 0.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.52809> not available
-(Font)              size <8> substituted on input line 0.
-
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <15.0562> on input line 0.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.53929> on input line 0.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7.52809> on input line 0.
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <15.0562> not available
-(Font)              size <14.4> substituted on input line 0.
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <10.53929> not available
-(Font)              size <10.95> substituted on input line 0.
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <7.52809> not available
-(Font)              size <8> substituted on input line 0.
-
-
-*
-(Please type a command or say `\end')
-*\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(170.4756pt)dim
-
-*\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(10.79999pt)dim
-
-*\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(3.59999pt)dim
 
 *\fontsize{12.045}{14.454}\selectfont%
 
@@ -402,7 +383,7 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <7.52809> not available
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{Right-hand rule for $\Gamma$ and $\mathbf{n}$}
+*\setbox\ASYbox=\hbox{$\mathbf{F}\cdot\mathbf{n}_1 = a^2$}
 LaTeX Font Info:    Calculating math sizes for size <12.045> on input line 0.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <8.43146> not available
@@ -430,15 +411,78 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.43146> not available
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(145.39732pt)dim
+>dim(56.12617pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(8.47968pt)dim
+>dim(9.51027pt)dim
 
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(2.46921pt)dim
+>dim(1.79999pt)dim
 
-*\fontsize{13.0487}{15.6585}\selectfont%
+*\fontsize{12.045}{14.454}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\mathbf{F}\cdot\mathbf{n}_2 = 0$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(51.08307pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(8.23334pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(1.79999pt)dim
+
+*\fontsize{12.045}{14.454}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\mathbf{F}\cdot\mathbf{n}_3 = 0$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(51.08307pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(8.23334pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(1.79999pt)dim
+
+*\fontsize{12.045}{14.454}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\mathbf{F}\cdot\mathbf{n}_5 = 0$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(51.08307pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(8.23334pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(1.79999pt)dim
+
+*\fontsize{14.0525}{16.863}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -451,15 +495,15 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.43146> not available
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(6.67703pt)dim
+>dim(8.01242pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(5.16667pt)dim
+>dim(6.2pt)dim
 
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(0.0pt)dim
 
-*\fontsize{13.0487}{15.6585}\selectfont%
+*\fontsize{14.0525}{16.863}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -472,15 +516,15 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.43146> not available
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(6.15965pt)dim
+>dim(7.39159pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(5.16667pt)dim
+>dim(6.2pt)dim
 
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(2.33331pt)dim
+>dim(2.79999pt)dim
 
-*\fontsize{13.0487}{15.6585}\selectfont%
+*\fontsize{14.0525}{16.863}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -493,15 +537,15 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.43146> not available
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(5.993pt)dim
+>dim(7.19159pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(5.16667pt)dim
+>dim(6.2pt)dim
 
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(0.0pt)dim
 
-*\fontsize{14.0525}{16.863}\selectfont%
+*\fontsize{13.0487}{15.6585}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -509,24 +553,20 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.43146> not available
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$\Sigma$ (线框曲面)}
-Missing character: There is no 线 (U+7EBF) in font [lmroman12-regular]:mapping=tex-text;!
-Missing character: There is no 框 (U+6846) in font [lmroman12-regular]:mapping=tex-text;!
-Missing character: There is no 曲 (U+66F2) in font [lmroman12-regular]:mapping=tex-text;!
-Missing character: There is no 面 (U+9762) in font [lmroman12-regular]:mapping=tex-text;!
+*\setbox\ASYbox=\hbox{$O$}
 
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(41.21114pt)dim
+>dim(9.30602pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(10.53938pt)dim
+>dim(8.2pt)dim
 
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(3.52716pt)dim
+>dim(0.0pt)dim
 
-*\fontsize{14.0525}{16.863}\selectfont%
+*\fontsize{13.0487}{15.6585}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -534,4 +574,50 @@ Missing character: There is no 面 (U+9762) in font [lmroman12-regular]:mapping=
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$\Ga
+*\setbox\ASYbox=\hbox{$\mathbf{n}_1 = \mathbf{i}$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(32.18033pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(8.33331pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(1.79999pt)dim
+
+*\fontsize{13.0487}{15.6585}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\mathbf{n}_2 = -\mathbf{i}$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(41.51369pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(8.33331pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(1.79999pt)dim
+
+*\fontsize{13.0487}{15.6585}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$\mathbf{n}_3 = \mathbf{j}$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write

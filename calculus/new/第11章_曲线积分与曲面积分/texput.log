@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.7)  27 MAY 2026 16:27
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.5.7)  28 MAY 2026 15:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -66,7 +66,8 @@ File: l3backend-xetex.def 2026-02-18 L3 backend support: XeTeX
 \g__graphics_track_int=\count279
 \g__pdfannot_backend_int=\count280
 \g__pdfannot_backend_link_int=\count281
-) (./texput.aux)
+)
+No file texput.aux.
 \openout1 = `texput.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 0.
@@ -98,7 +99,7 @@ LaTeX Font Info:    ... okay on input line 0.
 
 *\makeatother%
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{13.0487}{15.6585}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -107,12 +108,37 @@ LaTeX Font Info:    ... okay on input line 0.
 *
 (Please type a command or say `\end')
 *\setbox\ASYbox=\hbox{$x$}
+LaTeX Font Info:    Calculating math sizes for size <13.0487> on input line 0.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <13.0487> not available
+(Font)              size <12> substituted on input line 0.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.52435> not available
+(Font)              size <7> substituted on input line 0.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <13.0487> not available
+(Font)              size <12> substituted on input line 0.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <6.52435> not available
+(Font)              size <7> substituted on input line 0.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <13.0487> not available
+(Font)              size <12> substituted on input line 0.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.52435> not available
+(Font)              size <7> substituted on input line 0.
+
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 0.
+(Font)              <13.0487> on input line 0.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 0.
+(Font)              <9.13405> on input line 0.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 0.
+(Font)              <6.52435> on input line 0.
 
 *
 (Please type a command or say `\end')
@@ -125,7 +151,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(0.0pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{13.0487}{15.6585}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -146,7 +172,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(2.33331pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{13.0487}{15.6585}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -167,7 +193,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(0.0pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{14.0525}{16.863}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -175,20 +201,48 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$O$}
+*\setbox\ASYbox=\hbox{$\Sigma$}
+LaTeX Font Info:    Calculating math sizes for size <14.0525> on input line 0.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.0525> on input line 0.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9.8367> on input line 0.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7.02625> on input line 0.
 
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(9.30602pt)dim
+>dim(10.18321pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(9.84pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(0.0pt)dim
+
+*\fontsize{13.0487}{15.6585}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$D_{xy}$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(20.37721pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
 >dim(8.2pt)dim
 
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(0.0pt)dim
+>dim(3.54999pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{12.045}{14.454}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -196,12 +250,31 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$dr$}
+*\setbox\ASYbox=\hbox{$dS$}
+LaTeX Font Info:    Calculating math sizes for size <12.045> on input line 0.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <8.43146> not available
+(Font)              size <8> substituted on input line 0.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <8.43146> not available
+(Font)              size <8> substituted on input line 0.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <8.43146> not available
+(Font)              size <8> substituted on input line 0.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12.045> on input line 0.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8.43146> on input line 0.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6.02249> on input line 0.
 
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(11.72697pt)dim
+>dim(14.03043pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
 >dim(8.33331pt)dim
@@ -209,7 +282,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(0.0pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{12.045}{14.454}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -217,12 +290,12 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$r\,d\varphi$}
+*\setbox\ASYbox=\hbox{$dx\,dy$}
 
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(21.42406pt)dim
+>dim(27.04765pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
 >dim(8.33331pt)dim
@@ -230,7 +303,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(2.33331pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{13.0487}{15.6585}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -238,20 +311,28 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$r\sin\varphi\,d\theta$}
+*\setbox\ASYbox=\hbox{$\mathbf{n}$}
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <13.0487> not available
+(Font)              size <12> substituted on input line 0.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <6.52435> not available
+(Font)              size <7> substituted on input line 0.
+
 
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(45.65225pt)dim
+>dim(7.5pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(8.33331pt)dim
+>dim(5.33331pt)dim
 
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(2.33331pt)dim
+>dim(0.0pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{13.0487}{15.6585}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -259,33 +340,12 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$d\varphi$}
+*\setbox\ASYbox=\hbox{$\mathbf{k}$}
 
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(13.80261pt)dim
-
-*\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(8.33331pt)dim
-
-*\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(2.33331pt)dim
-
-*\fontsize{12}{14.4}\selectfont%
-
-*
-(Please type a command or say `\end')
-*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
-
-*
-(Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$d\theta$}
-
-*
-(Please type a command or say `\end')
-*\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(11.90752pt)dim
+>dim(7.125pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
 >dim(8.33331pt)dim
@@ -293,7 +353,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(0.0pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{11.0412}{13.2495}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -301,20 +361,64 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$r\sin\varphi$}
+*\setbox\ASYbox=\hbox{$\gamma$}
+LaTeX Font Info:    Calculating math sizes for size <11.0412> on input line 0.
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5206> not available
+(Font)              size <6> substituted on input line 0.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.5206> not available
+(Font)              size <6> substituted on input line 0.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5206> not available
+(Font)              size <6> substituted on input line 0.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <11.0412> on input line 0.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7.72879> on input line 0.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5.5206> on input line 0.
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5206> not available
+(Font)              size <6> substituted on input line 0.
+
 
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(31.74477pt)dim
+>dim(6.27747pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(7.96431pt)dim
+>dim(4.71457pt)dim
 
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(2.33331pt)dim
+>dim(2.12917pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{14.0525}{16.863}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$dS = \frac{dx\,dy}{\cos\gamma} = \sqrt{1+z_x^2+z_y^2}\,dx\,dy$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(192.3193pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(13.08885pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(6.91014pt)dim
+
+*\fontsize{13.0487}{15.6585}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -335,7 +439,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(0.0pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{13.0487}{15.6585}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -356,7 +460,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(2.33331pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{13.0487}{15.6585}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -377,7 +481,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(0.0pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{14.0525}{16.863}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -385,20 +489,41 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$O$}
+*\setbox\ASYbox=\hbox{$\Sigma$}
 
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(9.30602pt)dim
+>dim(10.18321pt)dim
+
+*\immediate\write16{>dim(\the\ht\ASYbox)dim}
+>dim(9.84pt)dim
+
+*\immediate\write16{>dim(\the\dp\ASYbox)dim}
+>dim(0.0pt)dim
+
+*\fontsize{13.0487}{15.6585}\selectfont%
+
+*
+(Please type a command or say `\end')
+*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
+
+*
+(Please type a command or say `\end')
+*\setbox\ASYbox=\hbox{$D_{xy}$}
+
+*
+(Please type a command or say `\end')
+*\immediate\write16{>dim(\the\wd\ASYbox)dim}
+>dim(20.37721pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
 >dim(8.2pt)dim
 
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(0.0pt)dim
+>dim(3.54999pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{12.045}{14.454}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -406,12 +531,16 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$dr$}
+*\setbox\ASYbox=\hbox{$dS$}
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.43146> not available
+(Font)              size <8> substituted on input line 0.
+
 
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(11.72697pt)dim
+>dim(14.03043pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
 >dim(8.33331pt)dim
@@ -419,7 +548,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(0.0pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{12.045}{14.454}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -427,12 +556,12 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$r\,d\varphi$}
+*\setbox\ASYbox=\hbox{$dx\,dy$}
 
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(21.42406pt)dim
+>dim(27.04765pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
 >dim(8.33331pt)dim
@@ -440,7 +569,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(2.33331pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{13.0487}{15.6585}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -448,20 +577,20 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$r\sin\varphi\,d\theta$}
+*\setbox\ASYbox=\hbox{$\mathbf{n}$}
 
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(45.65225pt)dim
+>dim(7.5pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(8.33331pt)dim
+>dim(5.33331pt)dim
 
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(2.33331pt)dim
+>dim(0.0pt)dim
 
-*\fontsize{12}{14.4}\selectfont%
+*\fontsize{13.0487}{15.6585}\selectfont%
 
 *
 (Please type a command or say `\end')
@@ -469,33 +598,12 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 *
 (Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$d\varphi$}
+*\setbox\ASYbox=\hbox{$\mathbf{k}$}
 
 *
 (Please type a command or say `\end')
 *\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(13.80261pt)dim
-
-*\immediate\write16{>dim(\the\ht\ASYbox)dim}
->dim(8.33331pt)dim
-
-*\immediate\write16{>dim(\the\dp\ASYbox)dim}
->dim(2.33331pt)dim
-
-*\fontsize{12}{14.4}\selectfont%
-
-*
-(Please type a command or say `\end')
-*\usefont{\ASYencoding}{\ASYfamily}{\ASYseries}{\ASYshape}%
-
-*
-(Please type a command or say `\end')
-*\setbox\ASYbox=\hbox{$d\theta$}
-
-*
-(Please type a command or say `\end')
-*\immediate\write16{>dim(\the\wd\ASYbox)dim}
->dim(11.90752pt)dim
+>dim(7.125pt)dim
 
 *\immediate\write16{>dim(\the\ht\ASYbox)dim}
 >dim(8.33331pt)dim
@@ -503,4 +611,4 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 *\immediate\write16{>dim(\the\dp\ASYbox)dim}
 >dim(0.0pt)dim
 
-*\fontsi
+*\fontsize{11.0412

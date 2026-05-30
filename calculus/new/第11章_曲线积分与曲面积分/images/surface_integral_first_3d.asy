@@ -83,4 +83,5 @@ draw(arc_gamma, black+1.0);
 label("$\gamma$", M + 0.45*unit(Z + n_vec), N, fontsize(11));
 
 // 标注投影关系公式
-label("$dS = \frac{dx\,dy}{\cos\gamma} = \sqrt{1+z_x^2+z_y^2}\,dx\,dy$", (1.5, 1.5, 3.8), N, fontsize(14));
+label("$dS = \frac{dx\,dy}{\cos\gamma} = \sqrt{1+z_x^2+z_y^2}\,dx\,dy$", (1.5, 1.5, 3.9), N, fontsize(13));
+label("$\sqrt{1+z_x^2+z_y^2} \ge 1$ 为面积伸缩因子", (1.5, 1.5, 3.5), N, fontsize(11));

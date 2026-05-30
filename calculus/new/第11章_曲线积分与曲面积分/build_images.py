@@ -15,7 +15,8 @@ def main():
         "surface_integral_first_3d",
         "surface_integral_second_3d",
         "gauss_divergence_3d",
-        "stokes_theorem_3d"
+        "stokes_theorem_3d",
+        "box_flux_normal_3d"
     ]
     
     print("开始编译 Asymptote 图片...")
