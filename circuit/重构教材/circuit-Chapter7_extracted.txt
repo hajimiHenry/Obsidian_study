@@ -1,0 +1,5325 @@
+ 
+
+      
+   
+
+7.1 
+   
+
+7.1.1 
+ Fcomplex numberreal partimaginary part 
+
+F  a  jb
+
+ 7.1-1
+
+ 7.1-1  j   1 imaginary unit i   i  j a 
+
+ F  Re[F ]  a b  F  Im[F ]  b  7.1-1 
+
+ 
+  b  7.1-1 
+ F 
+ F modulus F 
+  F argument F  a 2  b2    arctg b a
+ F 
+
+j
+
+F
+
+|F| 
+
+O
+
+a
+
+1
+
+ 7.1-1 
+
+- 161 -
+
+a  F cos  b  F sin 
+
+F 
+F  F Cos  j F Sin
+
+ 7.1-2
+
+ 7.1-2  e j  cos  j sin  
+
+
+
+F  F e j
+
+ 7.1-3
+
+ 7.1-3 
+
+F  F 
+
+ 7.1-4
+
+ 7.1-1 7.1-2 7.1-3  7.1-4     
+
+7.1.2 
+  1 
+ F1  a1  jb1  F1 1 F2  a2  jb2  F2 2  a1=a2b1=b2
+
+ F1  F2  1  2  F1  F2 
+2
+ F1  a1  jb1  F2  a2  jb2 
+
+F1  F2  (a1  jb1 )  (a2  jb2 )  (a1  a2 )  j(b1  b2 )
+
+ 7.1-2 
+
+F1·F2
+
+j
+
+j
+
+F1
+
+F2
+O
+
+F1F2
+F1
+F1F2
+1
+F2
+
+2
+
+F2
+
+F1/F2
+
+O 2
+
+1
+
+ 7.1-2 
+
+ 7.1-3 
+
+- 162 -
+
+3 
+ F1  a1  jb1  F1 1 F2  a2  jb2  F2 2 
+
+
+
+F1  F2  (a1  jb1 )(a2  jb2 )  (a1a2  b1b2 )  j(a1b2  a2b1 )
+
+
+
+F1  F2
+
+
+
+F1 e j1
+
+ F2 e j2
+
+
+
+F1
+
+
+
+F2 e e j1 j2
+
+
+
+F1
+
+
+
+F e j (1 2 ) 2
+
+
+
+F1  F2  F1 1  F2 2  F1  F2 (1  2 )
+
+ 
+
+ F1  2  F1  F2  F1  F2 
+
+ 7.1-3  
+
+F1 F2
+
+
+
+F1 1 F2 2
+
+
+
+F1 F2
+
+(1  2 )
+
+
+
+ F1 2  F1  F2 
+F1  F2  7.1-3 
+ e j 1  1  F
+
+
+F  e j  F e j  e j  F e j( )
+
+ F  e j  F   F 
+
+rotating factor e j900  e j900  e j1800 
+ 900 900  1800  
+e j900  j  e  j900   j  e j1800  1
+
+ j   j   1 F  j  F 
+
+ 900  F   j  900   1
+
+ F 1800 
+
+- 163 -
+
+ 7.1-1  F1  16  j9  F2  20135  F1  F2  F1 / F2 
+
+ F2 
+
+F2  20135  20(cos135  j sin135)  14.14  j14.14
+
+ F1  F2  16  j9  14.14  j14.14  1.86  j5.14
+
+
+
+F1  F2 
+
+1.862  5.142  5.47   arctg 5.14  70.1 1.86
+
+ F1  F2  5.4770.1
+
+ F1 
+
+
+
+F1 
+
+162  92  18.36   arctg( 9 )  29.36 16
+
+ F1  18.36  29.36
+
+
+
+F1 F2
+
+ 18.36  29.360 201350
+
+ 0.918  164.360
+
+
+
+F1  0.918 164.36  0.918[cos(164.36)  j sin(164.36)] F2  0.88  j0.25
+
+7.2 
+7.2.1 
+sinusoidal steady-state circuits u  i
+ t sinusoidal function
+
+i  Im sin(t  i )  u  Um sin(t  u )
+cosinoidal function
+i  Im cos(t  i )  u  Um cos(t  u )
+ 900 
+- 164 -
+
+ I m U m  amplitude  angular frequency rad/s (t  i )  (t  u )  i  u phase t  t  0 
+initial phase i i  u u 
+   2f  f frequencyHz
+period T S f  1/ T 
+""phase difference
+ u  iui 
+ui  (t  u )  (t  i )  u  i
+  t  constant phase
+ui  0  u lead i ui ui  0  u lag
+ i  ui  i  u  ui iu  0  u  i 
+in phase ui  1800  u  i opposite phase
+ui  900  u  i right-angle intersection
+  7.2-1 
+ 
+
+Um Im u
+
+u i
+
+i
+
+t
+
+ui
+
+ 7.2-1  effective value
+- 165 -
+
+i  I  I  i  0  T   R  I 
+
+1 T Ri 2dt  RI 2
+T0
+
+
+
+ I  1 T i 2dt
+T0
+
+ 7.2-1
+
+ i  Im sin(t  i )  7.2-1
+
+  I 
+
+1 T
+
+T 0
+
+I
+
+2 m
+
+Sin
+
+2
+
+(t
+
+ i )dt
+
+
+
+Im2 T
+
+T 1  Cos2(t  i ) dt  I m 
+
+0
+
+2
+
+2
+
+2 2
+
+Im
+
+ i  I  I m 
+
+2
+
+2
+
+I
+
+2 2
+
+Im
+
+ 7.2-2
+
+ I m  2I
+
+
+U  Um  2
+
+2 2
+
+U
+
+m
+
+ U m 
+
+2U
+
+
+
+i  
+
+2I sin(t  i )
+
+u  2U sin(t  u )
+
+
+
+
+
+ UI 
+
+
+
+ 7.2-1  u  220 2Sin(314t  450 ) V  i  20 2Sin(314t  300 ) A 
+
+ u  i  u  i 
+
+ uU m  220 2  311V  U=220V
+
+   314rad / s 
+
+f
+
+
+
+ 2
+
+
+
+314 2  3.14
+
+ 50Hz 
+
+ T  1  1  0.02S  f 50
+
+- 166 -
+
+ 314t  450  u  450 
+
+ i I m  20 2  28.28A  I=20A
+
+   314rad / s 
+
+f
+
+
+
+ 2
+
+
+
+314 2  3.14
+
+ 50Hz 
+
+ T  1  1  0.02S  f 50
+
+ 314t  300  i  300   u  i  u  i  450  (300 )  750  u 
+
+ i  750 
+
+ 7.2-2  110V  5A 100Hz
+  400   300     2f  2  3.14 100  628rad / s 
+ u  110 2Sin(628t  400 ) V   i  5 2Sin(628t  300 ) A 
+
+7.2.2 
+   
+ F  F e j(t ) 
+F  F e j(t)  F cos(t  )  j F sin(t  )
+ 2Ie j(ti ) 
+2Ie j(ti )  2I cos(t  i )  j 2I sin(t  i )
+ Im[ 2Ie j(ti ) ]  2I sin(t  i ) 
+
+i  2I sin(t  i )  Im[ 2Ie j(ti ) ]  Im[ 2e jt (Ie j )]  7.2-3
+- 167 -
+
+ 7.2-3  complex expotential function
+ I  i 
+
+   I i 
+
+ Ie ji 
+
+ i  2I sin(t  i ) 
+
+I  Ie ji  Ii
+
+ 7.2-4
+
+ 7.2-4 I  i i  i
+
+j 
+I
+I
+
+i
+
+O
+
+1
+
+ I phasor
+
+ 7.2-2 
+
+ i  I phasor transform I
+
+
+I 
+
+ I 
+
+phasor diagram I  7.2-2 
+
+ I  i  i  I 
+
+ I  i  7.2-3
+
+
+
+ u  2U sin(t  u )  U  Ue ju  Uu  7.2-5
+
+
+U 
+
+ 7.2-3  7.2-4 e jt 
+
+ e jt  t 
+  Ie jt  I   
+rotating phasor
+  
+
+- 168 -
+
+
+
+ 7.2-3  i  2Cos(314t  300 ) A  u  311Sin(314t  600 ) V 
+ i  u 
+ i  2Cos(314t  300 )  2Sin[900  (314t  300 )]  2Sin(314t  1200 )  i  I  11200 A 
+
+ u  U  220  600 V 
+
+ 7.2-4
+
+ 500Hz  I1
+
+ 100 2 3
+
+A
+
+I2  100 A 
+
+  2f  2  500  1000  3140 rad/s
+
+
+
+i1 
+
+2I1 sin(t  i1)  100
+
+2 sin(3140t  2 ) A 3
+
+i2  2I 2 sin(t  i2 )  10 2 sin(3140t) A
+
+7.2.3 
+
+
+
+1linearity
+
+
+
+
+
+ i1i2  I1  I 2 K1K2 
+
+ i  K1i1  K 2i2  I  K1I1  K 2 I2 
+
+
+ i  Ki1  I  KI1 
+
+ 2differentiation
+
+
+ i  I
+
+ y 
+
+di
+ y 
+
+dt
+
+
+
+
+
+Y  j I
+
+
+ j 
+
+
+- 169 -
+
+3integration
+
+  i  I  y  idt  y 
+
+
+
+
+Y
+
+
+
+I j
+
+ j 
+
+
+
+
+
+ 7.2-5
+
+               i1  10
+
+2 sin(314t   ) A  3
+
+ i2  22
+
+2 sin(314t  5 ) 6
+
+A
+
+1
+
+i1
+
+
+
+i2
+
+2
+
+di1 dt
+
+3
+
+i2dt 
+
+ i1i2 
+
+
+
+
+
+I1  10600  5  j8.66 A  I 2  22  1500  19.05  j11 A 
+
+1
+
+I  I1  I2  (5  j8.66)  (19.05  j11)  14.05  j2.34  14.24 170.54 A
+
+ i  i1  i2  14.24 2Sin(314t  170.54) A
+
+2 i1  j 
+
+j I1  j314 10600  3140(900  600 )  31401500
+
+ di1  3140 2Sin(314t  1500 ) dt
+
+
+
+
+
+3
+
+I2 j
+
+
+
+22 150 j314
+
+
+
+22 150 31490
+
+
+
+0.07  240
+
+
+
+0.07120
+
+  i2dt  0.07 2Sin(314t  1200 )
+
+
+- 170 -
+
+7.3 
+
+  
+
+7.3-1 
+   
+KCL  0
+b
+ ik (t)  0 
+k 1
+
+ ik (t)  k  t b 
+
+
+
+ ik (t) 
+
+
+ I k KCL
+
+
+b
+Ik 0
+k 0
+
+ 7.3-1
+
+ 7.3-1  
+KVL  0
+
+m
+ uk (t)  0 
+k 1
+
+ uk (t)  k m 
+
+uk (t) 
+
+
+U k KVL
+
+m
+U k  0
+k 0
+
+ 7.3-2
+
+- 171 -
+
+ 7.3-2  
+
+ 7.3-1  7.3-1 U s  1000 V  Is  80 A U1  10060 V 
+
+I2  890 A  I3  2  90 A  I1;U 2 
+ a KCL 
+I1  I2  I3  Is  890  2  90  80  j8  j2  8  8  j6  10143.13 A
+ KVL 
+U 2  U s  U1  1000  10060  100  50  j86.6  50  j86.6  100  60 V
+
+
+
+U s
+
+U1
+
+I1
+
+a
+
+I2  Is
+
+
+
+ 7.3-1  7.3-1 
+
+
+
+I3 U 2
+
+
+7.3-2 
+  
+
+  7.3-2a uR  iR 
+
+
+uR  RiR
+
+uR  iR U R  U R  u 
+
+
+UR  uR  u  uR  I R  I R  i IR  iR 
+
+ i  iR 
+
+U R  RIR
+
+ 7.3-3
+
+ 7.3-3  7.3-2b
+
+iR
+
+R
+
+
+
+uR(t)
+
+
+
+IR
+
+R
+
+
+
+U R
+
+
+
+a
+
+b
+
+ 7.3-2 
+- 172 -
+
+ 7.3-3 
+
+U Ru  R  I Ri
+
+
+
+UuR
+
+ RI  i
+
+R
+
+ 7.3-4
+
+ 7.3-4 
+
+
+
+
+
+ R uR  iR U R  I R  7.3-3a
+
+ uR  iR  7.3-3b
+
+j
+
+UR
+
+IR
+
+u =i
+
+O
+
+1
+
+uR iR
+t
+
+a
+
+b
+
+ 7.3-3 
+
+ iR  2I R Sin(t  i )  7.3-4  uR  2RI R Sin(t  i )
+
+
+
+ 7.3-4a uL  iL 
+
+
+uL
+
+
+
+L
+
+diL dt
+
+
+
+iL
+
+L
+
+uL
+
+ IL
+jL UL
+
+
+
+
+
+a
+
+b
+
+ 7.3-4 
+
+- 173 -
+
+
+ uL  iL    uL U L  U Lu  iL 
+
+
+I L  I Li 
+
+U L  jLIL
+
+ 7.3-5
+
+ 7.3-5  7.3-4b
+
+ 7.3-5 U Lu  jL  I Li  L  I L(i  900 )
+
+ X L  L inductive reactance L 
+
+H   rad/S 
+
+UL u
+
+ LI  i 
+
+L 90 0
+
+X
+
+L
+
+I
+
+L
+
+  
+
+ 7.3-6
+
+ 7.3-6  UL  IL   XL  900  7.3-5a
+
+ iL  2I L Sin(t  i )  7.3-6 
+
+uL  2 X L I L Sin(t  i  900 )  2 X L I LCos(t  i )
+
+ uL  iL  7.3-5b
+
+UL
+
+j
+
+IL
+
+uL iL
+
+i
+
+t
+
+O
+
+1
+
+900
+
+a
+
+b
+
+ 7.3-5 
+
+ X L  L  L    
+ 0 0
+
+ 7.3-6a uc  ic 
+
+- 174 -
+
+ ic
+
+
+
+C
+
+duc dt
+
+
+
+ic(t) 
+
+Ic
+
+
+
+C
+
+uc(t)
+
+
+
+1/jC Uc 
+
+a
+
+b
+
+ 7.3-6 
+
+            uc  2U c Sin(t  u )     
+
+ic 
+
+2Ic Sin(t
+
+ i ) U c
+
+ U cu
+
+
+ I c
+
+
+
+I ci 
+
+
+
+
+
+
+
+I c  jC U c
+
+
+
+
+Uc
+
+
+
+1 jC
+
+
+I
+
+c
+
+
+
+
+
+j
+
+1 C
+
+
+I
+
+c
+
+ 7.3-7
+
+ 7.3-7  7.3-6b
+
+U cu
+
+
+
+
+
+j
+
+1 C
+
+ I ci
+
+
+
+1 C
+
+I c(i
+
+ 900 )
+
+
+
+Xc
+
+
+
+1 C
+
+capacitive reactance C 
+
+F   rad/S  7.3-7 
+
+Uuc
+
+X  i
+
+cIc  900
+
+ 7.3-8
+
+ 7.3-8   900 900 7.3-7a
+
+ ic  2I c Sin(t  i )  7.3-8 
+
+uc  2 X c I c Sin(t  i  900 )   2 X c I cCos(t  i )
+
+ 7.3-7b
+
+ C
+
+
+
+Xc
+
+
+
+1 C
+
+
+
+
+
+
+
+- 175 -
+
+j UC
+
+ic
+
+uc
+
+IC
+
+U
+t
+
+O
+
+1
+
+900
+
+a
+
+b
+
+ 7.3-7 
+
+
+
+
+
+
+
+VCVS :
+
+
+U2
+
+
+
+
+
+
+U
+
+1
+
+ 
+
+
+
+
+
+VCCS : I 2  g U 1 
+
+CCVS :
+
+
+
+
+
+U 2   I1
+
+  
+
+CCCS :
+
+
+
+
+
+I2  I1
+
+ 
+
+ 7.3-9
+
+ 7.3-9
+
+7.3-3 
+ RLC  
+RLC  
+ RLC  
+ 7.3-8(a) RLC 
+
+us  2U s Sin(t  u ) U s  U su 
+
+ us 
+
+ 7.3-8(b)
+
+ 7.3-8(b) X L
+
+ L  X C
+
+
+
+1 C
+
+ KVL 
+
+
+
+- 176 -
+
+ uR 
+
+ UR 
+
+i
+
+R
+
+
+
+I
+
+R
+
+
+
+I
+
+
+us
+
+L uL  Us
+
+
+
+jXL UL Us
+
+Z
+
+
+
+
+
+
+
+C
+
+
+
+jXc
+
+
+
+ uc 
+
+ Uc 
+
+(c)
+
+(a)
+
+(b)
+
+ 7.3-8 RLC 
+
+U s
+
+ U R
+
+ U L
+
+ U C
+
+
+
+
+RI
+
+jX L
+
+
+I
+
+jX C
+
+
+I
+
+ [R 
+
+j(X L
+
+
+
+
+X C )] I
+
+ [R
+
+
+
+j(L
+
+
+
+1 C
+
+)]
+
+
+I
+
+X
+
+
+
+XL
+
+
+
+Xc
+
+
+
+L
+
+
+
+1 C
+
+reactance
+
+
+
+
+
+U s  (R  jX ) I
+
+ Z  R  jX  RLC impedance
+
+
+
+U s  ZI
+
+ 7.3-10
+
+ 7.3-10 
+
+Z
+
+
+
+R
+
+jX
+
+
+
+R
+
+j(X L
+
+
+
+Xc)
+
+
+
+R
+
+j(L
+
+
+
+1 C
+
+)
+
+ 7.3-11
+
+ 7.3-10  Z  R  7.3-10   7.3-8(b) RLC  7.3-8(c) 
+
+
+
+
+
+
+
+
+
+
+U  I  Z U  I 
+
+ Z 
+
+
+
+
+
+U  I 
+
+
+
+
+
+U  I U  I  UI
+
+
+
+
+
+U  I u i U  I  Z 
+
+
+
+- 177 -
+
+
+
+  Z  RLC  R  RLC  X X  
+
+ Z  Z  z  Z  z 
+
+ Z  
+
+R2  X 2 
+
+R2  (X L  Xc)2 
+
+R2
+
+
+
+L 
+
+
+
+1 C
+
+ 2 
+
+   Z
+
+ arctg
+
+X R
+
+ arctg
+
+XL  Xc R
+
+
+
+arctg
+
+L
+
+
+
+1 C
+
+R
+
+ 7.3-10 
+
+U su  ( Z Z )(Ii )  Z I(Z  i )
+
+ 7.3-12
+
+
+
+U zs
+
+Z  u
+
+I 
+
+i
+
+ 7.3-13
+
+ 7.3-13  RLC 
+
+
+
+
+
+ N  I
+
+ 7.3-9 
+
+
+
+U
+
+N
+
+
+
+Z
+
+
+
+U
+
+
+I
+
+ 7.3-14
+
+ Z
+
+  7.3-9  
+
+Z U I
+
+
+ui  u  i   Z
+
+|Z|
+
+X
+
+ 
+ Z  R  jX  Z  z  R  Z Cos z 
+
+Z R
+ 7.3-10
+
+ X  Z Sin z  Z  R  X 
+ 7.3-10 
+
+- 178 -
+
+ N  Z=R  z  0 
+
+ Z  jX L  jL 
+
+ z  900  900 
+
+Z
+
+
+
+ jX c
+
+
+
+
+
+j
+
+1 C
+
+ z
+
+
+
+900  900 
+
+  900   z  900 
+
+ z  0  z  z  0 
+
+ z  z  0   7.3-11  Z    Z 
+
+ Z  z 
+
+L
+
+
+
+1 C
+
+ z
+
+
+
+900  z
+
+
+
+  900 
+
+  
+
+ 7.3-11a
+
+
+
+
+
+Z1  Z2 U1 U 2  KVL 
+
+I
+
+ 
+
+Z1
+
+U1
+
+
+
+I
+
+U
+
+ 
+
+Z2
+
+U2
+
+
+
+
+
+U
+
+Z
+
+
+
+(a)
+
+(b)
+
+ 7.3-11 
+U  U1  U 2  Z1I  Z 2 I  (Z1  Z 2 )I
+
+
+
+Z
+
+
+
+U I
+
+ Z1  Z2
+
+ 7.3-15
+
+- 179 -
+
+ 7.3-15  7.3-11 b
+n  Z1Z2...Zn  n 
+
+n
+ Z  Z1  Z 2    Z n  Z k k 1
+
+ 7.3-16
+
+ Z  Z1  Z 2    Z n 
+
+ n  j  Zj  
+
+
+Uj 
+
+Zj
+n
+
+
+U
+
+Zk
+
+k 1
+
+ 7.3-17
+
+7.3-4 
+  7.3-12a RLC 
+
+is  2I s Sin(t  i )  I s  I si 
+ is 
+
+
+ I R
+
+
+I L
+
+
+I C
+
+ X L
+
+ L  X C
+
+1 C
+
+ 7.3-12a
+
+ 7.3-12b KCL 
+
+Is
+
+ IR
+
+ IL  IC
+
+ U R
+
+
+
+U jX L
+
+ U  jX C
+
+[1  R
+
+j( 1 XL
+
+
+
+1 )]U XC
+
+iS
+
+iL
+
+
+iC iR
+
+IS
+
+IL
+
+
+IC IR
+
+L
+
+C
+
+Ru
+
+jXL jXC
+
+GU
+
+
+
+
+
+(a)
+
+(b)
+
+ 7.3-12 RLC 
+
+
+Is UY
+
+(c)
+
+1
+
+R
+
+ G conductanceS BL
+
+
+
+1 XL
+
+ 1  L
+
+inductive susceptanceS BC
+
+
+
+1 XC
+
+ C 
+
+- 180 -
+
+capacitance susceptanceS
+
+
+
+
+
+I s  [G  j(BL  BC )]U
+
+ B  BL  BC susceptanceY  G  jB  RLC 
+
+admittanceS
+
+
+
+
+
+Is YU
+
+ 7.3-18
+
+ 7.3-18  7.3-12b 7.3-12c
+
+ Y 
+
+Y  G  jB  G  j(BL  BC )  Y  y  7.3-19
+
+
+
+ 
+
+Y
+
+
+
+G2  B2 
+
+G 2  (BL  Bc )2
+
+
+
+ 
+
+y
+
+
+
+arctg
+
+B G
+
+
+
+arctg
+
+BL
+
+ BC G
+
+ 7.3-20
+
+ 7.3-20 Y  Y  y  Y  7.3-18
+
+
+
+I sy
+
+ 
+
+Y 
+
+
+i
+
+U 
+
+u
+
+
+
+( u
+
+ i )
+
+ 7.3-21
+
+ Y  Z 
+
+Y1 Z
+
+ 7.3-22
+
+
+
+ 
+
+Y
+
+
+
+
+
+1 Z
+
+ 7.3-23
+
+ y   z
+
+ 7.3-13a Y1  Y2 
+
+
+
+
+
+ I1  I 2  KCL 
+
+ 
+
+
+
+
+
+
+
+I  I 1  I 2  Y1 U  Y2 U  (Y1  Y2 )U
+
+
+
+
+
+Y
+
+
+
+I
+
+
+ Y1  Y2
+
+U
+
+ 7.3-24
+
+ 7.3-24  7.3-13a
+
+ 7.3-13b
+
+- 181 -
+
+I
+
+
+
+I1
+
+I2
+
+U
+
+Y1
+
+Y2
+
+I
+
+
+U
+
+Y
+
+
+
+
+
+(a)
+
+(b)
+
+ 7.3-13 
+
+n  n 
+
+n
+ Y  Y1  Y2    Yn  Yk k 1
+
+ 7.3-25
+
+ 7.3-25 
+
+1
+
+
+
+1
+
+
+
+1
+
+
+
+1
+
+n
+
+
+1
+
+Z Z1 Z2
+
+Z n k 1 Z k
+
+ 7.3-26
+
+ Y1  Y2 
+
+Z  Z1Z2 Z1  Z2
+
+ 7.3-27
+
+n  j  Yj 
+
+
+Ij 
+
+Yj
+n
+
+
+I
+
+ Yk
+
+k 1
+
+ 7.3-28
+
+ 7.3-28  7.3-13a 
+
+
+
+I1
+
+  
+
+
+I2
+
+ 
+
+Z2 Z1  Z2
+Z1 Z1  Z2
+
+
+I
+
+I
+
+ 7.3-29
+
+    
+
+ 7.3-2  7.3-8(b)U R  20V U L  15V U C  30V 
+
+- 182 -
+
+
+U S  Us
+
+
+
+
+
+UL
+
+ I  I0  I
+
+
+
+
+
+
+
+U R  R I  RI00  2000  20V 
+
+I
+UR
+
+
+
+
+
+ I  900  U L  15900  j15 V 
+
+US
+
+
+
+
+
+ I  900  U C  30  900   j30 V 
+
+ KVL 
+
+
+
+
+
+
+
+
+
+U S  U R  U L  U C  20  j15  j30
+
+ 20  j15  25  36.870 V
+
+UC  7.3-14
+
+
+U S  Us=25V 7.3-14 
+
+ 7.3-3  7.3-12a C  40F L=1HR=400iR  0.01Sin100t A 
+
+ is 
+
+ 7.3-12a 7.3-12b
+
+
+iR  I R
+
+
+
+0.01 00 2
+
+ 0.00700
+
+A 
+
+
+
+
+
+U  R I R  400  0.00700  2.800 V
+
+
+
+
+
+
+ I L
+
+
+
+U jX L
+
+
+
+U jL
+
+ 2.800 j100 1
+
+  j0.028 A
+
+
+
+
+
+
+IC
+
+
+
+U  jX C
+
+
+
+
+
+U
+
+j
+
+1 C
+
+ 2.800 100  40 106 j
+
+
+
+j0.0112 A
+
+
+
+
+
+
+
+I s  I R  I L  IC  0.007  j0.028  j0.0112
+
+ 0.007  j0.0168  0.0182  67.380 A
+
+ is  0.0182 2Sin(100t  67.380 ) A 
+
+ 7.3-4  7.3-15  us  12 2Sin(314t  300 ) V  i
+
+- 183 -
+
+4
+Z1  4  j4  4 2  450 
+4
+Z 2  4  j4  4 2450 
+Z1  Z2 
+
+Z  Z1Z 2  4 2  450  4 2450  32  4
+
+Z1  Z2
+
+4  j4  4  j4
+
+8
+
+
+ U s  12300 V 
+
+
+
+
+
+
+I
+
+ Us
+
+ 12300
+
+ 3300
+
+A
+
+Z
+
+4
+
+ i  3 2Sin(314t  300 ) A 
+
+i
+
+
+
+4
+
+us
+
+
+
+j4
+
+4
+j4
+
+ 7.3-15  7.3-4 
+
+ 7.3-5     7.3-16    N                  
+
+us  30 2Sin2t V  i  5 2Sin2t A L=2HR=3 N  Z
+
+ N 
+
+
+
+
+
+U s  3000 V  I  500 V 
+
+ N  Z=R1jX1
+
+
+
+Z
+
+'
+
+
+
+Us
+
+
+ R
+
+jL  R1 
+
+jX 1
+
+I
+
+
+
+RLi
+
+
+
+us
+
+N
+
+3
+
+j22 
+
+R1
+
+
+
+jX 1
+
+
+
+3000 500
+
+
+
+(R1  3)  j( X1  4)  6
+
+
+Z  7.3-16  7.3-5 
+
+
+
+R1 X1
+
+36 40
+
+ R1  3  X1  4
+ N 
+
+- 184 -
+
+Z  (3  j4)
+
+
+
+z
+
+ arctg
+
+X1 R1
+
+ arctg  4 3
+
+ 53.130
+
+0
+
+ N 
+
+7.4 
+
+        
+ 
+ 1  2  3  
+
+ 7.4-1  7.4-1a iR  2Sin2000t A  uSiL  ic
+
+0.1H iL
+
+ uS
+
+
+ic
+5uF
+
+a
+
+iR
+200
+
+ US
+
+
+j200 IL
+
+
+Ic IR
+
+j100
+
+200 U
+
+
+
+ 7.4-1  7.4-1 
+
+b
+
+
+ iR  I R  100  1A   X L  L  2000  0.1  200 
+
+- 185 -
+
+
+
+XC
+
+
+
+1 C
+
+
+
+1 2000  5 106
+
+ 100 
+
+ 7.4-1b
+
+ 7.4-1b
+
+
+
+
+
+U  200 I R  200 100  20000 V 
+
+
+
+
+
+
+IC
+
+U  jX C
+
+
+
+20000  j100
+
+
+
+j2  2900
+
+A
+
+ KCL 
+
+
+
+
+
+I L  I R  IC  1  j2  2.2463.430 A 
+
+ KVL 
+
+
+
+
+
+U s  jX L I L  U  j200  2.2463.430  20000
+
+ 448153.430  200  400  j200  200
+
+ 200  j200  200 21350 V
+
+
+us  400Sin(2000t  1350 ) V
+
+iL  3.17Sin(2000t  63.430 ) A
+
+iC  2.83Sin(2000t  900 )  2.83Cos2000t A 
+
+
+
+
+
+
+
+ 7.4-2  7.4-2 U s1  U s3  1000 V U s2  10900 V 
+
+   314rad / s  i1  i2
+
+ US1
+
+
+j4
+
+a j4 b
+
+4
+
+I1
+3
+
+I2
+ US2
+
+
+
+
+US3 
+
+ 7.4-2  7.4-2 
+
+
+
+
+
+ ab U a U b 
+
+- 186 -
+
+
+
+
+
+a (
+
+1 j4
+
+
+
+1 3
+
+
+
+
+
+1 j
+
+4
+
+)
+
+
+Ua
+
+
+
+
+
+1 j
+
+4
+
+
+Ub
+
+
+
+U s1 j4
+
+
+
+
+
+ bU b  U s2
+
+
+
+1 3
+
+
+Ua
+
+
+
+2.5
+
+
+
+
+
+j2.5
+
+
+
+
+
+ U a  7.5  j7.5  10.6  1350 V U b  10900  j10 V 
+
+
+
+
+ I1
+
+ Ua 3
+
+ 10.6  1350 3
+
+ 3.53  1350
+
+A
+
+
+
+
+
+
+I2
+
+ Ub U s3 4
+
+
+
+j10 10  2.5  4
+
+j2.5  3.531350
+
+A
+
+ i1  5Sin(314t  1350 ) A  i2  5Sin(314t  1350 ) A 
+
+
+
+
+
+ 7.4-3  7.4-3 U s  1000 V  I 
+
+ 
+
+j10 I 5
+
+
+U1  I (5  j10)
+
+
+
+
+
+U1
+
+
+
+ KVL 
+
+
+
+
+
+
+
+U1  0.4U1  I ( j20)  U s
+
+US 
+
+j20
+
+
+
+I[5  j10  0.4(5  j10)  j20]  10
+
+ 7.4-3  7.4-3 
+
+ 0.4U1 
+
+
+
+
+I
+
+
+
+10 7  j6
+
+
+
+10 9.22  40.60
+
+ 1.08540.60
+
+A
+
+ 7.4-4     7.4-4  a          us  10 2Sin100t V     is  2 2Sin(100t  600 ) A  i
+
+- 187 -
+
+1250uF
+
+
+
+us
+
+
+
+1250uF
+
+8
+6 2
+is
+
+i
+1 0.1H
+
+j8
+
+Us j8
+
+
+
+Uoc'
+
+
+(a)
+
+(b)
+
+j8
+
+8 I1
+
+j8
+
+8
+
+j8
+
+6 2
+Is
+
+
+Uoc''
+
+j8
+
+6 2
+
+
+
+Zo
+
+(c)
+
+(d)
+
+I
+
+Zo
+
+1
+
+
+Uoc
+
+
+j10
+
+(e)
+
+ 7.4-4  7.4-4 
+
+
+
+
+
+U s  1000 V  I s  2600 A 
+
+
+
+1 C
+
+
+
+100
+
+1 1250
+
+ 10 6
+
+ 8 
+
+ L  100  0.1  10 
+
+
+
+
+
+
+
+ I U oc U s 
+
+
+ I s  7.4-4b
+
+
+U oc ' 
+
+
+
+ j8
+
+j8 
+
+j8
+
+
+Us
+
+
+
+1 1000 2
+
+
+
+500
+
+V
+
+
+
+
+
+
+
+ I s U s  7.4-4c 8
+
+
+
+
+I1
+
+
+
+6 682
+
+
+Is
+
+
+
+3 8
+
+
+Is
+
+- 188 -
+
+
+
+
+U
+
+oc
+
+'
+
+'
+
+
+
+8
+
+
+I1
+
+
+
+(
+
+
+
+j8 2
+
+)
+
+
+Is
+
+
+
+(3 
+
+
+j4) I s
+
+ 5  53.130
+
+ 2600
+
+ 106.870 V  (9.93  j1.2) V
+
+
+
+
+
+U s  I s 
+
+
+
+
+
+
+
+U oc  U oc 'U oc ''  5  9.93  j1.2  14.93  j1.2  14.984.60 V
+
+
+
+
+
+ ZOU s  I s  0 7.4-4
+
+d
+
+Zo
+
+ 8 //(6  2)  ( j8) //( j8)
+
+
+
+8 2
+
+
+
+ j8 2
+
+
+
+(4 
+
+j4) 
+
+ 7.4-4a 7.4-4e
+
+
+
+
+I
+
+
+
+Zo
+
+U oc 1
+
+j10
+
+
+
+14.984.60 4  j4  1  j10
+
+ 14.984.60 5  j6
+
+ 14.984.60 7.8150.2o
+
+ 1.92  45.60
+
+A
+
+
+
+i  2.71Sin(100t  45.60 ) A 
+
+   
+  
+   
+ 
+ T nonsinusoidal f(t)Dirichlet Fourier series
+
+
+
+
+
+  f (t)  A0  (ak Coskt  bk Sinkt)  A0  Akm Sin(kt  k )
+
+k 1
+
+k 1
+
+   2  T
+
+ f(t) A0 
+
+- 189 -
+
+ f(t)       DC component           f(t)       harmonic
+component k  1 fundamental wavefirst order harmonic k  1 higher order harmonic  k  Akm  5 
+   
+      harmonic analysis
+7.5 
+power
+ p(t)  u(t)i(t) 
+p(t)  0  p(t)  0 
+p(t)  t  p(t) 
+u(t) i(t) p(t)u(t)  i(t) p(t) p(t) 0 0 0  
+7.5-1 
+  7.5-1  N
+
+u  2U sin(t  u ) i  2I sin(t  i )
+- 190 -
+
+i
+
+u
+
+N
+
+
+
+u
+
+p
+
+i
+
+t
+
+ 7.5-1 
+
+ 7.5-2 
+
+ N  Z  R  jX  Z  z instantaneous power
+ N 
+p  ui  2USin(t  u )  2ISin(t  i )  2UISin(t  u )Sin(t  i )  UI[Cos(u  i )  Cos(2t  u  i )]
+u  i   z 
+
+p  UI[Cos z  Cos(2t  u  i )]
+
+ 7.5-1
+
+ 7.5-1  N  t 
+
+ 7.5-2 
+
+ t 
+
+
+
+
+
+average power P 
+
+  P  1
+T
+
+T pdt  1
+
+0
+
+T
+
+T 0
+
+[UICos
+
+z
+
+ UICos(2t
+
+u
+
+ i ]dt
+
+ UICos z
+
+ z  N 
+
+
+
+  z 
+
+P  UI cos
+
+ 7.5-2
+
+ 7.5-2  Cos power factor  
+power factor angle  7.5-2 
+ active powerW""
+
+ 900    900
+
+- 191 -
+
+ 0  Cos  1 Cos 
+
+ Cos  1
+
+ n  
+
+n
+ P  P1  P2    Pn  Pk k 1
+
+ 7.5-3
+
+ 7.5-3 
+
+
+
+ 7.5-2 "UI"
+
+ UI 
+
+apparent power S 
+
+S=UI
+
+ 7.5-4
+
+ P  S VA
+ P  S 
+
+
+
+
+
+
+
+reactive power Q
+
+Q  UISin
+
+ 7.5-5
+
+Var
+  900  P=0 Q  UI 
+
+  
+  0  P=UIQ=0
+
+ 
+
+cos  
+
+
+
+P S
+
+Sin  Q
+
+
+
+S
+
+S  P 2  Q 2
+
+ 7.5-6
+
+PQS  7.5-3 
+
+S
+
+Q
+
+ P
+ 7.5-3
+
+ 7.5-6  Cos 
+
+- 192 -
+
+    1
+ 
+
+n
+ Q  Q1  Q2    Qn  Qk k 1
+
+ 7.5-6
+
+
+
+S  S1  S2    Sn
+
+ 7.5-6  
+
+
+Z  R  jX  Z 
+
+
+R  Z Cos
+
+
+
+X  X L  X C  Z Sin
+
+
+
+
+
+ 7.5-1  U  Z I U  Z I   u  i 
+
+P  UI cos  ( Z I )I cos  RI 2 Q  UI sin   ( Z I )I sin   XI 2
+
+ S
+
+ UI
+
+
+
+(Z
+
+I)I
+
+
+
+Z
+
+I2
+
+ 7.5-7
+
+ 7.5-7  
+
+               Z=R    0  Cos  1     
+
+PR  UICos  UI  RI 2  QR  UISin  0   Z  jX L   900  Cos  0   PL  UICos  0  QL  UISin  UI  X L I 2  Z   jX C   900 Cos  0   PC  UICos  0  QC  UISin  UI   X C I 2 
+
+- 193 -
+
+  0
+ 0 Q  UISin 
+
+ X L  X C   0  Cos  1 
+
+
+
+
+
+
+
+
+ U  U   u  I  Ii 
+
+
+I
+
+*
+
+
+
+I
+
+ i
+
+U
+
+
+
+I*
+
+complex
+
+power
+
+S~
+
+
+
+S~  UI*  Uu  I  i  UI(u  i )  UI
+
+
+S~  UICos  jUISin  P  jQ
+
+ 7.5-8
+
+ 7.5-8  S~  P
+
+ Q
+
+ S~  S~1  S~2    S~n 
+
+n
+
+~
+Sk
+
+k 1
+
+ 7.5-9
+
+ 
+
+
+ 7.5-1  7.5-4 U s  10000 V   1000rad / s U L  50V 
+
+ P=200W R  L
+
+ KVL 
+
+
+
+
+
+
+
+Us U RU L
+
+U R  U s 2  U L 2  1002  502  86.6V
+ R 
+
+
+
+PR
+
+
+
+RI 2
+
+ UR2 R
+
+ 200W
+
+
+
+ UR 
+
+I
+
+R
+
+
+
+
+Us
+
+jXL UL
+
+
+
+
+
+ 7.5-4  7.5-1 
+
+
+
+R  U R 2  86.62  37.5  PR 200
+
+ I  U R  86.6  2.31A R 37.5
+
+- 194 -
+
+
+
+XL
+
+ UL I
+
+
+
+50  21.65 2.31
+
+
+
+L
+
+XL 
+
+
+
+21.65 1000
+
+ 21.65mH
+
+
+
+ 7.5-2  7.5-5           N          
+
+us  10 2Sin(314t  450 ) V  uc  5 2Sin(314t  1350 ) V  X c  2.5 
+
+ N  Z 
+
+
+U s  10450 V  (5 2  j5 2) V 
+
+
+U c  5  1350 V  (2.5 2  j2.5 2) V 
+
+ KVL  N 
+
+
+
+
+
+U U sUc
+
+ 5 2  j5 2  2.5 2  j2.5 2
+
+ 7.5 2  j7.5 2  15450 V
+
+
+
+
+
+
+I
+
+
+
+Uc  jX c
+
+
+
+5  1350 2.5  900
+
+ 2  450
+
+A
+
+ N 
+
+
+
+Z
+
+U
+
+I
+
+
+
+15450 2  450
+
+ 7.5900
+
+
+
+j7.5 
+
+ uc  i
+
+ C
+us
+
+ N
+u
+
+
+
+
+
+Z  7.5-5  7.5-2 
+
+ N    900 
+
+ P  UICos  0W 
+
+ Q  UISin  15  2 1  30Var 
+
+
+
+
+
+ 7.5-3  7.5-6 U s  1000 V  I s  500 A 
+
+
+
+ 1 2
+
+
+
+
+
+ 1 I 1  2 I 2 
+
+
+U 
+
+- 195 -
+
+I j2
+
+
+
+1
+
+Us
+
+I1
+
+j1
+
+
+
+2 I2
+j3
+
+
+U Is
+
+
+ 7.5-6  7.5-3 
+
+
+
+(
+
+1 j2
+
+1 1  j1
+
+1
+
+
+)U
+
+2  j3
+
+
+
+Us j2
+
+
+
+
+Is
+
+
+
+
+0.693  19.380 U  7.07  1350
+
+
+ U  10.2  115.620 V
+
+
+
+
+
+
+I1
+
+ U  10.2  115.620 1  j1 1.414  450
+
+ 7.21  70.620
+
+A
+
+
+
+
+I2
+
+
+
+U 2  j3
+
+ 10.2  115.620 3.6156.310
+
+
+
+2.83  171.930
+
+A
+
+
+
+P  I12 1  I 22  2  7.212  2.832  2  68.16W 
+
+ 7.5-4  60W 0.5  100W 
+
+ 50  220V 50Hz 
+
+ 0.92
+
+ 7.5-7 
+
+
+U s 
+
+I
+
+I1
+
+I2
+
+I3
+
+
+U s  22000 V 
+
+
+
+
+Us
+
+Z1
+
+Z2
+
+jXC
+
+  2f  2  3.14  50  314rad / s 
+
+
+
+50  60W 0.5 
+
+ 7.5-7  7.5-4 
+
+ Z1 Z1 
+
+Cos1  0.5
+
+ Z1  1  600 
+
+- 196 -
+
+Z1 
+
+I1
+
+
+
+P1 U sCos1
+
+
+
+50  60 220  0.5
+
+
+
+27.27 A
+
+
+ I 1  27.27  600 A 
+ 50  100W  Z2  Z2 
+
+Cos2  1
+
+ Z2  2  00 
+
+Z2 
+
+I2
+
+ P2 U sCos2
+
+
+
+50 100 220 1
+
+ 22.73A
+
+
+ I 2  22.7300 A 
+
+ 
+I  I 1  I 2  27.27  600  22.7300  13.64  j23.62  22.73  36.37  j23.62  43.37  330 A
+
+   0  (330 )  330 
+
+ Cos  Cos330  0.839 
+
+ Z1Z2  7.5-7 Xc 
+
+
+
+
+I3
+
+
+
+Us  jX c
+
+
+
+22000  jX c
+
+
+
+220 900 Xc
+
+A
+
+
+
+
+I'
+
+
+I1
+
+
+I
+
+2
+
+
+I3
+
+
+
+27.27
+
+
+
+60 0
+
+
+
+22.7300
+
+
+
+220
+
+90 0
+
+Xc
+
+ 13.64  j23.62  22.73  j 220 Xc
+
+ 36.37  j( 220  23.62) Xc
+
+
+
+
+
+U s  I ' ui  0  i '  i ' ' 
+
+ Cos'  0.92  tg'  0.426 
+
+- 197 -
+
+220  23.62
+
+tg'  tg(i ')  
+
+Xc 36.37
+
+ 0.426
+
+ X c  27.06 
+
+
+
+C
+
+
+
+1 X
+
+c
+
+
+
+1 314  27.06
+
+ 117.7 106 F
+
+ 117.7F 
+
+ C 
+ 
+
+7.5-2 
+
+ Z L 
+
+maximum power transfer
+
+
+ ZL U s  Zo 
+
+ 7.5-8  
+Z o  Ro  jX o  Z o o
+
+Zo
+
+I
+
+
+
+Z L  RL  jX L  Z L  L
+
+ 7.5-8 
+
+
+
+
+
+
+I
+
+Us
+
+
+
+Us
+
+Zo  Z L (Ro  RL )  j( X o  X L )
+
+
+
+
+
+Us
+
+ZL
+
+
+
+ 7.5-8 
+
+I
+
+Us
+
+(Ro  RL )2  ( X o  X L )2
+
+ Z L  Z L  RL 
+
+
+
+PL
+
+
+
+I 2RL
+
+
+
+(Ro
+
+
+
+U s2RL RL )2  (X o
+
+
+
+X L)2
+
+ 7.5-10
+
+ Z L 
+
+- 198 -
+
+
+ Z L  RL  X L 
+
+ 7.5-10 Ro  RL  0  PL  X o  X L  0  X L   X o 
+
+
+
+PL
+
+
+
+U s2RL (Ro  RL )2
+
+ 7.5-11
+
+ RL PL  dPL  0  dRL
+
+dPL dRL
+
+ Us2
+
+(Ro
+
+ RL )2  2RL (Ro (Ro  RL )4
+
+ RL )
+
+0
+
+ RL  Ro
+
+ Z L  Z o* 
+
+RL X L
+
+ 
+
+Ro X
+
+o
+
+ 7.5-12
+
+conjugate matching  7.5-11 
+
+PL max
+
+
+
+U
+
+2 S
+
+4Ro
+
+ 7.5-13
+
+ Z L  L  Z L 
+
+ X L  0 Z L  RL Z L  RL  L  0 
+
+ RL 
+
+ 7.5-8 
+
+
+
+
+
+
+I
+
+Us
+
+
+
+Us
+
+Z o  Z L (Ro  RL )  jX o
+
+ I
+
+Us
+
+(Ro
+
+
+
+RL
+
+)2
+
+
+
+X
+
+2 o
+
+
+
+PL
+
+
+
+I 2RL
+
+
+
+(Ro
+
+U s2RL  RL )2 
+
+Xo2
+
+ 7.5-14
+
+- 199 -
+
+ dPL  0  dRL
+
+dPL dRL
+
+
+
+U
+
+2 s
+
+
+
+(Ro
+
+ RL )2 [(Ro
+
+ X o 2  2RL (Ro  RL )2  X o2 ]2
+
+ RL )
+
+0
+
+ RL 
+
+Ro 2
+
+
+
+X
+
+2 o
+
+
+
+Zo
+
+ 7.5-15
+
+ 7.5-15  modular matching
+ 7.5-14 
+
+PL max
+
+
+
+(R0
+
+Us2 Zo  Zo )2 
+
+Xo2
+
+ 7.5-16
+
+ 7.5-13  7.5-16
+
+
+ 7.5-5  7.5-9 U s  2000 V 1 Z L  RL
+
+2 Z L  RL  jX L RLXL 
+
+
+
+ 
+
+5
+
+Zo  5  j5  5 2  450 
+
+
+
+1 US
+
+ZL
+
+
+
+
+
+j5
+
+RL  Zo  7.07
+ ZL=RL=7.07
+
+ 7.5-9  7.5-5 
+
+PL max
+
+
+
+(R0
+
+Us2 Zo  Zo )2 
+
+Xo2
+
+
+
+202  7.07 (5  7.07)2  (5)2
+
+ 16.57W
+
+2 RLXL 
+Z L  Zo*  (5  j5)
+
+ Z L  (5  j5) 
+
+PL max
+
+
+
+U
+
+2 S
+
+4Ro
+
+
+
+20 2 45
+
+ 20W
+
+
+
+
+
+- 200 -
+
+7.6 
+
+U  I 
+U  I U  I 
+U  I resonance
+   RLC 
+
+7.6-1 RLC 
+
+ 7.6-1  RLC  us  2U s Sin(t  u ) 
+
+ Z   
+
+ LC 
+
+RLC
+  
+
+Z ()
+
+
+
+R
+
+
+
+jX ()
+
+
+
+R
+
+
+
+j(L
+
+
+
+1 C
+
+)
+
+ 7.6-1
+
+U  I 
+
+Z 
+
+ UR 
+
+I
+
+R
+
+
+
+
+Us
+
+
+
+jXc
+
+jXL UL
+
+
+ Uc 
+ 7.6-1 
+
+ LC 
+
+ 7.6-1  Z  0 
+
+X ()
+
+
+
+L
+
+
+
+1 C
+
+
+
+0
+
+   0 
+
+1 LC
+
+ 7.6-2
+
+ 7.6-2  0  RLC 
+
+f0
+
+ 0 2
+
+
+
+2
+
+1 LC
+
+ 7.6-3
+
+f0  RLC  7.6-2  7.6-3 
+
+ 0  L  C  R 
+
+- 201 -
+
+ L  C   RLC 
+ 
+frequency characteristic  7.6-1 RLC 
+
+Z
+
+R2  X 2 
+
+R2  (X L  Xc)2 
+
+R2
+
+
+
+(L
+
+
+
+1 C
+
+)
+
+2
+
+
+
+z
+
+ arctg
+
+XL  Xc R
+
+
+
+arctg
+
+L
+
+
+
+1 C
+
+R
+
+
+
+ 7.6-5
+
+ 7.6-4
+
+I  Us  Z
+
+Us
+
+R2
+
+
+
+(L
+
+
+
+1 C
+
+)2
+
+ 7.6-6
+
+  0 
+
+1  LC
+
+
+
+1 Z 
+
+ Z amplitude-frequency characteristic
+
+7.6-4  Z    0 0  Z 
+
+2 z 
+
+ z 
+
+phase-frequency characteristic 7.6-5 
+
+I0
+
+I
+
+|Z|
+
+  0  z  0 
+
+   0 
+
+L
+
+
+
+1 C
+
+z
+
+
+
+0 
+
+900
+
+
+
+O
+
+0
+
+
+
+900
+
+  z       z  900 
+
+
+
+ 0  L
+
+
+
+1 C
+
+z
+
+
+
+0 
+
+ 7.6-2 
+
+ z   0  z  900 
+
+- 202 -
+
+3 I 
+
+ 7.6-6    0  I  I 0 
+
+
+
+
+
+ I 0 U s 
+
+
+
+
+I0
+
+
+
+Us
+
+R
+
+ 7.6-7
+
+   0  I=0    
+
+I 0
+
+Z  z  I  7.6-2 
+
+
+
+
+ 7.6-1 U L
+
+
+
+jX L
+
+
+I
+
+
+
+
+jL I
+
+
+U c
+
+  jX c
+
+
+I
+
+
+
+
+
+j
+
+1 C
+
+
+I
+
+
+   0  I  I 0 
+
+
+
+
+
+U LUc
+
+
+
+j(0
+
+L
+
+
+
+1 0C
+
+)
+
+
+I
+
+0
+
+
+
+0
+
+
+
+
+
+ U L  U c
+
+ 7.6-8
+
+UL
+UR I0
+US
+
+
+
+
+
+
+
+
+
+
+
+U s  U R  U L  U c  U R
+
+ 7.6-9
+
+ 7.6-8  7.6-9  RLC    0 series resonancevoltage resonance
+
+UC
+ 7.6-3  
+
+
+
+
+
+
+
+
+
+
+
+U R U s U L U c  I 0  7.6-3 
+
+
+
+ QL  U L I 0 Sin900  U L I 0 
+
+Qc  U c I 0 Sin(900 )  U c I 0  7.6-8 U L  U c 
+
+ QL  Qc  U L I 0  U c I 0  0 QL  0 Qc  0 
+ 1   electromagnetic oscillation 
+
+- 203 -
+
+W
+
+
+
+1 2
+
+Lio 2
+
+
+
+1 2
+
+Cu
+
+c
+
+2
+
+ i0  uc 
+
+  R    
+
+ 
+
+Uc
+
+UL
+
+ 0 LI 0
+
+
+
+0 L R
+
+U
+
+s
+
+
+
+1 LC
+
+
+
+L R
+
+U
+
+s
+
+
+
+1 R
+
+L C
+
+U s
+
+ Q  1
+
+L
+(quality factor)
+
+RC
+
+U c  U L  QU s
+
+ 7.6-10
+
+
+
+Q 1 R
+
+L  0L  1 C R 0CR
+
+ 7.6-11
+
+0 L
+
+
+
+R
+
+
+
+1 0C
+
+
+
+R  Q
+
+ 1
+
+U L U c U s 
+
+U L U c U s 
+
+  Q ""
+ I  Q  7.6-6 
+
+I
+
+Us
+
+Us
+
+
+
+R
+
+
+
+I0
+
+R2
+
+
+
+(L
+
+
+
+1 C
+
+)
+
+2
+
+1
+
+1 R2
+
+(L
+
+
+
+1 C
+
+)
+
+2
+
+1
+
+
+
+Q
+
+2
+
+ (0
+
+
+
+0 
+
+)
+
+2
+
+ 7.6-12
+
+- 204 -
+
+ 7.6-12  Q  I  7.6-4 
+
+Q1  Q2  Q3  7.6-4 Q 
+Q 
+ 0  0  I  I0 
+ 0 I 
+ Q    frequency-selection characteristic LC  
+ Q 
+
+I
+Q1
+I0
+Q2
+
+O
+
+0
+
+Q3
+
+
+ 7.6-4  Q  
+
+ Q   
+
+7.6-2 RLC 
+
+ 7.6-5  RLC  is  2I s Sin(t  i ) 
+
+
+
+Y ()  G  jB()  G  j(1L  C)
+
+ 0 
+
+
+
+B()
+
+
+
+1 L
+
+
+
+C
+
+
+
+0
+
+  0 
+
+1  RLC  LC
+
+IS
+
+IL
+
+IC
+
+jXL jXC
+
+
+IR U
+G
+
+
+ 7.6-5 
+
+ parallel resonance
+
+ 0 Y  G 
+
+ IS U
+
+
+
+Is Y
+
+
+
+Is G
+
+ RI s 
+
+
+
+
+
+
+
+
+IL Ic
+
+
+
+U j0 L 
+
+U
+
+j
+
+1 0C
+
+
+
+
+
+j(
+
+1 0 L
+
+
+
+
+0C)U
+
+0
+
+- 205 -
+
+
+
+
+
+
+
+ Is  IRILIc  IR
+
+ 0 current resonance 
+
+ 1 
+
+IL
+
+
+
+Ic
+
+ 0CU
+
+
+
+0C G
+
+Is
+
+
+
+1 LC
+
+C G
+
+Is
+
+
+
+R
+
+C L
+
+ Is
+
+ Q  R C L
+
+ 7.6-13
+
+ RLC 
+
+I L  I c  QI s
+
+ 7.6-14
+
+ Q  
+
+ 7.6-1  7.6-6  u 
+
+U  I  X L  L  0.5 
+
+Xc
+
+
+
+1 C
+
+
+
+100
+
+1 10
+
+6
+
+
+
+ 104 
+
+
+
+
+
+
+
+
+
+
+
+U  jX L I  5 I  jX c (I  0.5 I )
+
+
+ [5  j( X L  0.5X c ) ]I
+
+ [5 
+
+j(0.5
+
+
+
+0.5
+
+
+
+10 4 
+
+)]
+
+
+I
+
+
+
+
+
+Z
+
+U
+
+I
+
+5
+
+j(0.5
+
+
+
+5000 
+
+)
+
+0.5H i 5
+
+
+u
+
+100uF
+
+0.5i 
+
+ 7.6-6  7.6-1 
+
+ z  0 
+
+0.5
+
+
+
+5000 
+
+
+
+0
+
+ 0  100rad / s 
+
+ 7.6-2  7.6-7         u  100 2Sin100t V  R1  R2  100 
+- 206 -
+
+L1  L2  1H  C  i2  0  C 
+
+i1  i3  i4 
+
+i1 R1
+
+i2
+
+R2
+
+
+
+
+
+U  10000 V    100rad / s 
+
+
+
+
+
+i3
+
+i4
+
+
+
+
+
+ I 2  I 3  I 4  0 
+
+u
+
+u1
+
+L1
+
+C
+
+L2
+
+u2
+
+
+
+
+
+ I3  I4
+
+
+
+
+
+
+
+ L2  C  
+
+ 7.6-7  7.6-2 
+
+L2  C L2  C  0
+
+Y2
+
+
+
+1 jL2
+
+
+
+jC  0
+
+
+
+C
+
+1  2 L2
+
+
+
+1 100 2
+
+1
+
+
+
+10 4
+
+F
+
+ 100F 
+
+ i1  R1  L1
+
+
+
+
+I1
+
+
+
+R1
+
+U  jL1
+
+ 10000  10000 100  j100 1 100 2450
+
+
+
+1   450 A  2
+
+ i1  Sin(100t  450 ) A 
+
+ L1 
+
+
+U1 
+
+
+jL1 I 1  100900 
+
+1   450  100 450 V 
+
+2
+
+2
+
+ L2 
+
+
+U
+
+2
+
+
+ U1
+
+R2
+
+
+I2
+
+
+U1
+
+
+
+100 450 2
+
+V
+
+
+
+
+
+
+I4
+
+
+ I3
+
+
+
+
+U2
+jL2
+
+100 450 2
+100900
+
+
+
+1   450 A  2
+
+ i4  Sin(100t  450 ) A  i3  Sin(100t  1350 ) A 
+
+- 207 -
+
+
+      
+     
+ 1  2 
+ 3 
+ 4  5 
+ 6 
+
+ 7.1  u  100 2Sin(100t  300 ) V  i  7.07Cos(100t  450 ) A 
+1u  i 2u  i  
+ 7.2 i  2 2Sin(t  150 ) A u  10Sin(t  300 ) V 
+
+
+ 7.3 U  6  j8 V   314rad / s   7.4  7.4  us  10 2Sin106 t V  R  50  L  25H 
+- 208 -
+
+ i
+
+ 7.5  7.5   U s  10000 V    1000rad / s  R  10 
+
+
+
+
+
+C  100F  I 1  I 2  I 
+
+R
+i
+ L
+us
+
+
+I
+
+I2
+
+I1
+
+
+
+Us
+
+R
+
+C
+
+
+
+ 7.4 
+
+ 7.5 
+
+ 7.6  7.6  R1  10  R2  1K  L  0.5H  C  10F 
+
+  314rad / s  ab 
+
+
+
+
+
+ 7.7  7.7 U s  10000 V  I 
+
+R1
+
+L
+
+I 6
+
+a
+
+
+
+0.5U
+
+C
+
+R2
+
+US
+
+
+
+j6
+
+b
+
+j12
+
+U 
+
+ 7.6 
+
+ 7.7 
+
+
+
+
+
+ 7.8  7.8 U s  22000 V  I C  1900 A 
+
+R 
+
+
+ 7.9     7.9     R1  R2  R3  2  X C  4  U s1  400 V 
+
+
+
+
+
+U s2  6900 V  R3  I 
+
+
+US
+
+
+R
+
+IC
+
+j8 j8
+
+ 7.8 
+
+jXC
+
+R2
+
+R1
+
+8
+
+
+
+US1 
+
+I
+R3
+ 7.9 
+
+
+US2 
+
+- 209 -
+
+
+
+
+
+ 7.10  7.10 U s  22000 V  I  0 A 
+
+
+ I s 
+ 7.11  7.11 
+
+j3
+
+6
+
+j8
+
+2
+
+ US
+
+
+I
+2 4
+IS
+
+j20
+
+3 j2
+j1
+
+ 7.10 
+
+ 7.11 
+
+ 7.12  220V 
+P1  4.4KW  I1  44.7 A  P2  8.8KW  I 2  50 A  P3  6.6KW 
+
+I3  66 A 
+
+
+ 7.13  7.13  N U  100 V 
+
+ I  21350 A  N 
+
+ 7.14  7.14 U s  1000 V Z L  1 Z L  RL  jX L 2 Z L  RL 
+
+
+I
+
+
+5
+
+
+U
+
+N
+
+US
+
+ZL
+
+
+
+
+
+j5
+
+ 7.13 
+
+ 7.14 
+
+
+
+
+
+ 7.15  7.15  I  300 A  I s 
+
+
+ 7.16  7.16  R  100 L  1H C  100F U s  1000 V 
+
+
+ I  I C 
+
+- 210 -
+
+IS
+
+1
+
+j2
+
+I
+
+j2
+
+1
+
+ 7.15 
+
+RI 
+
+IC
+
+US
+
+C
+
+L
+
+  7.16 
+
+
+
+
+
+ 7.17   7.17   U s  1000 V  I s  1200 A  Z1  3  j4  
+
+Z 2  10 Z3  10  j17   Z 4  35  j14  Z  I 
+
+
+Z2
+
+Z3
+
+Z1
+ US
+
+
+I
+Z4 Z
+IS
+
+ 7.17 
+
+- 211 -
+
+

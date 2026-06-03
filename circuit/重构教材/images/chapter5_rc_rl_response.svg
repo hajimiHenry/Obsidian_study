@@ -1,66 +1,164 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520">
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600">
 <style>
   @media (prefers-color-scheme: dark) {
-    svg {
-      filter: invert(1) hue-rotate(180deg) !important;
-    }
+    svg { filter: invert(1) hue-rotate(180deg) !important; }
   }
 </style>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/>
+  </marker>
+  <style>
+    text{font-family:"Microsoft YaHei","SimSun",sans-serif;font-size:16px;fill:#222}
+    .title{font-size:20px;font-weight:700}
+    .label{font-size:14px;fill:#555}
+    .formula{font-size:15px;fill:#333;font-style:italic}
+    .wire{stroke:#333;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .axis{stroke:#666;stroke-width:1.5;fill:none}
+    .curve-up{stroke:#d35400;stroke-width:2.8;fill:none}
+    .curve-down{stroke:#2980b9;stroke-width:2.8;fill:none}
+    .dashed{stroke:#999;stroke-width:1.2;fill:none;stroke-dasharray:5,4}
+    .panel{fill:#fafafa;stroke:#ccc;stroke-width:1.5;rx:10}
+    .highlight{fill:#fff3cd;stroke:#f0ad4e;stroke-width:1.2;rx:6}
+  </style>
+</defs>
 
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/>
-    </marker>
-    <style>
-      text{font-family:"Microsoft YaHei","SimSun",sans-serif;font-size:19px;fill:#111}
-      .title{font-size:23px;font-weight:700}
-      .small{font-size:16px}
-      .wire{stroke:#111;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
-      .thin{stroke:#111;stroke-width:2;fill:none}
-      .panel{fill:#fff;stroke:#111;stroke-width:1.8;rx:8}
-      .curve{stroke:#111;stroke-width:3;fill:none}
-    </style>
-  </defs>
-  
-  
-<rect class="panel" x="30" y="30" width="440" height="210"/>
-  <text class="title" x="55" y="65">RC 零状态：电容充电</text>
-  <line class="wire" x1="75" y1="140" x2="130" y2="140"/>
-  <circle class="thin" cx="160" cy="140" r="25"/><text x="150" y="148" class="small">Us</text>
-  <line class="wire" x1="185" y1="140" x2="240" y2="140"/>
-  <polyline class="wire" points="240,140 252,120 266,160 280,120 294,160 308,120 320,140"/>
-  <line class="wire" x1="320" y1="140" x2="370" y2="140"/>
-  <line class="wire" x1="370" y1="105" x2="370" y2="175"/>
-  <line class="wire" x1="398" y1="105" x2="398" y2="175"/>
-  <text class="small" x="70" y="215">uC(t)=Us(1-e^(-t/RC))，终值是 Us</text>
+<!-- 大标题 -->
+<text class="title" x="30" y="35">一阶电路的三种响应 — 本质都是指数趋近终值</text>
 
-  <rect class="panel" x="530" y="30" width="440" height="210"/>
-  <text class="title" x="555" y="65">RC 零输入：电容放电</text>
-  <line class="wire" x1="600" y1="140" x2="690" y2="140"/>
-  <polyline class="wire" points="690,140 702,120 716,160 730,120 744,160 758,120 770,140"/>
-  <line class="wire" x1="770" y1="140" x2="835" y2="140"/>
-  <line class="wire" x1="835" y1="105" x2="835" y2="175"/>
-  <line class="wire" x1="862" y1="105" x2="862" y2="175"/>
-  <line class="wire" x1="862" y1="140" x2="920" y2="140"/>
-  <text class="small" x="572" y="215">uC(t)=U0 e^(-t/RC)，无外源时衰减到 0</text>
+<!-- ===== 左上: RC 零状态（充电） ===== -->
+<rect class="panel" x="20" y="55" width="470" height="250"/>
+<text x="35" y="82" font-weight="700" font-size="17">① RC 零状态（充电）</text>
+<text class="label" x="35" y="102">初始：电容没电 | 外源：有电压源 Us</text>
 
-  <rect class="panel" x="30" y="275" width="440" height="210"/>
-  <text class="title" x="55" y="310">RL 零状态：电流建立</text>
-  <line class="wire" x1="75" y1="390" x2="130" y2="390"/>
-  <circle class="thin" cx="160" cy="390" r="25"/><text x="150" y="398" class="small">Us</text>
-  <line class="wire" x1="185" y1="390" x2="240" y2="390"/>
-  <polyline class="wire" points="240,390 252,370 266,410 280,370 294,410 308,370 320,390"/>
-  <line class="wire" x1="320" y1="390" x2="355" y2="390"/>
-  <path class="wire" d="M355 390 C363 360 387 360 395 390 C403 420 427 420 435 390"/>
-  <text class="small" x="60" y="465">iL(t)=Us/R·(1-e^(-Rt/L))，终值是 Us/R</text>
+<!-- 电路图 -->
+<line class="wire" x1="50" y1="160" x2="80" y2="160"/>
+<text x="55" y="150" font-size="13">+</text>
+<circle cx="95" cy="160" r="15" fill="none" stroke="#333" stroke-width="2"/>
+<text x="88" y="165" font-size="13">Us</text>
+<line class="wire" x1="110" y1="160" x2="135" y2="160"/>
+<!-- 电阻 -->
+<rect x="135" y="152" width="45" height="16" fill="none" stroke="#333" stroke-width="2"/>
+<text x="148" y="148" font-size="13">R</text>
+<line class="wire" x1="180" y1="160" x2="210" y2="160"/>
+<!-- 电容 -->
+<line class="wire" x1="210" y1="145" x2="210" y2="175"/>
+<line class="wire" x1="220" y1="145" x2="220" y2="175"/>
+<text x="224" y="165" font-size="13">C</text>
+<!-- 回路 -->
+<line class="wire" x1="220" y1="160" x2="250" y2="160"/>
+<line class="wire" x1="250" y1="160" x2="250" y2="210"/>
+<line class="wire" x1="50" y1="160" x2="50" y2="210"/>
+<line class="wire" x1="50" y1="210" x2="250" y2="210"/>
 
-  <rect class="panel" x="530" y="275" width="440" height="210"/>
-  <text class="title" x="555" y="310">统一趋势：三要素公式</text>
-  <line class="thin" marker-end="url(#arrow)" x1="590" y1="430" x2="910" y2="430"/>
-  <line class="thin" marker-end="url(#arrow)" x1="590" y1="430" x2="590" y2="340"/>
-  <path class="curve" d="M590 420 C650 390 725 360 910 348"/>
-  <path class="curve" d="M590 350 C650 380 725 412 910 424"/>
-  <text class="small" x="620" y="455">x(t)=x(∞)+[x(0+)-x(∞)]e^(-t/τ)</text>
-  <text class="small" x="610" y="335">靠近终值</text>
-  <text class="small" x="745" y="405">暂态差值逐渐消失</text>
+<!-- 波形图 -->
+<line class="axis" x1="290" y1="270" x2="460" y2="270" marker-end="url(#arr)"/>
+<line class="axis" x1="290" y1="270" x2="290" y2="130" marker-end="url(#arr)"/>
+<text class="label" x="462" y="275">t</text>
+<text class="label" x="278" y="125">uC</text>
+<!-- Us 虚线 -->
+<line class="dashed" x1="290" y1="145" x2="450" y2="145"/>
+<text class="label" x="452" y="150">Us</text>
+<!-- 充电曲线：从0上升到Us -->
+<path class="curve-up" d="M290 270 C320 200 360 165 450 148"/>
+<text class="label" x="340" y="228">上升</text>
+
+<text class="formula" x="35" y="290">uC(t) = Us·(1 − e^(−t/RC))</text>
+
+<!-- ===== 右上: RC 零输入（放电） ===== -->
+<rect class="panel" x="510" y="55" width="470" height="250"/>
+<text x="525" y="82" font-weight="700" font-size="17">② RC 零输入（放电）</text>
+<text class="label" x="525" y="102">初始：电容有电压 U₀ | 外源：无</text>
+
+<!-- 电路图 -->
+<!-- 电阻 -->
+<rect x="555" y="152" width="45" height="16" fill="none" stroke="#333" stroke-width="2"/>
+<text x="568" y="148" font-size="13">R</text>
+<line class="wire" x1="540" y1="160" x2="555" y2="160"/>
+<line class="wire" x1="600" y1="160" x2="630" y2="160"/>
+<!-- 电容 -->
+<line class="wire" x1="630" y1="145" x2="630" y2="175"/>
+<line class="wire" x1="640" y1="145" x2="640" y2="175"/>
+<text x="644" y="165" font-size="13">C</text>
+<text x="632" y="138" font-size="12" fill="#d35400">U₀</text>
+<!-- 回路 -->
+<line class="wire" x1="640" y1="160" x2="670" y2="160"/>
+<line class="wire" x1="670" y1="160" x2="670" y2="210"/>
+<line class="wire" x1="540" y1="160" x2="540" y2="210"/>
+<line class="wire" x1="540" y1="210" x2="670" y2="210"/>
+
+<!-- 波形图 -->
+<line class="axis" x1="720" y1="270" x2="940" y2="270" marker-end="url(#arr)"/>
+<line class="axis" x1="720" y1="270" x2="720" y2="130" marker-end="url(#arr)"/>
+<text class="label" x="942" y="275">t</text>
+<text class="label" x="708" y="125">uC</text>
+<!-- U0 标注 -->
+<text class="label" x="700" y="150">U₀</text>
+<!-- 放电曲线：从U0下降到0 -->
+<path class="curve-down" d="M720 145 C760 180 820 240 940 265"/>
+<text class="label" x="800" y="195">衰减</text>
+
+<text class="formula" x="525" y="290">uC(t) = U₀·e^(−t/RC)</text>
+
+<!-- ===== 左下: RL 零状态（电流建立） ===== -->
+<rect class="panel" x="20" y="320" width="470" height="250"/>
+<text x="35" y="347" font-weight="700" font-size="17">③ RL 零状态（电流建立）</text>
+<text class="label" x="35" y="367">初始：电感无电流 | 外源：有电压源 Us</text>
+
+<!-- 电路图 -->
+<line class="wire" x1="50" y1="420" x2="80" y2="420"/>
+<circle cx="95" cy="420" r="15" fill="none" stroke="#333" stroke-width="2"/>
+<text x="88" y="425" font-size="13">Us</text>
+<line class="wire" x1="110" y1="420" x2="135" y2="420"/>
+<!-- 电阻 -->
+<rect x="135" y="412" width="45" height="16" fill="none" stroke="#333" stroke-width="2"/>
+<text x="148" y="408" font-size="13">R</text>
+<line class="wire" x1="180" y1="420" x2="210" y2="420"/>
+<!-- 电感 -->
+<path class="wire" d="M210 420 C215 405 225 405 230 420 C235 435 245 435 250 420"/>
+<text x="222" y="400" font-size="13">L</text>
+<line class="wire" x1="250" y1="420" x2="270" y2="420"/>
+<!-- 回路 -->
+<line class="wire" x1="270" y1="420" x2="270" y2="470"/>
+<line class="wire" x1="50" y1="420" x2="50" y2="470"/>
+<line class="wire" x1="50" y1="470" x2="270" y2="470"/>
+
+<!-- 波形图 -->
+<line class="axis" x1="310" y1="535" x2="460" y2="535" marker-end="url(#arr)"/>
+<line class="axis" x1="310" y1="535" x2="310" y2="390" marker-end="url(#arr)"/>
+<text class="label" x="462" y="540">t</text>
+<text class="label" x="295" y="385">iL</text>
+<!-- Us/R 虚线 -->
+<line class="dashed" x1="310" y1="405" x2="450" y2="405"/>
+<text class="label" x="452" y="410">Us/R</text>
+<!-- 上升曲线 -->
+<path class="curve-up" d="M310 535 C340 470 380 425 450 408"/>
+<text class="label" x="355" y="490">上升</text>
+
+<text class="formula" x="35" y="555">iL(t) = (Us/R)·(1 − e^(−Rt/L))</text>
+
+<!-- ===== 右下: 统一结论 ===== -->
+<rect class="highlight" x="510" y="320" width="470" height="250"/>
+<text x="525" y="347" font-weight="700" font-size="17">统一结论：一个公式搞定全部</text>
+
+<!-- 两条曲线示意 -->
+<line class="axis" x1="560" y1="520" x2="920" y2="520" marker-end="url(#arr)"/>
+<line class="axis" x1="560" y1="520" x2="560" y2="370" marker-end="url(#arr)"/>
+<text class="label" x="922" y="525">t</text>
+
+<!-- 终值虚线 -->
+<line class="dashed" x1="560" y1="440" x2="910" y2="440"/>
+<text class="label" x="915" y="445">x(∞)</text>
+
+<!-- 从下往上靠近终值 -->
+<path class="curve-up" d="M560 510 C620 480 700 455 900 443"/>
+<text class="label" x="630" y="508" fill="#d35400">起点低 → 升向终值</text>
+
+<!-- 从上往下靠近终值 -->
+<path class="curve-down" d="M560 380 C620 400 700 425 900 437"/>
+<text class="label" x="630" y="390" fill="#2980b9">起点高 → 降向终值</text>
+
+<!-- 公式 -->
+<text x="560" y="560" font-weight="700" font-size="16">x(t) = x(∞) + [x(0⁺) − x(∞)]·e^(−t/τ)</text>
+
 </svg>

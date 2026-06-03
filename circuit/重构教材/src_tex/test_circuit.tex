@@ -1,0 +1,10 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, americanports, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+
+\begin{document}
+\begin{circuitikz}[semithick]
+    \draw (0,0) to[R, l=$R$] (2,0);
+\end{circuitikz}
+\end{document}

@@ -1,0 +1,20 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+\begin{tikzpicture}[>=Stealth, semithick]
+    \draw[->, gray!50] (-0.5,0) -- (4,0);
+    \draw[->, gray!50] (0,-0.5) -- (0,3);
+    \draw[ultra thick, blue] (0,0) -- (3,0) node[midway, below] {$P$ (有功功率/W)};
+    \draw[ultra thick, red] (3,0) -- (3,2.2) node[midway, right] {$Q$ (无功功率/Var)};
+    \draw[ultra thick, purple, ->] (0,0) -- (3,2.2) node[above left] {$S$ (视在功率/VA)};
+    \draw[domain=0:36.25, ->, purple] plot ({0.7*cos(\x)}, {0.7*sin(\x)});
+    \node[purple] at (0.9, 0.3) {$\varphi$};
+    \node[right, align=left] at (4, 1.1) {
+        关系公式：\\
+        $S = \sqrt{P^2 + Q^2}$ \\
+        $\cos\varphi = \frac{P}{S}$ \\
+        $\tan\varphi = \frac{Q}{P}$
+    };
+\end{tikzpicture}
+\end{document}

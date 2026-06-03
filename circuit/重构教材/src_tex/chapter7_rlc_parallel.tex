@@ -1,0 +1,23 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, americanports, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+\begin{document}
+\begin{circuitikz}[semithick]
+    \draw (0,0) to[sI, l=$\dot{I}_s$] (0,2.5) -- (6,2.5)
+          (2,2.5) to[R, l=$R$, i=$\dot{I}_R$, v=$\dot{U}$] (2,0)
+          (4,2.5) to[L, l=$j\omega L$, i=$\dot{I}_L$] (4,0)
+          (6,2.5) to[C, l=$\frac{1}{j\omega C}$, i=$\dot{I}_C$] (6,0)
+          (0,0) -- (6,0);
+    \node[below, font=\small] at (3, -0.3) {(a) RLC 并联相量电路};
+\end{circuitikz}
+
+\begin{circuitikz}[semithick]
+    \draw (0,0) to[sI, l=$\dot{I}_s$] (0,2.5) -- (5,2.5)
+          (2.5,2.5) to[generic, l=$Y_1$, i=$\dot{I}_1$, v=$\dot{U}$] (2.5,0)
+          (5,2.5) to[generic, l=$Y_2$, i=$\dot{I}_2$] (5,0)
+          (0,0) -- (5,0);
+    \node[below, font=\small] at (2.5, -0.3) {(b) 导纳并联分流示意图};
+    \node[right, align=left] at (5.5, 1.25) {$\dot{U} = \frac{\dot{I}_s}{Y_1 + Y_2}$ \\ $\dot{I}_1 = \frac{Y_1}{Y_1+Y_2}\dot{I}_s$ \\ $\dot{I}_2 = \frac{Y_2}{Y_1+Y_2}\dot{I}_s$};
+\end{circuitikz}
+\end{document}

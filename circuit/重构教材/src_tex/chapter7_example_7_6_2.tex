@@ -1,0 +1,21 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, americanports, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+\usetikzlibrary{fit, backgrounds, positioning}
+\begin{document}
+\begin{circuitikz}[semithick]
+    \draw (0,0) to[sV, l=$u$] (0,3) -- (6,3)
+          (2,3) to[R, l=$R_1$, i=$i_1$] (2,1.5)
+                to[L, l=$L_1$] (2,0)
+          
+          (5,3) to[R, l=$R_2$, i=$i_2$] (5,2)
+          (5,2) -- (4.2,2) to[C, l=$C$, i=$i_3$] (4.2,0.5) -- (5,0.5)
+          (5,2) -- (5.8,2) to[L, l=$L_2$, i=$i_4$] (5.8,0.5) -- (5,0.5)
+          (5,0.5) -- (5,0)
+          (0,0) -- (6,0);
+          
+    \node[draw, red, dashed, inner sep=2.5mm, fit={(3.8,2.1) (6.2,0.4)}] (box) {};
+    \node[red, left=0.1cm of box, font=\scriptsize, text width=4em, align=right] {并联谐振部分};
+\end{circuitikz}
+\end{document}

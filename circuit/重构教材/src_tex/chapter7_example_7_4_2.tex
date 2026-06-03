@@ -1,0 +1,19 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, americanports, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+\begin{document}
+\begin{circuitikz}[semithick]
+    \draw (0,0) to[sV, l=$\dot{U}_{s1}$] (0,3)
+          to[L, l=$j4\Omega$] (3,3) node[above] {a}
+          to[R, l=$3\Omega$, i=$\dot{I}_1$] (3,0)
+          
+          (3,3) to[L, l=$j4\Omega$] (6,3) node[above] {b}
+          to[sV, l=$\dot{U}_{s2}$] (6,0)
+          
+          (6,3) -- (8.5,3)
+          to[R, l=$4\Omega$, i=$\dot{I}_2$] (8.5,1.5)
+          to[sV, l=$\dot{U}_{s3}$] (8.5,0)
+          (0,0) -- (8.5,0);
+\end{circuitikz}
+\end{document}

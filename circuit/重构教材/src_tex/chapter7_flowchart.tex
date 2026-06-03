@@ -1,0 +1,18 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usetikzlibrary{arrows.meta, positioning}
+\begin{document}
+\begin{tikzpicture}[node distance=1.8cm and 1.2cm, auto, >=Stealth, semithick,
+    block/.style={rectangle, draw, fill=blue!5, text width=6.5em, text centered, rounded corners, minimum height=3em}]
+    \node [block] (time) {时域正弦量\\ $u(t), i(t)$};
+    \node [block, right=of time] (phasor) {相量\\ $\dot{U}, \dot{I}$};
+    \node [block, right=of phasor] (circuit) {相量电路\\ ($R, j\omega L, \frac{1}{j\omega C}$)};
+    \node [block, right=of circuit] (calc) {复数代数计算\\ (KCL/KVL等)};
+    \node [block, right=of calc] (result) {还原时域结果\\ $u(t), i(t)$};
+    
+    \draw [->] (time) -- node [above, font=\small] {$\dot{X} = X\angle\varphi$} (phasor);
+    \draw [->] (phasor) -- node [above, font=\small] {$Z$} node [below, font=\scriptsize, align=center] {$Z_R=R$\\ $Z_L=j\omega L$\\ $Z_C=\frac{1}{j\omega C}$} (circuit);
+    \draw [->] (circuit) -- node [above, font=\small] {复数运算} (calc);
+    \draw [->] (calc) -- node [above, font=\small] {时域还原} node [below, font=\scriptsize, align=center] {$x(t)=$\\ $\sqrt{2}X\sin(\omega t+\varphi)$} (result);
+\end{tikzpicture}
+\end{document}

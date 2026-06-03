@@ -1,0 +1,31 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+\begin{tikzpicture}[>=Stealth, semithick]
+    \draw[->] (-0.5,0) -- (4,0) node[right] {$\omega$};
+    \draw[->] (0,-0.5) -- (0,3) node[above] {$|Z|$};
+    \draw[domain=0.2:3.5, samples=100, blue, thick] plot (\x, {0.6 + 0.4*(\x - 1.5)^2 + 0.1/(\x)});
+    \draw[dashed, gray] (1.5,0) node[below, black] {$\omega_0$} -- (1.5, 0.67) -- (0, 0.67) node[left, black] {$R$};
+    \node[below, font=\small] at (1.75, -0.6) {(a) 阻抗幅频特性};
+\end{tikzpicture}
+
+\begin{tikzpicture}[>=Stealth, semithick]
+    \draw[->] (-0.5,0) -- (4,0) node[right] {$\omega$};
+    \draw[->] (0,-2) -- (0,2) node[above] {$\varphi_Z$};
+    \draw[domain=0.1:3.5, samples=100, red, thick] plot (\x, {1.5*atan(2*(\x - 1.5))/90});
+    \draw[dashed, gray] (1.5,-2) -- (1.5,2);
+    \node[below] at (1.5,0) {$\omega_0$};
+    \node[left] at (0, 1) {$90^\circ$};
+    \node[left] at (0, -1) {$-90^\circ$};
+    \node[below, font=\small] at (1.75, -2.2) {(b) 阻抗相频特性};
+\end{tikzpicture}
+
+\begin{tikzpicture}[>=Stealth, semithick]
+    \draw[->] (-0.5,0) -- (4,0) node[right] {$\omega$};
+    \draw[->] (0,-0.5) -- (0,3) node[above] {$I$};
+    \draw[domain=0.1:3.5, samples=100, purple, thick] plot (\x, {2.5/(1 + 3*(\x - 1.5)^2)});
+    \draw[dashed, gray] (1.5,0) node[below, black] {$\omega_0$} -- (1.5, 2.5) -- (0, 2.5) node[left, black] {$I_0 = \frac{U_s}{R}$};
+    \node[below, font=\small] at (1.75, -0.6) {(c) 电流幅频特性};
+\end{tikzpicture}
+\end{document}

@@ -6,22 +6,27 @@
 \begin{document}
 \begin{circuitikz}[semithick, scale=1.0, transform shape]
 
-  % 电流源 is(t) = ε(t) A
-  \draw (0,0) to[I, l={$i_s(t)=\varepsilon(t)\,\text{A}$}] (0,3)
-        -- (4,3);
+  % 电流源 is(t) = ε(t) A，使用手动 node 精准定位在左侧 (x=-0.3) 避开右侧空间
+  \draw (0,0) to[I] (0,3)
+        -- (5.0,3);
+  \node[left] at (-0.3,1.5) {$i_s(t)=\varepsilon(t)\,\text{A}$};
         
-  % 并联电阻 R = 2 Ω
-  \draw (2,3) to[R, l={$R=2\,\Omega$}] (2,0);
+  % 并联电阻 R = 2 Ω，手动控制放置在电阻左侧 (x=2.2)
+  \draw (2.5,3) to[R] (2.5,0);
+  \node[left] at (2.2,1.5) {$R=2\,\Omega$};
   
-  % 并联电容 C = 0.5 F，手动高保真标注极性与电压
-  \draw (4,3) to[C, l={$C=0.5\,\text{F}$}] (4,0);
-  \node[left] at (4.0,2.3) {$+$};
-  \node[left] at (4.0,0.7) {$-$};
-  \node[left] at (3.9,1.5) {$u_C(t)$};
+  % 并联电容 C = 0.5 F，容量标在右侧 (x=5.2)
+  \draw (5.0,3) to[C] (5.0,0);
+  \node[right] at (5.2,1.5) {$C=0.5\,\text{F}$};
+  
+  % 手动高保真标注电压极性与名称，标在电容左侧（x=4.7偏左）
+  \node[left] at (4.7,2.2) {$+$};
+  \node[left] at (4.7,0.8) {$-$};
+  \node[left] at (4.6,1.5) {$u_C(t)$};
   
   % 底部地线连通并接地
-  \draw (4,0) -- (0,0);
-  \draw (2,0) node[ground] {};
+  \draw (5.0,0) -- (0,0);
+  \draw (2.5,0) node[ground] {};
 
 \end{circuitikz}
 \end{document}

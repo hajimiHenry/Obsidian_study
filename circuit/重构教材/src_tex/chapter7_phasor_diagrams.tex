@@ -1,0 +1,34 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+\begin{tikzpicture}[>=Stealth, semithick]
+    \draw[->] (-0.5,0) -- (4,0) node[right] {Re};
+    \draw[->] (0,-1.5) -- (0,3.5) node[above] {Im};
+    \draw[->, ultra thick, black] (0,0) -- (2.5,0) node[above right] {$\dot{I}$};
+    \draw[->, thick, blue] (0,0) -- (1.8,0) node[below] {$\dot{U}_R$};
+    \draw[->, thick, red] (0,0) -- (0,3) node[left] {$\dot{U}_L$};
+    \draw[->, thick, orange] (0,0) -- (0,-1.2) node[left] {$\dot{U}_C$};
+    \draw[->, thick, red!60!black, dashed] (0,0) -- (0,1.8) node[left] {$\dot{U}_L + \dot{U}_C$};
+    \draw[dashed, gray] (1.8,0) -- (1.8, 1.8) -- (0,1.8);
+    \draw[->, ultra thick, purple] (0,0) -- (1.8, 1.8) node[above right] {$\dot{U}_s$};
+    \draw[domain=0:45, ->, purple] plot ({0.6*cos(\x)}, {0.6*sin(\x)});
+    \node[purple] at (0.8, 0.3) {$\varphi$};
+    \node[below, font=\small] at (2,-0.6) {(a) 串联 RLC 电路电压相量图};
+\end{tikzpicture}
+
+\begin{tikzpicture}[>=Stealth, semithick]
+    \draw[->] (-0.5,0) -- (4,0) node[right] {Re};
+    \draw[->] (0,-2) -- (0,3) node[above] {Im};
+    \draw[->, ultra thick, black] (0,0) -- (2.5,0) node[above right] {$\dot{U}$};
+    \draw[->, thick, blue] (0,0) -- (1.8,0) node[below] {$\dot{I}_R$};
+    \draw[->, thick, red] (0,0) -- (0,2.2) node[left] {$\dot{I}_C$};
+    \draw[->, thick, orange] (0,0) -- (0,-1.6) node[left] {$\dot{I}_L$};
+    \draw[->, thick, red!60!black, dashed] (0,0) -- (0,0.6) node[left] {$\dot{I}_C + \dot{I}_L$};
+    \draw[dashed, gray] (1.8,0) -- (1.8, 0.6) -- (0,0.6);
+    \draw[->, ultra thick, purple] (0,0) -- (1.8, 0.6) node[above right] {$\dot{I}_s$};
+    \draw[domain=0:18.4, ->, purple] plot ({0.7*cos(\x)}, {0.7*sin(\x)});
+    \node[purple] at (0.9, 0.15) {$\varphi$};
+    \node[below, font=\small] at (2,-1) {(b) 并联 RLC 电路电流相量图};
+\end{tikzpicture}
+\end{document}

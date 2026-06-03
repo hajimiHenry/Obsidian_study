@@ -1,0 +1,14 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, americanports, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+\begin{document}
+\begin{circuitikz}[semithick]
+    \draw (0,0) to[sV, l=$\dot{U}_s$] (0,2)
+          to[R, l=$R(3\Omega)$, i=$\dot{I}$] (2.5,2)
+          to[L, l=$j\omega L(j4\Omega)$] (5,2)
+          to[generic, l=$N$, v=$\dot{U}_N$] (5,0)
+          -- (0,0);
+    \node[above, font=\scriptsize] at (5, 1) {$Z=R_1+jX_1$};
+\end{circuitikz}
+\end{document}

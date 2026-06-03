@@ -1,0 +1,34 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, americanports, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+\begin{document}
+\begin{circuitikz}[semithick]
+    \draw (0,0) to[sV, l=$\dot{U}_s$] (0,2)
+          to[R, l=$R$, v=$\dot{U}_R$, i=$\dot{I}$] (2.5,2)
+          to[L, l=$j\omega L$, v=$\dot{U}_L$] (5,2)
+          to[C, l=$\frac{1}{j\omega C}$, v=$\dot{U}_C$] (7.5,2)
+          -- (7.5,0) -- (0,0);
+    \node[below, font=\small] at (3.75, -0.3) {(a) RLC 串联相量电路};
+\end{circuitikz}
+
+\begin{tikzpicture}[>=Stealth, semithick]
+    \draw[->] (-0.5,0) -- (3.5,0) node[right] {Re};
+    \draw[->] (0,-0.5) -- (0,3) node[above] {Im};
+    \draw[thick, blue] (0,0) -- (2.5,0) node[midway, below] {$R$}
+                      -- (2.5,2.2) node[midway, right] {$X = \omega L - \frac{1}{\omega C}$};
+    \draw[thick, red, ->] (0,0) -- (2.5,2.2) node[above left] {$Z = R + jX$};
+    \draw[domain=0:41.3, ->, purple] plot ({0.6*cos(\x)}, {0.6*sin(\x)});
+    \node[purple] at (0.8,0.3) {$\varphi$};
+    \node[below, font=\small] at (1.25, -0.6) {(b) 阻抗三角形};
+\end{tikzpicture}
+
+\begin{circuitikz}[semithick]
+    \draw (0,0) to[sV, l=$\dot{U}_s$] (0,2)
+          to[generic, l=$Z_1$, v=$\dot{U}_1$, i=$\dot{I}$] (3,2)
+          to[generic, l=$Z_2$, v=$\dot{U}_2$] (6,2)
+          -- (6,0) -- (0,0);
+    \node[below, font=\small] at (3, -0.3) {(c) 串联阻抗分压示意图};
+    \node[right, align=left] at (6.5, 1) {$\dot{I} = \frac{\dot{U}_s}{Z_1 + Z_2}$ \\ $\dot{U}_1 = \frac{Z_1}{Z_1+Z_2}\dot{U}_s$ \\ $\dot{U}_2 = \frac{Z_2}{Z_1+Z_2}\dot{U}_s$};
+\end{circuitikz}
+\end{document}

@@ -1,0 +1,24 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+\begin{tikzpicture}[>=Stealth, semithick]
+    \draw[->, gray!40] (-0.5,0) -- (4.5,0) node[right] {Re};
+    \draw[->, gray!40] (0,-2.5) -- (0,2.5) node[above] {Im};
+    \draw[->, ultra thick, black] (0,0) -- (3.5,0) node[above right] {$\dot{I}$};
+    \draw[->, thick, blue] (0,0) -- (2.5,0) node[below] {$\dot{U}_R = \dot{U}_s$};
+    \draw[->, thick, red] (0,0) -- (0,2.0) node[left] {$\dot{U}_L$};
+    \draw[->, thick, orange] (0,0) -- (0,-2.0) node[left] {$\dot{U}_C$};
+    
+    \draw[dashed, red] (0.2,2.0) -- (0.8,2.0) node[right] {$U_L = Q U_s$};
+    \draw[dashed, orange] (0.2,-2.0) -- (0.8,-2.0) node[right] {$U_C = Q U_s$};
+    
+    \node[draw, fill=blue!5, rounded corners, align=left, font=\small] at (6, 0) {
+        \textbf{串联谐振状态：} \\
+        谐振角频率：$\omega_0 = \frac{1}{\sqrt{LC}}$ \\
+        输入阻抗最小：$Z = R$ \\
+        回路电流最大：$I = \frac{U_s}{R}$ \\
+        电感与电容电压大小相等、相位相反
+    };
+\end{tikzpicture}
+\end{document}

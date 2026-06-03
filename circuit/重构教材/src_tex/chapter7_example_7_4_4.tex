@@ -1,0 +1,83 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, americanports, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+\begin{document}
+\begin{circuitikz}[semithick]
+    % (a) 原电路
+    \draw (0,0) to[sV, l={$u_s(10\angle 0^\circ\mathrm{V})$}] (0,3)
+          to[C, l={$-j8\Omega$}] (2.5,3) node[above] {a}
+          to[C, l={$-j8\Omega$}] (2.5,0)
+          
+          (2.5,3) to[R, l={$1\Omega+j10\Omega$}, i=$i$] (5.5,3) node[above] {b}
+          to[R, l=$8\Omega$] (5.5,0)
+          
+          (5.5,3) -- (8,3)
+          to[R, l=$2\Omega$] (8,1.5) node[right] {c}
+          to[R, l=$6\Omega$] (8,0)
+          
+          (8,1.5) -- (9.5,1.5)
+          to[sI, l={$i_s(2\angle 60^\circ\mathrm{A})$}] (9.5,0)
+          (0,0) -- (9.5,0);
+    \node[below, font=\small] at (4.75, -0.3) {(a) 原电路};
+\end{circuitikz}
+
+\begin{circuitikz}[semithick]
+    % (b) 求 Uoc'
+    \draw (0,0) to[sV, l=$\dot{U}_s$] (0,3)
+          to[C, l={$-j8\Omega$}] (2.5,3) node[above] {a}
+          to[C, l={$-j8\Omega$}] (2.5,0)
+          
+          (5.5,3) node[above] {b} to[R, l=$8\Omega$] (5.5,0)
+          (5.5,3) -- (8,3)
+          to[R, l=$2\Omega$] (8,1.5)
+          to[R, l=$6\Omega$] (8,0)
+          (0,0) -- (8,0);
+    \draw (2.5,3) to[open, v={$\dot{U}_{oc}'$}, color=red] (5.5,3);
+    \node[below, font=\small] at (4, -0.3) {(b) 求 $\dot{U}_{oc}'$ (电压源单独作用)};
+\end{circuitikz}
+
+\begin{circuitikz}[semithick]
+    % (c) 求 Uoc''
+    \draw (0,0) -- (0,3)
+          to[C, l={$-j8\Omega$}] (2.5,3) node[above] {a}
+          to[C, l={$-j8\Omega$}] (2.5,0)
+          
+          (5.5,3) node[above] {b} to[R, l=$8\Omega$] (5.5,0)
+          
+          (5.5,3) -- (8,3)
+          to[R, l=$2\Omega$] (8,1.5)
+          to[R, l=$6\Omega$] (8,0)
+          
+          (8,1.5) -- (9.5,1.5)
+          to[sI, l=$\dot{I}_s$] (9.5,0)
+          (0,0) -- (9.5,0);
+    \draw (2.5,3) to[open, v={$\dot{U}_{oc}''$}, color=red] (5.5,3);
+    \node[below, font=\small] at (4.75, -0.3) {(c) 求 $\dot{U}_{oc}''$ (电流源单独作用)};
+\end{circuitikz}
+
+\begin{circuitikz}[semithick]
+    % (d) 求 Zo
+    \draw (0,0) -- (0,3)
+          to[C, l={$-j8\Omega$}] (2.5,3) node[above] {a}
+          to[C, l={$-j8\Omega$}] (2.5,0)
+          
+          (5.5,3) node[above] {b} to[R, l=$8\Omega$] (5.5,0)
+          (5.5,3) -- (8,3)
+          to[R, l=$2\Omega$] (8,1.5)
+          to[R, l=$6\Omega$] (8,0)
+          (0,0) -- (8,0);
+    \draw[red, <->] (2.5,3.3) -- (5.5,3.3) node[midway, above] {$Z_o$};
+    \node[below, font=\small] at (4, -0.3) {(d) 求等效阻抗 $Z_o$};
+\end{circuitikz}
+
+\begin{circuitikz}[semithick]
+    % (e) 戴维南等效电路
+    \draw (0,0) to[sV, l=$\dot{U}_{oc}$] (0,2.5)
+          to[generic, l=$Z_o$, i=$\dot{I}$] (3,2.5)
+          to[generic, l=$Z_L$] (3,0)
+          -- (0,0);
+    \node[above, font=\scriptsize] at (3, 2.5) {$1+j10\ \Omega$};
+    \node[below, font=\small] at (1.5, -0.3) {(e) 戴维南等效电路};
+\end{circuitikz}
+\end{document}

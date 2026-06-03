@@ -1,26 +1,103 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="430" viewBox="0 0 1000 430">
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="480" viewBox="0 0 1000 480">
 <style>
   @media (prefers-color-scheme: dark) {
-    svg {
-      filter: invert(1) hue-rotate(180deg) !important;
-    }
+    svg { filter: invert(1) hue-rotate(180deg) !important; }
   }
 </style>
+<defs>
+  <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/>
+  </marker>
+  <style>
+    text{font-family:"Microsoft YaHei","SimSun",sans-serif;font-size:16px;fill:#222}
+    .title{font-size:20px;font-weight:700}
+    .subtitle{font-size:17px;font-weight:700}
+    .label{font-size:14px;fill:#555}
+    .formula{font-size:18px;fill:#c0392b;font-weight:700}
+    .wire{stroke:#333;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .panel{fill:#fafafa;stroke:#ccc;stroke-width:1.5;rx:10}
+    .port{stroke:#e74c3c;stroke-width:2.5;fill:#e74c3c}
+    .cloud{fill:#eef6ff;stroke:#5dade2;stroke-width:1.8;rx:15}
+    .step{fill:#f0f0f0;stroke:#999;stroke-width:1.2;rx:6}
+  </style>
+</defs>
 
-  <defs><style>text{font-family:"Microsoft YaHei","SimSun",sans-serif;font-size:18px;fill:#111}.title{font-size:24px;font-weight:700}.small{font-size:15px}.wire{stroke:#111;stroke-width:2.7;fill:none;stroke-linecap:round;stroke-linejoin:round}.panel{fill:#fff;stroke:#111;stroke-width:1.8;rx:8}</style></defs>
-  
-  
-<text class="title" x="40" y="45">时间常数：从动态元件端口看进去的等效电阻</text>
-  <rect class="panel" x="45" y="80" width="430" height="285"/>
-  <text x="70" y="115" font-weight="700">RC 电路：τ = Req · C</text>
-  <line class="wire" x1="90" y1="220" x2="180" y2="220"/><polyline class="wire" points="180,220 192,200 206,240 220,200 234,240 248,200 260,220"/>
-  <line class="wire" x1="260" y1="220" x2="330" y2="220"/><line class="wire" x1="330" y1="185" x2="330" y2="255"/><line class="wire" x1="360" y1="185" x2="360" y2="255"/><line class="wire" x1="360" y1="220" x2="420" y2="220"/>
-  <text class="small" x="175" y="180">Req</text><text class="small" x="334" y="285">C</text>
-  <text class="small" x="80" y="315">独立电压源短路，独立电流源开路；受控源保留。</text>
-  <rect class="panel" x="525" y="80" width="430" height="285"/>
-  <text x="550" y="115" font-weight="700">RL 电路：τ = L / Req</text>
-  <line class="wire" x1="570" y1="220" x2="650" y2="220"/><path class="wire" d="M650 220 C660 185 690 185 700 220 C710 255 740 255 750 220"/>
-  <line class="wire" x1="750" y1="220" x2="820" y2="220"/><polyline class="wire" points="820,220 832,200 846,240 860,200 874,240 888,200 900,220"/>
-  <text class="small" x="680" y="180">L</text><text class="small" x="825" y="180">Req</text>
-  <text class="small" x="555" y="315">同样的 Req，对 RC 是乘上 C，对 RL 是 L 除以 Req。</text>
+<!-- 大标题 -->
+<text class="title" x="30" y="35">时间常数 τ 的求法：从储能元件端口向外看等效电阻</text>
+
+<!-- ===== 左: RC 电路 ===== -->
+<rect class="panel" x="20" y="55" width="460" height="280"/>
+<text class="subtitle" x="35" y="85">RC 电路：τ = Req × C</text>
+
+<!-- 电容符号 -->
+<line class="wire" x1="100" y1="160" x2="100" y2="200"/>
+<line class="wire" x1="115" y1="160" x2="115" y2="200"/>
+<text x="85" y="220" font-size="14">C</text>
+<!-- 端口标记（红点） -->
+<circle class="port" cx="100" cy="145" r="4"/>
+<circle class="port" cx="115" cy="145" r="4"/>
+<text x="80" y="138" font-size="13" fill="#e74c3c">端口</text>
+
+<!-- 向外看的连线 -->
+<line class="wire" x1="100" y1="145" x2="100" y2="130"/>
+<line class="wire" x1="100" y1="130" x2="160" y2="130"/>
+<line class="wire" x1="115" y1="145" x2="115" y2="240"/>
+<line class="wire" x1="115" y1="240" x2="160" y2="240"/>
+
+<!-- 外部电路云（表示剩余电路） -->
+<rect class="cloud" x="160" y="105" width="200" height="160"/>
+<text x="200" y="175" font-size="15">剩余电路</text>
+<text x="195" y="200" font-size="13" fill="#555">（独立源置零</text>
+<text x="195" y="218" font-size="13" fill="#555">  受控源保留）</text>
+
+<!-- 等效结果箭头 -->
+<text x="390" y="185" font-size="30">→</text>
+<!-- 简化后的 Req -->
+<rect x="415" y="168" width="50" height="20" fill="none" stroke="#333" stroke-width="2"/>
+<text x="422" y="183" font-size="14" font-weight="700">Req</text>
+
+<!-- 公式 -->
+<text class="formula" x="130" y="310">τ = Req · C</text>
+
+<!-- ===== 右: RL 电路 ===== -->
+<rect class="panel" x="520" y="55" width="460" height="280"/>
+<text class="subtitle" x="535" y="85">RL 电路：τ = L / Req</text>
+
+<!-- 电感符号 -->
+<path class="wire" d="M595 165 C600 150 610 150 615 165 C620 180 630 180 635 165"/>
+<text x="600" y="195" font-size="14">L</text>
+<!-- 端口标记 -->
+<circle class="port" cx="590" cy="165" r="4"/>
+<circle class="port" cx="640" cy="165" r="4"/>
+<text x="595" y="145" font-size="13" fill="#e74c3c">端口</text>
+
+<!-- 向外看的连线 -->
+<line class="wire" x1="590" y1="165" x2="590" y2="130"/>
+<line class="wire" x1="590" y1="130" x2="660" y2="130"/>
+<line class="wire" x1="640" y1="165" x2="640" y2="240"/>
+<line class="wire" x1="640" y1="240" x2="660" y2="240"/>
+
+<!-- 外部电路云 -->
+<rect class="cloud" x="660" y="105" width="200" height="160"/>
+<text x="700" y="175" font-size="15">剩余电路</text>
+<text x="695" y="200" font-size="13" fill="#555">（独立源置零</text>
+<text x="695" y="218" font-size="13" fill="#555">  受控源保留）</text>
+
+<!-- 等效结果箭头 -->
+<text x="885" y="185" font-size="30">→</text>
+<!-- 简化后的 Req -->
+<rect x="910" y="168" width="50" height="20" fill="none" stroke="#333" stroke-width="2"/>
+<text x="917" y="183" font-size="14" font-weight="700">Req</text>
+
+<!-- 公式 -->
+<text class="formula" x="630" y="310">τ = L / Req</text>
+
+<!-- ===== 下方: 操作步骤 ===== -->
+<rect class="step" x="20" y="360" width="960" height="100"/>
+<text class="subtitle" x="40" y="390">求 Req 三步走：</text>
+<text x="40" y="420" font-size="15">❶ 把储能元件（C 或 L）从电路中摘掉，露出它的两个端口</text>
+<text x="40" y="445" font-size="15">❷ 独立电压源短路（用导线替代），独立电流源开路（断开），受控源保留不动</text>
+<text x="550" y="420" font-size="15">❸ 从端口向里看，算出等效电阻 Req</text>
+<text x="550" y="445" font-size="15">    （串并联、戴维南、外加电源法均可）</text>
+
 </svg>

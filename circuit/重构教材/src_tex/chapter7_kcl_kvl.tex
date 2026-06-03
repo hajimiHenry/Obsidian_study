@@ -1,0 +1,31 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usetikzlibrary{arrows.meta}
+\begin{document}
+\begin{tikzpicture}[>=Stealth, semithick]
+    \filldraw (0,0) circle (2.5pt) node[above] {节点};
+    \draw[<-] (0,0) -- (-1.5, 1) node[midway, above left] {$\dot{I}_1$};
+    \draw[<-] (0,0) -- (-1.5, -1) node[midway, below left] {$\dot{I}_2$};
+    \draw[->] (0,0) -- (1.5, 1) node[midway, above right] {$\dot{I}_3$};
+    \draw[->] (0,0) -- (1.5, -1) node[midway, below right] {$\dot{I}_4$};
+    \node[right, align=left] at (2,0) {$\sum \dot{I}_{in} = \sum \dot{I}_{out}$ \\ $\dot{I}_1 + \dot{I}_2 - \dot{I}_3 - \dot{I}_4 = 0$};
+\end{tikzpicture}
+
+\begin{tikzpicture}[>=Stealth, semithick]
+    \draw (0,0) rectangle (3,2);
+    \node[left] at (0,1) {$\dot{U}_1$};
+    \node[left, font=\scriptsize] at (0,1.7) {$+$};
+    \node[left, font=\scriptsize] at (0,0.3) {$-$};
+    \node[above] at (1.5,2) {$\dot{U}_2$};
+    \node[above, font=\scriptsize] at (0.3,2) {$+$};
+    \node[above, font=\scriptsize] at (2.7,2) {$-$};
+    \node[right] at (3,1) {$\dot{U}_3$};
+    \node[right, font=\scriptsize] at (3,1.7) {$-$};
+    \node[right, font=\scriptsize] at (3,0.3) {$+$};
+    \node[below] at (1.5,0) {$\dot{U}_4$};
+    \node[below, font=\scriptsize] at (0.3,0) {$-$};
+    \node[below, font=\scriptsize] at (2.7,0) {$+$};
+    \draw[->, red] (1.5,1.2) arc (90:-230:0.4) node[midway, above, font=\scriptsize] {绕行方向};
+    \node[right, align=left] at (3.8,1) {$\sum \dot{U} = 0$ \\ $\dot{U}_1 + \dot{U}_2 - \dot{U}_3 + \dot{U}_4 = 0$};
+\end{tikzpicture}
+\end{document}

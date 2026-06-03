@@ -1,0 +1,13 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, americanports, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+\begin{document}
+\begin{circuitikz}[semithick]
+    \draw (0,0) to[sV, l={$\dot{U}_s(10\angle 45^\circ\mathrm{V})$}] (0,2)
+          to[C, l={$C(X_C=2.5\Omega)$}, v={$\dot{U}_C(5\angle -135^\circ\mathrm{V})$}, i=$\dot{I}$] (3.5,2)
+          to[generic, l=$N$, v=$\dot{U}$] (3.5,0)
+          -- (0,0);
+    \node[above, font=\scriptsize] at (3.5, 1) {$Z = ?$};
+\end{circuitikz}
+\end{document}

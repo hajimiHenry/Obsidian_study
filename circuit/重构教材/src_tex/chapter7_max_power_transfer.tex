@@ -1,0 +1,20 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, americanports, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+\begin{document}
+\begin{circuitikz}[semithick]
+    \draw (0,0) to[sV, l=$\dot{U}_s$] (0,2.5)
+          to[generic, l=$Z_o$, i=$\dot{I}$] (3.5,2.5)
+          to[generic, l=$Z_L$] (3.5,0)
+          -- (0,0);
+    \node[above, font=\scriptsize] at (2.2, 2.7) {$Z_o = R_o + jX_o$};
+    \node[right, font=\scriptsize] at (3.7, 1.25) {$Z_L = R_L + jX_L$};
+    
+    \node[below, font=\small, align=left] at (1.75, -0.4) {
+        共轭匹配条件：$Z_L = Z_o^*$ \\
+        即 $R_L = R_o$, $X_L = -X_o$ \\
+        最大有功功率：$P_{L\max} = \frac{U_s^2}{4R_o}$
+    };
+\end{circuitikz}
+\end{document}

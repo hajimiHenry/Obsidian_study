@@ -1,12 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.2 Portable) (preloaded format=xelatex 2026.5.21)  23 MAY 2026 20:04
+This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.2 Portable) (preloaded format=xelatex 2026.5.21)  1 JUN 2026 21:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**C:/Users/Spane/Desktop/prompt_base/circuit/重构教材/src_tex/chapter5_example_5_4_
-1.tex
-
-(C:/Users/Spane/Desktop/prompt_base/circuit/重构教材/src_tex/chapter5_example_5_4_1
-.tex
+**./chapter5_example_5_4_1.tex
+(chapter5_example_5_4_1.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
 (D:\soft\MiKTeXPortable\texmfs\install\tex/latex/standalone\standalone.cls
@@ -1016,7 +1013,7 @@ Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 Package translations Info: No language package found. I am going to use `englis
 h' as default language. on input line 6.
 
-No file chapter5_example_5_4_1.aux.
+(chapter5_example_5_4_1.aux)
 \openout1 = `chapter5_example_5_4_1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
@@ -1102,29 +1099,26 @@ nslations-basic-dictionary')
 Package translations Info: loading dictionary `translations-basic-dictionary' f
 or `english'. on input line 6.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.53937> on input line 10.
+(Font)              <10.53937> on input line 12.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 10.
+(Font)              <7> on input line 12.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 10.
+(Font)              <5> on input line 12.
  [1
 
-]
-(C:\Users\Spane\Desktop\prompt_base\circuit\重构教材\src_tex\chapter5_example_5_4_1
-.aux)
+] (chapter5_example_5_4_1.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2022/07/14>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 41277 strings out of 402807
- 1127506 string characters out of 5446584
- 1762844 words of memory out of 5000000
- 69803 multiletter control sequences out of 15000+600000
+ 41156 strings out of 402807
+ 1124124 string characters out of 5446584
+ 1761835 words of memory out of 5000000
+ 69682 multiletter control sequences out of 15000+600000
  630399 words of font info for 60 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 117i,7n,121p,504b,923s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,7n,121p,450b,918s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on C:\Users\Spane\Desktop\prompt_base\circuit\重构教材\src_tex\chapt
-er5_example_5_4_1.pdf (1 page).
+Output written on chapter5_example_5_4_1.pdf (1 page).

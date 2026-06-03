@@ -1,0 +1,14 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, americanports, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+\begin{document}
+\begin{circuitikz}[semithick]
+    \draw (0,0) to[sV, l=$u_s$] (0,2.5)
+          to[L, l=$L$, i=$i_L$] (3,2.5)
+          to[C, l=$C$, i=$i_C$] (3,0)
+          (3,2.5) -- (5,2.5)
+          to[R, l=$R$, i=$i_R$, v=$u$] (5,0)
+          -- (0,0);
+\end{circuitikz}
+\end{document}

@@ -1,0 +1,35 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, americanports, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+\begin{document}
+\begin{circuitikz}[semithick]
+    \draw (0,0.8) to[R, l=$R$, v=$u$, i=$i$] (2.5,0.8);
+    \node[above, font=\small] at (1.25, 1.8) {电阻元件 (时域)};
+    \node[below] at (1.25, 0.4) {$u(t) = R i(t)$};
+    \draw[->, thick, double] (3.2, 0.8) -- (4.3, 0.8) node[midway, above, font=\scriptsize] {相量变换};
+    \draw (5,0.8) to[R, l=$R$, v=$\dot{U}$, i=$\dot{I}$] (7.5,0.8);
+    \node[above, font=\small] at (6.25, 1.8) {阻抗形式 (相量域)};
+    \node[below] at (6.25, 0.4) {$\dot{U} = R \dot{I}$};
+\end{circuitikz}
+
+\begin{circuitikz}[semithick]
+    \draw (0,0.8) to[L, l=$L$, v=$u$, i=$i$] (2.5,0.8);
+    \node[above, font=\small] at (1.25, 1.8) {电感元件 (时域)};
+    \node[below] at (1.25, 0.4) {$u(t) = L\frac{\mathrm{d}i(t)}{\mathrm{d}t}$};
+    \draw[->, thick, double] (3.2, 0.8) -- (4.3, 0.8) node[midway, above, font=\scriptsize] {相量变换};
+    \draw (5,0.8) to[L, l=$j\omega L$, v=$\dot{U}$, i=$\dot{I}$] (7.5,0.8);
+    \node[above, font=\small] at (6.25, 1.8) {感抗阻抗 (相量域)};
+    \node[below] at (6.25, 0.4) {$\dot{U} = j\omega L \dot{I}$};
+\end{circuitikz}
+
+\begin{circuitikz}[semithick]
+    \draw (0,0.8) to[C, l=$C$, v=$u$, i=$i$] (2.5,0.8);
+    \node[above, font=\small] at (1.25, 1.8) {电容元件 (时域)};
+    \node[below] at (1.25, 0.4) {$i(t) = C\frac{\mathrm{d}u(t)}{\mathrm{d}t}$};
+    \draw[->, thick, double] (3.2, 0.8) -- (4.3, 0.8) node[midway, above, font=\scriptsize] {相量变换};
+    \draw (5,0.8) to[C, l=$\frac{1}{j\omega C}$, v=$\dot{U}$, i=$\dot{I}$] (7.5,0.8);
+    \node[above, font=\small] at (6.25, 1.8) {容抗阻抗 (相量域)};
+    \node[below] at (6.25, 0.4) {$\dot{U} = \frac{1}{j\omega C} \dot{I}$};
+\end{circuitikz}
+\end{document}

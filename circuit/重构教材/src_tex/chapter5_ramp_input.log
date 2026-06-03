@@ -1,12 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.2 Portable) (preloaded format=xelatex 2026.5.21)  23 MAY 2026 20:04
+This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.2 Portable) (preloaded format=xelatex 2026.5.21)  1 JUN 2026 21:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**C:/Users/Spane/Desktop/prompt_base/circuit/重构教材/src_tex/chapter5_ramp_input.t
-ex
-
-(C:/Users/Spane/Desktop/prompt_base/circuit/重构教材/src_tex/chapter5_ramp_input.te
-x
+**./chapter5_ramp_input.tex
+(chapter5_ramp_input.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
 (D:\soft\MiKTeXPortable\texmfs\install\tex/latex/standalone\standalone.cls
@@ -1016,7 +1013,7 @@ Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 Package translations Info: No language package found. I am going to use `englis
 h' as default language. on input line 7.
 
-No file chapter5_ramp_input.aux.
+(chapter5_ramp_input.aux)
 \openout1 = `chapter5_ramp_input.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -1102,29 +1099,26 @@ nslations-basic-dictionary')
 Package translations Info: loading dictionary `translations-basic-dictionary' f
 or `english'. on input line 7.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.53937> on input line 13.
+(Font)              <10.53937> on input line 12.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 13.
+(Font)              <7> on input line 12.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 13.
+(Font)              <5> on input line 12.
  [1
 
-]
-(C:\Users\Spane\Desktop\prompt_base\circuit\重构教材\src_tex\chapter5_ramp_input.au
-x)
+] [2] (chapter5_ramp_input.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2022/07/14>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 41698 strings out of 402807
- 1137229 string characters out of 5446584
- 1784562 words of memory out of 5000000
- 70223 multiletter control sequences out of 15000+600000
- 630407 words of font info for 61 fonts, out of 8000000 for 9000
+ 41694 strings out of 402807
+ 1136778 string characters out of 5446584
+ 1766979 words of memory out of 5000000
+ 70220 multiletter control sequences out of 15000+600000
+ 630399 words of font info for 60 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 117i,10n,121p,501b,946s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,10n,121p,447b,880s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on C:\Users\Spane\Desktop\prompt_base\circuit\重构教材\src_tex\chapt
-er5_ramp_input.pdf (1 page).
+Output written on chapter5_ramp_input.pdf (2 pages).

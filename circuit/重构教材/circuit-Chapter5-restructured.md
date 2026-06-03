@@ -14,7 +14,7 @@ $$
 
 电容的状态由电压决定，电感的状态由电流决定。换路前后最容易出错的地方，就是把这两个状态量与普通支路电压、电流混在一起。
 
-![[images/chapter5_dynamic_components.svg]]
+![[images/chapter5_dynamic_components.svg|500]]
 
 ### 本节先解决什么问题
 
@@ -144,7 +144,7 @@ $W_L(3)=\frac12 L i_L^2(3)=\frac12\times2\times36=36$ J。
 
 ## 5.1.3 电容、电感串并联
 
-![[images/chapter5_series_parallel.svg]]
+![[images/chapter5_series_parallel.svg|500]]
 
 电容：串联 $\frac1{C_{eq}}=\sum\frac1{C_k}$，并联 $C_{eq}=\sum C_k$
 电感：串联 $L_{eq}=\sum L_k$，并联 $\frac1{L_{eq}}=\sum\frac1{L_k}$
@@ -171,7 +171,7 @@ $$
 
 $0^-$ 找历史状态，$0^+$ 找过渡过程起点，$\infty$ 找最终稳定值。
 
-![[images/chapter5_switching_equiv.svg]]
+![[images/chapter5_switching_equiv.svg|500]]
 
 ---
 
@@ -264,7 +264,7 @@ $$
 
 $x(t)$ 可以是任意支路电压或电流。指数项 $e^{-t/\tau}$ 表示旧状态还剩多少比例。
 
-![[images/chapter5_rc_rl_response.svg]]
+![[images/chapter5_rc_rl_response.svg|500]]
 
 ### 为什么总是指数形式
 
@@ -280,7 +280,7 @@ $x(t)$ 可以是任意支路电压或电流。指数项 $e^{-t/\tau}$ 表示旧�
 
 $R_{eq}$ 从动态元件端口**向外看**。求 $R_{eq}$：独立电压源短路，独立电流源开路，**受控源保留**。
 
-![[images/chapter5_tau_port_equivalent.svg]]
+![[images/chapter5_tau_port_equivalent.svg|500]]
 
 经过 $1\tau$，暂态差值剩 36.8%；约 $5\tau$ 后接近稳态。
 
@@ -290,7 +290,7 @@ $R_{eq}$ 从动态元件端口**向外看**。求 $R_{eq}$：独立电压源短�
 
 ### RC 零输入
 
-![[images/chapter5_rc_zero_input_detail.svg]]
+![[images/chapter5_rc_zero_input_detail.svg|450]]
 
 $$
 u_C(t)=U_0e^{-t/RC}
@@ -302,7 +302,7 @@ $$
 
 ### RL 零输入
 
-![[images/chapter5_rl_zero_input_detail.svg]]
+![[images/chapter5_rl_zero_input_detail.svg|450]]
 
 $$
 i_L(t)=I_0e^{-Rt/L}
@@ -345,7 +345,7 @@ $$
 
 ### RC 零状态
 
-![[images/chapter5_rc_zero_state_detail.svg]]
+![[images/chapter5_rc_zero_state_detail.svg|450]]
 
 $$
 u_C(t)=U_s(1-e^{-t/RC})
@@ -357,7 +357,7 @@ $u_C$ 从 0 上升到 $U_s$。最终 $u_C(\infty)=U_s$ 是因为直流稳态电�
 
 ### RL 零状态
 
-![[images/chapter5_rl_zero_state_detail.svg]]
+![[images/chapter5_rl_zero_state_detail.svg|450]]
 
 $$
 i_L(t)=\frac{U_s}{R}(1-e^{-Rt/L})
@@ -369,7 +369,7 @@ $i_L$ 从 0 上升到 $U_s/R$。最终 $i_L(\infty)=U_s/R$ 是因为直流稳态
 
 ### 例题 5.3-2：RC 零状态（电流源激励）
 
-![[images/chapter5_example_5_3_2.svg]]
+![[images/chapter5_example_5_3_2.svg|450]]
 
 $t<0$ 开关断开且稳态，$t=0$ 闭合。C=1 F。求 $t\ge0$ 的 $u_C(t)$、$i(t)$。
 
@@ -399,7 +399,7 @@ $$
 
 ### 例题 5.3-3：RC 全响应——三要素法基本功
 
-![[images/chapter5_full_response_example.svg]]
+![[images/chapter5_full_response_example.svg|450]]
 
 $R=2$ kΩ，$C=1000$ μF，$U_s=10$ V，$u_C(0^-)=4$ V。求 $t\ge0$ 时 $u_C(t)$。
 
@@ -507,7 +507,7 @@ $$
 
 矩形脉冲：$A[\varepsilon(t)-\varepsilon(t-a)]$ 表示 $0<t<a$ 为 $A$，之后为 0。
 
-![[images/chapter5_step_impulse.svg]]
+![[images/chapter5_step_impulse.svg|500]]
 
 阶跃函数把"什么时候开始作用"写进公式，便于处理延迟输入。
 
@@ -519,7 +519,7 @@ $$
 
 ### 例题 5.4-1：基本阶跃响应
 
-![[images/chapter5_example_5_4_1.svg]]
+![[images/chapter5_example_5_4_1.svg|450]]
 
 $C=0.5$ F，$R=2$ Ω，$i_s(t)=\varepsilon(t)$ A，$u_C(0^-)=0$。求 $u_C(t)$。
 
@@ -533,7 +533,7 @@ $$
 
 ### 例题 5.4-2：RC 矩形脉冲响应（分段三要素）
 
-![[images/chapter5_step_piecewise_example.svg]]
+![[images/chapter5_step_piecewise_example.svg|450]]
 
 RC 串联，$R=1$ Ω，$C=1$ F，$u_C(0^-)=0$。$u_s(t)=10[\varepsilon(t)-\varepsilon(t-2)]$ V。求 $u_C(t)$。
 
@@ -555,7 +555,11 @@ $$
 
 ### 补充：斜坡输入的处理
 
-![[images/chapter5_ramp_input.svg]]
+**(a) 电路图**
+![[images/chapter5_ramp_input_a.svg|450]]
+
+**(b) 激励与响应波形**
+![[images/chapter5_ramp_input_b.svg|450]]
 
 习题 5.22 激励 $u_s(t)=t\cdot\varepsilon(t)$（斜坡），三要素法不直接适用。处理方法：
 
@@ -591,7 +595,7 @@ $$
 
 ## 5.5.2 任意激励的零状态响应——卷积积分
 
-![[images/chapter5_convolution_thinking.svg]]
+![[images/chapter5_convolution_thinking.svg|500]]
 
 $$
 y(t)=\int_0^t h(t-\xi)f(\xi)\,\mathrm d\xi

@@ -1,0 +1,19 @@
+\documentclass[tikz,border=2bp]{standalone}
+\usepackage{ctex}
+\usepackage[europeanresistors, americanvoltages, americancurrents, americanports, siunitx]{circuitikz}
+\standaloneenv{circuitikz}
+\begin{document}
+\begin{circuitikz}[semithick]
+    \draw[thick, fill=gray!10] (0,0) rectangle (2,3);
+    \node at (1,1.5) {含源网络};
+    \draw[thick, fill=gray!10] (5,0) rectangle (7,3);
+    \node at (6,1.5) {含源网络};
+    
+    \draw (2,2) to[short, *-*, l=a] (5,2) node[above] {b};
+    \node[above] at (2,2) {a};
+    \draw (2,1) to[short, *-*] (5,1);
+    
+    \draw[->, red, thick] (3.2, 2.3) -- (3.8, 2.3) node[midway, above] {$\dot{I} = 0$};
+    \node[blue] at (3.5, 2.7) {$\dot{U}_a = \dot{U}_b$};
+\end{circuitikz}
+\end{document}
