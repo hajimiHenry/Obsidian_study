@@ -1,0 +1,541 @@
+\documentclass[UTF8,zihao=-4]{ctexart}
+
+\usepackage[a4paper,left=1.7cm,right=1.7cm,top=1.55cm,bottom=1.75cm]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{multicol}
+
+\definecolor{main}{HTML}{1F4E79}
+\definecolor{deep}{HTML}{243B53}
+\definecolor{accent}{HTML}{B45309}
+\definecolor{soft}{HTML}{F5F7FA}
+\definecolor{line}{HTML}{D9E2EC}
+\definecolor{green}{HTML}{2F7D5C}
+
+\pagestyle{fancy}
+\setlength{\headheight}{25pt}
+\fancyhf{}
+\lhead{\textcolor{deep}{中国近现代史纲要 A 类高频复习册}}
+\rhead{\textcolor{main}{只含 A 类内容}}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{line}\leaders\hrule height \headrulewidth\hfill}}
+
+\titleformat{\section}
+  {\Large\bfseries\color{main}}
+  {}{0pt}{}
+\titleformat{\subsection}
+  {\large\bfseries\color{deep}}
+  {}{0pt}{}
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\color{accent}}
+  {}{0pt}{}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlist[itemize]{leftmargin=2em,itemsep=2pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=2em,itemsep=2pt,topsep=3pt}
+\renewcommand{\arraystretch}{1.25}
+
+\newcommand{\tagline}[2]{%
+  \vspace{0.4em}
+  \noindent
+  \begingroup
+  \setlength{\fboxsep}{7pt}
+  \colorbox{soft}{%
+    \parbox{\dimexpr\linewidth-14pt\relax}{%
+      {\bfseries\textcolor{#1}{#2}}%
+    }%
+  }%
+  \endgroup
+  \vspace{0.25em}
+}
+
+\newcommand{\exam}[1]{\textcolor{accent}{\bfseries 原题级别：}#1}
+\newcommand{\pin}[1]{\textcolor{main}{\bfseries 选择题钉子：}#1}
+\newcommand{\core}[1]{\textcolor{green}{\bfseries #1}}
+
+\begin{document}
+
+\begin{titlepage}
+  \centering
+  \vspace*{2.4cm}
+  {\Huge\bfseries\textcolor{main}{中国近现代史纲要}\par}
+  \vspace{0.35cm}
+  {\Huge\bfseries\textcolor{main}{A 类高频复习册}\par}
+  \vspace{0.75cm}
+  {\Large 只保留 A1--A8 高收益考点\par}
+  \vspace{1.2cm}
+  \tagline{accent}{使用方式：先背“原题级别”，再背每章答题骨架，最后扫“选择题钉子”。}
+  \vfill
+  {\large 来源：历年期末试题 + 《近现代史纲要\_2025.md》高频标记\par}
+  \vspace{0.25cm}
+  {\large 生成日期：2026-06-04\par}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{A 类速览}
+
+\begin{tabularx}{\textwidth}{>{\bfseries\color{main}}p{1.4cm}X>{\raggedright\arraybackslash}p{4.3cm}}
+\toprule
+优先级 & 必背主题 & 最适合拿分的题型 \\
+\midrule
+A1 & 抗日战争、抗日民族统一战线、正面战场、中流砥柱、抗战胜利原因意义 & 简答、论述、选择 \\
+A2 & 近代中国主要矛盾、两大历史任务、半殖民地半封建基本特征 & 原题简答、论述 \\
+A3 & 戊戌维新、革命与改良论战、辛亥革命、三民主义 & 论述、简答、选择 \\
+A4 & 五四运动、马克思主义传播、中国共产党成立 & 原题简答、论述 \\
+A5 & 大革命、土地革命、红色政权、遵义会议、瓦窑堡会议 & 会议题、原因题 \\
+A6 & 三种建国方案、国民党失败、中国共产党胜利、新民主主义革命胜利 & 论述、简答 \\
+A7 & 社会主义改造、一化三改、中共八大、论十大关系、社会主义基本制度 & 选择、简答、多选 \\
+A8 & 十一届三中全会、四项基本原则、南方谈话、改革开放 & 原题简答、选择 \\
+\bottomrule
+\end{tabularx}
+
+\tagline{accent}{最短路径：A1、A2、A3、A4 先背；时间不够时，A5--A8 至少背每节的“答题骨架”。}
+
+\newpage
+
+\section{A1 最重点：抗日战争}
+
+\subsection{1. 长征胜利的意义}
+\exam{长征意义常与土地革命、遵义会议、革命转折一起考。}
+\begin{itemize}
+  \item 粉碎了国民党反动派消灭红军和中国革命力量的企图，使中国革命转危为安。
+  \item 保存并锤炼了党和红军的骨干力量，为中国革命新局面的到来创造了条件。
+  \item 宣传了中国共产党的政治主张，播撒了革命火种，扩大了党和红军的影响。
+  \item 铸就了长征精神，集中体现坚定理想信念、独立自主、艰苦奋斗和紧密依靠人民。
+\end{itemize}
+
+\subsection{2. 国民党路线与正面战场作用}
+\exam{2016--2017、2023--2024 选择题直接考台儿庄；2022--2023 考豫湘桂战役。}
+\begin{itemize}
+  \item 国民党实行的是\core{片面抗战路线}：主要依靠政府和军队抗战，不充分发动人民群众。
+  \item 战略防御阶段，国民党正面战场承担主要作战，组织淞沪、忻口、徐州、武汉等会战，消耗日军，粉碎日本速胜计划。
+  \item 台儿庄战役是正面战场取得的重大胜利，鼓舞了全国抗战信心。
+  \item 战略相持阶段以后，国民党消极抗日、积极反共倾向上升，正面战场地位下降。
+  \item 正面战场溃败的根本原因，是片面抗战路线和国民党政治腐败、战略指导失误。
+\end{itemize}
+
+\subsection{3. 中国共产党为什么是中流砥柱}
+\exam{高概率简答/论述题，按“路线--战略--战场--根据地--党建”答。}
+\begin{enumerate}
+  \item 坚持维护和巩固抗日民族统一战线，主张停止内战、一致抗日。
+  \item 提出\core{全面抗战路线}和\core{持久战}战略总方针，指明抗战前途。
+  \item 开辟敌后战场，发展游击战争，建立抗日民主根据地。
+  \item 在根据地实行减租减息、三三制政权等政策，广泛动员人民群众。
+  \item 加强党的建设，把党建设成为抗战中的坚强领导核心。
+\end{enumerate}
+
+\subsection{4. 抗日战争胜利的原因和意义}
+\exam{2018--2019、2021--2022 大题均出现抗战胜利相关内容。}
+
+\textbf{胜利原因：}
+\begin{itemize}
+  \item 以爱国主义为核心的民族精神，是抗战胜利的决定因素。
+  \item 中国共产党的中流砥柱作用，是抗战胜利的关键。
+  \item 全民族抗战，是抗战胜利的重要法宝。
+  \item 世界反法西斯力量的支持，是抗战胜利的重要外部条件。
+\end{itemize}
+
+\textbf{历史意义：}
+\begin{itemize}
+  \item 彻底打败日本侵略者，捍卫了国家主权和民族尊严。
+  \item 促进中华民族觉醒，增强民族凝聚力，为民族复兴奠定重要基础。
+  \item 提高中国国际地位，使中国成为世界反法西斯战争东方主战场。
+  \item 为中国共产党带领人民争取新民主主义革命胜利创造了重要条件。
+\end{itemize}
+
+\subsection{选择题钉子}
+\pin{九一八事变是中国人民抗日战争起点；七七事变是全民族抗战开始；瓦窑堡会议确定抗日民族统一战线政策；洛川会议提出全面抗战路线；台儿庄战役是正面战场重大胜利；《论持久战》系统阐述抗战规律；左权是牺牲的八路军副参谋长；《对日寇的最后一战》由毛泽东发表。}
+
+\newpage
+
+\section{A2 必背：近代中国社会性质}
+
+\subsection{1. 主要矛盾和两大历史任务}
+\exam{2016--2017、2023--2024 原题复用。}
+\begin{itemize}
+  \item 近代中国社会主要矛盾：\core{帝国主义和中华民族的矛盾}、\core{封建主义和人民大众的矛盾}。
+  \item 最主要矛盾：帝国主义和中华民族的矛盾。
+  \item 两大历史任务：争取民族独立、人民解放；实现国家富强、人民富裕。
+  \item 两者关系：前一个任务为后一个任务扫清障碍、创造前提；后一个任务是前一个任务的最终目的和必然要求。
+\end{itemize}
+
+\subsection{2. 半殖民地半封建社会基本特征}
+\exam{2022--2023 论述题直接考“基本特征”。}
+\begin{enumerate}
+  \item 资本--帝国主义侵略势力逐步操纵中国政治、经济命脉，日益成为支配中国的决定性力量。
+  \item 封建剥削制度仍然占优势，是中国社会经济的主要基础之一。
+  \item 自然经济遭到破坏，民族资本主义有所发展，但发展缓慢、力量薄弱。
+  \item 中国社会政治经济发展极不平衡，地方割据和军阀混战长期存在。
+  \item 人民极端贫困，政治上没有权利，民族压迫和阶级压迫交织。
+  \item 中国逐步沦为列强商品倾销市场、原料掠夺地和资本输出场所。
+\end{enumerate}
+
+\subsection{3. 鸦片战争后为何逐步变成半封建社会}
+\begin{itemize}
+  \item 外国资本主义入侵破坏中国自给自足的自然经济。
+  \item 商品经济和民族资本主义有一定发展，但没有形成独立强大的资本主义经济。
+  \item 封建地主土地所有制和封建剥削关系仍然广泛存在。
+  \item 因此，中国既不再是完全封建社会，也没有变成独立资本主义社会，而是半殖民地半封建社会。
+\end{itemize}
+
+\subsection{答题骨架}
+\tagline{main}{性质题先答“半殖民地半封建”，矛盾题先答“两对主要矛盾”，任务题先答“两大历史任务”，最后补两者关系。}
+
+\newpage
+
+\section{A3 必背：维新、辛亥与论战}
+
+\subsection{1. 戊戌维新运动}
+\begin{itemize}
+  \item 性质：资产阶级性质的改良运动，也是一场爱国救亡运动和思想启蒙运动。
+  \item 历史意义：推动民族觉醒；传播西方政治学说和自然科学；冲击封建思想文化；促进近代教育和社会风气变化。
+  \item 失败原因：守旧势力强大；维新派脱离群众；寄希望于没有实权的皇帝；对帝国主义抱有幻想；资产阶级改良派软弱。
+  \item 教训：在半殖民地半封建中国，单靠自上而下改良不能完成民族独立和人民解放任务。
+\end{itemize}
+
+\subsection{2. 革命派与改良派论战}
+\exam{2018--2019 论述题直接考。}
+\begin{enumerate}
+  \item 要不要以革命手段推翻清王朝。
+  \item 要不要推翻帝制、实行共和。
+  \item 要不要进行社会革命，解决土地和民生问题。
+\end{enumerate}
+
+\textbf{意义：}
+\begin{itemize}
+  \item 划清革命与改良界限，传播民主革命思想。
+  \item 推动资产阶级民主革命思想深入人心。
+  \item 为辛亥革命的爆发作了思想和舆论准备。
+\end{itemize}
+
+\subsection{3. 三民主义}
+\exam{2016--2017、2023--2024 论述题直接考。}
+\begin{itemize}
+  \item 民族主义：驱除鞑虏，恢复中华，反对满清贵族统治。
+  \item 民权主义：创立民国，推翻君主专制，建立资产阶级共和国。
+  \item 民生主义：平均地权，带有解决社会问题的愿望。
+  \item 意义：比较完整地提出资产阶级民主革命纲领，推动辛亥革命发展。
+  \item 局限：没有明确彻底反帝，没有彻底土地纲领，不能充分发动农民群众。
+\end{itemize}
+
+\subsection{4. 辛亥革命}
+\exam{辛亥革命意义、失败原因、性质在多份试卷反复出现。}
+
+\textbf{历史意义：}
+\begin{itemize}
+  \item 推翻清王朝，结束中国两千多年君主专制制度。
+  \item 建立中华民国，推动民主共和观念深入人心。
+  \item 推动社会变革，促进民族资本主义和社会风俗变化。
+  \item 打击帝国主义侵略势力，推动亚洲民族解放运动。
+\end{itemize}
+
+\textbf{失败原因和教训：}
+\begin{itemize}
+  \item 根本原因：在半殖民地半封建中国，资产阶级共和国方案行不通。
+  \item 客观原因：帝国主义和封建势力强大。
+  \item 主观原因：没有彻底反帝反封建纲领；不能充分发动群众；不能建立坚强革命政党。
+  \item 教训：民族资产阶级不能领导中国民主革命取得彻底胜利。
+\end{itemize}
+
+\subsection{选择题钉子}
+\pin{严复《天演论》宣传“物竞天择，适者生存”；谭嗣同著《仁学》；1911 年保路运动；辛亥革命性质是旧式资产阶级民主主义革命；辛亥革命指导思想是三民主义。}
+
+\newpage
+
+\section{A4 必背：五四、马克思主义与中共成立}
+
+\subsection{1. 五四运动特点和意义}
+\exam{2016--2017、2023--2024 原题复用；2018--2019 也考五四条件。}
+
+\textbf{历史特点：}
+\begin{itemize}
+  \item 彻底反帝反封建的伟大爱国革命运动。
+  \item 先进青年知识分子为先锋，广大人民群众参加。
+  \item 工人阶级开始以独立政治力量登上历史舞台。
+  \item 促进马克思主义传播并同中国工人运动结合。
+\end{itemize}
+
+\textbf{历史意义：}
+\begin{itemize}
+  \item 是中国旧民主主义革命走向新民主主义革命的转折点。
+  \item 为中国共产党成立作了思想上、干部上的准备。
+  \item 促进新的革命力量、革命文化、革命斗争登上历史舞台。
+  \item 铸就以爱国、进步、民主、科学为主要内容的五四精神，核心是爱国主义。
+\end{itemize}
+
+\subsection{2. 为什么选择马克思主义}
+\begin{itemize}
+  \item 近代以来各种救国方案屡遭失败，先进分子需要新的思想武器。
+  \item 十月革命给中国送来马克思列宁主义，显示社会主义道路的现实力量。
+  \item 中国工人阶级成长壮大，为马克思主义传播提供阶级基础。
+  \item 李大钊等先进知识分子率先传播马克思主义，推动其成为新文化运动主流。
+  \item 马克思主义与中国工人运动结合，为中国共产党成立创造条件。
+\end{itemize}
+
+\subsection{3. 中国共产党成立的重大意义}
+\exam{2021--2022 简答题直接考。}
+\begin{itemize}
+  \item 中国革命有了坚强领导核心。
+  \item 中国人民有了科学理论指导和明确奋斗目标。
+  \item 中国革命面貌从此焕然一新。
+  \item 中国共产党把实现共产主义作为最高理想和最终目标，同时担负反帝反封建民主革命任务。
+  \item 中共成立是中华民族发展史上开天辟地的大事变。
+\end{itemize}
+
+\subsection{选择题钉子}
+\pin{率先在中国举起马克思主义旗帜的是李大钊；中共一大最后一天转移到嘉兴南湖游船；五四运动标志新民主主义革命开端；天津学生领袖周恩来在欧洲确立共产主义目标。}
+
+\newpage
+
+\section{A5 必背：土地革命与重要会议}
+
+\subsection{1. 大革命经验教训}
+\exam{2021--2022 简答题直接考。}
+\begin{itemize}
+  \item 必须坚持无产阶级及其政党对革命的领导权。
+  \item 必须建立和掌握革命武装，坚持武装斗争。
+  \item 必须充分发动和依靠农民群众，解决农民土地问题。
+  \item 必须正确处理统一战线中的联盟和斗争关系。
+  \item 必须加强党的建设，形成成熟坚强的领导核心。
+\end{itemize}
+
+\subsection{2. 中国革命新道路}
+\begin{itemize}
+  \item 新道路：\core{农村包围城市、武装夺取政权}。
+  \item “新”在于：从中国国情出发，不照搬俄国城市中心道路。
+  \item 过程：南昌起义开启独立领导武装斗争；八七会议提出土地革命和武装斗争；秋收起义后转向井冈山；形成工农武装割据思想。
+  \item 理论成果：毛泽东《中国的红色政权为什么能够存在？》《井冈山的斗争》等论证红色政权存在和发展条件。
+\end{itemize}
+
+\subsection{3. 红色政权存在和发展的原因条件}
+\exam{2018--2019 简答题直接考。}
+\begin{enumerate}
+  \item 中国政治经济发展不平衡，给红色政权割据提供客观条件。
+  \item 国民革命影响仍然存在，群众基础尚在。
+  \item 全国革命形势继续向前发展。
+  \item 有相当力量的正式红军存在。
+  \item 中国共产党组织坚强有力，政策正确。
+\end{enumerate}
+
+\subsection{4. 遵义会议}
+\exam{2016--2017、2023--2024 原题复用。}
+\begin{itemize}
+  \item 集中解决：当时具有决定意义的军事问题和组织问题。
+  \item 纠正：博古、李德等人在军事指挥上的错误。
+  \item 确立：以毛泽东为主要代表的马克思主义正确路线在党中央的领导地位。
+  \item 意义：挽救了党、挽救了红军、挽救了中国革命；是党的历史上生死攸关的转折点；标志中国共产党开始走向成熟。
+\end{itemize}
+
+\subsection{5. 瓦窑堡会议}
+\exam{2018--2019 简答题考内容意义；抗战选择题反复考。}
+\begin{itemize}
+  \item 时间：1935 年 12 月。
+  \item 内容：分析中日民族矛盾上升的新形势；批判关门主义错误；规定建立广泛抗日民族统一战线的政策。
+  \item 意义：为党领导全国抗日救亡运动、推动第二次国共合作和全民族抗战准备了政治路线。
+\end{itemize}
+
+\subsection{选择题钉子}
+\pin{南昌起义是独立领导革命战争、创建人民军队开端；八七会议是大革命失败到土地革命战争兴起的转折；古田会议解决党领导的新型人民军队建设问题；“没有调查，没有发言权”出自《反对本本主义》。}
+
+\newpage
+
+\section{A6 必背：解放战争与建国方案}
+
+\subsection{1. 三种建国方案}
+\exam{2021--2022、2022--2023 大题均涉及。}
+\begin{enumerate}
+  \item 国民党统治集团：地主阶级和买办性大资产阶级专政，继续走半殖民地半封建道路。
+  \item 民族资产阶级及部分中间势力：建立资产阶级共和国，走资本主义道路。
+  \item 中国共产党代表的工人阶级、农民阶级、城市小资产阶级和民族资产阶级：建立人民民主专政的人民共和国。
+\end{enumerate}
+
+\textbf{为什么第三种方案胜出：}
+\begin{itemize}
+  \item 国民党方案违背人民利益，政治腐败、发动内战、丧失民心。
+  \item 资产阶级共和国方案缺乏现实基础，在半殖民地半封建中国行不通。
+  \item 中国共产党方案代表最广大人民根本利益，得到人民拥护。
+\end{itemize}
+
+\subsection{2. 国民党失败原因}
+\begin{itemize}
+  \item 发动反人民内战，违背人民和平民主愿望。
+  \item 政治独裁腐败，经济上恶性通货膨胀，国统区民生崩溃。
+  \item 不能解决土地问题，失去农民支持。
+  \item 依赖美国援助，损害民族利益。
+  \item 军事战略和组织体系腐败低效，士气涣散。
+\end{itemize}
+
+\subsection{3. 中国共产党胜利原因和基本经验}
+\exam{2016--2017、2023--2024 论述题考新民主主义革命胜利原因。}
+
+\textbf{胜利原因：}
+\begin{itemize}
+  \item 中国共产党的正确领导。
+  \item 马克思主义中国化理论指导。
+  \item 建立广泛统一战线，争取最广大人民支持。
+  \item 坚持人民战争和正确军事路线。
+  \item 土地改革满足农民土地要求，形成深厚群众基础。
+\end{itemize}
+
+\textbf{基本经验：}
+\begin{itemize}
+  \item 统一战线。
+  \item 武装斗争。
+  \item 党的建设。
+\end{itemize}
+
+\subsection{4. 中国革命胜利意义}
+\begin{itemize}
+  \item 结束近代中国半殖民地半封建社会历史，实现民族独立和人民解放。
+  \item 建立人民民主专政的新中国，实现中国从封建专制政治向人民民主的伟大飞跃。
+  \item 改变世界政治力量对比，鼓舞被压迫民族和人民的解放斗争。
+  \item 为实现国家富强和人民富裕创造根本前提。
+\end{itemize}
+
+\subsection{选择题钉子}
+\pin{全面内战起点是国民党围攻中原解放区；1946 年 1 月重庆政治协商会议召开；人民解放战争战略进攻序幕由刘邓大军千里跃进大别山揭开。}
+
+\newpage
+
+\section{A7 必背：社会主义改造与建设探索}
+
+\subsection{1. 过渡时期总路线与一化三改}
+\begin{itemize}
+  \item 总路线主体：逐步实现国家的社会主义工业化。
+  \item 两翼：逐步实现对农业、手工业和资本主义工商业的社会主义改造。
+  \item 简称：一化三改、一体两翼。
+  \item 实质：使生产资料私有制转变为社会主义公有制。
+\end{itemize}
+
+\subsection{2. 资本主义工商业和平赎买}
+\exam{2018--2019 简答题直接考特点；选择题反复考。}
+\begin{itemize}
+  \item 基本政策：和平赎买。
+  \item 形式：国家资本主义，从初级形式逐步发展到个别企业公私合营、全行业公私合营。
+  \item 特点：把对企业的改造和对人的改造结合起来；通过逐步过渡减少社会震荡；兼顾国家、企业和资本家利益。
+  \item 意义：创造性地实现对资本主义工商业的社会主义改造。
+\end{itemize}
+
+\subsection{3. 社会主义基本制度确立意义}
+\begin{itemize}
+  \item 1956 年社会主义改造基本完成，标志社会主义基本制度在中国确立。
+  \item 这是中国历史上最深刻最伟大的社会变革。
+  \item 为当代中国一切发展进步奠定根本政治前提和制度基础。
+  \item 极大提高劳动人民积极性和创造性，促进社会生产力发展。
+  \item 为中华民族伟大复兴奠定根本制度基础。
+\end{itemize}
+
+\subsection{4. 中共八大路线}
+\exam{2018--2019、2021--2022 选择/多选均出现。}
+\begin{itemize}
+  \item 正确分析国内主要矛盾：人民对于经济文化迅速发展的需要同当前经济文化不能满足人民需要的状况之间的矛盾。
+  \item 主要任务：集中力量发展社会生产力，把我国从落后的农业国变为先进的工业国。
+  \item 经济建设方针：既反保守，又反冒进，坚持在综合平衡中稳步前进。
+  \item 意义：是党探索中国社会主义建设道路的重要成果。
+\end{itemize}
+
+\subsection{5. 《论十大关系》和全面建设成就}
+\begin{itemize}
+  \item 《论十大关系》的基本方针：调动一切积极因素，为社会主义事业服务。
+  \item 它标志党开始探索适合中国国情的社会主义建设道路。
+  \item 全面建设社会主义时期建立起独立的、比较完整的工业体系和国民经济体系。
+  \item 科技、国防、教育、文化等方面取得重要成就，为后续发展奠定物质技术基础。
+\end{itemize}
+
+\subsection{选择题钉子}
+\pin{一五计划开始于 1953 年；农业社会主义改造中完全社会主义性质的是高级农业生产合作社；资本主义工商业改造基本政策是和平赎买；《论十大关系》围绕“调动一切积极因素”。}
+
+\newpage
+
+\section{A8 必背：改革开放与新时期}
+
+\subsection{1. 十一届三中全会}
+\exam{2021--2022 简答题直接考；历年选择题高频。}
+\begin{itemize}
+  \item 时间：1978 年 12 月。
+  \item 思想路线：冲破长期“左”的错误束缚，重新确立解放思想、实事求是的思想路线。
+  \item 政治路线：停止使用“以阶级斗争为纲”，把党和国家工作中心转移到经济建设上来。
+  \item 历史决策：实行改革开放。
+  \item 意义：新中国成立以来党的历史上具有深远意义的伟大转折，开启改革开放和社会主义现代化建设新时期。
+\end{itemize}
+
+\subsection{2. 四项基本原则}
+\exam{2016--2017、2023--2024 原题复用。}
+\begin{enumerate}
+  \item 坚持社会主义道路。
+  \item 坚持人民民主专政。
+  \item 坚持中国共产党的领导。
+  \item 坚持马克思列宁主义、毛泽东思想。
+\end{enumerate}
+
+\textbf{重要性：}
+\begin{itemize}
+  \item 是立国之本，是党和国家生存发展的政治基石。
+  \item 保证改革开放和现代化建设沿着社会主义方向前进。
+  \item 维护国家政治稳定和社会安定。
+\end{itemize}
+
+\subsection{3. 南方谈话}
+\exam{2022--2023 多选题直接考内容。}
+\begin{itemize}
+  \item 革命是解放生产力，改革也是解放生产力。
+  \item 计划和市场都是经济手段，不是社会主义与资本主义的本质区别。
+  \item 社会主义本质：解放生产力、发展生产力，消灭剥削、消除两极分化，最终达到共同富裕。
+  \item 判断标准：是否有利于发展社会主义社会生产力，是否有利于增强社会主义国家综合国力，是否有利于提高人民生活水平。
+  \item 发展才是硬道理；要警惕右，但主要是防止“左”。
+  \item 意义：深刻回答长期困扰人们的重大认识问题，推动改革开放进入新阶段。
+\end{itemize}
+
+\subsection{4. 改革开放新时期的主要任务和成就}
+\begin{itemize}
+  \item 主要任务：继续探索中国建设社会主义的正确道路，解放和发展社会生产力，使人民摆脱贫困、尽快富裕起来。
+  \item 邓小平理论成功开创中国特色社会主义。
+  \item 党的十四大明确建立社会主义市场经济体制的改革目标。
+  \item “三个代表”重要思想推动中国特色社会主义进入 21 世纪。
+  \item 科学发展观推动经济社会全面协调可持续发展。
+  \item 加入 WTO 标志中国对外开放进入新阶段。
+\end{itemize}
+
+\subsection{选择题钉子}
+\pin{1981 年十一届六中全会通过《关于建国以来党的若干历史问题的决议》；中共十二大提出到 20 世纪末实现小康；中共十四大确立建立社会主义市场经济体制目标；2001 年加入 WTO 标志对外开放进入新阶段。}
+
+\newpage
+
+\section{考前最后一页}
+
+\subsection{最该先背的原题}
+\begin{multicols}{2}
+\begin{enumerate}
+  \item 近代中国主要矛盾和两大历史任务。
+  \item 五四运动历史特点和意义。
+  \item 遵义会议解决的问题及意义。
+  \item 四项基本原则及重要性。
+  \item 三民主义内容及意义。
+  \item 新民主主义革命胜利原因。
+  \item 抗日战争胜利原因和意义。
+  \item 三种建国方案。
+  \item 十一届三中全会伟大转折。
+  \item 中共成立重大意义。
+\end{enumerate}
+\end{multicols}
+
+\subsection{主观题万能骨架}
+\begin{itemize}
+  \item 意义题：性质定位 + 直接作用 + 长远影响 + 对民族复兴/中国革命的影响。
+  \item 原因题：领导力量 + 理论路线 + 群众基础 + 组织方式 + 国内外条件。
+  \item 会议题：时间背景 + 解决问题 + 作出决定 + 历史意义。
+  \item 论战题：争论问题 + 双方观点 + 历史意义。
+\end{itemize}
+
+\tagline{accent}{只看这一册时，优先顺序是：A1 抗日战争、A2 社会性质、A3 辛亥革命、A4 五四和中共成立，然后补 A5--A8。}
+
+\end{document}
