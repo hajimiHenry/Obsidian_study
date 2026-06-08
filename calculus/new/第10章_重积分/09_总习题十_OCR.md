@@ -139,29 +139,6 @@ $\displaystyle\iiint_{\Omega}\frac{z\ln(x^2+y^2+z^2+1)}{x^2+y^2+z^2+1}\,dV$，�
 
 $\displaystyle\iiint_{\Omega}(y^2+z^2)\,dV$，其中 $\Omega$ 是由 $xOy$ 面上曲线 $y^2=2x$ 绕 $x$ 轴旋转而成的曲面与平面 $x=5$ 所围成的闭区域。
 
-## 第 10 题：函数 $F(t)$ 与 $G(t)$
-
-设函数 $f(x)$ 连续且恒大于零，
-$$
-F(t)=\frac{\displaystyle\iiint_{\Omega(t)}f(x^2+y^2+z^2)\,dV}
-{\displaystyle\iint_{D(t)}f(x^2+y^2)\,d\sigma},
-\qquad
-G(t)=\frac{\displaystyle\iint_{D(t)}f(x^2+y^2)\,d\sigma}
-{\displaystyle\int_{-t}^{t}f(x^2)\,dx},
-$$
-其中
-$$
-\Omega(t)=\{(x,y,z)\mid x^2+y^2+z^2\le t^2\},\qquad
-D(t)=\{(x,y)\mid x^2+y^2\le t^2\}
-$$
-
-### 10.(1)
-
-讨论 $F(t)$ 在区间 $(0,+\infty)$ 内的单调性；
-
-### 10.(2)
-
-证明当 $t>0$ 时，$F(t)>\dfrac{2}{\pi}G(t)$。
 
 ## 第 11 题：求面积
 

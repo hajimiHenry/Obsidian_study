@@ -1,0 +1,556 @@
+\documentclass{ctexart}
+
+% --- 基础宏包 ---
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage[a4paper,left=2.2cm,right=2.2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{lastpage}
+
+% --- tcolorbox 及其库 ---
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+
+% --- TikZ 库 ---
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc}
+
+% --- 页面样式设置 ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\color{gray}\small 线性代数一小时速通系列}
+\fancyhead[R]{\color{gray}\small 第一章 行列式}
+\fancyfoot[C]{\color{gray}\small 第 \thepage\ 页\ 共\ \pageref{LastPage}\ 页}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% --- 配色定义 ---
+\definecolor{primary}{HTML}{1A365D}    % 深蓝/靛蓝 (标题)
+\definecolor{secblue}{HTML}{2B6CB0}    % 次级蓝
+\definecolor{accent}{HTML}{DD6B20}     % 暖橙 (注意)
+\definecolor{success}{HTML}{2F855A}    % 森林绿 (提示)
+\definecolor{infoblue}{HTML}{3182CE}   % 概念蓝
+\definecolor{lightbg}{HTML}{F7FAFC}    % 浅背景灰
+\definecolor{warningred}{HTML}{C53030} % 警告红
+
+% --- 标题与正文样式微调 ---
+\ctexset{
+  section = {
+    format = \Large\bfseries\color{primary},
+    aftername = \quad,
+    beforeskip = 1.5ex plus 0.5ex minus 0.2ex,
+    afterskip = 1.5ex plus 0.2ex
+  },
+  subsection = {
+    format = \large\bfseries\color{secblue},
+    aftername = \quad,
+    beforeskip = 1.2ex plus 0.3ex minus 0.2ex,
+    afterskip = 1.0ex plus 0.2ex
+  },
+  subsubsection = {
+    format = \normalsize\bfseries,
+    aftername = \quad,
+    beforeskip = 1.0ex plus 0.2ex minus 0.1ex,
+    afterskip = 0.8ex plus 0.1ex
+  }
+}
+\setlength{\parskip}{0.5em}
+\setlist[itemize]{leftmargin=1.5em, itemsep=0.2em, parsep=0.2em}
+\setlist[enumerate]{leftmargin=1.5em, itemsep=0.2em, parsep=0.2em}
+
+% --- 漂亮的框体环境定义 ---
+
+% 1. 概念定义框
+\newtcolorbox{conceptbox}[1]{
+  colback=infoblue!5!white,
+  colframe=infoblue,
+  fonttitle=\bfseries\color{white},
+  title={#1},
+  boxrule=1pt,
+  arc=3pt,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+% 2. 警示/注意框
+\newtcolorbox{warningbox}[1][注意]{
+  colback=warningred!5!white,
+  colframe=warningred,
+  boxrule=0pt,
+  leftrule=4pt,
+  arc=0pt,
+  fonttitle=\bfseries\color{warningred},
+  title={#1：},
+  attach title to upper,
+  breakable,
+  before skip=8pt,
+  after skip=8pt
+}
+
+% 3. 小贴士/技巧框
+\newtcolorbox{tipbox}[1][解题提示]{
+  colback=success!5!white,
+  colframe=success,
+  boxrule=0pt,
+  leftrule=4pt,
+  arc=0pt,
+  fonttitle=\bfseries\color{success},
+  title={#1：},
+  attach title to upper,
+  breakable,
+  before skip=8pt,
+  after skip=8pt
+}
+
+% 4. 例题框
+\newtcolorbox{examplebox}[1]{
+  colback=lightbg,
+  colframe=gray!60!black,
+  fonttitle=\bfseries\color{white},
+  title={#1},
+  boxrule=0.5pt,
+  arc=2pt,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+% 5. 记忆卡片框
+\newtcolorbox{cardbox}[1]{
+  colback=accent!5!white,
+  colframe=accent,
+  fonttitle=\bfseries\color{white},
+  title={#1},
+  boxrule=1pt,
+  arc=3pt,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+\begin{document}
+
+% --- 精美的标题 Banner ---
+\begin{center}
+  \begin{tcolorbox}[
+    colback=primary,
+    colframe=primary,
+    arc=6pt,
+    halign=center,
+    valign=center,
+    top=15pt, bottom=15pt
+  ]
+    \color{white}
+    {\huge\bfseries 第一章 行列式} \\[0.5em]
+    {\large —— 线性代数一小时速通讲义}
+  \end{tcolorbox}
+\end{center}
+
+\vspace{1em}
+
+% --- 正文开始 ---
+\section{一、核心概念速览（10分钟）}
+
+\subsection{1.1 二阶行列式}
+二阶行列式由四个数按两行两列排成，其定义为：
+\[
+\begin{vmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{vmatrix} = a_{11}a_{22} - a_{12}a_{21}
+\]
+\textbf{对角线法则}：主对角线元素之积减去副对角线元素之积。
+
+\subsection{1.2 三阶行列式}
+三阶行列式的计算遵循\textbf{沙路法则（对角线法则）}：
+\[
+\begin{vmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{vmatrix}
+\]
+其各项计算展开为：
+\begin{itemize}
+  \item \textbf{正项}（从左上到右下的对角线积之和）：$a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32}$
+  \item \textbf{负项}（从右上到左下的对角线积之和）：$a_{13}a_{22}a_{31} + a_{12}a_{21}a_{33} + a_{11}a_{23}a_{32}$
+\end{itemize}
+
+\begin{warningbox}
+  对角线法则\textbf{仅对二阶和三阶行列式适用}，四阶及以上的高阶行列式绝不适用！
+\end{warningbox}
+
+\subsection{1.3 n阶行列式的定义}
+\begin{conceptbox}{$n$ 阶行列式的完全定义}
+  $n$ 阶行列式是由 $n^2$ 个元素构成的代数和：
+  \[
+  D_n = \sum_{j_1 j_2 \cdots j_n} (-1)^{\tau(j_1 j_2 \cdots j_n)} a_{1j_1} a_{2j_2} \cdots a_{nj_n}
+  \]
+  \begin{itemize}
+    \item \textbf{行指标}：固定为自然排列 $1, 2, \dots, n$；
+    \item \textbf{列指标}：取遍 $1, 2, \dots, n$ 的所有排列 $j_1 j_2 \dots j_n$（共 $n!$ 项）；
+    \item \textbf{符号项}：$\tau(j_1 j_2 \dots j_n)$ 表示列指标排列的\textbf{逆序数}。
+  \end{itemize}
+\end{conceptbox}
+
+\subsection{1.4 逆序数}
+在排列 $i_1, i_2, \dots, i_n$ 中，若数对中前面的数比后面的数大（即 $i_s > i_t$ 且 $s < t$），则称这一对数构成一个\textbf{逆序对}。一个排列中逆序对的总数称为该排列的\textbf{逆序数}，记作 $\tau(i_1 i_2 \dots i_n)$。
+\begin{itemize}
+  \item \textbf{偶排列}：逆序数为偶数的排列；
+  \item \textbf{奇排列}：逆序数为奇数的排列。
+\end{itemize}
+
+\textbf{计算方法}：对每个元素 $i_k$，数它后面比它小的元素个数 $\tau(i_k)$，则总逆序数 $= \tau(i_1) + \tau(i_2) + \dots + \tau(i_n)$。
+
+\begin{examplebox}{例：计算排列的逆序数}
+  求排列 $5, 2, 4, 3, 1$ 的逆序数。
+  \begin{itemize}
+    \item $5$ 后面比它小的数有值：$2, 4, 3, 1$（共 4 个）
+    \item $2$ 后面比它小的数有值：$1$（共 1 个）
+    \item $4$ 后面比它小的数有值：$3, 1$（共 2 个）
+    \item $3$ 后面比它小的数有值：$1$（共 1 个）
+    \item $1$ 后面比它小的数有值：无（共 0 个）
+  \end{itemize}
+  因此，该排列的逆序数 $\tau(5,2,4,3,1) = 4 + 1 + 2 + 1 + 0 = 8$（为\textbf{偶排列}）。
+\end{examplebox}
+
+\newpage
+
+\section{二、六大性质（背诵+理解，15分钟）}
+熟练掌握行列式的性质是进行行列式计算的前提。
+
+\begin{table}[htbp]
+\centering
+\caption{行列式的六大核心性质}
+\label{tab:properties}
+\begin{tabular}{cll}
+\toprule
+\textbf{编号} & \textbf{性质内容} & \textbf{一句话解读（应用要点）} \\
+\midrule
+1 & $D^T = D$ & 行列互换，值不变 $\to$ 行的性质对列同样成立 \\
+2 & 交换两行（或两列），行列式值变号 & 常用推论：若有两行（列）相同，则 $D=0$ \\
+3 & 行列式某一行（列）的公因子 $k$ 可提取出来 & 常用推论：若某一行（列）全为零，则 $D=0$ \\
+4 & 两行（或两列）成比例 $\to$ $D=0$ & 性质 2 与性质 3 的直接推论 \\
+5 & 分拆定理 & 若某行是两组数之和，可拆为两个行列式之和 \\
+6 & 某行的 $k$ 倍加到另一行，行列式值不变 & \textbf{最核心的计算与消零化简工具} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{cardbox}{记忆口诀}
+  \centering\bfseries
+  转置不变，换行变号；提因子出，比例为零；拆行求和，倍加不变。
+\end{cardbox}
+
+\section{三、展开定理与代数余子式（10分钟）}
+
+\subsection{余子式 $M_{ij}$ 与代数余子式 $A_{ij}$}
+在 $n$ 阶行列式中，去掉元素 $a_{ij}$ 所在的第 $i$ 行和第 $j$ 列，剩下元素按原相对位置组成的 $(n-1)$ 阶行列式称为 $a_{ij}$ 的\textbf{余子式}，记作 $M_{ij}$。
+而 $a_{ij}$ 的\textbf{代数余子式} $A_{ij}$ 定义为：
+\[
+A_{ij} = (-1)^{i+j} M_{ij}
+\]
+
+\subsection{展开定理}
+行列式的值等于其任意一行（或一列）的元素与其对应的代数余子式乘积之和。
+\begin{itemize}
+  \item \textbf{按第 $i$ 行展开}：
+    \[
+    D = a_{i1}A_{i1} + a_{i2}A_{i2} + \dots + a_{in}A_{in}
+    \]
+  \item \textbf{按第 $j$ 列展开}：
+    \[
+    D = a_{1j}A_{1j} + a_{2j}A_{2j} + \dots + a_{nj}A_{nj}
+    \]
+\end{itemize}
+
+\subsection{重要推论}
+行列式中某一行的元素与\textbf{另一行}对应元素的代数余子式乘积之和为零。即：
+\[
+\sum_{k=1}^{n} a_{ik}A_{jk} = \begin{cases} D, & i=j \\ 0, & i \neq j \end{cases}
+\]
+
+\begin{tipbox}
+  在实际展开行列式时，应当\textbf{优先选择零元素最多的行（或列）}进行展开，以便大幅度减少代数余子式的计算量。
+\end{tipbox}
+
+\newpage
+
+\section{四、行列式计算的变换技巧（重点！25分钟）}
+
+\subsection{4.1 解题总策略：``化三角''}
+\textbf{核心思想}：利用性质 6（倍加变换）将行列式逐步化为\textbf{上三角}或\textbf{下三角}形式，此时行列式的值直接等于\textbf{主对角线元素之积}。
+\[
+\begin{vmatrix} a_{11} & * & * & * \\ 0 & a_{22} & * & * \\ 0 & 0 & \ddots & * \\ 0 & 0 & 0 & a_{nn} \end{vmatrix} = a_{11} \cdot a_{22} \cdots a_{nn}
+\]
+
+\subsection{4.2 入手方法分类}
+
+\subsubsection{方法一：逐行消零法（最通用）}
+\textbf{适用场景}：一般数值型行列式。
+\textbf{具体步骤}：
+\begin{enumerate}
+  \item 观察各行各列，选定一个含简单元素（最好是 $1$ 或 $-1$）的行作为``基准行''。若没有，可通过交换行或提取公因子制造。
+  \item 利用该基准行的倍数加到其他行，消去同列中其余行的元素（使对应列化为 $0$）。
+  \item 对低阶子式重复上述操作，直到化为三角形。
+\end{enumerate}
+
+\begin{examplebox}{例题：计算数值型行列式}
+  计算行列式：
+  \[
+  D = \begin{vmatrix} 3 & 1 & 1 & 2 \\ 5 & 1 & 3 & 4 \\ 2 & 0 & 1 & 1 \\ 1 & 5 & 3 & 3 \end{vmatrix}
+  \]
+  \textbf{解析与步骤}：
+  
+  首先观察第 1 列，第 4 行的元素为 $1$，最适合作基准。因此交换第 1 行与第 4 行（注意：交换行需要引入负号）：
+  \[
+  D \overset{r_1 \leftrightarrow r_4}{=} - \begin{vmatrix} 1 & 5 & 3 & 3 \\ 5 & 1 & 3 & 4 \\ 2 & 0 & 1 & 1 \\ 3 & 1 & 1 & 2 \end{vmatrix}
+  \]
+  利用第 1 行消去第 2、3、4 行的第一列元素（变换操作：$r_2 - 5r_1$，$r_3 - 2r_1$，$r_4 - 3r_1$）：
+  \[
+  D = - \begin{vmatrix} 1 & 5 & 3 & 3 \\ 0 & -24 & -12 & -11 \\ 0 & -10 & -5 & -5 \\ 0 & -14 & -8 & -7 \end{vmatrix}
+  \]
+  观察子行列式，第 3 行元素有公因子 $-5$，将其提取出来：
+  \[
+  D = - (-5) \begin{vmatrix} 1 & 5 & 3 & 3 \\ 0 & -24 & -12 & -11 \\ 0 & 2 & 1 & 1 \\ 0 & -14 & -8 & -7 \end{vmatrix} = 5 \begin{vmatrix} 1 & 5 & 3 & 3 \\ 0 & -24 & -12 & -11 \\ 0 & 2 & 1 & 1 \\ 0 & -14 & -8 & -7 \end{vmatrix}
+  \]
+  为了使用较小的数 $2$（在第 3 行）做基准，交换第 2 行与第 3 行（引入负号）：
+  \[
+  D \overset{r_2 \leftrightarrow r_3}{=} -5 \begin{vmatrix} 1 & 5 & 3 & 3 \\ 0 & 2 & 1 & 1 \\ 0 & -24 & -12 & -11 \\ 0 & -14 & -8 & -7 \end{vmatrix}
+  \]
+  利用第 2 行消去第 3 行和第 4 行的第二列元素（变换操作：$r_3 + 12r_2$，$r_4 + 7r_2$）：
+  \[
+  D = -5 \begin{vmatrix} 1 & 5 & 3 & 3 \\ 0 & 2 & 1 & 1 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & -1 & 0 \end{vmatrix}
+  \]
+  为化为上三角，交换第 3 行与第 4 行（再次变号，负负得正）：
+  \[
+  D \overset{r_3 \leftrightarrow r_4}{=} 5 \begin{vmatrix} 1 & 5 & 3 & 3 \\ 0 & 2 & 1 & 1 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & 1 \end{vmatrix}
+  \]
+  此时已化为上三角行列式，其值为主对角线元素之积：
+  \[
+  D = 5 \times [1 \times 2 \times (-1) \times 1] = 5 \times (-2) = -10
+  \]
+  \textbf{答案}：该行列式的值为 $-10$。（注：原课件讲义中答案记为 $40$ 是由于变换计算中的失误，应纠正为 $-10$）
+\end{examplebox}
+
+\subsubsection{方法二：凑行和/列和法}
+\textbf{适用场景}：所有行（或列）的元素和都相等。
+\textbf{具体步骤}：
+\begin{enumerate}
+  \item 将其他所有行（列）都加到第一行（第一列）上。
+  \item 提取出第一行（第一列）相同的公因子。
+  \item 此时第一行（第一列）全是 $1$，再通过倍加消零法化简为三角形式。
+\end{enumerate}
+
+\begin{examplebox}{例题：凑行和法计算}
+  计算四阶行列式：
+  \[
+  D = \begin{vmatrix} 3 & 1 & 1 & 1 \\ 1 & 3 & 1 & 1 \\ 1 & 1 & 3 & 1 \\ 1 & 1 & 1 & 3 \end{vmatrix}
+  \]
+  \textbf{解析与步骤}：
+  
+  观察发现，每一行的元素之和都等于 $3+1+1+1=6$。
+  将第 2、3、4 行都加到第 1 行上：
+  \[
+  D \overset{r_1 + r_2 + r_3 + r_4}{=} \begin{vmatrix} 6 & 6 & 6 & 6 \\ 1 & 3 & 1 & 1 \\ 1 & 1 & 3 & 1 \\ 1 & 1 & 1 & 3 \end{vmatrix}
+  \]
+  提出第一行的公因子 $6$：
+  \[
+  D = 6 \begin{vmatrix} 1 & 1 & 1 & 1 \\ 1 & 3 & 1 & 1 \\ 1 & 1 & 3 & 1 \\ 1 & 1 & 1 & 3 \end{vmatrix}
+  \]
+  用第一行消去其余行的第一列元素（操作：$r_2 - r_1$，$r_3 - r_1$，$r_4 - r_1$）：
+  \[
+  D = 6 \begin{vmatrix} 1 & 1 & 1 & 1 \\ 0 & 2 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 2 \end{vmatrix}
+  \]
+  此时为对角行列式，其值为：
+  \[
+  D = 6 \times (1 \times 2 \times 2 \times 2) = 6 \times 8 = 48
+  \]
+\end{examplebox}
+
+\subsubsection{方法三：逐步降阶法（递推/归纳）}
+\textbf{适用场景}：行列式具有明显的结构规律，且阶数为 $n$。
+\textbf{具体步骤}：
+设 $n$ 阶行列式为 $D_n$，通过第一行或第一列展开，或通过初等变换，建立 $D_n$ 与低阶行列式（如 $D_{n-1}$ 或 $D_{n-2}$）之间的递推关系式，然后求解该递推关系。
+
+\subsubsection{方法四：按行（列）展开法}
+\textbf{适用场景}：某一行（列）中含有大量的零元素，或者容易通过少量变换制造零元素。
+
+\subsubsection{方法五：拆行/列法}
+\textbf{适用场景}：行列式的某一行（列）的元素均可表达为两项求和形式，可利用分拆定理将其分解为两个行列式相加。
+
+\subsection{4.3 特殊行列式直接套用公式}
+
+\begin{table}[htbp]
+\centering
+\caption{几种特殊结构的行列式公式}
+\label{tab:special_det}
+\begin{tabular}{lcl}
+\toprule
+\textbf{行列式类型} & \textbf{标准形式} & \textbf{计算结论} \\
+\midrule
+上/下三角形 & $\begin{vmatrix} a_{11} & * \\ 0 & a_{nn} \end{vmatrix}$ 或 $\begin{vmatrix} a_{11} & 0 \\ * & a_{nn} \end{vmatrix}$ & $D = a_{11}a_{22}\cdots a_{nn}$ \\
+副对角线三角形 & $\begin{vmatrix} 0 & a_{1n} \\ a_{n1} & 0 \end{vmatrix}$ & $D = (-1)^{\frac{n(n-1)}{2}} a_{1n}a_{2,n-1}\cdots a_{n1}$ \\
+范德蒙行列式 & 见下文 & $\prod_{1 \le j < i \le n}(x_i - x_j)$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{4.4 范德蒙行列式}
+范德蒙行列式的标准形式为：
+\[
+V_n = \begin{vmatrix} 1 & 1 & \cdots & 1 \\ x_1 & x_2 & \cdots & x_n \\ x_1^2 & x_2^2 & \cdots & x_n^2 \\ \vdots & \vdots & & \vdots \\ x_1^{n-1} & x_2^{n-1} & \cdots & x_n^{n-1} \end{vmatrix} = \prod_{1 \le j < i \le n}(x_i - x_j)
+\]
+\textbf{记忆法}：大下标减去小下标，所有的组合配对相乘。
+\begin{warningbox}
+  范德蒙行列式不等于 $0$ 的充分必要条件是 $x_1, x_2, \dots, x_n$ 互不相同。
+\end{warningbox}
+
+\subsection{4.5 分块行列式}
+若 $A$ 是 $m$ 阶方阵，$B$ 是 $n$ 阶方阵，则：
+\[
+\begin{vmatrix} A & O \\ C & B \end{vmatrix} = |A| \cdot |B|, \quad \begin{vmatrix} A & C \\ O & B \end{vmatrix} = |A| \cdot |B|
+\]
+而对于副对角线分块形式，有：
+\[
+\begin{vmatrix} O & A \\ B & C \end{vmatrix} = (-1)^{mn}|A| \cdot |B|, \quad \begin{vmatrix} C & A \\ B & O \end{vmatrix} = (-1)^{mn}|A| \cdot |B|
+\]
+
+\newpage
+
+\section{五、解题决策流程图}
+
+下面是行列式求值或证明的决策逻辑：
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  node distance=1.2cm and 0.5cm,
+  every node/.style={font=\small},
+  startstop/.style={rectangle, rounded corners, minimum width=3.5cm, minimum height=0.8cm, text centered, draw=primary, fill=primary!10, thick},
+  branch/.style={diamond, aspect=2, minimum width=3cm, minimum height=0.8cm, text centered, draw=accent, fill=accent!10, thick},
+  process/.style={rectangle, rounded corners=2pt, minimum width=4.5cm, minimum height=0.8cm, text centered, draw=success, fill=success!10, thick},
+  arrow/.style={thick,->,>=stealth}
+]
+
+% 节点定义
+\node (start) [startstop] {拿到一个行列式};
+
+% 三个主要分支
+\node (num) [branch, below left=1.2cm and 2.2cm of start] {数值型？};
+\node (param) [branch, below=1.8cm of start] {含参数/字母型？};
+\node (proof) [branch, below right=1.2cm and 2.2cm of start] {证明题？};
+
+% 数值型子节点
+\node (num_easy) [branch, below=1.0cm of num] {有简单元素(1, -1, 0)？};
+\node (num_do) [process, below left=0.8cm and -0.8cm of num_easy] {以该元素为基准倍加消零 $\to$ 化三角};
+\node (num_make) [process, below right=0.8cm and -0.8cm of num_easy] {交换行/列或提公数制造 1};
+
+% 参数型子节点
+\node (par_sum) [process, below=1.0cm of param] {列和/行和相等 $\to$ 凑行和法};
+\node (par_vdm) [process, below=2.0cm of param] {幂次递增规律 $\to$ 范德蒙公式};
+\node (par_rec) [process, below=3.0cm of param] {规律三对角/爪形 $\to$ 递推/归纳};
+\node (par_blk) [process, below=4.0cm of param] {分块方阵明显 $\to$ 分块行列式公式};
+
+% 证明题子节点
+\node (proof_zero) [process, below=1.0cm of proof] {证 $D=0$：找相同/成比例行};
+\node (proof_eq) [process, below=2.2cm of proof] {证恒等式：单边变换化简};
+
+% 连接线
+\draw [arrow] (start.south) -| (num.north);
+\draw [arrow] (start.south) -- (param.north);
+\draw [arrow] (start.south) -| (proof.north);
+
+% 数值型分支
+\draw [arrow] (num) -- (num_easy);
+\draw [arrow] (num_easy.south) -| node[above left, pos=0.7] {是} (num_do.north);
+\draw [arrow] (num_easy.south) -| node[above right, pos=0.7] {否} (num_make.north);
+
+% 参数型分支
+\draw [arrow] (param) -- (par_sum);
+\draw [arrow] (par_sum) -- (par_vdm);
+\draw [arrow] (par_vdm) -- (par_rec);
+\draw [arrow] (par_rec) -- (par_blk);
+
+% 证明题分支
+\draw [arrow] (proof) -- (proof_zero);
+\draw [arrow] (proof_zero) -- (proof_eq);
+
+\end{tikzpicture}
+\caption{行列式解题策略决策流程图}
+\label{fig:flowchart}
+\end{figure}
+
+\section{六、常见易错点}
+
+\begin{enumerate}
+  \item \textbf{交换行列忘记变号}：进行 $r_i \leftrightarrow r_j$ 或 $c_i \leftrightarrow c_j$ 变换时，行列式外部一定要乘以 $-1$。
+  \item \textbf{提取公因数的范围混淆}：行列式提公因数是``提一行/列的公因子''，非矩阵提公因数（矩阵提取公因子是所有元素都除以 $k$，$n$ 阶行列式全部乘 $k$ 后值变为 $k^n D$）。
+  \item \textbf{倍加方向弄反}：进行变换 $r_i + k r_j$ 时，代表将第 $j$ 行的 $k$ 倍加到第 $i$ 行上，第 $j$ 行本身的元素保持不变。
+  \item \textbf{行列变换混用}：在求特征值或伴随矩阵行列式时，混用行变换和列变换容易导致混淆，一般建议在一题中以一种变换为主。
+  \item \textbf{代数余子式的符号遗漏}：展开时，不要漏掉 $(-1)^{i+j}$ 这个符号。
+\end{enumerate}
+
+\newpage
+
+\section{七、经典题型速练}
+
+\subsection{题型 1：化三角与相邻做差计算}
+计算行列式：
+\[
+D = \begin{vmatrix} 2 & 3 & 2+4 & 3+2 \\ 3 & 6 & 3+10 & 6+3 \\ a & a+b & a+b+c & a+b+c+d \\ a & a+b & a+b+c & a+b+c+d \end{vmatrix}
+\]
+\textbf{思路与计算}：
+观察到第 3 行与第 4 行的元素完全一致。根据行列式性质，有两行相同则行列式的值直接为 $0$。
+若需要练习相邻列做差，可从右向左进行列变换：$c_4 - c_3$，$c_3 - c_2$，$c_2 - c_1$。
+变换后行列式化简为：
+\[
+D = \begin{vmatrix} 2 & 1 & 3 & -1 \\ 3 & 3 & 7 & -4 \\ a & b & c & d \\ a & b & c & d \end{vmatrix}
+\]
+此时第 3 行与第 4 行依然相同，易知 $D=0$。
+
+\subsection{题型 2：凑行和求值}
+计算行列式：
+\[
+D = \begin{vmatrix} x & a & a & a \\ a & x & a & a \\ a & a & x & a \\ a & a & a & x \end{vmatrix}
+\]
+\textbf{解析}：
+将第 2、3、4 行均加到第 1 行，提取第一行公因子 $(x+3a)$，然后将第 1 行乘 $-a$ 加到其余各行：
+\[
+D = (x+3a) \begin{vmatrix} 1 & 1 & 1 & 1 \\ 0 & x-a & 0 & 0 \\ 0 & 0 & x-a & 0 \\ 0 & 0 & 0 & x-a \end{vmatrix} = (x+3a)(x-a)^3
+\]
+
+\subsection{题型 3：范德蒙行列式应用}
+计算行列式：
+\[
+D = \begin{vmatrix} 1 & 1 & 1 & 1 \\ 1 & 2 & 3 & 4 \\ 1 & 4 & 9 & 16 \\ 1 & 8 & 27 & 64 \end{vmatrix}
+\]
+\textbf{解析}：
+此行列式为 $x_1=1, x_2=2, x_3=3, x_4=4$ 的范德蒙行列式：
+\[
+D = V_4(1, 2, 3, 4) = (2-1)(3-1)(4-1)(3-2)(4-2)(4-3) = 1 \times 2 \times 3 \times 1 \times 2 \times 1 = 12
+\]
+
+\subsection{题型 4：爪形与三对角行列式（递推）}
+对于爪形行列式（第一行和第一列非零，其余仅对角线非零），通常可以通过``倍加变换''利用其余各列将第一行的非零元素消去，或者按第一列展开化为对角行列式和递推关系。
+
+\section{八、速记卡片}
+
+\begin{multicols}{2}
+\begin{cardbox}{核心：化三角}
+  利用性质 6（$r_i + kr_j$）消去对角线一侧的所有元素。三角形行列式的值为对角线元素之积。
+\end{cardbox}
+
+\begin{cardbox}{变号规则}
+  每次交换两行（$r_i \leftrightarrow r_j$）或两列，行列式的值需乘以 $-1$。
+\end{cardbox}
+
+\begin{cardbox}{展开策略}
+  选择含零元素最多的行（列）进行余子式展开，尽量先制造零再展开。
+\end{cardbox}
+
+\begin{cardbox}{范德盟公式}
+  标准阶梯幂次行列式：
+  $V_n = \prod_{i>j}(x_i-x_j)$。大下标减小下标。
+\end{cardbox}
+\end{multicols}
+
+\end{document}
